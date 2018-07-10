@@ -3,22 +3,26 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
-import { HelloWorldComponent } from './hello-world/hello-world.component';
-import { CounterComponent } from './counter/counter.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { NavComponent } from './nav/nav.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
-  { path: 'hello-world', component: HelloWorldComponent },
-  { path: 'counter', component: CounterComponent }/*,
-  { path: 'directive', component: DirectiveComponent },
-  { path: 'service', component: ServiceComponent }*/
+    { path: '', component:   LoginComponent}
+
+    /*{ path: 'directive', component: DirectiveComponent },
+    { path: 'service', component: ServiceComponent }*/
 ];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HelloWorldComponent,
-    CounterComponent
+    HeaderComponent,
+    FooterComponent,
+    NavComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
