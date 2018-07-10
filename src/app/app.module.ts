@@ -7,10 +7,12 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const appRoutes: Routes = [
-    { path: '', component:   LoginComponent}
-
+    { path: '', component:   LoginComponent},
+    { path: 'registration', component: RegistrationComponent}
+    //{ path: 'home', component: HomeComponent}
     /*{ path: 'directive', component: DirectiveComponent },
     { path: 'service', component: ServiceComponent }*/
 ];
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     NavComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
