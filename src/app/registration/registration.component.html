@@ -1,5 +1,15 @@
-<p>
-  registration works!
-</p>
+<app-header></app-header>
 
-<input type="submit" value="Registration" (click)="registration()">
+<form>
+  <input type="text" id="roomNumber" placeholder="Room Number"><br>
+  <input type="text" id="bookingName" placeholder="Booking Name"><br>
+  <input type="text" id="bookinkSurname" placeholder="Booking Surname"><br>
+  <input type="text" id="username" placeholder="Username"><br>
+  <input type="text" id="password" placeholder="Password"><br>
+  <input type="number" id="peopleInRoom" value="1" min="1" > Number of people in room<br>
+  <textarea ></textarea><br>
+  <input type="submit" value="Register" (click)="home()">
+</form>
+
+
+<app-footer></app-footer>
