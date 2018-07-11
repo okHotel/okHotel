@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { MenuComponent } from './menu/menu.component';
+import { MenuVariationsComponent } from './menu-variations/menu-variations.component';
 
 const appRoutes: Routes = [
     { path: '', component:   LoginComponent},
@@ -25,7 +27,9 @@ const appRoutes: Routes = [
     FooterComponent,
     NavComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    MenuComponent,
+    MenuVariationsComponent
   ],
   imports: [
     BrowserModule,
