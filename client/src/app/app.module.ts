@@ -14,7 +14,8 @@ import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
     { path: '', component:   LoginComponent},
-    { path: 'registration', component: RegistrationComponent}
+    { path: 'registration', component: RegistrationComponent},
+    { path: 'menu', component: MenuComponent}
     //{ path: 'home', component: HomeComponent}
     /*{ path: 'directive', component: DirectiveComponent },
     { path: 'service', component: ServiceComponent }*/
