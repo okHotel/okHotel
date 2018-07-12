@@ -13,7 +13,7 @@ import { MenuVariationsComponent } from './menu-variations/menu-variations.compo
 import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
-    { path: '', component:   LoginComponent},
+    { path: '', component:   MenuVariationsComponent},
     { path: 'registration', component: RegistrationComponent}
     //{ path: 'home', component: HomeComponent}
     /*{ path: 'directive', component: DirectiveComponent },

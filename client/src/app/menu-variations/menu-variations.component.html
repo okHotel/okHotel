@@ -1,4 +1,7 @@
+<app-header></app-header>
+
 <button type="button">&#x2715;</button>
+
 
 <table summary="The variations you can select for lunch">
   <caption>Please choose what variations you need for lunch</caption>
@@ -7,109 +10,22 @@
     <th scope="col">Intolerance</th>
     <th scope="col">Allergy</th>
   </tr>
-  <tr>
-    <td scope="row">Wheat</td>
+
+  <tr *ngFor="let v of variation">
+    <td scope="row">{{v}}</td>
     <td>
-      <select name="numbers">
-        <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        </optgroup>
-      </select>
+      <label for="Int">{{v}} Intollerance</label>
+      <input id="Int" type="number" min="0" >
     </td>
     <td>
-      <select name="numbers">
-        <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        </optgroup>
-      </select>
+      <label for="All">{{v}} Allergy</label>
+      <input id="All" type="number" min="0">
     </td>
   </tr>
-  <tr>
-    <td scope="row">Milk</td>
-    <td>
-      <select name="numbers">
-        <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-        <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        </optgroup>
-      </select>
-    </td>
-  </tr>
-  <tr>
-    <td scope="row">Egg</td>
-    <td>
-      <select name="numbers">
-        <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-        <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        </optgroup>
-      </select>
-    </td>
-  </tr>
-  <tr>
-    <td scope="row">Strawberry</td>
-    <td>
-      <select name="numbers">
-        <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-        <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        </optgroup>
-      </select>
-    </td>
-  </tr>
-  <tr>
-    <td scope="row">Fish</td>
-    <td>
-      <select name="numbers">
-        <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-        <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        </optgroup>
-      </select>
-    </td>
-  </tr>
+
+
 </table>
+<app-footer></app-footer>
+
+
+
