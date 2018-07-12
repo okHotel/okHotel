@@ -11,11 +11,12 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenuVariationsComponent } from './menu-variations/menu-variations.component';
 import { HomeComponent } from './home/home.component';
+import { ProvaForComponent } from './prova-for/prova-for.component';
 
 const appRoutes: Routes = [
     { path: '', component:   LoginComponent},
-    { path: 'registration', component: RegistrationComponent}
-    //{ path: 'home', component: HomeComponent}
+    { path: 'registration', component: RegistrationComponent},
+    { path: 'home', component: HomeComponent}
     /*{ path: 'directive', component: DirectiveComponent },
     { path: 'service', component: ServiceComponent }*/
 ];
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     RegistrationComponent,
     MenuComponent,
     MenuVariationsComponent,
-    HomeComponent
+    HomeComponent,
+    ProvaForComponent
   ],
   imports: [
     BrowserModule,
