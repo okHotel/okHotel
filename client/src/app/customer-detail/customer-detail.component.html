@@ -1,30 +1,27 @@
+<app-header></app-header>
+
 <div *ngIf="customer">
   <h2>Room {{customer.roomNumber | uppercase}} Details</h2>
   <div><span>Room Number: </span>{{customer.roomNumber}}</div>
   <div>
-    <label>name:
-      <input [(ngModel)]="customer.name" placeholder="name"/>
-    </label>
-
     <label>Booking Name:
       <input [(ngModel)]="customer.bookingName" placeholder="Booking Name"/>
     </label>
-
+    <br/>
     <label>Booking Surname:
       <input [(ngModel)]="customer.bookingSurname" placeholder="Booking Surname"/>
     </label>
-
+    <br/>
     <label>Username:
       <input [(ngModel)]="customer.username" placeholder="Username"/>
     </label>
-
+    <br/>
     <div><span>Number of people in the room: </span>{{customer.numberOfPeople}}</div>
 
     <div>
       <label>Other needs:
           <input #otherNeeds />
       </label>
-      <!-- (click) passes input value to add() and then clears the input; -->
       <button (click)="add(otherNeeds.value); otherNeeds.value=''">
           add
       </button>
@@ -44,3 +41,5 @@
   <button (click)="goBack()">go back</button>
   <button (click)="save()">save</button>
 </div>
+
+<app-footer></app-footer>
