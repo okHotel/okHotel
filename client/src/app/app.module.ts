@@ -16,13 +16,15 @@ import {FormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
-    { path: '', component:   LoginComponent},
+
+    { path: '', component:   NavComponent},
     { path: 'registration', component: RegistrationComponent},
     { path: 'home', component: HomeComponent},
     { path: 'profile', component: CustomerDetailComponent},
     { path: 'restaurant', component: MenuComponent}
 
     // { path: 'home', component: HomeComponent}
+
     /*{ path: 'directive', component: DirectiveComponent },
     { path: 'service', component: ServiceComponent }*/
 ];

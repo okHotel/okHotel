@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
+  menu_dates = [new Date(2018,7,10), new Date(2018,7,9), new Date(2018, 7, 8) ];
+
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
