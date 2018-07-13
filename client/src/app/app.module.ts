@@ -17,7 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
 
-    { path: '', component:   LoginComponent},
+    { path: '', component:   NavComponent},
     { path: 'registration', component: RegistrationComponent},
     { path: 'home', component: HomeComponent},
     { path: 'profile', component: CustomerDetailComponent},
