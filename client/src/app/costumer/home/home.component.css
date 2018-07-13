@@ -6,7 +6,7 @@
 }
 
 #planImage{
-    background: url("../../../res/plan_floor_1.jpg") center no-repeat;
+    background: url("../../../../res/plan_floor_1.jpg") center no-repeat;
     background-size:contain;
     /*background-size: auto;*/
     display: block;
