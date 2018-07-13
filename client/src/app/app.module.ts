@@ -21,7 +21,9 @@ const appRoutes: Routes = [
     { path: 'registration', component: RegistrationComponent},
     { path: 'home', component: HomeComponent},
     { path: 'profile', component: CustomerDetailComponent},
-    { path: 'restaurant', component: MenuComponent}
+    { path: 'restaurant', component: MenuComponent},
+    { path: 'menu-variations', component: MenuVariationsComponent},
+    { path: 'menu', component: MenuComponent}
 
     // { path: 'home', component: HomeComponent}
 
