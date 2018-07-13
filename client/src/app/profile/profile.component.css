@@ -1,0 +1,12 @@
+#profileLink{
+    margin-right: 0.5%;
+    color: black;
+}
+
+#profileButton {
+    border: none;
+    padding: 2% 2%;
+    display: inline-block;
+    background: white url("../../../res/user_profile.png") no-repeat;
+    background-size: auto;
+}

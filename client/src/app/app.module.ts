@@ -13,12 +13,15 @@ import { MenuVariationsComponent } from './menu-variations/menu-variations.compo
 import { HomeComponent } from './home/home.component';
 import {CustomerDetailComponent} from './customer-detail/customer-detail.component';
 import {FormsModule} from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
 
     { path: '', component:   LoginComponent},
     { path: 'registration', component: RegistrationComponent},
-    { path: 'customer-detail', component: CustomerDetailComponent}
+    { path: 'home', component: HomeComponent},
+    { path: 'profile', component: CustomerDetailComponent},
+    { path: 'restaurant', component: MenuComponent}
 
     // { path: 'home', component: HomeComponent}
 
@@ -38,7 +41,8 @@ const appRoutes: Routes = [
     MenuComponent,
     MenuVariationsComponent,
     HomeComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    ProfileComponent
 
   ],
   imports: [
