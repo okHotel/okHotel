@@ -21,7 +21,7 @@ export class CustomerDetailComponent implements OnInit {
         numberOfPeople: 2,
         otherNeeds: 'svetlana'
 
-};
+    };
 
     constructor(
         private router: Router,
