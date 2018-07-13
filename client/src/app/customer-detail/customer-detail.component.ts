@@ -37,6 +37,10 @@ export class CustomerDetailComponent implements OnInit {
     }
 
     home() {
-        this.router.navigateByUrl('/' );
+        this.router.navigateByUrl('/home' );
+    }
+
+    logOut(){
+        this.router.navigateByUrl('/');
     }
 }
