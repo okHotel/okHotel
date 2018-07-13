@@ -1,38 +1,49 @@
+
 .container {
     position: relative;
     text-align: center;
     color: black;
 }
 
+#planImage{
+    background: url("../../../res/plan_floor_1.jpg") center no-repeat;
+    background-size:contain;
+    /*background-size: auto;*/
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
 .top-left {
     position: absolute;
-    top: 13%;
-    left: 38%;
+    top: 11%;
+    left: 40%;
 }
 
 .top-right {
     position: absolute;
     top: 13%;
-    right: 34%;
+    right: 37%;
 }
 
 .centered-left {
     position: absolute;
     top: 45%;
-    left: 37%;
+    left: 40%;
     transform: translate(-50%, -50%);
 }
 
 .centered-right {
     position: absolute;
-    top: 46%;
-    left: 60%;
+    top: 43%;
+    left: 57%;
     transform: translate(50%, 50%);
 }
 
 .bottom-center {
     position: absolute;
-    bottom: 4%;
+    bottom: 3%;
     left: 48%;
 }
 
