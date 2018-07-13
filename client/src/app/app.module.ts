@@ -11,11 +11,17 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenuVariationsComponent } from './menu-variations/menu-variations.component';
 import { HomeComponent } from './home/home.component';
+import {CustomerDetailComponent} from './customer-detail/customer-detail.component';
+import {FormsModule} from '@angular/forms';
 
 const appRoutes: Routes = [
-    { path: '', component:   MenuVariationsComponent},
-    { path: 'registration', component: RegistrationComponent}
-    //{ path: 'home', component: HomeComponent}
+
+    { path: '', component:   LoginComponent},
+    { path: 'registration', component: RegistrationComponent},
+    { path: 'customer-detail', component: CustomerDetailComponent}
+
+    // { path: 'home', component: HomeComponent}
+
     /*{ path: 'directive', component: DirectiveComponent },
     { path: 'service', component: ServiceComponent }*/
 ];
@@ -31,10 +37,13 @@ const appRoutes: Routes = [
     RegistrationComponent,
     MenuComponent,
     MenuVariationsComponent,
-    HomeComponent
+    HomeComponent,
+    CustomerDetailComponent
+
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

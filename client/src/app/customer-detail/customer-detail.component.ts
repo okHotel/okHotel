@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Customer } from '../customer';
@@ -11,26 +11,24 @@ import { CustomerService } from '../customer.service';
     styleUrls: [ './customer-detail.component.css' ]
 })
 export class CustomerDetailComponent implements OnInit {
-    @Input() customer: Customer;
+//    @Input() customer: Customer;
+    customer: Customer = {
+        bookingName: 'Santino',
+        bookingSurname: 'Santini',
+        roomNumber: 1,
+        username: 'santino',
+        password: 's4nt1n0',
+        numberOfPeople: 2,
+        otherNeeds: 'svetlana'
+
+};
 
     constructor(
-        private route: ActivatedRoute,
-        private customerService: CustomerService,
+        private router: Router,
         private location: Location
     ) {}
 
     ngOnInit(): void {
-//        this.getCustomer();
-    }
-
-    getCustomer(): void {
-
-/*
-      const bookingName = +this.route.snapshot.paramMap.get('bookingName');
-      const bookingSurame = +this.route.snapshot.paramMap.get('bookingSurname');
-      this.customerService.getCustomer(bookingName, bookingSurame)
-          .subscribe(customer => this.customer = customer);
-*/
 
     }
 
@@ -38,8 +36,7 @@ export class CustomerDetailComponent implements OnInit {
         this.location.back();
     }
 
-    save(): void {
-//        this.customerService.updateCustomer(this.customer)
-//            .subscribe(() => this.goBack());
+    home() {
+        this.router.navigateByUrl('/' );
     }
 }
