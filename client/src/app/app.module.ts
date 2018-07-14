@@ -7,24 +7,25 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
+import { RegistrationComponent } from './costumer/registration/registration.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenuVariationsComponent } from './menu-variations/menu-variations.component';
 import { HomeComponent } from './home/home.component';
-import {CustomerDetailComponent} from './customer-detail/customer-detail.component';
+import {CustomerDetailComponent} from './costumer/customer-detail/customer-detail.component';
 import {FormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
 
-    { path: '', component:   NavComponent},
+    { path: '', component:   LoginComponent},
     { path: 'registration', component: RegistrationComponent},
     { path: 'home', component: HomeComponent},
     { path: 'profile', component: CustomerDetailComponent},
-    { path: 'restaurant', component: MenuComponent}
+    { path: 'restaurant', component: MenuComponent},
+    { path: 'menu-variations', component: MenuVariationsComponent},
+    { path: 'menu', component: MenuComponent}
 
     // { path: 'home', component: HomeComponent}
-
     /*{ path: 'directive', component: DirectiveComponent },
     { path: 'service', component: ServiceComponent }*/
 ];
