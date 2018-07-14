@@ -26,7 +26,6 @@ const appRoutes: Routes = [
     { path: 'menu', component: MenuComponent}
 
     // { path: 'home', component: HomeComponent}
-
     /*{ path: 'directive', component: DirectiveComponent },
     { path: 'service', component: ServiceComponent }*/
 ];
