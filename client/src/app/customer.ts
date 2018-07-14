@@ -1,4 +1,4 @@
-export class Customer {
+export interface  Customer {
     roomNumber: number;
     bookingName: string;
     bookingSurname: string;

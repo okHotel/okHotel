@@ -27,7 +27,7 @@ app.use(bodyParser.json());
  We are telling express server public folder is the place to look for the static files
 
 */
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, '../client/app')));
 
 app.get('/', (req,res) => {
     res.send("Invalid page");

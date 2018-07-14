@@ -48,7 +48,7 @@ router.delete('/:bookingName-:bookingSurname', (req,res,next)=> {
     let bookingName = req.params.bookingName;
     let bookingSurname = req.params.bookingSurname
     //Call the model method deleteListById
-    bucketlist.deleteCustomer(bookingName, bookingSurname,(err,list) => {
+    customer.deleteCustomer(bookingName, bookingSurname,(err,list) => {
         if(err) {
             res.json({success:false, message: `Failed to delete the list. Error: ${err}`});
         }

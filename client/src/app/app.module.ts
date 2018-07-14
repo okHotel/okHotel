@@ -7,13 +7,15 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './costumer/registration/registration.component';
+import { RegistrationComponent } from './customer/registration/registration.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenuVariationsComponent } from './menu-variations/menu-variations.component';
 import { HomeComponent } from './home/home.component';
-import {CustomerDetailComponent} from './costumer/customer-detail/customer-detail.component';
-import {FormsModule} from '@angular/forms';
+import { CustomerDetailComponent} from './customer/customer-detail/customer-detail.component';
+import { FormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { CustomerService } from './service/customer.service';
+import { HttpModule } from '@angular/http';
 
 const appRoutes: Routes = [
 
@@ -49,9 +51,10 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -40,5 +40,5 @@ module.exports.addCustomer = (newCustomer, callback) => {
 //Here we need to pass an id parameter to BUcketList.remove
 module.exports.deleteCustomer = (bookingName, bookingSurname, callback) => {
     let query = {bookingName: bookingName, bookingSurname: bookingSurname};
-    BucketList.remove(query, callback);
+    Customer.remove(query, callback);
 }
