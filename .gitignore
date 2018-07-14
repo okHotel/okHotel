@@ -4,9 +4,11 @@
 client/dist
 client/tmp
 client/out-tsc
+server/package-lock.json
 
 # dependencies
-*/node_modules
+server/node_modules
+client/node_modules
 server/bin
 
 # IDEs and editors
@@ -41,3 +43,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Config and env files
+server/config/database.js
