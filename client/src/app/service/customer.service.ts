@@ -3,6 +3,7 @@ import { Customer } from '../customer';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+
 @Injectable()
 export class CustomerService {
 
@@ -22,6 +23,9 @@ export class CustomerService {
         headers.append('Content-Type', 'application/json');
         return this.http.post(URI, body , { headers: headers })
             .map(res => res.json());
+
+
+
     }
 
 }

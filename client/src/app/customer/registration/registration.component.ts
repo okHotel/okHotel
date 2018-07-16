@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit {
         };
     }
 
-    public onSubmit() {
+   public onSubmit() {
         this.customerService.addCustomer(this.customer).subscribe(
             response => {
                 if (response.success === true) {
