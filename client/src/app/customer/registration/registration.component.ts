@@ -13,7 +13,10 @@ export class RegistrationComponent implements OnInit {
 
   private customer: Customer;
 
-  constructor(private customerService: CustomerService) { }
+  constructor(
+      private customerService: CustomerService,
+      private router: Router
+  ) { }
 
     ngOnInit() {
         this.customer = {
@@ -38,6 +41,6 @@ export class RegistrationComponent implements OnInit {
                 }
             }
         );
-
+       this.router.navigateByUrl('/home' );
     }
 }
