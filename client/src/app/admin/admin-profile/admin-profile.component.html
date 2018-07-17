@@ -1,3 +1,11 @@
-<p>
-  admin-profile works!
-</p>
+
+
+<main>
+
+  <button *ngFor="let service of servicies">
+    <i [hidden]="!isLoading" class='material-icons'>spinner</i>
+    <span [hidden]="isLoading">{{service.name}} <i class='material-icons'>{{service.icon}}</i></span>
+  </button>
+
+</main>
+

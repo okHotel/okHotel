@@ -9,6 +9,7 @@ import {  Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   name = 'Federica';
+  isAdmin = true;
 
   constructor(private router: Router) { }
 
@@ -16,7 +17,12 @@ export class ProfileComponent implements OnInit {
   }
 
   profile() {
-      this.router.navigateByUrl('/profile' );
+    if(this.isAdmin){
+        this.router.navigateByUrl('/admin-profile' );
+    } else {
+        this.router.navigateByUrl('/profile' );
+    }
+
   }
 
 }

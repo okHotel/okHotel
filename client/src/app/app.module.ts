@@ -17,18 +17,19 @@ import { ProfileComponent } from './profile/profile.component';
 import { CustomerService } from './service/customer.service';
 import { HttpModule } from '@angular/http';
 import {RoomNumberComponent} from './admin/room-number/room-number.component';
+import {AdminProfileComponent} from './admin/admin-profile/admin-profile.component';
 
 
 const appRoutes: Routes = [
 
-    { path: '', component:   RoomNumberComponent},
     { path: '', component:   LoginComponent},
     { path: 'registration', component: RegistrationComponent},
     { path: 'home', component: HomeComponent},
     { path: 'profile', component: CustomerDetailComponent},
     { path: 'restaurant', component: MenuComponent},
     { path: 'menu-variations', component: MenuVariationsComponent},
-    { path: 'menu', component: MenuComponent}
+    { path: 'menu', component: MenuComponent},
+    { path: 'admin-profile', component: AdminProfileComponent}
 
     // { path: 'home', component: HomeComponent}
     /*{ path: 'directive', component: DirectiveComponent },
@@ -49,13 +50,14 @@ const appRoutes: Routes = [
     HomeComponent,
     CustomerDetailComponent,
     ProfileComponent,
-    RoomNumberComponent
+    RoomNumberComponent,
+      AdminProfileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes) 
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]
