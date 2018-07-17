@@ -10,17 +10,25 @@ import {Router} from '@angular/router';
 
 export class MenuVariationsComponent implements OnInit {
 
+<<<<<<< HEAD
 
   public title = 'aa';
   public variation = ['Wheat', 'Milk', 'Egg', 'Starwberry', 'Fish'];
 
   constructor(private router: Router) {}
 
+=======
+>>>>>>> master
+
+  public variation = ['Wheat', 'Milk', 'Egg', 'Starwberry', 'Fish'];
+
+<<<<<<< HEAD
+
+=======
+  constructor(private router: Router) { }
+>>>>>>> master
 
   ngOnInit() { }
-
-
-
 
   goToMenu(){
     this.router.navigateByUrl('/menu');

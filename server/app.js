@@ -1,41 +1,42 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+// We will declare all our dependencies here
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const config = require('./config/database');
+const customer = require('./controller/customer');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+//Connect mongoose to our database
+mongoose.connect(config.database, { useNewUrlParser: true });
 
-var app = express();
+//Declaring Port
+const port = 3000;
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+//Initialize our app variable
+const app = express();
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//Middleware for CORS
+app.use(cors());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//Middlewares for bodyparsing using both json and urlencoding
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+/*express.static is a built in middleware function to serve static files.
+ We are telling express server public folder is the place to look for the static files
+
+*/
+app.use(express.static(path.join(__dirname, '../client/app')));
+
+app.get('/', (req,res) => {
+    res.send("Invalid page");
+})
+
+//Routing all HTTP requests to /bucketlist to bucketlist controller
+app.use('/customer', customer);
+
+//Listen to port 3000
+app.listen(port, () => {
+    console.log(`Starting the server at port ${port}`);
 });
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-module.exports = app;

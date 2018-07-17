@@ -1,0 +1,58 @@
+<app-header></app-header>
+<button type="button">Logout</button>
+<img src="">
+<p>Restaurant</p>
+
+<img src="">
+<p>Print</p><br>
+
+<img src="">
+<p>Insert menu</p><br>
+
+<img src="">
+<p>Insert variations</p>
+
+<app-nav></app-nav>
+
+<table summary="Food choose for lunch">
+  <caption>Please choose what variations you need for lunch</caption>
+  <tr>
+    <th>Lunch</th>
+    <th scope="col">Int</th>
+    <th scope="col">1/2</th>
+  </tr>
+
+  <tr *ngFor="let v of lunchDishes">
+    <td scope="row">{{v}}</td>
+    <td>0</td>
+    <td>0</td>
+  </tr>
+</table>
+
+<!--<table summary="Food choose for dinner">
+  <caption>Please choose what variations you need for lunch</caption>
+  <tr>
+    <th>Lunch</th>
+    <th scope="col">Int</th>
+    <th scope="col">1/2</th>
+  </tr>
+
+  <tr *ngFor="let v of dinnerDishes">
+    <td scope="row">{{v}}</td>
+    <td>
+      <label for="Int">{{v}} Intollerance</label>
+      <input id="Int" type="number" min="0" >
+    </td>
+    <td>
+      <label for="All">{{v}} Allergy</label>
+      <input id="All" type="number" min="0">
+    </td>
+  </tr>
+</table>-->
+
+
+<p>Other notes</p><br>
+<textarea></textarea><br><br>
+
+<app-footer></app-footer>
+

@@ -6,44 +6,43 @@
 }
 
 #planImage{
-    background: url("../../../res/plan_floor_1.jpg") center no-repeat;
-    background-size:contain;
-    /*background-size: auto;*/
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
+    padding: 23% 23%;
+    /*display: inline-block;*/
+    background: url("../../../res/plan_floor.png") no-repeat;
+    background-size: contain;
+
+
 }
 
 .top-left {
     position: absolute;
     top: 11%;
-    left: 40%;
+    left: 35%;
 }
 
 .top-right {
     position: absolute;
     top: 13%;
-    right: 37%;
+    right: 30%;
 }
 
 .centered-left {
     position: absolute;
     top: 45%;
-    left: 40%;
+    left: 33%;
     transform: translate(-50%, -50%);
 }
 
 .centered-right {
     position: absolute;
-    top: 43%;
-    left: 57%;
+    top: 45%;
+    left: 64%;
     transform: translate(50%, 50%);
 }
 
 .bottom-center {
     position: absolute;
-    bottom: 3%;
+    bottom: 5%;
     left: 48%;
 }
 
