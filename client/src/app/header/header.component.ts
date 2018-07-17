@@ -8,13 +8,16 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  isLogged = false;
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   home() {
-      this.router.navigateByUrl('/home' );
+    if(this.isLogged) {
+        this.router.navigateByUrl('/home');
+    }
   }
 
 }

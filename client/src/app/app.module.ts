@@ -14,10 +14,11 @@ import { HomeComponent } from './home/home.component';
 import {CustomerDetailComponent} from './costumer/customer-detail/customer-detail.component';
 import {FormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { RoomNumberComponent } from './admin/room-number/room-number.component';
 
 const appRoutes: Routes = [
 
-    { path: '', component:   LoginComponent},
+    { path: '', component:   RoomNumberComponent},
     { path: 'registration', component: RegistrationComponent},
     { path: 'home', component: HomeComponent},
     { path: 'profile', component: CustomerDetailComponent},
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     MenuVariationsComponent,
     HomeComponent,
     CustomerDetailComponent,
-    ProfileComponent
+    ProfileComponent,
+    RoomNumberComponent
 
   ],
   imports: [
