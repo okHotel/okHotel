@@ -14,16 +14,15 @@ import { HomeComponent } from './home/home.component';
 import { CustomerDetailComponent} from './customer/customer-detail/customer-detail.component';
 import { FormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
-<<<<<<< HEAD
-import { RoomNumberComponent } from './admin/room-number/room-number.component';
-=======
 import { CustomerService } from './service/customer.service';
 import { HttpModule } from '@angular/http';
->>>>>>> master
+import {RoomNumberComponent} from './admin/room-number/room-number.component';
+
 
 const appRoutes: Routes = [
 
     { path: '', component:   RoomNumberComponent},
+    { path: '', component:   LoginComponent},
     { path: 'registration', component: RegistrationComponent},
     { path: 'home', component: HomeComponent},
     { path: 'profile', component: CustomerDetailComponent},
@@ -51,13 +50,12 @@ const appRoutes: Routes = [
     CustomerDetailComponent,
     ProfileComponent,
     RoomNumberComponent
-
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes) 
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]

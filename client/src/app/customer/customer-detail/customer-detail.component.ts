@@ -3,11 +3,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { Location } from '@angular/common';
 import {Customer} from '../../customer';
 
-<<<<<<< HEAD:client/src/app/costumer/customer-detail/customer-detail.component.ts
-=======
-import { Customer } from '../../customer';
->>>>>>> master:client/src/app/customer/customer-detail/customer-detail.component.ts
-
 @Component({
     selector: 'app-customer-detail',
     templateUrl: './customer-detail.component.html',
