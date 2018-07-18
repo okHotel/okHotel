@@ -1,32 +1,33 @@
 <app-header></app-header>
 
 <div *ngIf="customer">
-  <h2>Room {{customer.roomNumber | uppercase}} Details</h2>
+  <h2>Room {{customer.roomNumber}} Details</h2>
   <div><span>Room Number: </span>{{customer.roomNumber}}</div>
-  <div>
+  <form #customerDetails="ngForm" (ngSubmit)="save()">
     <label>Booking Name:
-      <input [(ngModel)]="customer.bookingName" placeholder="Booking Name"/>
+      <input [(ngModel)]="customer.bookingName" name="bookingName" placeholder="Booking Name"/>
     </label>
     <br/>
     <label>Booking Surname:
-      <input [(ngModel)]="customer.bookingSurname" placeholder="Booking Surname"/>
+      <input [(ngModel)]="customer.bookingSurname" name="bookingSurname" placeholder="Booking Surname"/>
     </label>
     <br/>
     <label>Username:
-      <input [(ngModel)]="customer.username" placeholder="Username"/>
+      <input [(ngModel)]="customer.username" placeholder="Username" name="username" />
     </label>
     <br/>
     <div><span>Number of people in the room: </span>{{customer.numberOfPeople}}</div>
 
     <div>
       <label>Other needs:
-          <input #otherNeeds />
+          <input #otherNeeds name="otherNeeds" />
       </label>
       <button (click)="add(otherNeeds.value); otherNeeds.value=''">
           add
       </button>
     </div>
 
+<!--
     <ul class="otherNeeds">
       <li *ngFor="let need of otherNeeds">
           <a routerLink="/detail/{{need.id}}">
@@ -36,10 +37,11 @@
                   (click)="delete(need)">x</button>
       </li>
     </ul>
+-->
 
-  </div>
+  </form>
   <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+  <button type="submit">save</button>
   <button (click)="logOut()">Log out</button>
 </div>
 

@@ -22,7 +22,7 @@ const appRoutes: Routes = [
     { path: '', component:   LoginComponent},
     { path: 'registration', component: RegistrationComponent},
     { path: 'home', component: HomeComponent},
-    { path: 'profile', component: CustomerDetailComponent},
+    { path: 'profile/:bookingSurname', component: CustomerDetailComponent},
     { path: 'restaurant', component: MenuComponent},
     { path: 'menu-variations', component: MenuVariationsComponent},
     { path: 'menu', component: MenuComponent}
@@ -45,8 +45,7 @@ const appRoutes: Routes = [
     MenuVariationsComponent,
     HomeComponent,
     CustomerDetailComponent,
-    ProfileComponent
-
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
