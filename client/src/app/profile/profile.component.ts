@@ -9,7 +9,7 @@ import {  Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   name = 'Federica';
-  isAdmin = true;
+  isAdmin = false;
 
   constructor(private router: Router) { }
 

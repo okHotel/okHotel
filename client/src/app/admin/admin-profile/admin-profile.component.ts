@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import construct = Reflect.construct;
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-profile',
@@ -16,11 +17,14 @@ export class AdminProfileComponent implements OnInit {
   new Service('Swimming Pool', 'pool'),
   new Service( 'Beach', 'beach_access')];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  logOut() {
+    this.router.navigateByUrl('/');
+  }
 
 }
 

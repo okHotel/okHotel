@@ -18,6 +18,8 @@ import { CustomerService } from './service/customer.service';
 import { HttpModule } from '@angular/http';
 import {RoomNumberComponent} from './admin/room-number/room-number.component';
 import {AdminProfileComponent} from './admin/admin-profile/admin-profile.component';
+import { MakeMenuViewComponent } from './admin/make-menu-view/make-menu-view.component';
+import { AddDishesComponent } from './admin/add-dishes/add-dishes.component';
 
 
 const appRoutes: Routes = [
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
     { path: 'restaurant', component: MenuComponent},
     { path: 'menu-variations', component: MenuVariationsComponent},
     { path: 'menu', component: MenuComponent},
-    { path: 'admin-profile', component: AdminProfileComponent}
+    { path: 'admin-profile', component: AdminProfileComponent},
+    { path: 'make-menu', component: MakeMenuViewComponent}
 
     // { path: 'home', component: HomeComponent}
     /*{ path: 'directive', component: DirectiveComponent },
@@ -51,7 +54,9 @@ const appRoutes: Routes = [
     CustomerDetailComponent,
     ProfileComponent,
     RoomNumberComponent,
-      AdminProfileComponent
+      AdminProfileComponent,
+      MakeMenuViewComponent,
+      AddDishesComponent
   ],
   imports: [
     BrowserModule,
