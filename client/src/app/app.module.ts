@@ -21,6 +21,7 @@ import {AdminProfileComponent} from './admin/admin-profile/admin-profile.compone
 import { MakeMenuViewComponent } from './admin/make-menu-view/make-menu-view.component';
 import { AddDishesComponent } from './admin/add-dishes/add-dishes.component';
 import { AddVariationComponent } from './admin/add-variation/add-variation.component';
+import { PantryComponent } from './admin/pantry/pantry.component';
 
 
 const appRoutes: Routes = [
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     { path: 'menu', component: MenuComponent},
     { path: 'admin-profile', component: AdminProfileComponent},
     { path: 'make-menu', component: MakeMenuViewComponent},
-    { path: 'make-variation', component: AddVariationComponent}
+    { path: 'make-variation', component: AddVariationComponent},
+    { path: 'pantry', component: PantryComponent}
 
     // { path: 'home', component: HomeComponent}
     /*{ path: 'directive', component: DirectiveComponent },
@@ -60,7 +62,8 @@ const appRoutes: Routes = [
       AdminProfileComponent,
       MakeMenuViewComponent,
       AddDishesComponent,
-      AddVariationComponent
+      AddVariationComponent,
+      PantryComponent
 
   ],
   imports: [
