@@ -28,13 +28,17 @@ const CustomerSchema = mongoose.Schema({
 const Customer = module.exports = mongoose.model('customers_fede', CustomerSchema );
 
 //BucketList.find() returns all the lists
-module.exports.getAllCustomers = (callback) => {
-    Customer.find(callback);
+module.exports.getCustomer = (bookingName, bookingSurname, callback) => {
+    Customer.findOne({bookingSurname: bookingSurname}, callback);
 }
 
 //newList.save is used to insert the document into MongoDB
 module.exports.addCustomer = (newCustomer, callback) => {
     newCustomer.save(callback);
+}
+
+module.exports.updateCustomer = (customer, callback) => {
+    customer.update(callback);
 }
 
 //Here we need to pass an id parameter to BUcketList.remove

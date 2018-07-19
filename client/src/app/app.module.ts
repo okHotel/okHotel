@@ -26,9 +26,10 @@ import { AddVariationComponent } from './admin/add-variation/add-variation.compo
 const appRoutes: Routes = [
 
     { path: '', component:   LoginComponent},
+    { path: 'header', component: HeaderComponent},
     { path: 'registration', component: RegistrationComponent},
     { path: 'home', component: HomeComponent},
-    { path: 'profile', component: CustomerDetailComponent},
+    { path: 'profile/:bookingSurname', component: CustomerDetailComponent},
     { path: 'restaurant', component: MenuComponent},
     { path: 'menu-variations', component: MenuVariationsComponent},
     { path: 'menu', component: MenuComponent},
@@ -60,6 +61,7 @@ const appRoutes: Routes = [
       MakeMenuViewComponent,
       AddDishesComponent,
       AddVariationComponent
+
   ],
   imports: [
     BrowserModule,

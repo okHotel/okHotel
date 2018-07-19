@@ -6,6 +6,7 @@ const customer = require('../model/customer-schema');
 
 //GET HTTP method to /bucketlist
 router.get('/',(req,res) => {
+/*
     customer.getAllCustomers((err, lists)=> {
         if(err) {
             res.json({success:false, message: `Failed to load all lists. Error: ${err}`});
@@ -16,6 +17,28 @@ router.get('/',(req,res) => {
 
         }
     });
+*/
+});
+
+router.get('/:bookingSurname', (req,res,next)=> {
+    let bookingName = req.params.bookingName;
+    let bookingSurname = req.params.bookingSurname;
+
+    console.log('into get');
+    //Call the model method deleteListById
+    customer.getCustomer(bookingName, bookingSurname,(err,list) => {
+        if(err) {
+            res.json({success:false, message: `Failed to get the customer. Error: ${err}`});
+        }
+        else if(list) {
+            console.log(list);
+            res.json(list);
+            res.end();
+//            res.json({success:true, message: "Getted successfully"});
+        } else
+            res.json({success:false});
+
+    })
 });
 
 router.post('/', (req,res,next) => {
@@ -39,6 +62,22 @@ router.post('/', (req,res,next) => {
             res.json({success:true, message: "Added successfully."});
 
     });
+});
+
+router.put('/:bookingName-:bookingSurname', (req,res,next)=> {
+    let bookingName = req.params.bookingName;
+    let bookingSurname = req.params.bookingSurname
+    //Call the model method deleteListById
+    customer.updateCustomer(bookingName, bookingSurname,(err,list) => {
+        if(err) {
+            res.json({success:false, message: `Failed to update the customer. Error: ${err}`});
+        }
+        else if(list) {
+            res.json({success:true, message: "Updated successfully"});
+        }
+        else
+            res.json({success:false});
+    })
 });
 
 //DELETE HTTP method to /bucketlist. Here, we pass in a param which is the object id.
