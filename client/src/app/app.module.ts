@@ -20,6 +20,7 @@ import {RoomNumberComponent} from './admin/room-number/room-number.component';
 import {AdminProfileComponent} from './admin/admin-profile/admin-profile.component';
 import { MakeMenuViewComponent } from './admin/make-menu-view/make-menu-view.component';
 import { AddDishesComponent } from './admin/add-dishes/add-dishes.component';
+import { AddVariationComponent } from './admin/add-variation/add-variation.component';
 
 
 const appRoutes: Routes = [
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     { path: 'menu-variations', component: MenuVariationsComponent},
     { path: 'menu', component: MenuComponent},
     { path: 'admin-profile', component: AdminProfileComponent},
-    { path: 'make-menu', component: MakeMenuViewComponent}
+    { path: 'make-menu', component: MakeMenuViewComponent},
+    { path: 'make-variation', component: AddVariationComponent}
 
     // { path: 'home', component: HomeComponent}
     /*{ path: 'directive', component: DirectiveComponent },
@@ -56,7 +58,8 @@ const appRoutes: Routes = [
     RoomNumberComponent,
       AdminProfileComponent,
       MakeMenuViewComponent,
-      AddDishesComponent
+      AddDishesComponent,
+      AddVariationComponent
   ],
   imports: [
     BrowserModule,
