@@ -1,7 +1,10 @@
 <form (ngSubmit)="onSubmit()">
 
   <label for="roomNumber">Room Number</label>
-  <input type="number" id="roomNumber" placeholder="Room Number" name="roomNumber" [(ngModel)]="customer.roomNumber"><br>
+  <select id="roomNumber" [(ngModel)]="customer.roomNumber" name="roomNumber" >
+    <option *ngFor="let room of roomsNumber" value={{room}}  > {{room}} </option>
+  </select>
+  <br>
 
   <label for="bookingName">Booking Name</label>
   <input type="text" id="bookingName" placeholder="Booking Name" name="bookingName" [(ngModel)]="customer.bookingName"><br>
@@ -14,10 +17,13 @@
   <input type="text" id="username" placeholder="Username" name="username" [(ngModel)]="customer.username"><br>
 
   <label for="password">Password</label>
-  <input type="text" id="password" placeholder="Password" name="password" [(ngModel)]="customer.password"><br>
+  <input type="password" id="password" placeholder="Password" name="password" [(ngModel)]="customer.password"><br>
 
-  <label for="peopleInRoom"> Number of people in room</label>
-  <input type="number" id="peopleInRoom" value="1" min="1" name="peopleInRoom" [(ngModel)]="customer.numberOfPeople"><br>
+  <label for="confirmPassword" >Confirm password</label>
+  <input type="password" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" [(ngModel)]="confirmPassword"><br>
+
+
+  <p for="peopleInRoom"> Number of people in room: {{peopleNumber}}</p>
 
   <label for="otherNeeds">Other Needs</label>
   <textarea id="otherNeeds" name="otherNeeds" [(ngModel)]="customer.otherNeeds"></textarea><br>
