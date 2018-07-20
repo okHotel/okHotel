@@ -27,10 +27,9 @@ import { PantryComponent } from './admin/pantry/pantry.component';
 
 const appRoutes: Routes = [
 
-    { path: '', component:   LoginComponent},
-    { path: 'header', component: HeaderComponent},
+    { path: '', component: HomeComponent},
+    { path: 'login', component:   LoginComponent},
     { path: 'registration', component: RegistrationComponent},
-    { path: 'home', component: HomeComponent},
     { path: 'profile/:bookingSurname', component: CustomerDetailComponent},
     { path: 'restaurant', component: MenuComponent},
     { path: 'menu-variations', component: MenuVariationsComponent},
@@ -38,7 +37,7 @@ const appRoutes: Routes = [
     { path: 'admin-profile', component: AdminProfileComponent},
     { path: 'make-menu', component: MakeMenuViewComponent},
     { path: 'make-variation', component: AddVariationComponent},
-    { path: 'pantry', component: PantryComponent}
+    { path: 'pantry', component: PantryComponent},
     { path: 'statistics', component: AdminStatisticsComponent}
 
 

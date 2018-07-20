@@ -2,7 +2,7 @@
 
 <main>
 
-  <button *ngFor="let service of servicies" [disabled]="service.isEnabled == false">
+  <button *ngFor="let service of services" [disabled]="service.isEnabled == false">
     <i [hidden]="!isLoading" class='material-icons'>spinner</i>
     <span [hidden]="isLoading">{{service.name}} <i class='material-icons'>{{service.icon}}</i></span>
   </button>
