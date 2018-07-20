@@ -21,11 +21,11 @@ export class PantryComponent implements OnInit {
 
 export class FoodCategory{
 
-    constructor(name: String, food: Food[]){}
+    constructor(public name: String, public food: Food[]){}
 
     addFood(){}
 }
 
 export class Food{
-  constructor(name: String, quantity: number){}
+  constructor(public name: String,public quantity: number){}
 }

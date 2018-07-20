@@ -10,3 +10,20 @@ Food available in pantry
   <input type="text" placeholder="Search...">
 </div>
 
+
+<table summary="Food available in pantry"  style="width:50%" >
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Quantity</th>
+  </tr>
+
+  <div *ngFor="let category of products" >
+  <tr>
+    <td scope="row" colspan="2" >{{category.name}}</td>
+  </tr>
+  <tr *ngFor="let food of category.food ">
+    <td scope="row">{{food.name}}</td>
+    <td scope="row">{{food.quantity}}</td>
+  </tr>
+  </div>
+</table>
