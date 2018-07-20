@@ -15,6 +15,7 @@ import { CustomerDetailComponent} from './customer/customer-detail/customer-deta
 import { FormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { CustomerService } from './service/customer.service';
+import { AdminStatisticsComponent } from './admin/admin-statistics/admin-statistics.component';
 import { HttpModule } from '@angular/http';
 
 const appRoutes: Routes = [
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
     { path: 'profile/:bookingSurname', component: CustomerDetailComponent},
     { path: 'restaurant', component: MenuComponent},
     { path: 'menu-variations', component: MenuVariationsComponent},
-    { path: 'menu', component: MenuComponent}
+    { path: 'menu', component: MenuComponent},
+    { path: 'statistics', component: AdminStatisticsComponent}
 
     // { path: 'home', component: HomeComponent}
     /*{ path: 'directive', component: DirectiveComponent },
@@ -47,6 +49,8 @@ const appRoutes: Routes = [
     HomeComponent,
     CustomerDetailComponent,
     ProfileComponent,
+      AdminStatisticsComponent
+
   ],
   imports: [
     BrowserModule,
