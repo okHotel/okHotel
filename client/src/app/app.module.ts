@@ -15,6 +15,7 @@ import { CustomerDetailComponent} from './customer/customer-detail/customer-deta
 import { FormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { CustomerService } from './service/customer.service';
+import { AdminStatisticsComponent } from './admin/admin-statistics/admin-statistics.component';
 import { HttpModule } from '@angular/http';
 import {RoomNumberComponent} from './admin/room-number/room-number.component';
 import {AdminProfileComponent} from './admin/admin-profile/admin-profile.component';
@@ -38,6 +39,8 @@ const appRoutes: Routes = [
     { path: 'make-menu', component: MakeMenuViewComponent},
     { path: 'make-variation', component: AddVariationComponent},
     { path: 'pantry', component: PantryComponent}
+    { path: 'statistics', component: AdminStatisticsComponent}
+
 
     // { path: 'home', component: HomeComponent}
     /*{ path: 'directive', component: DirectiveComponent },
@@ -63,7 +66,8 @@ const appRoutes: Routes = [
       MakeMenuViewComponent,
       AddDishesComponent,
       AddVariationComponent,
-      PantryComponent
+      PantryComponent,
+      AdminStatisticsComponent
 
   ],
   imports: [
