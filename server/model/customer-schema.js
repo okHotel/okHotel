@@ -5,23 +5,19 @@ const mongoose = require('mongoose');
 const CustomerSchema = mongoose.Schema({
     bookingName: {
         type: String,
-        required: true
     },
     bookingSurname: {
         type: String,
-        required: true
     },
     roomNumber: {
         type: Number,
-        required: true
     },
     numberOfPeople: {
         type: Number,
-        required: true
     },
     username: String,
     password: String,
-    otherNeeds: Array
+    otherNeeds: String
 });
 
 //Create a model using mongoose.model and export it
@@ -32,13 +28,13 @@ module.exports.getCustomer = (bookingName, bookingSurname, callback) => {
     Customer.findOne({bookingSurname: bookingSurname}, callback);
 }
 
-//newList.save is used to insert the document into MongoDB
+//newList.updateCustomer is used to insert the document into MongoDB
 module.exports.addCustomer = (newCustomer, callback) => {
     newCustomer.save(callback);
 }
 
 module.exports.updateCustomer = (customer, callback) => {
-    customer.update(callback);
+    Customer.update({bookingSurname: customer.bookingSurname}, customer, callback);
 }
 
 //Here we need to pass an id parameter to BUcketList.remove

@@ -13,18 +13,18 @@ import {log} from 'util';
 export class RegistrationComponent implements OnInit {
 
     @Input() customer: Customer;
-    roomsNumber = [102,103,201,204];
-    peopleNumber = 3;
+    roomsNumber = [102, 103, 201, 204];
+    @Input() peopleNumber = 4;
     @Input() confirmPassword: string;
 
     private reservation = {
-        "start": "10/06/2018",
-        "end": "20/06/2018",
-        "roomNumber": 102,
-        "numberOfPeople": 2,
-        "bookingName": "Raffaella",
-        "bookingSurname": "Carrà"
-    }
+        'start': '10/06/2018',
+        'end': '20/06/2018',
+        'roomNumber': 102,
+        'numberOfPeople': 4,
+        'bookingName': 'Alessandro',
+        'bookingSurname': 'Ricci'
+    };
 
   constructor(
       private customerService: CustomerService,
@@ -45,35 +45,35 @@ export class RegistrationComponent implements OnInit {
 
    public onSubmit() {
 
-
-        log(this.confirmPassword, this.customer.password,
-            this.customer.bookingName, this.reservation.bookingName,
-            this.customer.bookingSurname, this.reservation.bookingSurname,
-            this.customer.roomNumber, this.reservation.roomNumber);
-
        if (this.isInputValid()) {
-
-           this.customerService.addCustomer(this.customer).subscribe(
-               response => {
-                   if (response.success === true) {
-                       // Code smell here!
-                       console.log('Customer added!');
-                   } else {
-                       console.log(response);
-                   }
-               }
-           );
+           this.customer.numberOfPeople = this.reservation.numberOfPeople;
+           console.log(this.customer.numberOfPeople);
+           this.customerService.addCustomer(this.customer);
            this.router.navigateByUrl('');
 
        }
    }
 
    private isInputValid() {
-        console.log("isInputValid");
-       return this.confirmPassword == this.customer.password &&
-           this.customer.bookingName == this.reservation.bookingName &&
-           this.customer.bookingSurname == this.reservation.bookingSurname &&
-           this.customer.roomNumber == this.reservation.roomNumber;
+       return this.isPasswordValid() &&
+              this.isBookingNameValid() &&
+              this.isBookingSurnameValid() &&
+              this.isRoomNumberValid();
+   }
 
+   private isPasswordValid() {
+       return this.confirmPassword === this.customer.password;
+   }
+
+   private isBookingNameValid() {
+       return this.customer.bookingName === this.reservation.bookingName;
+   }
+
+   private isBookingSurnameValid() {
+       return this.customer.bookingName === this.reservation.bookingName;
+   }
+
+   private isRoomNumberValid() {
+        return this.customer.roomNumber === this.reservation.roomNumber;
    }
 }

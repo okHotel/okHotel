@@ -35,8 +35,10 @@ router.get('/:bookingSurname', (req,res,next)=> {
             res.json(list);
             res.end();
 //            res.json({success:true, message: "Getted successfully"});
-        } else
+        } else {
+            console.log(res);
             res.json({success:false});
+        }
 
     })
 });
@@ -51,8 +53,9 @@ router.post('/', (req,res,next) => {
         password: req.body.password,
         otherNeeds: req.body.otherNeeds
     });
-    console.log(newCustomer)
-    console.log(req.body)
+    console.log('newCustomer =>' + newCustomer);
+    console.log('req.body =>');
+    console.log(req.body);
     customer.addCustomer(newCustomer,(err, list) => {
         if(err) {
             res.json({success: false, message: `Failed to create a new list. Error: ${err}`});
@@ -64,15 +67,34 @@ router.post('/', (req,res,next) => {
     });
 });
 
-router.put('/:bookingName-:bookingSurname', (req,res,next)=> {
+/* UPDATE BOOK
+router.put('/:id', function(req, res, next) {
+    Book.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+        if (err) return next(err);
+        res.json(post);
+    });
+});*/
+
+router.put('/:bookingSurname', (req,res,next)=> {
     let bookingName = req.params.bookingName;
-    let bookingSurname = req.params.bookingSurname
+    let bookingSurname = req.params.bookingSurname;
     //Call the model method deleteListById
-    customer.updateCustomer(bookingName, bookingSurname,(err,list) => {
+    let newCustomer = new customer({
+        bookingName: req.body.bookingName,
+        bookingSurname: req.body.bookingSurname,
+        roomNumber: req.body.roomNumber,
+        numberOfPeople: req.body.numberOfPeople,
+        username: req.body.username,
+        password: req.body.password,
+        otherNeeds: req.body.otherNeeds
+    });
+
+    customer.updateCustomer(newCustomer,(err,list) => {
         if(err) {
             res.json({success:false, message: `Failed to update the customer. Error: ${err}`});
         }
         else if(list) {
+            console.log(list);
             res.json({success:true, message: "Updated successfully"});
         }
         else

@@ -23,15 +23,25 @@ export class CustomerService {
             roomNumber: customer.roomNumber, numberOfPeople: customer.numberOfPeople, username: customer.username,
             password: customer.password, otherNeeds: customer.otherNeeds});
         console.log(body);
-        this.headers.append('Content-Type', 'application/json');
         return this.http.post(URI, body , { headers: this.headers })
             .map(res => res.json());
     }
 
+/*    updateBook(id, data) {
+        this.http.put('/book/'+id, data)
+            .subscribe(res => {
+                    let id = res['_id'];
+                    this.router.navigate(['/book-details', id]);
+                }, (err) => {
+                    console.log(err);
+                }
+            );
+    }*/
+
     public updateCustomer(customer: Customer) {
         console.log('into updateCustomer');
 
-        const URI = `${this.serverApi}/customer/${customer.bookingName}-${customer.bookingSurname}`;
+        const URI = `${this.serverApi}/customer/${customer.bookingSurname}`;
         const body = JSON.stringify({bookingName: customer.bookingName, bookingSurname: customer.bookingSurname,
             roomNumber: customer.roomNumber, numberOfPeople: customer.numberOfPeople, username: customer.username,
             password: customer.password, otherNeeds: customer.otherNeeds});

@@ -3,7 +3,7 @@
 <div *ngIf="customer">
   <h2>Room {{customer.roomNumber}} Details</h2>
   <div><span>Room Number: </span>{{customer.roomNumber}}</div>
-  <form #customerDetails="ngForm" (ngSubmit)="save()">
+  <form #customerDetails="ngForm" (ngSubmit)="updateCustomer()">
     <label>Booking Name:
       <input [(ngModel)]="customer.bookingName" name="bookingName" placeholder="Booking Name"/>
     </label>
@@ -20,9 +20,9 @@
 
     <div>
       <label>Other needs:
-          <input #otherNeeds name="otherNeeds" />
+          <input name="otherNeeds" />
       </label>
-      <button (click)="add(otherNeeds.value); otherNeeds.value=''">
+      <button>
           add
       </button>
     </div>
@@ -38,11 +38,11 @@
       </li>
     </ul>
 -->
+    <button (click)="goBack()">Back</button>
+    <button type="submit">Save</button>
+    <button (click)="logOut()">Log out</button>
 
   </form>
-  <button (click)="goBack()">go back</button>
-  <button type="submit">save</button>
-  <button (click)="logOut()">Log out</button>
 </div>
 
 <app-footer></app-footer>

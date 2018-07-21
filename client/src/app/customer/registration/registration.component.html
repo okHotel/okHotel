@@ -2,7 +2,7 @@
 
   <label for="roomNumber">Room Number</label>
   <select id="roomNumber" [(ngModel)]="customer.roomNumber" name="roomNumber" >
-    <option *ngFor="let room of roomsNumber" value={{room}}  > {{room}} </option>
+    <option *ngFor="let room of roomsNumber" [ngValue]=room  > {{room}} </option>
   </select>
   <br>
 
@@ -17,10 +17,10 @@
   <input type="text" id="username" placeholder="Username" name="username" [(ngModel)]="customer.username"><br>
 
   <label for="password">Password</label>
-  <input type="password" id="password" placeholder="Password" name="password" [(ngModel)]="customer.password"><br>
+  <input type="text" id="password" placeholder="Password" name="password" [(ngModel)]="customer.password"><br>
 
   <label for="confirmPassword" >Confirm password</label>
-  <input type="password" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" [(ngModel)]="confirmPassword"><br>
+  <input type="text" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" [(ngModel)]="confirmPassword"><br>
 
 
   <p for="peopleInRoom"> Number of people in room: {{peopleNumber}}</p>
