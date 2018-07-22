@@ -18,24 +18,22 @@
 
     <div>
       <label>Other needs:
-          <input name="otherNeeds" />
+        <ul class="otherNeeds">
+          <li *ngFor="let need of customerNeeds">{{need}}</li>
+<!--
+          <button type="button" class="delete" title="delete need"
+                  (click)="deleteNeed(need)">x</button>
+-->
+        </ul>
+
+
+        <input name="need" [(ngModel)]="need" />
       </label>
-      <button>
+      <button type="button" (click)="addNeed(need)">
           add
       </button>
     </div>
 
-<!--
-    <ul class="otherNeeds">
-      <li *ngFor="let need of otherNeeds">
-          <a routerLink="/detail/{{need.id}}">
-              <span class="badge">{{need.id}}</span> {{need.name}}
-          </a>
-          <button class="delete" title="delete need"
-                  (click)="delete(need)">x</button>
-      </li>
-    </ul>
--->
     <button type="button" (click)="goBack()">Back</button>
     <button type="submit">Save</button>
     <button type="button" (click)="logOut()">Log out</button>

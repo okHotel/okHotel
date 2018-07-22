@@ -12,6 +12,8 @@ import {CustomerService} from '../../service/customer.service';
 })
 export class CustomerDetailComponent implements OnInit {
     @Input() customer = new Customer();
+    customerNeeds: string[] = [];
+    need: string;
 
     constructor(
         private customerService: CustomerService,
@@ -55,6 +57,7 @@ export class CustomerDetailComponent implements OnInit {
                 this.customer.username = result.username;
                 this.customer.password = result.password;
                 this.customer.otherNeeds = result.otherNeeds;
+                this.customerNeeds = result.otherNeeds;
             });
 
         console.log('customer: ' + this.customer);
@@ -71,7 +74,7 @@ export class CustomerDetailComponent implements OnInit {
                 this.customer.numberOfPeople = result.numberOfPeople;
                 this.customer.username = result.username;
                 this.customer.password = result.password;
-                this.customer.otherNeeds = result.otherNeeds;
+                this.customer.otherNeeds = this.customerNeeds;
             });
     }
 
@@ -80,5 +83,15 @@ export class CustomerDetailComponent implements OnInit {
             .subscribe((result: any) => {
                 console.log(result);
             });
+    }
+
+/*
+    public deleteNeed(need: string) {
+
+    }
+*/
+
+    public addNeed() {
+        this.customerNeeds.push(this.need);
     }
 }

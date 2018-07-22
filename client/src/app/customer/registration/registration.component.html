@@ -25,8 +25,22 @@
 
   <p for="peopleInRoom"> Number of people in room: {{peopleNumber}}</p>
 
-  <label for="otherNeeds">Other Needs</label>
-  <textarea id="otherNeeds" name="otherNeeds" [(ngModel)]="customer.otherNeeds"></textarea><br>
+  <div>
+    <label>Other needs:
+      <ul class="otherNeeds">
+        <li *ngFor="let need of customerNeeds">{{need}}</li>
+        <!--
+                  <button type="button" class="delete" title="delete need"
+                          (click)="deleteNeed(need)">x</button>
+        -->
+      </ul>
+
+      <input name="need" [(ngModel)]="need" />
+    </label>
+    <button type="button" (click)="addNeed(need)">
+      add
+    </button>
+  </div>
 
   <button type="submit">Submit</button>
 </form>

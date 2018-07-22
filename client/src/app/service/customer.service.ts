@@ -2,14 +2,11 @@ import { Injectable } from '@angular/core';
 import { Customer } from '../customer/customer';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import {Observable} from 'rxjs';
-
 
 @Injectable()
 export class CustomerService {
     private serverApi = 'http://localhost:3000';
     private headers = new Headers;
-    private customer: any;
 
     constructor(private http: Http) {
         this.headers.append('Content-Type', 'application/json');
@@ -26,17 +23,6 @@ export class CustomerService {
         return this.http.post(URI, body , { headers: this.headers })
             .map(res => res.json());
     }
-
-/*    updateBook(id, data) {
-        this.http.put('/book/'+id, data)
-            .subscribe(res => {
-                    let id = res['_id'];
-                    this.router.navigate(['/book-details', id]);
-                }, (err) => {
-                    console.log(err);
-                }
-            );
-    }*/
 
     public updateCustomer(customer: Customer) {
         console.log('into updateCustomer');

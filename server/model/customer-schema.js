@@ -17,7 +17,7 @@ const customerSchema = mongoose.Schema({
     },
     username: String,
     password: String,
-    otherNeeds: String
+    otherNeeds: Array
 });
 
 // Documents have a toObject method which converts the mongoose document into a plain javascript object

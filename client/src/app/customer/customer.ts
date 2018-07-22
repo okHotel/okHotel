@@ -5,5 +5,5 @@ export class  Customer {
     username: string;
     password: string;
     numberOfPeople: number;
-    otherNeeds: string;
+    otherNeeds: string[];
 }

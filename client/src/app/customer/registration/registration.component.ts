@@ -10,18 +10,20 @@ import { CustomerService } from '../../service/customer.service';
 })
 export class RegistrationComponent implements OnInit {
 
-    @Input() customer: Customer;
+    @Input() customer = new Customer();
     roomsNumber = [102, 103, 201, 204];
     @Input() peopleNumber = 4;
     @Input() confirmPassword: string;
+    customerNeeds: string[] = [];
+    need: string;
 
     private reservation = {
         'start': '10/06/2018',
         'end': '20/06/2018',
-        'roomNumber': 102,
-        'numberOfPeople': 4,
-        'bookingName': 'Alessandro',
-        'bookingSurname': 'Ricci'
+        'roomNumber': 204,
+        'numberOfPeople': 3,
+        'bookingName': 'Mirko',
+        'bookingSurname': 'Viroli'
     }
 
   constructor(
@@ -30,6 +32,7 @@ export class RegistrationComponent implements OnInit {
   ) { }
 
     ngOnInit() {
+/*
         this.customer = {
             roomNumber: 0,
             bookingName: '',
@@ -37,8 +40,10 @@ export class RegistrationComponent implements OnInit {
             username: '',
             password: '',
             numberOfPeople: 0,
-            otherNeeds: ''
+            otherNeeds: []
+
         };
+*/
     }
 
    public onSubmit() {
@@ -51,6 +56,7 @@ export class RegistrationComponent implements OnInit {
 
        if (this.isInputValid()) {
            this.customer.numberOfPeople = this.reservation.numberOfPeople;
+           this.customer.otherNeeds = this.customerNeeds;
            this.customerService.addCustomer(this.customer).subscribe(
                response => {
                    if (response.success === true) {
@@ -66,7 +72,12 @@ export class RegistrationComponent implements OnInit {
        }
    }
 
-   private isInputValid() {
+   public addNeed() {
+        this.customerNeeds.push(this.need);
+   }
+
+
+    private isInputValid() {
        return this.isPasswordValid() &&
               this.isBookingNameValid() &&
               this.isBookingSurnameValid() &&
