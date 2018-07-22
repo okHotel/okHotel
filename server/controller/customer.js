@@ -88,7 +88,7 @@ router.put('/:bookingSurname', (req,res,next)=> {
         password: req.body.password,
         otherNeeds: req.body.otherNeeds
     });
-
+    console.log(newCustomer);
     customer.updateCustomer(newCustomer,(err,list) => {
         if(err) {
             res.json({success:false, message: `Failed to update the customer. Error: ${err}`});

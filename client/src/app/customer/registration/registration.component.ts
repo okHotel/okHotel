@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from '../../customer';
 import { CustomerService } from '../../service/customer.service';
-import {NgForm} from '@angular/forms';
-import {log} from 'util';
 
 @Component({
   selector: 'app-registration',
@@ -24,7 +22,7 @@ export class RegistrationComponent implements OnInit {
         'numberOfPeople': 4,
         'bookingName': 'Alessandro',
         'bookingSurname': 'Ricci'
-    };
+    }
 
   constructor(
       private customerService: CustomerService,
@@ -47,8 +45,16 @@ export class RegistrationComponent implements OnInit {
 
        if (this.isInputValid()) {
            this.customer.numberOfPeople = this.reservation.numberOfPeople;
-           console.log(this.customer.numberOfPeople);
-           this.customerService.addCustomer(this.customer);
+           this.customerService.addCustomer(this.customer).subscribe(
+               response => {
+                   if (response.success === true) {
+                       // Code smell here!
+                       console.log('Customer added!');
+                   } else {
+                       console.log(response);
+                   }
+               }
+           );
            this.router.navigateByUrl('');
 
        }
