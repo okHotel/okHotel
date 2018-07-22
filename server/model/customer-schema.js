@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 
 //Define BucketlistSchema with title, description and category
 const customerSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     bookingName: {
         type: String,
     },
@@ -38,13 +37,14 @@ module.exports.addCustomer = (newCustomer, callback) => {
 }
 
 module.exports.updateCustomer = (toUpdateCustomer, callback) => {
-    customer.findOneAndUpdate( toUpdateCustomer._id, toUpdateCustomer, callback);
+    let query = { roomNumber: toUpdateCustomer.roomNumber};
+    customer.findOneAndUpdate( query, toUpdateCustomer, callback);
 }
 
 //Here we need to pass an id parameter to BUcketList.remove
-module.exports.deleteCustomer = (bookingName, bookingSurname, callback) => {
-    let query = {bookingName: bookingName, bookingSurname: bookingSurname};
-    customer.remove(query, callback);
+module.exports.deleteCustomer = (bookingSurname, callback) => {
+    let query = { bookingSurname: bookingSurname };
+    customer.findOneAndDelete(query, callback);
 }
 
 // schema.set('toObject', { getters: true });

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Customer } from '../customer';
+import { Customer } from '../customer/customer';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs';
@@ -60,6 +60,15 @@ export class CustomerService {
                 console.log(res);
                 return res.json();
             });
+    }
+
+    public deleteCustomer(bookingSurname: string) {
+        const URI = `${this.serverApi}/customer/${bookingSurname}`;
+        return this.http.delete(URI, {headers: this.headers})
+            .map(res => {
+                console.log(res);
+                return res.json();
+             });
     }
 
 }

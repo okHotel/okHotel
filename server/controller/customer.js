@@ -104,12 +104,12 @@ router.put('/:bookingSurname', (req,res,next)=> {
 
 //DELETE HTTP method to /bucketlist. Here, we pass in a param which is the object id.
 
-router.delete('/:bookingName-:bookingSurname', (req,res,next)=> {
+router.delete('/:bookingSurname', (req,res,next)=> {
     //access the parameter which is the id of the item to be deleted
     let bookingName = req.params.bookingName;
-    let bookingSurname = req.params.bookingSurname
+    let bookingSurname = req.params.bookingSurname;
     //Call the model method deleteListById
-    customer.deleteCustomer(bookingName, bookingSurname,(err,list) => {
+    customer.deleteCustomer(bookingSurname,(err,list) => {
         if(err) {
             res.json({success:false, message: `Failed to delete the list. Error: ${err}`});
         }

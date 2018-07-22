@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Customer } from '../../customer';
+import { Customer } from '../customer';
 import { CustomerService } from '../../service/customer.service';
 
 @Component({
@@ -42,6 +42,12 @@ export class RegistrationComponent implements OnInit {
     }
 
    public onSubmit() {
+       console.log(
+           this.isRoomNumberValid(),
+           this.isBookingSurnameValid(),
+           this.isBookingNameValid(),
+           this.isPasswordValid(),
+           this.isInputValid());
 
        if (this.isInputValid()) {
            this.customer.numberOfPeople = this.reservation.numberOfPeople;

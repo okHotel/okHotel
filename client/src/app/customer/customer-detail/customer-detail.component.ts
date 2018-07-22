@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Customer } from '../../customer';
+import { Customer } from '../customer';
 import {CustomerService} from '../../service/customer.service';
 
 @Component({
@@ -72,6 +72,13 @@ export class CustomerDetailComponent implements OnInit {
                 this.customer.username = result.username;
                 this.customer.password = result.password;
                 this.customer.otherNeeds = result.otherNeeds;
+            });
+    }
+
+    public deleteCustomer() {
+        this.customerService.deleteCustomer(this.customer.bookingSurname)
+            .subscribe((result: any) => {
+                console.log(result);
             });
     }
 }
