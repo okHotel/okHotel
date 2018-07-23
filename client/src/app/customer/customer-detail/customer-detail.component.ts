@@ -11,7 +11,7 @@ import {CustomerService} from '../../service/customer.service';
     styleUrls: [ './customer-detail.component.css' ]
 })
 export class CustomerDetailComponent implements OnInit {
-    @Input() customer = new Customer();
+    @Input() customer: Customer;
     customerNeeds: string[] = [];
     need: string;
 
@@ -49,15 +49,9 @@ export class CustomerDetailComponent implements OnInit {
     public getCustomer(bookingName: string, bookingSurname: string) {
         this.customerService.getCustomer(bookingName, bookingSurname)
             .subscribe((result: any) => {
-                console.log(result);
-                this.customer.bookingSurname = result.bookingSurname;
-                this.customer.bookingName = result.bookingName;
-                this.customer.roomNumber = result.roomNumber;
-                this.customer.numberOfPeople = result.numberOfPeople;
-                this.customer.username = result.username;
-                this.customer.password = result.password;
-                this.customer.otherNeeds = result.otherNeeds;
-                this.customerNeeds = result.otherNeeds;
+                console.log(Customer.fromJSON(result));
+                this.customer = Customer.fromJSON(result);
+                this.customerNeeds = result.otherNeeds as string[];
             });
 
         console.log('customer: ' + this.customer);
@@ -68,13 +62,8 @@ export class CustomerDetailComponent implements OnInit {
         this.customerService.updateCustomer(this.customer)
             .subscribe((result: any) => {
                 console.log(result);
-                this.customer.bookingSurname = result.bookingSurname;
-                this.customer.bookingName = result.bookingName;
-                this.customer.roomNumber = result.roomNumber;
-                this.customer.numberOfPeople = result.numberOfPeople;
-                this.customer.username = result.username;
-                this.customer.password = result.password;
-                this.customer.otherNeeds = this.customerNeeds;
+                this.customer = Customer.fromJSON(result);
+                this.customerNeeds = result.otherNeeds as string[];
             });
     }
 
