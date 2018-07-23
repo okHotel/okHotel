@@ -6,18 +6,15 @@ const customer = require('../model/customer-schema');
 
 //GET HTTP method to /bucketlist
 router.get('/',(req,res) => {
-/*
-    customer.getAllCustomers((err, lists)=> {
+    customer.getBookedCustomers((err, lists)=> {
         if(err) {
             res.json({success:false, message: `Failed to load all lists. Error: ${err}`});
         }
-        else {
-            res.write(JSON.stringify({success: true, lists:lists},null,2));
+        else if (lists) {
+            console.log(lists);
             res.end();
-
         }
     });
-*/
 });
 
 router.get('/:bookingSurname', (req,res,next)=> {

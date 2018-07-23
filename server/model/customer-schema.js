@@ -24,11 +24,17 @@ const customerSchema = mongoose.Schema({
 //customerSchema.set('toObject', { getters: true });
 
 //Create a model using mongoose.model and export it
-const customer = module.exports = mongoose.model('customers_fede', customerSchema );
+const registeredCustomer = module.exports = mongoose.model('customers_fede', customerSchema );
+const bookedCustomer = mongoose.model('booked-customers', customerSchema );
+
+//BucketList.find() returns all the lists
+module.exports.getBookedCustomers = (callback) => {
+    bookedCustomer.find(callback);
+}
 
 //BucketList.find() returns all the lists
 module.exports.getCustomer = (bookingName, bookingSurname, callback) => {
-    customer.findOne({bookingSurname: bookingSurname}, callback);
+    registeredCustomer.findOne({bookingSurname: bookingSurname}, callback);
 }
 
 //newList.updateCustomer is used to insert the document into MongoDB
@@ -38,13 +44,13 @@ module.exports.addCustomer = (newCustomer, callback) => {
 
 module.exports.updateCustomer = (toUpdateCustomer, callback) => {
     let query = { roomNumber: toUpdateCustomer.roomNumber};
-    customer.findOneAndUpdate( query, toUpdateCustomer, callback);
+    registeredCustomer.findOneAndUpdate( query, toUpdateCustomer, callback);
 }
 
 //Here we need to pass an id parameter to BUcketList.remove
 module.exports.deleteCustomer = (bookingSurname, callback) => {
     let query = { bookingSurname: bookingSurname };
-    customer.findOneAndDelete(query, callback);
+    registeredCustomer.findOneAndDelete(query, callback);
 }
 
 // schema.set('toObject', { getters: true });
