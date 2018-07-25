@@ -6,6 +6,7 @@ const customer = require('../model/customer-schema');
 
 //GET HTTP method to /bucketlist
 router.get('/',(req,res) => {
+/*
     customer.getBookedCustomers((err, lists)=> {
         if(err) {
             res.json({success:false, message: `Failed to load all lists. Error: ${err}`});
@@ -15,7 +16,29 @@ router.get('/',(req,res) => {
             res.end();
         }
     });
+*/
 });
+
+router.get('/registrations/:bookingSurname', (req, res, next) => {
+    let bookingSurname = req.params.bookingSurname;
+    let bookingName = req.params.bookingName;
+
+    customer.getBookedCustomer(bookingName, bookingSurname, (err, list) => {
+        if(err) {
+            res.json({message: `The customer has not booked yet`});
+//            res.json({success:false, message: `Failed to get the customer. Error: ${err}`});
+        }
+        else if(list) {
+            console.log(list);
+            res.json(list);
+            res.end();
+//            res.json({success:true, message: "Getted successfully"});
+        } else {
+            console.log(res);
+            res.json({success:false});
+        }
+    });
+})
 
 router.get('/:bookingSurname', (req,res,next)=> {
     let bookingName = req.params.bookingName;

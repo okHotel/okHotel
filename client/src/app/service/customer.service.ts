@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Customer } from '../customer/customer';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class CustomerService {
@@ -34,6 +35,16 @@ export class CustomerService {
             console.log(body);
         return this.http.put(URI, body , { headers: this.headers })
             .map(res => res.json());
+    }
+
+    public getBookedCustomer(bookingName: string, bookingSurname: string) {
+        const URI = `${this.serverApi}/customer/registrations/${bookingSurname}`;
+        console.log(URI);
+        return this.http.get(URI, { headers: this.headers })
+            .map(res => {
+                console.log(res);
+                return res.json();
+            });
     }
 
     public getCustomer(bookingName: string, bookingSurname: string) {

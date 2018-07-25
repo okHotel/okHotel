@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from '../customer';
 import { CustomerService } from '../../service/customer.service';
+import {Reservation} from "../reservation";
 
 @Component({
   selector: 'app-registration',
@@ -12,19 +13,11 @@ export class RegistrationComponent implements OnInit {
 
     @Input() customer = new Customer();
     roomsNumber = [102, 103, 201, 204];
-    @Input() peopleNumber = 4;
     @Input() confirmPassword: string;
     customerNeeds: string[] = [];
     need: string;
 
-    private reservation = {
-        'start': '10/06/2018',
-        'end': '20/06/2018',
-        'roomNumber': 204,
-        'numberOfPeople': 3,
-        'bookingName': 'Mirko',
-        'bookingSurname': 'Viroli'
-    }
+    private reservation = new Reservation();
 
   constructor(
       private customerService: CustomerService,
@@ -32,27 +25,18 @@ export class RegistrationComponent implements OnInit {
   ) { }
 
     ngOnInit() {
-/*
-        this.customer = {
-            roomNumber: 0,
-            bookingName: '',
-            bookingSurname: '',
-            username: '',
-            password: '',
-            numberOfPeople: 0,
-            otherNeeds: []
 
-        };
-*/
     }
 
    public onSubmit() {
-       console.log(
-           this.isRoomNumberValid(),
-           this.isBookingSurnameValid(),
-           this.isBookingNameValid(),
-           this.isPasswordValid(),
-           this.isInputValid());
+
+       this.customerService.getBookedCustomer(this.customer.bookingName,  this.customer.bookingSurname)
+           .subscribe(res => {
+               this.reservation.bookingName = res.bookingName;
+               this.reservation.bookingSurname = res.bookingSurname;
+               this.reservation.roomNumber = res.roomNumber;
+               this.reservation.numberOfPeople = res.numberOfPeople;
+           });
 
        if (this.isInputValid()) {
            this.customer.numberOfPeople = this.reservation.numberOfPeople;
@@ -68,7 +52,8 @@ export class RegistrationComponent implements OnInit {
                }
            );
            this.router.navigateByUrl('');
-
+       } else {
+           console.log('Check the input datas or their matching with booking datas')
        }
    }
 
@@ -99,4 +84,9 @@ export class RegistrationComponent implements OnInit {
    private isRoomNumberValid() {
         return this.customer.roomNumber === this.reservation.roomNumber;
    }
+
+  private isNumberOfPeopleValid() {
+        return this.customer.numberOfPeople === this.reservation.numberOfPeople;
+  }
+
 }
