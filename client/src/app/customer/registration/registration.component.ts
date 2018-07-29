@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from '../customer';
-import { CustomerService } from '../../service/customer.service';
 import {Reservation} from "../reservation";
+import {BookingService} from "../../service/booking/booking.service";
+import {CustomerService} from "../../service/customer/customer.service";
 
 @Component({
   selector: 'app-registration',
@@ -12,31 +13,37 @@ import {Reservation} from "../reservation";
 export class RegistrationComponent implements OnInit {
 
     @Input() customer = new Customer();
-    roomsNumber = [102, 103, 201, 204];
+//    roomsNumber = [102, 103, 201, 204, 132];
+    roomsNumber: number[] = [];
     @Input() confirmPassword: string;
     customerNeeds: string[] = [];
     need: string;
 
-    private reservation = new Reservation();
+    private reservation: Reservation = new Reservation();
+    allReservations: Reservation[] = [];
 
   constructor(
       private customerService: CustomerService,
+      private bookingService: BookingService,
       private router: Router
   ) { }
 
     ngOnInit() {
-
+         this.bookingService.getAllReservations()
+             .forEach(res => this.allReservations = res);
+         console.log(this.allReservations)
     }
 
    public onSubmit() {
 
-       this.customerService.getBookedCustomer(this.customer.bookingName,  this.customer.bookingSurname)
+       this.bookingService.getBookedCustomer(this.customer.bookingName, this.customer.bookingSurname)
            .subscribe(res => {
                this.reservation.bookingName = res.bookingName;
                this.reservation.bookingSurname = res.bookingSurname;
                this.reservation.roomNumber = res.roomNumber;
                this.reservation.numberOfPeople = res.numberOfPeople;
            });
+
 
        if (this.isInputValid()) {
            this.customer.numberOfPeople = this.reservation.numberOfPeople;
@@ -63,6 +70,7 @@ export class RegistrationComponent implements OnInit {
 
 
     private isInputValid() {
+
        return this.isPasswordValid() &&
               this.isBookingNameValid() &&
               this.isBookingSurnameValid() &&
@@ -74,19 +82,19 @@ export class RegistrationComponent implements OnInit {
    }
 
    private isBookingNameValid() {
-       return this.customer.bookingName === this.reservation.bookingName;
+       return this.customer.bookingName == this.reservation.bookingName;
    }
 
    private isBookingSurnameValid() {
-       return this.customer.bookingName === this.reservation.bookingName;
+       return this.customer.bookingSurname == this.reservation.bookingSurname;
    }
 
    private isRoomNumberValid() {
-        return this.customer.roomNumber === this.reservation.roomNumber;
+        return this.customer.roomNumber == this.reservation.roomNumber;
    }
 
   private isNumberOfPeopleValid() {
-        return this.customer.numberOfPeople === this.reservation.numberOfPeople;
+        return this.customer.numberOfPeople == this.reservation.numberOfPeople;
   }
 
 }

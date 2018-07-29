@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Location } from '@angular/common';
-
 import { Customer } from '../customer';
-import {CustomerService} from '../../service/customer.service';
+import {CustomerService} from "../../service/customer/customer.service";
 
 @Component({
     selector: 'app-customer-detail',

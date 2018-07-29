@@ -2,7 +2,7 @@
 
   <label for="roomNumber">Room Number</label>
   <select id="roomNumber" [(ngModel)]="customer.roomNumber" name="roomNumber" >
-    <option *ngFor="let room of roomsNumber" [ngValue]=room  > {{room}} </option>
+    <option *ngFor="let reservation of allReservations" [ngValue]=reservation.roomNumber > {{reservation.roomNumber}} </option>
   </select>
   <br>
 

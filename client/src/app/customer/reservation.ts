@@ -3,6 +3,8 @@ export class Reservation {
     bookingSurname: string;
     roomNumber: number;
     numberOfPeople: number;
-    start: string; // smell code here! => change its type to date
-    end: string // smell code here! => change its type to date
+    start: Date; // smell code here! => change its type to date
+    end: Date // smell code here! => change its type to date
+
+
 }

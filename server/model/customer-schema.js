@@ -25,21 +25,10 @@ const customerSchema = mongoose.Schema({
 
 //Create a model using mongoose.model and export it
 const registeredCustomer = module.exports = mongoose.model('customers_fede', customerSchema );
-const bookedCustomer = mongoose.model('booked-customers', customerSchema );
-
-//BucketList.find() returns all the lists
-module.exports.getBookedCustomers = (callback) => {
-    bookedCustomer.find(callback);
-}
 
 //BucketList.find() returns all the lists
 module.exports.getCustomer = (bookingName, bookingSurname, callback) => {
     registeredCustomer.findOne({bookingSurname: bookingSurname}, callback);
-}
-
-//BucketList.find() returns all the lists
-module.exports.getBookedCustomer = (bookingName, bookingSurname, callback) => {
-    bookedCustomer.findOne({bookingSurname: bookingSurname}, callback);
 }
 
 //newList.updateCustomer is used to insert the document into MongoDB

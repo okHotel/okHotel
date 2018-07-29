@@ -6,6 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 const customer = require('./controller/customer');
+const booking = require('./controller/booking');
 
 //Connect mongoose to our database
 mongoose.connect(config.database, { useNewUrlParser: true });
@@ -35,6 +36,7 @@ app.get('/', (req,res) => {
 
 //Routing all HTTP requests to /bucketlist to bucketlist controller
 app.use('/customer', customer);
+app.use('/booking', booking);
 
 //Listen to port 3000
 app.listen(port, () => {

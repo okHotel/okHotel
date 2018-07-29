@@ -14,7 +14,6 @@ import { HomeComponent } from './home/home.component';
 import { CustomerDetailComponent} from './customer/customer-detail/customer-detail.component';
 import { FormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
-import { CustomerService } from './service/customer.service';
 import { AdminStatisticsComponent } from './admin/admin-statistics/admin-statistics.component';
 import { HttpModule } from '@angular/http';
 import {RoomNumberComponent} from './admin/room-number/room-number.component';
@@ -23,6 +22,8 @@ import { MakeMenuViewComponent } from './admin/make-menu-view/make-menu-view.com
 import { AddDishesComponent } from './admin/add-dishes/add-dishes.component';
 import { AddVariationComponent } from './admin/add-variation/add-variation.component';
 import { PantryComponent } from './admin/pantry/pantry.component';
+import {BookingService} from "./service/booking/booking.service";
+import {CustomerService} from "./service/customer/customer.service";
 
 
 const appRoutes: Routes = [
@@ -75,7 +76,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CustomerService],
+  providers: [CustomerService, BookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
