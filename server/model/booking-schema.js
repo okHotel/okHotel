@@ -27,7 +27,9 @@ const bookedCustomer = module.exports = mongoose.model('booked-customers', booki
 
 //BucketList.find() returns all the lists
 module.exports.getBookedCustomers = (callback) => {
-    bookedCustomer.find(callback);
+    bookedCustomer.find({})
+        .sort({roomNumber: 'asc'})
+        .exec(callback);
 }
 
 //BucketList.find() returns all the lists
@@ -36,5 +38,7 @@ module.exports.getBookedCustomer = (bookingName, bookingSurname, callback) => {
 }
 
 module.exports.getRoomsNumber = (callback) => {
-    bookedCustomer.find({}, 'roomNumber', callback);
+    bookedCustomer.find({}, 'roomNumber')
+        .sort({roomNumber: 'asc'})
+        .exec(callback);
 }
