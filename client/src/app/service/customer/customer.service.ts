@@ -1,60 +1,43 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
-import {Customer} from "../../customer/customer";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Customer } from '../../customer/customer';
 
-@Injectable()
+const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+@Injectable({
+    providedIn: 'root'
+})
 export class CustomerService {
-    private serverApi = 'http://localhost:3000';
-    private headers = new Headers;
+    private baseUrl = 'http://localhost:3000';
+    private customersUrl = this.baseUrl + '/api/customers';  // URL to web api
+    constructor(
+        private http: HttpClient
+    ) { }
 
-    constructor(private http: Http) {
-        this.headers.append('Content-Type', 'application/json');
+    getCustomers (): Observable<Customer[]> {
+        return this.http.get<Customer[]>(this.customersUrl)
     }
 
-    public addCustomer(customer: Customer) {
-        console.log('into addCustomer');
-
-        const URI = `${this.serverApi}/customer/`;
-        const body = JSON.stringify({bookingName: customer.bookingName, bookingSurname: customer.bookingSurname,
-            roomNumber: customer.roomNumber, numberOfPeople: customer.numberOfPeople, username: customer.username,
-            password: customer.password, otherNeeds: customer.otherNeeds});
-        console.log(body);
-        return this.http.post(URI, body , { headers: this.headers })
-            .map(res => res.json());
+    getCustomer(id: string): Observable<Customer> {
+        const url = `${this.customersUrl}/${id}`;
+        return this.http.get<Customer>(url);
     }
 
-    public updateCustomer(customer: Customer) {
-        console.log('into updateCustomer');
-
-        const URI = `${this.serverApi}/customer/${customer.bookingSurname}`;
-        const body = JSON.stringify({bookingName: customer.bookingName, bookingSurname: customer.bookingSurname,
-            roomNumber: customer.roomNumber, numberOfPeople: customer.numberOfPeople, username: customer.username,
-            password: customer.password, otherNeeds: customer.otherNeeds});
-            console.log(body);
-        return this.http.put(URI, body , { headers: this.headers })
-            .map(res => res.json());
+    addCustomer (customer: Customer): Observable<Customer> {
+        return this.http.post<Customer>(this.customersUrl, customer, httpOptions);
     }
 
-    public getCustomer(bookingName: string, bookingSurname: string) {
-        console.log('into getCustomer');
+    deleteCustomer (customer: Customer | string): Observable<Customer> {
+        const id = typeof customer === 'string' ? customer : customer._id;
+        const url = `${this.customersUrl}/${id}`;
 
-        const URI = `${this.serverApi}/customer/${bookingSurname}`;
-        console.log(URI);
-        return this.http.get(URI, { headers: this.headers })
-            .map(res => {
-                console.log(res);
-                return res.json();
-            });
+        return this.http.delete<Customer>(url, httpOptions);
     }
 
-    public deleteCustomer(bookingSurname: string) {
-        const URI = `${this.serverApi}/customer/${bookingSurname}`;
-        return this.http.delete(URI, {headers: this.headers})
-            .map(res => {
-                console.log(res);
-                return res.json();
-             });
+    updateCustomer (customer: Customer): Observable<any> {
+        return this.http.put(this.customersUrl, customer, httpOptions);
     }
-
 }

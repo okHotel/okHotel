@@ -1,4 +1,5 @@
 export class  Customer {
+    _id: string;
     roomNumber: number;
     bookingName: string;
     bookingSurname: string;

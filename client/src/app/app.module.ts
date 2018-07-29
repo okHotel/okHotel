@@ -1,17 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './customer/registration/registration.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenuVariationsComponent } from './menu-variations/menu-variations.component';
 import { HomeComponent } from './home/home.component';
-import { CustomerDetailComponent} from './customer/customer-detail/customer-detail.component';
 import { FormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminStatisticsComponent } from './admin/admin-statistics/admin-statistics.component';
@@ -24,14 +21,15 @@ import { AddVariationComponent } from './admin/add-variation/add-variation.compo
 import { PantryComponent } from './admin/pantry/pantry.component';
 import {BookingService} from "./service/booking/booking.service";
 import {CustomerService} from "./service/customer/customer.service";
-
+import {HttpClientModule} from "@angular/common/http";
+import { CustomerComponent } from './customer/customer.component';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
+import {CustomerDetailComponent} from "./customer-detail/customer-detail.component";
 
 const appRoutes: Routes = [
 
     { path: '', component: HomeComponent},
     { path: 'login', component:   LoginComponent},
-    { path: 'registration', component: RegistrationComponent},
-    { path: 'profile/:bookingSurname', component: CustomerDetailComponent},
     { path: 'restaurant', component: MenuComponent},
     { path: 'menu-variations', component: MenuVariationsComponent},
     { path: 'menu', component: MenuComponent},
@@ -39,14 +37,11 @@ const appRoutes: Routes = [
     { path: 'make-menu', component: MakeMenuViewComponent},
     { path: 'make-variation', component: AddVariationComponent},
     { path: 'pantry', component: PantryComponent},
-    { path: 'statistics', component: AdminStatisticsComponent}
-
-
-    // { path: 'home', component: HomeComponent}
-    /*{ path: 'directive', component: DirectiveComponent },
-    { path: 'service', component: ServiceComponent }*/
+    { path: 'statistics', component: AdminStatisticsComponent},
+    { path: 'customers', component: CustomerComponent },
+    { path: 'customer/add', component: AddCustomerComponent },
+    { path: 'customers/:id', component: CustomerDetailComponent },
 ];
-
 
 @NgModule({
   declarations: [
@@ -55,11 +50,12 @@ const appRoutes: Routes = [
     FooterComponent,
     NavComponent,
     LoginComponent,
-    RegistrationComponent,
     MenuComponent,
     MenuVariationsComponent,
     HomeComponent,
     CustomerDetailComponent,
+    CustomerComponent,
+    AddCustomerComponent,
     ProfileComponent,
     RoomNumberComponent,
       AdminProfileComponent,
@@ -74,6 +70,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [CustomerService, BookingService],
