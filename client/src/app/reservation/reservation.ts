@@ -1,4 +1,5 @@
 export class Reservation {
+    _id: string;
     bookingName: string;
     bookingSurname: string;
     roomNumber: number;

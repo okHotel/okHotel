@@ -12,19 +12,18 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminStatisticsComponent } from './admin/admin-statistics/admin-statistics.component';
-import { HttpModule } from '@angular/http';
 import {RoomNumberComponent} from './admin/room-number/room-number.component';
 import {AdminProfileComponent} from './admin/admin-profile/admin-profile.component';
 import { MakeMenuViewComponent } from './admin/make-menu-view/make-menu-view.component';
 import { AddDishesComponent } from './admin/add-dishes/add-dishes.component';
 import { AddVariationComponent } from './admin/add-variation/add-variation.component';
 import { PantryComponent } from './admin/pantry/pantry.component';
-import {BookingService} from "./service/booking/booking.service";
 import {CustomerService} from "./service/customer/customer.service";
 import {HttpClientModule} from "@angular/common/http";
 import { CustomerComponent } from './customer/customer.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import {CustomerDetailComponent} from "./customer-detail/customer-detail.component";
+import {ReservationService} from "./service/reservation/reservation.service";
 
 const appRoutes: Routes = [
 
@@ -64,16 +63,14 @@ const appRoutes: Routes = [
       AddVariationComponent,
       PantryComponent,
       AdminStatisticsComponent
-
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CustomerService, BookingService],
+  providers: [CustomerService, ReservationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

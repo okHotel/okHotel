@@ -7,7 +7,8 @@ app.use(bodyParser.json())
 const dbConfig = require('./config/database.js');
 const mongoose = require('mongoose');
 
-const Customer = require('./model/customer.model.js');
+var customerRoutes = require('./routes/customer.routes');
+var reservationRoutes = require('./routes/reservation.routes');
 
 mongoose.Promise = global.Promise;
 
@@ -28,7 +29,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-require('./routes/customer.routes.js')(app);
+app.use('/customers', customerRoutes);
+app.use('/reservations', reservationRoutes);
 
 // Create a Server
 const server = app.listen(3000, function () {
