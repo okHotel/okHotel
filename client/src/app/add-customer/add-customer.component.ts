@@ -3,8 +3,8 @@ import { Customer } from '../customer/customer';
 import { CustomerService } from '../service/customer/customer.service';
 
 import { Location } from '@angular/common';
-import {Reservation} from "../reservation/reservation";
-import {ReservationService} from "../service/reservation/reservation.service";
+import {Booking} from "../booking/booking";
+import {BookingService} from "../service/booking/booking.service";
 
 @Component({
     selector: 'app-add-customer',
@@ -16,18 +16,18 @@ export class AddCustomerComponent{
 
     customer = new Customer();
     submitted = false;
-    allReservations: Reservation[] = [];
+    roomsNumber: number[] = [];
     private customerNeeds: string[] = [];
     private need: string;
 
     constructor(
         private customerService: CustomerService,
-        private reservationService: ReservationService,
+        private bookingService: BookingService,
         private location: Location
     ) { }
 
     ngOnInit() {
-        this.getReservations();
+        this.getRoomsNumber();
     }
 
     newCustomer(): void {
@@ -54,14 +54,9 @@ export class AddCustomerComponent{
             .subscribe();
     }
 
-    private getReservations() {
-        return this.reservationService.getReservations()
-            .subscribe(
-                reservations => {
-                    console.log(reservations);
-                    this.allReservations =
-                        reservations.sort((a, b) => a.roomNumber - b.roomNumber)
-                }
-            );
+    private getRoomsNumber() {
+        this.bookingService.getRoomsNumber()
+            .subscribe(roomsNumber =>
+                roomsNumber.forEach(n => this.roomsNumber.push(n['roomNumber'])));
     }
 }

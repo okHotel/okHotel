@@ -1,8 +1,8 @@
-const Reservation = require('../model/reservation.model.js');
+const Booking = require('../model/booking.model.js');
 
 // FETCH all Reservations
 exports.findAll = (req, res) => {
-    Reservation.find({})
+    Booking.find({})
         .then(reservation => {
             res.json(reservation);
         }).catch(err => {
@@ -12,69 +12,81 @@ exports.findAll = (req, res) => {
     });
 };
 
-// FIND a Reservation
+exports.findRoomsNumber = (req, res) => {
+    Booking.find({}, 'roomNumber')
+        .sort({roomNumber: 'asc'})
+        .then(reservation => {
+            res.json(reservation);
+        }).catch(err => {
+        res.status(500).send({
+            msg: err.message
+        });
+    });
+};
+
+// FIND a Booking
 exports.findOne = (req, res) => {
-    Reservation.findById(req.params.reservationId)
+    Booking.findById(req.params.reservationId)
         .then(reservation => {
             if(!reservation) {
                 return res.status(404).json({
-                    msg: "Reservation not found with id " + req.params.reservationId
+                    msg: "Booking not found with id " + req.params.reservationId
                 });
             }
             res.json(reservation);
         }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).json({
-                msg: "Reservation not found with id " + req.params.reservationId
+                msg: "Booking not found with id " + req.params.reservationId
             });
         }
         return res.status(500).json({
-            msg: "Error retrieving reservation with id " + req.params.reservationId
+            msg: "Error retrieving booking with id " + req.params.reservationId
         });
     });
 };
 
-// UPDATE a Reservation
+// UPDATE a Booking
 exports.update = (req, res) => {
-    // Find Reservation and update it
-    Reservation.findByIdAndUpdate(req.body._id, req.body, {new: true})
+    // Find Booking and update it
+    Booking.findByIdAndUpdate(req.body._id, req.body, {new: true})
         .then(reservation => {
             if(!reservation) {
                 return res.status(404).json({
-                    msg: "Reservation not found with id " + req.params.reservationId
+                    msg: "Booking not found with id " + req.params.reservationId
                 });
             }
             res.json(reservation);
         }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).json({
-                msg: "Reservation not found with id " + req.params.reservationId
+                msg: "Booking not found with id " + req.params.reservationId
             });
         }
         return res.status(500).json({
-            msg: "Error updating reservation with id " + req.params.reservationId
+            msg: "Error updating booking with id " + req.params.reservationId
         });
     });
 };
 
-// DELETE a Reservation
+// DELETE a Booking
 exports.delete = (req, res) => {
-    Reservation.findByIdAndRemove(req.params.reservationId)
+    Booking.findByIdAndRemove(req.params.reservationId)
         .then(reservation => {
             if(!reservation) {
                 return res.status(404).json({
-                    msg: "Reservation not found with id " + req.params.reservationId
+                    msg: "Booking not found with id " + req.params.reservationId
                 });
             }
-            res.json({msg: "Reservation deleted successfully!"});
+            res.json({msg: "Booking deleted successfully!"});
         }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).json({
-                msg: "Reservation not found with id " + req.params.reservationId
+                msg: "Booking not found with id " + req.params.reservationId
             });
         }
         return res.status(500).json({
-            msg: "Could not delete reservation with id " + req.params.reservationId
+            msg: "Could not delete booking with id " + req.params.reservationId
         });
     });
 };

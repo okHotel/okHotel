@@ -1,4 +1,4 @@
-export class Reservation {
+export class Booking {
     _id: string;
     bookingName: string;
     bookingSurname: string;

@@ -23,7 +23,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { CustomerComponent } from './customer/customer.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import {CustomerDetailComponent} from "./customer-detail/customer-detail.component";
-import {ReservationService} from "./service/reservation/reservation.service";
+import {BookingService} from "./service/booking/booking.service";
 
 const appRoutes: Routes = [
 
@@ -38,7 +38,7 @@ const appRoutes: Routes = [
     { path: 'pantry', component: PantryComponent},
     { path: 'statistics', component: AdminStatisticsComponent},
     { path: 'customers', component: CustomerComponent },
-    { path: 'customer/add', component: AddCustomerComponent },
+    { path: 'customers/add', component: AddCustomerComponent },
     { path: 'customers/:id', component: CustomerDetailComponent },
 ];
 
@@ -70,7 +70,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CustomerService, ReservationService],
+  providers: [CustomerService, BookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

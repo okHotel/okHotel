@@ -5,7 +5,7 @@
     <div class="form-group">
       <label for="roomNumber">Room Number</label>
       <select id="roomNumber" [(ngModel)]="customer.roomNumber" name="roomNumber" #roomNumber="ngModel">
-        <option *ngFor="let reservation of allReservations" [ngValue]=reservation.roomNumber > {{reservation.roomNumber}} </option>
+        <option *ngFor="let number of roomsNumber" [ngValue]=number > {{number}} </option>
       </select>
       <div [hidden]="roomNumber.valid || roomNumber.pristine"
            class="alert alert-danger">

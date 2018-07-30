@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ReservationSchema = mongoose.Schema({
+const BookingSchema = mongoose.Schema({
     __id: String,
     bookingName: String,
     bookingSurname: String,
@@ -10,4 +10,4 @@ const ReservationSchema = mongoose.Schema({
     end: Date,
 });
 
-module.exports = mongoose.model('reservation', ReservationSchema);
+module.exports = mongoose.model('booking', BookingSchema);

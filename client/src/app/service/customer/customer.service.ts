@@ -12,7 +12,7 @@ const httpOptions = {
 })
 export class CustomerService {
     private baseUrl = 'http://localhost:3000';
-    private customersUrl = this.baseUrl + '/api/customers';  // URL to web api
+    private customersUrl = this.baseUrl + '/customers';  // URL to web api
     constructor(
         private http: HttpClient
     ) { }

@@ -8,7 +8,7 @@ const dbConfig = require('./config/database.js');
 const mongoose = require('mongoose');
 
 var customerRoutes = require('./routes/customer.routes');
-var reservationRoutes = require('./routes/reservation.routes');
+var bookingRoutes = require('./routes/booking.routes');
 
 mongoose.Promise = global.Promise;
 
@@ -30,7 +30,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 app.use('/customers', customerRoutes);
-app.use('/reservations', reservationRoutes);
+app.use('/bookings', bookingRoutes);
 
 // Create a Server
 const server = app.listen(3000, function () {
