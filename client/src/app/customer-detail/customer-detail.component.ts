@@ -15,6 +15,8 @@ export class CustomerDetailComponent implements OnInit {
     customer = new Customer() ;
     submitted = false;
     message: string;
+    customerNeeds: string[] = [];
+    need: string;
 
     constructor(
         private customerService: CustomerService,
@@ -25,13 +27,21 @@ export class CustomerDetailComponent implements OnInit {
     ngOnInit(): void {
         const id = this.route.snapshot.paramMap.get('id');
         this.customerService.getCustomer(id)
-            .subscribe(customer => this.customer = customer);
+            .subscribe(customer => {
+                this.customer = customer;
+                this.customerNeeds = customer.otherNeeds;
+            });
     }
 
     update(): void {
         this.submitted = true;
+        this.customer.otherNeeds = this.customerNeeds;
         this.customerService.updateCustomer(this.customer)
             .subscribe(result => this.message = "Customer Updated Successfully!");
+    }
+
+    addNeed() {
+        this.customerNeeds.push(this.need);
     }
 
     delete(): void {

@@ -24,6 +24,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import {CustomerDetailComponent} from "./customer-detail/customer-detail.component";
 import {BookingService} from "./service/booking/booking.service";
+import { CustomerNeeedsComponent } from './customer/customer-needs/customer-neeeds.component';
 
 const appRoutes: Routes = [
 

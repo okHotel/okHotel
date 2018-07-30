@@ -17,8 +17,8 @@ export class AddCustomerComponent{
     customer = new Customer();
     submitted = false;
     roomsNumber: number[] = [];
-    private customerNeeds: string[] = [];
-    private need: string;
+    customerNeeds: string[] = [];
+    need: string;
 
     constructor(
         private customerService: CustomerService,
@@ -49,6 +49,7 @@ export class AddCustomerComponent{
     }
 
     private save(): void {
+        this.customer.otherNeeds = this.customerNeeds;
         console.log(this.customer);
         this.customerService.addCustomer(this.customer)
             .subscribe();
