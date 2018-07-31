@@ -9,8 +9,8 @@ app.get('/', booking.findAll);
 // Retrieve a single booking by Id
 app.get('/roomsNumber', booking.findRoomsNumber);
 
-// Retrieve a single booking by Id
-app.get('/:bookingId', booking.findOne);
+// Retrieve a single booking by Name and Surname
+app.get('/:bookingSurname/:bookingName', booking.findOne);
 
 // Update a booking with Id
 app.put('/', booking.update);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Customer } from '../customer/customer';
 import { CustomerService } from '../service/customer/customer.service';
 
@@ -17,6 +17,7 @@ export class AddCustomerComponent{
     customer = new Customer();
     submitted = false;
     roomsNumber: number[] = [];
+    confirmPassword: string;
     customerNeeds: string[] = [];
     need: string;
 
@@ -37,7 +38,13 @@ export class AddCustomerComponent{
 
     addCustomer() {
         this.submitted = true;
-        this.save();
+        if (this.checkInputIsValid()) {
+            this.save();
+        } else {
+            console.log('The input is not valid')
+            // code smell here!
+            // print error
+        }
     }
 
     goBack(): void {
@@ -59,5 +66,49 @@ export class AddCustomerComponent{
         this.bookingService.getRoomsNumber()
             .subscribe(roomsNumber =>
                 roomsNumber.forEach(n => this.roomsNumber.push(n['roomNumber'])));
+    }
+
+    private checkInputIsValid() {
+        let booking = new Booking();
+        this.bookingService
+            .getBooking(this.customer.bookingName, this.customer.bookingSurname)
+            .subscribe(res => {
+                console.log(res)
+                booking = res
+            });
+
+        console.log(booking);
+
+        console.log(this.checkPasswordSameAs(this.confirmPassword),
+            this.checkNameSameAs(booking.bookingName),
+            this.checkSurnameSameAs(booking.bookingSurname),
+            this.checkRoomNumberSameAs(booking.roomNumber),
+            this.checkNumberOfPeopleSameAs(booking.numberOfPeople))
+
+        return this.checkPasswordSameAs(this.confirmPassword)
+            && this.checkNameSameAs(booking.bookingName)
+            && this.checkSurnameSameAs(booking.bookingSurname)
+            && this.checkRoomNumberSameAs(booking.roomNumber)
+            && this.checkNumberOfPeopleSameAs(booking.numberOfPeople)
+    }
+
+    private checkPasswordSameAs(password: string) {
+        return this.customer.password == password
+    }
+
+    private checkNameSameAs(name: string) {
+        return this.customer.bookingName == name
+    }
+
+    private checkSurnameSameAs(surname: string) {
+        return this.customer.bookingSurname == surname
+    }
+
+    private checkRoomNumberSameAs(roomNumber: number) {
+        return this.customer.roomNumber == roomNumber
+    }
+
+    private checkNumberOfPeopleSameAs(numberOfPeople: number) {
+        return this.customer.numberOfPeople == numberOfPeople
     }
 }

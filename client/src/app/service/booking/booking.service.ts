@@ -15,15 +15,15 @@ export class BookingService {
     private bookingsUrl = this.baseUrl + '/bookings';  // URL to web api
     constructor(
         private http: HttpClient
-    ) { }
+    ) { } // smell code here! => change its type to date
 
     getBookings (): Observable<Booking[]> {
         return this.http.get<Booking[]>(this.bookingsUrl);
     }
 
-    getBooking (id: string): Observable<Booking> {
-        const url = `${this.bookingsUrl}/${id}`;
-        return this.http.get<Booking>(url);
+    getBooking (bookingName: string, bookingSurname: string): Observable<Booking> {
+        const url = `${this.bookingsUrl}/${bookingSurname}/${bookingName}`;
+        return this.http.get<Booking>(url, httpOptions);
     }
 
     deleteBooking (booking: Booking | string): Observable<Booking> {
