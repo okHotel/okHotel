@@ -25,28 +25,6 @@
     </div>
 
     <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" placeholder="Give Customer's username"
-             required
-             [(ngModel)]="customer.username" name="username" #username="ngModel">
-      <div [hidden]="username.valid || username.pristine"
-           class="alert alert-danger">
-        Booking Name is required
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="text" class="form-control" id="password" placeholder="Give Customer's password"
-             required
-             [(ngModel)]="customer.password" name="password" #password="ngModel">
-      <div [hidden]="password.valid || password.pristine"
-           class="alert alert-danger">
-        Booking Name is required
-      </div>
-    </div>
-
-    <div class="form-group">
       <label for="numberOfPeople">People in the room</label>
       <input type="number" class="form-control" id="numberOfPeople"
              placeholder="Give Customer's number of people in the room"

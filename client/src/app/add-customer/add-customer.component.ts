@@ -11,7 +11,6 @@ import {BookingService} from "../service/booking/booking.service";
     templateUrl: './add-customer.component.html',
     styleUrls: ['./add-customer.component.css']
 })
-
 export class AddCustomerComponent{
 
     customer = new Customer();
@@ -38,13 +37,15 @@ export class AddCustomerComponent{
 
     addCustomer() {
         this.submitted = true;
+        this.save();
+/*
         if (this.checkInputIsValid()) {
-            this.save();
         } else {
             console.log('The input is not valid')
             // code smell here!
             // print error
         }
+*/
     }
 
     goBack(): void {

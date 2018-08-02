@@ -1,5 +1,5 @@
-var express = require('express');
-var app = express.Router();
+const express = require('express');
+const app = express.Router();
 
 const customers = require('../controller/customer.controller.js');
 
@@ -17,5 +17,7 @@ app.put('/', customers.update);
 
 // Delete a Customer with Id
 app.delete('/:customerId', customers.delete);
+
+app.post('/login', customers.login);
 
 module.exports = app;

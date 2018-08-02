@@ -21,13 +21,13 @@ mongoose.connect(dbConfig.database, { useNewUrlParser: true })
     process.exit();
 });
 
-const cors = require('cors')
+const cors = require('cors');
 const corsOptions = {
     origin: 'http://localhost:4200',
     optionsSuccessStatus: 200
 }
 
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
 
 app.use('/customers', customerRoutes);
 app.use('/bookings', bookingRoutes);

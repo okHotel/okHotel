@@ -5,6 +5,7 @@ export class  Customer {
     bookingSurname: string;
     username: string;
     password: string;
+    role: string;
     numberOfPeople: number;
     otherNeeds: string[];
 }

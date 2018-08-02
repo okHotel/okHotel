@@ -40,4 +40,8 @@ export class CustomerService {
     updateCustomer (customer: Customer): Observable<any> {
         return this.http.put(this.customersUrl, customer, httpOptions);
     }
+
+    login(username: string, password: string) {
+        return this.http.post(`${this.customersUrl}/login`, { username: username, password: password });
+    }
 }
