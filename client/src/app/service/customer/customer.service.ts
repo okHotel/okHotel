@@ -26,10 +26,6 @@ export class CustomerService {
         return this.http.get<Customer>(url);
     }
 
-    addCustomer (customer: Customer): Observable<Customer> {
-        return this.http.post<Customer>(this.customersUrl, customer, httpOptions);
-    }
-
     deleteCustomer (customer: Customer | string): Observable<Customer> {
         const id = typeof customer === 'string' ? customer : customer._id;
         const url = `${this.customersUrl}/${id}`;
@@ -39,9 +35,5 @@ export class CustomerService {
 
     updateCustomer (customer: Customer): Observable<any> {
         return this.http.put(this.customersUrl, customer, httpOptions);
-    }
-
-    login(username: string, password: string) {
-        return this.http.post(`${this.customersUrl}/login`, { username: username, password: password });
     }
 }

@@ -3,8 +3,7 @@ const app = express.Router();
 
 const customers = require('../controller/customer.controller.js');
 
-// Create a new Customer
-app.post('/', customers.create);
+// Create a new Customer is in authentication routes.
 
 // Retrieve all Customer
 app.get('/', customers.findAll);
@@ -17,7 +16,5 @@ app.put('/', customers.update);
 
 // Delete a Customer with Id
 app.delete('/:customerId', customers.delete);
-
-app.post('/login', customers.login);
 
 module.exports = app;

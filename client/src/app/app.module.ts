@@ -21,9 +21,10 @@ import { PantryComponent } from './admin/pantry/pantry.component';
 import {CustomerService} from "./service/customer/customer.service";
 import {HttpClientModule} from "@angular/common/http";
 import { CustomerComponent } from './customer/customer.component';
-import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { RegistrationComponent } from './registration/registration.component';
 import {CustomerDetailComponent} from "./customer-detail/customer-detail.component";
 import {BookingService} from "./service/booking/booking.service";
+import {AuthService} from "./service/auth/auth.service";
 
 const appRoutes: Routes = [
 
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
     { path: 'pantry', component: PantryComponent},
     { path: 'statistics', component: AdminStatisticsComponent},
     { path: 'customers', component: CustomerComponent },
-    { path: 'customers/add', component: AddCustomerComponent },
+    { path: 'registration', component: RegistrationComponent },
     { path: 'customers/:id', component: CustomerDetailComponent },
 ];
 
@@ -54,7 +55,7 @@ const appRoutes: Routes = [
     HomeComponent,
     CustomerDetailComponent,
     CustomerComponent,
-    AddCustomerComponent,
+    RegistrationComponent,
     ProfileComponent,
     RoomNumberComponent,
       AdminProfileComponent,
@@ -70,7 +71,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CustomerService, BookingService],
+  providers: [CustomerService, BookingService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,13 +5,14 @@ import { CustomerService } from '../service/customer/customer.service';
 import { Location } from '@angular/common';
 import {Booking} from "../booking/booking";
 import {BookingService} from "../service/booking/booking.service";
+import {AuthService} from "../service/auth/auth.service";
 
 @Component({
-    selector: 'app-add-customer',
-    templateUrl: './add-customer.component.html',
-    styleUrls: ['./add-customer.component.css']
+    selector: 'registration-customer',
+    templateUrl: './registration.component.html',
+    styleUrls: ['./registration.component.css']
 })
-export class AddCustomerComponent{
+export class RegistrationComponent{
 
     customer = new Customer();
     submitted = false;
@@ -22,6 +23,7 @@ export class AddCustomerComponent{
 
     constructor(
         private customerService: CustomerService,
+        private authService: AuthService,
         private bookingService: BookingService,
         private location: Location
     ) { }
@@ -59,7 +61,7 @@ export class AddCustomerComponent{
     private save(): void {
         this.customer.otherNeeds = this.customerNeeds;
         console.log(this.customer);
-        this.customerService.addCustomer(this.customer)
+        this.authService.addCustomer(this.customer)
             .subscribe();
     }
 

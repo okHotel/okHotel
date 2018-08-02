@@ -7,8 +7,9 @@ app.use(bodyParser.json())
 const dbConfig = require('./config/database.js');
 const mongoose = require('mongoose');
 
-var customerRoutes = require('./routes/customer.routes');
-var bookingRoutes = require('./routes/booking.routes');
+const customerRoutes = require('./routes/customer.routes');
+const bookingRoutes = require('./routes/booking.routes');
+const authenticationRoutes = require('./routes/authentication.routes');
 
 mongoose.Promise = global.Promise;
 
@@ -31,6 +32,7 @@ app.use(cors(corsOptions));
 
 app.use('/customers', customerRoutes);
 app.use('/bookings', bookingRoutes);
+app.use('/auth', authenticationRoutes);
 
 // Create a Server
 const server = app.listen(3000, function () {
