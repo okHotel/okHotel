@@ -12,6 +12,8 @@ import {NgForm} from '@angular/forms';
 export class RegistrationComponent implements OnInit {
 
   private customer: Customer;
+  rooms_number = [101,102,103,104,105,106,107,108,109,110,
+                  201,202,203,204]
 
   constructor(
       private customerService: CustomerService,
