@@ -1,0 +1,110 @@
+<h3>Add Customer</h3>
+<div [hidden]="submitted">
+  <form #addCustomerForm="ngForm">
+
+    <div class="form-group">
+      <label for="roomNumber">Room Number</label>
+      <select id="roomNumber" [(ngModel)]="customer.roomNumber" name="roomNumber" #roomNumber="ngModel">
+        <option *ngFor="let number of roomsNumber" [ngValue]=number > {{number}} </option>
+      </select>
+      <div [hidden]="roomNumber.valid || roomNumber.pristine"
+           class="alert alert-danger">
+        Booking Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bookingName">Booking name</label>
+      <input type="text" class="form-control" id="bookingName" placeholder="Give Customer's booking name"
+             required
+             [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
+      <div [hidden]="bookingName.valid || bookingName.pristine"
+           class="alert alert-danger">
+        Booking Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bookingSurname">Booking Surname</label>
+      <input type="text" class="form-control" id="bookingSurname" placeholder="Give Customer's booking surname"
+             required
+             [(ngModel)]="customer.bookingSurname" name="bookingSurname" #bookingSurname="ngModel">
+      <div [hidden]="bookingSurname.valid || bookingSurname.pristine"
+           class="alert alert-danger">
+        Booking Surname is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" placeholder="Give Customer's username"
+             required
+             [(ngModel)]="customer.username" name="username" #username="ngModel">
+      <div [hidden]="username.valid || username.pristine"
+           class="alert alert-danger">
+        This field is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="text" class="form-control" id="password" placeholder="Give Customer's password"
+             required
+             [(ngModel)]="customer.password" name="password" #password="ngModel">
+      <div [hidden]="password.valid || password.pristine"
+           class="alert alert-danger">
+        This field is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirm password</label>
+      <input type="text" class="form-control" id="confirmPassword" placeholder="Confirm your submitted password"
+             required
+             [(ngModel)]="confirmPassword" name="checkPassword" #checkPassword="ngModel">
+      <div [hidden]="checkPassword.valid || checkPassword.pristine"
+           class="alert alert-danger">
+        This field is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="numberOfPeople">People in the room</label>
+      <input type="number" class="form-control" id="numberOfPeople"
+             placeholder="Give Customer's number of people in the room"
+             min="1"
+             required
+             [(ngModel)]="customer.numberOfPeople" name="numberOfPeople" #numberOfPeople="ngModel">
+      <div [hidden]="numberOfPeople.valid || numberOfPeople.pristine"
+           class="alert alert-danger">
+        This field is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="otherNeeds" >Other needs:
+        <ul >
+          <li *ngFor="let need of customerNeeds">{{need}}</li>
+        </ul>
+
+        <input id='otherNeeds' name="need" [(ngModel)]="need" />
+      </label>
+      <button type="button" (click)="addNeed(need)">
+        add
+      </button>
+    </div>
+
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+      <button type="button" class="btn btn-dark" (click)="addCustomer()" [disabled]="!addCustomerForm.form.valid">Add</button>
+    </div>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <p>Submitted Successfully! -> <span class="badge badge-light">{{customer.bookingName}}  {{customer.bookingSurname}}</span></p>
+  <div class="btn-group btn-group-sm">
+    <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+    <button type="button" class="btn btn-dark" (click)="newCustomer(); addCustomerForm.reset()">Continue</button>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<h5><span class="badge badge-light ">{{customer._id}}</span> -> {{customer.bookingName}} {{customer.bookingSurname}}</h5>
+<div [hidden]="submitted">
+  <form #detailCustomerForm="ngForm">
+
+    <div class="form-group">
+      <label for="bookingName">Booking name</label>
+      <input type="text" class="form-control" id="bookingName" placeholder="Give Customer's booking name"
+             required
+             [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
+      <div [hidden]="bookingName.valid || bookingName.pristine"
+           class="alert alert-danger">
+        Booking Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bookingSurname">Booking Surname</label>
+      <input type="text" class="form-control" id="bookingSurname" placeholder="Give Customer's booking surname"
+             required
+             [(ngModel)]="customer.bookingSurname" name="bookingSurname" #bookingSurname="ngModel">
+      <div [hidden]="bookingSurname.valid || bookingSurname.pristine"
+           class="alert alert-danger">
+        Booking Surname is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="numberOfPeople">People in the room</label>
+      <input type="number" class="form-control" id="numberOfPeople"
+             placeholder="Give Customer's number of people in the room"
+             required
+             [(ngModel)]="customer.numberOfPeople" name="numberOfPeople" #numberOfPeople="ngModel">
+      <div [hidden]="numberOfPeople.valid || numberOfPeople.pristine"
+           class="alert alert-danger">
+        Age is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="otherNeeds" >Other needs:
+        <ul>
+          <li *ngFor="let need of customer.otherNeeds">{{need}}</li>
+          <!--
+                    <button type="button" class="delete" title="delete need"
+                            (click)="deleteNeed(need)">x</button>
+          -->
+        </ul>
+
+        <input id='otherNeeds' name="need" [(ngModel)]="need" />
+      </label>
+      <button type="button" (click)="addNeed(need)">
+        add
+      </button>
+    </div>
+
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+      <button type="button" class="btn btn-dark" (click)="update()" [disabled]="!detailCustomerForm.form.valid">Update</button>
+      <button type="button" class="btn btn-dark" (click)="delete()">Delete</button>
+    </div>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <p>{{message}}</p>
+  <div class="btn-group btn-group-sm">
+    <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+  </div>
+</div>
