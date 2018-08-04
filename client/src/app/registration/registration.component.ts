@@ -20,6 +20,7 @@ export class RegistrationComponent{
     confirmPassword: string;
     customerNeeds: string[] = [];
     need: string;
+    registrationSuccessed = true;
 
     constructor(
         private customerService: CustomerService,
@@ -39,15 +40,34 @@ export class RegistrationComponent{
 
     addCustomer() {
         this.submitted = true;
-        this.save();
-/*
-        if (this.checkInputIsValid()) {
-        } else {
-            console.log('The input is not valid')
-            // code smell here!
-            // print error
-        }
-*/
+
+        this.bookingService
+            .getBooking(this.customer.bookingName, this.customer.bookingSurname)
+            .subscribe(
+
+                data => {
+
+                    if (this.checkInputIsValid(data)) {
+
+                        console.log("new customer added");
+                        this.save();
+                        this.registrationSuccessed = true;
+
+                    } else {
+
+                        //TODO reindirizza bene
+                        console.log("Input error");
+                        this.registrationSuccessed = false;
+                        this.submitted = false;
+                    }
+
+                },
+
+                error => {
+                    console.log("DB error");
+                    this.registrationSuccessed = false;
+                    this.submitted = false;
+                });
     }
 
     goBack(): void {
@@ -71,22 +91,7 @@ export class RegistrationComponent{
                 roomsNumber.forEach(n => this.roomsNumber.push(n['roomNumber'])));
     }
 
-    private checkInputIsValid() {
-        let booking = new Booking();
-        this.bookingService
-            .getBooking(this.customer.bookingName, this.customer.bookingSurname)
-            .subscribe(res => {
-                console.log(res)
-                booking = res
-            });
-
-        console.log(booking);
-
-        console.log(this.checkPasswordSameAs(this.confirmPassword),
-            this.checkNameSameAs(booking.bookingName),
-            this.checkSurnameSameAs(booking.bookingSurname),
-            this.checkRoomNumberSameAs(booking.roomNumber),
-            this.checkNumberOfPeopleSameAs(booking.numberOfPeople))
+    private checkInputIsValid(booking: Booking) {
 
         return this.checkPasswordSameAs(this.confirmPassword)
             && this.checkNameSameAs(booking.bookingName)
