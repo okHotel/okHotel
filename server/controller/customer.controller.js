@@ -1,7 +1,31 @@
+var jwt = require('jsonwebtoken');
+const jwtConfig = require('../config/jwt');
+
 const Customer = require('../model/customer.model.js');
 
 // FETCH all Customers
 exports.findAll = (req, res) => {
+
+    var token;
+    var payload;
+
+    if (!req.headers.authorization) {
+        return res.status(401).send({message: 'You are not authorized'});
+    }
+    token = req.headers.authorization.split(' ')[1];
+
+    try {
+        payload = jwt.verify(token, config.jwtSecretKey);
+    } catch (e) {
+        if (e.name === 'TokenExpiredError') {
+            res.status(401).send({message: 'Token Expired'});
+
+        } else {
+            res.status(401).send({message: 'Authentication failed'});
+        }
+        return;
+    }
+
     Customer.find({})
         .then(customers => {
             res.json(customers);
