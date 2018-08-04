@@ -9,49 +9,67 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
+const jwt = require('jsonwebtoken');
+const authConfig = require('../config/auth');
+
+function generateToken(customer){
+    return jwt.sign({ customer: customer }, authConfig.secret, {
+        expiresIn: 10080
+    });
+}
+
+function setCustomerInfo(request){
+    return request;
+}
+
 // POST a Customer
 exports.create = (req, res, next) => {
     // Create a Customer
 
-    const SALT_FACTOR = 5;
-    bcrypt.genSalt(SALT_FACTOR, function(err, salt){
+    if(!req.body.username){
+        return res.status(422).send({error: 'You must enter an username'});
+    }
+    if(!req.body.password){
+        return res.status(422).send({error: 'You must enter a password'});
+    }
 
-        if(err){
-            return next(err);
+    Customer.findOne({username: req.body.username}, function(err, existingCustomer) {
+        if(existingCustomer){
+            return res.status(422).send({error: 'That username is already in use'});
         }
-        bcrypt.hash(req.body.password, salt, null, function(err, hash) {
-            if (err) {
-                return next(err);
-            }
-            const customer = new Customer(req.body);
-            customer.password = hash;
+        const SALT_FACTOR = 5;
+        bcrypt.genSalt(SALT_FACTOR, function(err, salt){
 
-            // Save a Customer in the MongoDB
-
-            var payload;
-
-            if (err) {
-                return next(err);
-            }
-
-            payload = {
-                sub: customer.username,
-                role: customer.role
-            };
-            res.status(200).json({
-                customer: customer,
-                token: jwt.sign(payload, config.jwtSecretKey, {expiresInMinutes: 60})
-            });
-
-            customer.save()
-                .then(data => {
-                    res.json(data);
-                }).catch(err => {
-                    console.log(err);
-                    res.status(500).json({
-                        msg: err.message
-                    });
+            if(err){
+                return res.json( {
+                    msg: err
                 });
+            }
+            bcrypt.hash(req.body.password, salt, null, function(err, hash) {
+                if (err) {
+                    return res.json( {
+                        msg: err
+                    });
+                }
+                const customer = new Customer(req.body);
+                customer.password = hash;
+
+                // Save a Customer in the MongoDB
+                customer.save()
+                    .then(data => {
+                        const userInfo = setUserInfo(existingCustomer);
+
+                        res.status(201).json({
+                            token: 'JWT ' + generateToken(userInfo),
+                            user: userInfo
+                        })
+                    }).catch(err => {
+                        console.log(err);
+                        res.status(500).json({
+                            msg: err.message
+                        });
+                    });
+            });
         });
     });
 };
@@ -149,4 +167,3 @@ exports.auth = function(role){
             res.status(401).send({message: 'You are not authorized'});
         }
     }};
-
