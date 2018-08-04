@@ -9,9 +9,6 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
-const jwt = require('jsonwebtoken');
-const authConfig = require('../config/auth');
-
 function generateToken(customer){
     return jwt.sign({ customer: customer }, authConfig.secret, {
         expiresIn: 10080
@@ -108,7 +105,7 @@ exports.login = (req, res, next) => {
                             customer: { username: customer.username, role: customer.role},
                             token: jwt.sign(payload, jwtConfig.jwtSecretKey, {
                                 algorithm: 'HS256',
-                                expiresIn: 120,
+                                expiresIn: 1200,
                             })
                         });
 
@@ -131,39 +128,60 @@ exports.auth = function(role){
 
     return function(req, res, next){
 
-        console.log(req);
-
         var token;
         var payload;
+        let authHeader = req.headers["authorization"];
 
-        console.log(req.headers.authorization)
-
-        if (!req.headers.authorization) {
+        if (!authHeader) {
             return res.status(401).send({message: 'You are not authorized'});
-
         }
 
-        token = req.headers.authorization.split(' ')[1];
-
+        token = authHeader.split(" ")[1];
+        console.log(token)
         try {
-            payload = jwt.verify(token, config.jwtSecretKey);
+            payload = jwt.verify(token, jwtConfig.jwtSecretKey);
+            console.log(payload)
+
+            if (!role || role === payload.role) {
+                //pass some user details through in case they are needed
+                req.customer = {
+                    customer: payload.sub,
+                    role: payload.role
+                };
+                next();
+            } else {
+                res.status(401).send({message: 'You are not authorized'});
+            }
         } catch (e) {
             if (e.name === 'TokenExpiredError') {
                 res.status(401).send({message: 'Token Expired'});
             } else {
-                res.status(401).send({message: 'Authentication failed'});
+                res.status(401).send({message: e});
             }
-            return;
         }
 
-        if (!role || role === payload.role) {
-            //pass some user details through in case they are needed
-            req.customer = {
-                customer: payload.sub,
-                role: payload.role
-            };
-            next();
-        } else {
-            res.status(401).send({message: 'You are not authorized'});
-        }
+
     }};
+
+
+/*
+exports.auth = (req, res, next) => {
+    console.log(req.headers)
+
+    const bearerHeader = req.headers["authorization"];
+    console.log(bearerHeader.split(" ")[1])
+    console.log(bearerHeader !== 'undefined');
+
+    if (bearerHeader !== 'undefined') {
+        req.token = bearerHeader.split(" ")[1];
+        console.log('dentro')
+        let payload = jwt.verify(bearerHeader.split(" ")[1], jwtConfig.jwtSecretKey);
+        console.log(payload);
+        next();
+    } else {
+        console.log('else')
+        res.sendStatus(403);
+    }
+
+    console.log('fuori')
+};*/

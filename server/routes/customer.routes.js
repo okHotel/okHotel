@@ -1,10 +1,6 @@
 const express = require('express');
 const app = express.Router();
 
-const passportService = require('../config/passport');
-const passport = require('passport');
-const requireAuth = passport.authenticate('jwt', {session: false});
-
 const customers = require('../controller/customer.controller.js');
 const authController = require('../controller/authentication.controller');
 // Create a new Customer is in authentication routes.
