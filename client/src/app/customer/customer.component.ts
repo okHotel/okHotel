@@ -13,6 +13,7 @@ export class CustomerComponent  implements OnInit {
 
     customers: Customer[];
     error: string;
+    token: string;
 
     constructor(private customerService: CustomerService) {}
 

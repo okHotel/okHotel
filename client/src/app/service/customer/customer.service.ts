@@ -13,12 +13,23 @@ const httpOptions = {
 export class CustomerService {
     private baseUrl = 'http://localhost:3000';
     private customersUrl = this.baseUrl + '/customers';  // URL to web api
+    private token;
+
     constructor(
         private http: HttpClient
-    ) { }
+    ) {
+
+        this.token = localStorage.getItem('token');
+
+        console.log(this.token)
+    }
 
     getCustomers (): Observable<Customer[]> {
-        return this.http.get<Customer[]>(this.customersUrl)
+        let httpOptions = {
+            headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token})
+        };
+        console.log(httpOptions)
+        return this.http.get<Customer[]>(this.customersUrl, httpOptions)
     }
 
     getCustomer(id: string): Observable<Customer> {
