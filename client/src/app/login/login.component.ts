@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     }
 
     login(){
-        this.authService.login(this.username, this.password).subscribe((data : any)=>{
+        this.authService.login(this.username, this.password).subscribe((user : any)=>{
                 this.router.navigate(['/']);
             },
             (err : HttpErrorResponse)=>{
@@ -30,4 +30,7 @@ export class LoginComponent implements OnInit {
             });
     }
 
+    navigateToRegistration() {
+        this.router.navigate(['/registration']);
+    }
 }
