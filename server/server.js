@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
 const customerRoutes = require('./routes/customer.routes');
 const bookingRoutes = require('./routes/booking.routes');
 const authenticationRoutes = require('./routes/authentication.routes');
+const menuRoutes = require('./routes/menu.routes');
 
 mongoose.Promise = global.Promise;
 
@@ -33,6 +34,7 @@ app.use(cors(corsOptions));
 app.use('/customers', customerRoutes);
 app.use('/bookings', bookingRoutes);
 app.use('/auth', authenticationRoutes);
+app.use('/menu', menuRoutes);
 
 // Create a Server
 const server = app.listen(3000, function () {

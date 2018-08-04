@@ -8,7 +8,7 @@
 </button><br>
 
 <span> Select menu date
-<input type="date"/>
+<input type="date" [(ngModel)]="menu.date"/>
 </span><br>
 
 <button>Fill in the fields with a saved menu</button><br>
@@ -16,5 +16,5 @@
 
 <app-add-dishes></app-add-dishes>
 
-<button>Done</button><br>
+<button (click)="saveMenu()">Done</button><br>
 <button>Delete</button><br>
