@@ -1,5 +1,5 @@
-<h5><span class="badge badge-light ">{{customer._id}}</span> -> {{customer.bookingName}} {{customer.bookingSurname}}</h5>
-<div [hidden]="submitted">
+<h5>{{customer.bookingName}} {{customer.bookingSurname}}</h5>
+<div [hidden]="submitted || error">
   <form #detailCustomerForm="ngForm">
 
     <div class="form-group">
@@ -66,4 +66,9 @@
   <div class="btn-group btn-group-sm">
     <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
   </div>
+</div>
+
+<div [hidden]="!error"
+     class="alert alert-danger">
+  {{error}}
 </div>

@@ -6,10 +6,10 @@ const authController = require('../controller/authentication.controller');
 // Create a new Customer is in authentication routes.
 
 // Retrieve all Customer
-app.get('/', authController.auth('admin'), customers.findAll);
+app.get('/', authController.requireAuthBy(['admin']), customers.findAll);
 
 // Retrieve a single Customer by Id
-app.get('/:customerId', customers.findOne);
+app.get('/:customerId', authController.requireAuthBy(['admin']), customers.findOne);
 
 // Update a Customer with Id
 app.put('/', customers.update);

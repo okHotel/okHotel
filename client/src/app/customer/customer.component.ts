@@ -13,7 +13,6 @@ export class CustomerComponent  implements OnInit {
 
     customers: Customer[];
     error: string;
-    token: string;
 
     constructor(private customerService: CustomerService) {}
 
@@ -28,7 +27,7 @@ export class CustomerComponent  implements OnInit {
                     console.log(customers);
                     this.customers = customers
                 }, err => {
-                    this.error = err.statusText;
+                    this.error = err.error.message;
                 }
             );
     }

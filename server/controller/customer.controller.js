@@ -6,15 +6,8 @@ const Customer = require('../model/customer.model.js');
 // FETCH all Customers
 exports.findAll = (req, res) => {
 
-    var token;
-    var payload;
-
-    if (!req.headers.authorization) {
-        return res.status(401).send({message: 'You are not authorized'});
-    }
-
-    token = req.headers.authorization.split(' ')[1];
-
+    checkAuthorization(req);
+    
     Customer.find({})
         .then(customers => {
             res.json(customers);
@@ -27,6 +20,9 @@ exports.findAll = (req, res) => {
 
 // FIND a Customer
 exports.findOne = (req, res) => {
+
+    checkAuthorization(req);
+
     Customer.findById(req.params.customerId)
         .then(customer => {
             if(!customer) {
@@ -91,3 +87,14 @@ exports.delete = (req, res) => {
         });
     });
 };
+
+function checkAuthorization(req) {
+    var token;
+    var payload;
+
+    if (!req.headers.authorization) {
+        return res.status(401).send({message: 'You are not authorized'});
+    }
+
+    token = req.headers.authorization.split(' ')[1];
+}

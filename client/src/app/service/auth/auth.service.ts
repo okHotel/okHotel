@@ -4,37 +4,32 @@ import {Observable} from "rxjs/index";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 
-const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-};
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   private baseUrl = 'http://localhost:3000';
-  private customersUrl = this.baseUrl + '/auth';  // URL to web api
+  private customersUrl = this.baseUrl + '/requireAuthBy';  // URL to web api
   private token: string;
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  };
 
-  constructor(
+
+    constructor(
       private http: HttpClient, private router: Router
   ) {
-
-      const currentUser = localStorage.getItem('token');
-      this.token = currentUser;
-      if (this.token) {
-          httpOptions.headers.append('Authorization', 'Bearer ' + this.token)
-      }
-
-  }
+        let headers = AuthService.getHeaderWithAuthorization();
+        this.httpOptions = {headers}
+    }
 
   login(username: string, password: string) {
-      return this.http.post(`${this.customersUrl}/login`, { username: username, password: password }, httpOptions);
+      return this.http.post(`${this.customersUrl}/login`, { username: username, password: password }, this.httpOptions);
   }
 
   addCustomer (customer: Customer): Observable<Customer> {
-      return this.http.post<Customer>(this.customersUrl, customer, httpOptions);
+      return this.http.post<Customer>(this.customersUrl, customer, this.httpOptions);
   }
 
   setToken(token){
@@ -47,6 +42,15 @@ export class AuthService {
       }
       this.router.navigate(['/login']);
       return false;
+  }
+
+  static getHeaderWithAuthorization(): HttpHeaders {
+      let token = localStorage.getItem('token');
+      let headers: HttpHeaders;
+      if (token) {
+          headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
+      }
+      return headers;
   }
 
 }

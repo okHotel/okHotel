@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Customer } from '../../customer/customer';
+import {AuthService} from "../auth/auth.service";
 
-const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 
 @Injectable({
     providedIn: 'root'
@@ -13,38 +11,34 @@ const httpOptions = {
 export class CustomerService {
     private baseUrl = 'http://localhost:3000';
     private customersUrl = this.baseUrl + '/customers';  // URL to web api
-    private token;
+    private httpOption = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
 
-    constructor(
-        private http: HttpClient
-    ) {
-
-        this.token = localStorage.getItem('token');
-
-        console.log(this.token)
+    constructor(private http: HttpClient) {
+        let headers = AuthService.getHeaderWithAuthorization();
+        this.httpOption = {headers}
     }
 
     getCustomers (): Observable<Customer[]> {
-        let httpOptions = {
-            headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token})
-        };
-        console.log(httpOptions)
-        return this.http.get<Customer[]>(this.customersUrl, httpOptions)
+        console.log(this.httpOption);
+        return this.http.get<Customer[]>(this.customersUrl, this.httpOption)
     }
 
     getCustomer(id: string): Observable<Customer> {
         const url = `${this.customersUrl}/${id}`;
-        return this.http.get<Customer>(url);
+        return this.http.get<Customer>(url, this.httpOption);
     }
 
     deleteCustomer (customer: Customer | string): Observable<Customer> {
         const id = typeof customer === 'string' ? customer : customer._id;
         const url = `${this.customersUrl}/${id}`;
 
-        return this.http.delete<Customer>(url, httpOptions);
+        return this.http.delete<Customer>(url, this.httpOption);
     }
 
     updateCustomer (customer: Customer): Observable<any> {
-        return this.http.put(this.customersUrl, customer, httpOptions);
+        return this.http.put(this.customersUrl, customer, this.httpOption);
     }
+
 }

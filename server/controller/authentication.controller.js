@@ -124,7 +124,7 @@ exports.login = (req, res, next) => {
     });
 };
 
-exports.auth = function(role){
+exports.requireAuthBy = function(roles){
 
     return function(req, res, next){
 
@@ -142,7 +142,7 @@ exports.auth = function(role){
             payload = jwt.verify(token, jwtConfig.jwtSecretKey);
             console.log(payload)
 
-            if (!role || role === payload.role) {
+            if (roles.indexOf(payload.role) > -1) {
                 //pass some user details through in case they are needed
                 req.customer = {
                     customer: payload.sub,
@@ -162,26 +162,3 @@ exports.auth = function(role){
 
 
     }};
-
-
-/*
-exports.auth = (req, res, next) => {
-    console.log(req.headers)
-
-    const bearerHeader = req.headers["authorization"];
-    console.log(bearerHeader.split(" ")[1])
-    console.log(bearerHeader !== 'undefined');
-
-    if (bearerHeader !== 'undefined') {
-        req.token = bearerHeader.split(" ")[1];
-        console.log('dentro')
-        let payload = jwt.verify(bearerHeader.split(" ")[1], jwtConfig.jwtSecretKey);
-        console.log(payload);
-        next();
-    } else {
-        console.log('else')
-        res.sendStatus(403);
-    }
-
-    console.log('fuori')
-};*/
