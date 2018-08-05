@@ -101,11 +101,14 @@ exports.login = (req, res, next) => {
                             role: customer.role
                         };
 
+                        let expiry = new Date();
+                        expiry.setDate(expiry.getDate() + 1); // Il token scade dopo 1 giorno
+
                         res.status(200).json({
                             customer: { username: customer.username, role: customer.role},
                             token: jwt.sign(payload, jwtConfig.jwtSecretKey, {
                                 algorithm: 'HS256',
-                                expiresIn: 1200,
+                                expiresIn: parseInt(expiry.getTime() / 1000),
                             })
                         });
 
