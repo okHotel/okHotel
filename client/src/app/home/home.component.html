@@ -1,11 +1,39 @@
 <app-profile></app-profile>
-<div class="container">
-    <img id="planImage" alt="Hotel plan">
-    <a class="top-left" href="/restaurant" >Restaurant</a>
+<div class="slideShowContainer">
+
+    <div class="slides" [hidden]="slidesBinding[0]">
+        <div class="text">1° Floor</div>
+        <img id="planImage" alt="Hotel plan">
+    </div>
+
+    <div class="slides" [hidden]="slidesBinding[1]">
+        <div class="text">2° Floor</div>
+        <img id="planImage1"  alt="Hotel plan">
+
+    </div>
+
+    <div class="slides" [hidden]="slidesBinding[2]">
+        <div class="text">3° Floor</div>
+        <img id="planImage2" alt="Hotel plan">
+    </div>
+
+    <!--<a class="top-left" href="/restaurant" >Restaurant</a>
     <div class="top-right">Lounge</div>
     <div class="centered-left">Reception</div>
     <div class="centered-right">Coatroom</div>
-    <div class="bottom-center">Entrance</div>
+    <div class="bottom-center">Entrance</div>-->
+
+    <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+    <a class="next" (click)="plusSlides(1)">&#10095;</a>
+
+    <div id="dot-div">
+        <span class="dot" (click)="currentSlide(1)"></span>
+        <span class="dot" (click)="currentSlide(2)"></span>
+        <span class="dot" (click)="currentSlide(3)"></span>
+    </div>
 </div>
+
+
+
 
 

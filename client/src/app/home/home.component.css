@@ -1,18 +1,108 @@
+* {box-sizing:border-box}
 
-.container {
-    position: relative;
+
+.slideShowContainer {
+    /*position: relative;
     text-align: center;
-    color: black;
+    color: black;*/
+    max-width: 90%;
+    position: relative;
+    margin: auto;
+    background-color: #00B7FF;
+
 }
 
 #planImage{
     padding: 23% 23%;
-    /*display: inline-block;*/
     background: url("../../../res/plan_floor.png") no-repeat;
     background-size: contain;
+    margin-left: 25%;
+
 }
 
-.top-left {
+#planImage1{
+    padding: 23% 23%;
+    background: url("../../../res/fiore.png") no-repeat;
+    background-size: contain;
+    margin-left: 25%;
+}
+
+#planImage2{
+    padding: 23% 23%;
+    background: url("../../../res/fiore2.png") no-repeat;
+    background-size: contain;
+    margin-left: 25%;
+}
+
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+#dot-div{
+
+    text-align: center;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+.text{
+    text-align: center;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+/*.top-left {
     position: absolute;
     top: 11%;
     left: 35%;
@@ -40,7 +130,7 @@
 
 .bottom-center {
     position: absolute;
-    bottom: 5%;
+    bottom: 9%;
     left: 48%;
-}
+}*/
 

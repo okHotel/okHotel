@@ -26,6 +26,7 @@ import {CustomerDetailComponent} from "./customer-detail/customer-detail.compone
 import {BookingService} from "./service/booking/booking.service";
 import {AuthService} from "./service/auth/auth.service";
 
+
 const appRoutes: Routes = [
 
     { path: '', component: HomeComponent},
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     { path: 'statistics', component: AdminStatisticsComponent},
     { path: 'customers', component: CustomerComponent },
     { path: 'registration', component: RegistrationComponent },
-    { path: 'customers/:id', component: CustomerDetailComponent },
+    { path: 'customers/:id', component: CustomerDetailComponent }
+
 ];
 
 @NgModule({
