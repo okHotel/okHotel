@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import {Customer} from "../../customer/customer";
 import {Observable} from "rxjs/index";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
 import * as jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements CanActivate {
 
   private baseUrl = 'http://localhost:3000';
   private customersUrl = this.baseUrl + '/auth';  // URL to web api
@@ -36,6 +36,20 @@ export class AuthService {
   setToken(token){
       this.token = token;
   }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+      if (AuthService.isLoggedIn()) {
+          return true;
+      } else {
+          this.router.navigate(['/login'], {
+              queryParams: {
+                  destinationUrl: state.url
+              }
+          });
+          console.log(state.url)
+          return false;
+      }
+    }
 
   static isLoggedIn() {
       if (localStorage.getItem('token')) {

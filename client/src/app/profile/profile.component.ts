@@ -11,19 +11,12 @@ import {AuthService} from "../service/auth/auth.service";
 })
 export class ProfileComponent implements OnInit {
 
-  customer: Customer = new Customer();
+  customer: Customer;
   isCustomerLoggedIn: boolean;
   constructor(private router: Router, private customerService: CustomerService) { }
 
   ngOnInit() {
-    if (this.isLoggedIn()) {
-        this.customerService.getLoggedCustomer().subscribe(res => {
-            this.customer = res;
-            this.isCustomerLoggedIn = true;
-        });
-    } else {
-      this.goToLogin();
-    }
+    this.checkLogin()
   }
 
   goToProfile() {
@@ -44,4 +37,14 @@ export class ProfileComponent implements OnInit {
     return this.isCustomerLoggedIn;
   }
 
+  checkLogin() {
+      if (this.isLoggedIn()) {
+          this.customerService.getLoggedCustomer().subscribe(res => {
+              this.customer = res;
+              this.isCustomerLoggedIn = true;
+          });
+      } else {
+          this.goToLogin();
+      }
+  }
 }
