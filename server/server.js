@@ -33,7 +33,7 @@ app.use(cors(corsOptions));
 
 app.use('/customers', customerRoutes);
 app.use('/bookings', bookingRoutes);
-app.use('/requireAuthBy', authenticationRoutes);
+app.use('/auth', authenticationRoutes);
 
 // Create a Server
 const server = app.listen(3000, function () {

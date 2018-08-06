@@ -30,6 +30,12 @@ export class CustomerService {
         return this.http.get<Customer>(url, this.httpOption);
     }
 
+    getLoggedCustomer(): Observable<Customer> {
+        const id = AuthService.getPayload()._id;
+        const url = `${this.customersUrl}/${id}`;
+        return this.http.get<Customer>(url, this.httpOption);
+    }
+
     deleteCustomer (customer: Customer | string): Observable<Customer> {
         const id = typeof customer === 'string' ? customer : customer._id;
         const url = `${this.customersUrl}/${id}`;

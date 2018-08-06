@@ -9,10 +9,10 @@ const authController = require('../controller/authentication.controller');
 app.get('/', authController.requireAuthBy(['admin']), customers.findAll);
 
 // Retrieve a single Customer by Id
-app.get('/:customerId', authController.requireAuthBy(['customer', 'admin']), customers.findOne);
+app.get('/:customerId/', authController.requireAuthBy(['customer', 'admin']), customers.findOne);
 
 // Update a Customer with Id
-app.put('/', customers.update, authController.requireAuthBy(['customer']));
+app.put('/', customers.update, authController.requireAuthBy(['customer']), customers.update);
 
 // Delete a Customer with Id
 app.delete('/:customerId', authController.requireAuthBy(['customer', 'admin']), customers.delete);

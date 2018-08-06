@@ -11,6 +11,7 @@ import {AuthService} from "../service/auth/auth.service";
 })
 export class LoginComponent implements OnInit {
     isLoginError : boolean = false;
+    isCustomerLoggedIn: boolean;
     username: string;
     password: string;
 
@@ -44,7 +45,11 @@ export class LoginComponent implements OnInit {
     }
 
     logout() {
-        localStorage.removeItem('token')
-        console.log(localStorage);
+        AuthService.logout();
+        this.router.navigate(['/'])
+    }
+
+    isLoggedIn() {
+        this.isCustomerLoggedIn = AuthService.isLoggedIn();
     }
 }

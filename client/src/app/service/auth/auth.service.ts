@@ -3,6 +3,7 @@ import {Customer} from "../../customer/customer";
 import {Observable} from "rxjs/index";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
+import * as jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
 export class AuthService {
 
   private baseUrl = 'http://localhost:3000';
-  private customersUrl = this.baseUrl + '/requireAuthBy';  // URL to web api
+  private customersUrl = this.baseUrl + '/auth';  // URL to web api
   private token: string;
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -36,12 +37,12 @@ export class AuthService {
       this.token = token;
   }
 
-  canActivate() {
+  static isLoggedIn() {
       if (localStorage.getItem('token')) {
           return true;
+      } else {
+          return false;
       }
-      this.router.navigate(['/login']);
-      return false;
   }
 
   static getHeaderWithAuthorization(): HttpHeaders {
@@ -53,4 +54,11 @@ export class AuthService {
       return headers;
   }
 
+  static getPayload() {
+    return this.isLoggedIn() ? jwt_decode(localStorage.getItem('token')) : null;
+  }
+
+  static logout() {
+      localStorage.removeItem('token')
+  }
 }
