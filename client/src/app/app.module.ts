@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { RouterModule, Routes } from '@angular/router';
+import {Router, RouterModule, Routes} from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
@@ -75,4 +75,16 @@ const appRoutes: Routes = [
   providers: [CustomerService, BookingService, AuthService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+    constructor(private router: Router) {}
+
+    ngOnInit() {
+        if (this.isLoggedIn()) {
+            this.goToLogin();
+        }
+    }
+
+    private goToLogin() {
+        this.router.navigateByUrl('/login')
+    }
+}

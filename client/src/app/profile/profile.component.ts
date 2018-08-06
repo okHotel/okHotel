@@ -21,6 +21,8 @@ export class ProfileComponent implements OnInit {
             this.customer = res;
             this.isCustomerLoggedIn = true;
         });
+    } else {
+      this.goToLogin();
     }
   }
 
