@@ -24,8 +24,9 @@ export class MenuService {
   constructor(  private http: HttpClient) { }
 
 
-  getDateMenu(date: Date): Observable<Menu> {
+  getDateMenu(date: String): Observable<Menu> {
       const url = `${this.menuUrl}/${date}`;
+      console.log(url);
       return this.http.get<Menu>(url);
   }
 

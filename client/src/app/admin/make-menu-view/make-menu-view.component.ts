@@ -17,10 +17,11 @@ export class MakeMenuViewComponent implements OnInit {
 
   saveMenu(){}
 
-  updateMenu(date: Date){
-      console.log(date)
+  updateMenu(ddd: Date){
 
-    this.menu.getDateMenu(date)
+    let myDate = '' + ddd;
+
+    this.menu.getDateMenu(myDate)
         .subscribe(
             data => {
 
