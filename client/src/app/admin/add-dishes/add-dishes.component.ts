@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MenuService} from '../../service/menu/menu.service';
+
 
 @Component({
   selector: 'app-add-dishes',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddDishesComponent implements OnInit {
 
-    lunch_dishes = ['pomodoro', 'pesto', 'pollo'];
-    dinner_dishes = ['zuppa', 'insalata di riso', 'pizza', 'caprese'];
-  constructor() { }
+    menu: MenuService
+
+  constructor(menu1: MenuService) {
+        this.menu = menu1;
+  }
 
   ngOnInit() {
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Menu} from './menu';
+import {MenuService} from '../../service/menu/menu.service';
 
 @Component({
   selector: 'app-make-menu-view',
@@ -8,14 +9,27 @@ import {Menu} from './menu';
 })
 export class MakeMenuViewComponent implements OnInit {
 
-  menu = new Menu;
+  date: Date;
 
-  constructor() { }
+  constructor(private menu: MenuService) { }
 
   ngOnInit() {
   }
 
-    saveMenu(){
-menu.
-    }
+  saveMenu(){}
+
+  updateMenu(date: Date){
+   // console.log(date)
+    this.menu.getDateMenu(date)
+        .subscribe(
+            data => {
+                console.log("DB OK");
+              this.menu.setLunchDishes(data.lunch_dishes);
+              this.menu.setDinnerDishes(data.dinner_dishes);
+            },
+
+        error => {
+            console.log("DB error");
+        });
+  }
 }

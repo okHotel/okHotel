@@ -9,7 +9,7 @@ const menu = require('../controller/menu.controller.js');
 app.get('/', menu.findAll);
 
 // Retrieve a single Customer by Id
-app.get('/:customerId', menu.findOne);
+app.get('/:date', menu.findOne);
 
 //Update a Customer with Id
 app.put('/createMenu', menu.create);

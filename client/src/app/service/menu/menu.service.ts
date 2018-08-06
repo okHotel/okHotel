@@ -1,9 +1,39 @@
 import { Injectable } from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Menu} from '../../admin/make-menu-view/menu';
+
+
+
+const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
+
 export class MenuService {
 
-  constructor() { }
+  private baseUrl = 'http://localhost:3000';
+  private menuUrl = this.baseUrl + '/menu';  // URL to web api
+
+  private lunchDishes: string[];
+  private dinnerDishes: string[];
+
+  constructor(  private http: HttpClient) { }
+
+
+  getDateMenu(date: Date): Observable<Menu> {
+      const url = `${this.menuUrl}/${date}`;
+      return this.http.get<Menu>(url);
+  }
+
+  setLunchDishes(ld: string[]){this.lunchDishes = ld;}
+  getLunchDishes(){return this.lunchDishes;}
+
+  setDinnerDishes(dd: string[]){this.dinnerDishes = dd;}
+  getDinnerDishes(){return this.dinnerDishes;}
+
+
 }
