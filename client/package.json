@@ -24,6 +24,7 @@
     "@angular/router": "^6.0.9",
     "bcrypt-nodejs": "0.0.3",
     "core-js": "^2.5.4",
+    "jwt-decode": "^2.2.0",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.2.2",
     "zone.js": "^0.8.26"

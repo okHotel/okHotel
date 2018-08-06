@@ -2,9 +2,10 @@ var express = require('express');
 var app = express.Router();
 
 const booking = require('../controller/booking.controller.js');
+const authController = require('../controller/authentication.controller');
 
 // Retrieve all Bookings
-app.get('/', booking.findAll);
+app.get('/', authController.requireAuthBy(['admin']), booking.findAll);
 
 // Retrieve a single booking by Id
 app.get('/roomsNumber', booking.findRoomsNumber);

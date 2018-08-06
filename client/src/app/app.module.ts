@@ -41,6 +41,7 @@ const appRoutes: Routes = [
     { path: 'customers', component: CustomerComponent },
     { path: 'registration', component: RegistrationComponent },
     { path: 'customers/:id', component: CustomerDetailComponent },
+    { path: 'profile', component: ProfileComponent },
 ];
 
 @NgModule({

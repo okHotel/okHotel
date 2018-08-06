@@ -11,6 +11,7 @@ import {AuthService} from "../service/auth/auth.service";
 })
 export class LoginComponent implements OnInit {
     isLoginError : boolean = false;
+    isCustomerLoggedIn: boolean;
     username: string;
     password: string;
 
@@ -20,9 +21,18 @@ export class LoginComponent implements OnInit {
     }
 
     login(){
-        this.authService.login(this.username, this.password).subscribe((data : any)=>{
+        this.authService.login(this.username, this.password).subscribe((user : any)=>{
+            let token = user && user.token;
+            if (token) {
+                // set token property
+                this.authService.setToken(token);
+                // store username and jwt token in local storage to keep user     //logged in between page refreshes
+                localStorage.setItem('token', token );
+
+                console.log(localStorage);
+
                 this.router.navigate(['/']);
-            },
+            }},
             (err : HttpErrorResponse)=>{
                 this.isLoginError = true;
                 // print login failed due to wrong username or password
@@ -30,4 +40,16 @@ export class LoginComponent implements OnInit {
             });
     }
 
+    navigateToRegistration() {
+        this.router.navigate(['/registration']);
+    }
+
+    logout() {
+        AuthService.logout();
+        this.router.navigate(['/'])
+    }
+
+    isLoggedIn() {
+        this.isCustomerLoggedIn = AuthService.isLoggedIn();
+    }
 }

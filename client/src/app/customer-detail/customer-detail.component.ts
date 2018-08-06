@@ -17,6 +17,7 @@ export class CustomerDetailComponent implements OnInit {
     message: string;
     customerNeeds: string[] = [];
     need: string;
+    error: string;
 
     constructor(
         private customerService: CustomerService,
@@ -28,9 +29,11 @@ export class CustomerDetailComponent implements OnInit {
         const id = this.route.snapshot.paramMap.get('id');
         this.customerService.getCustomer(id)
             .subscribe(customer => {
-                this.customer = customer;
-                this.customerNeeds = customer.otherNeeds;
-            });
+                    this.customer = customer;
+                    this.customerNeeds = customer.otherNeeds;
+                }, err => {
+                    this.error = err.error.message;
+                });
     }
 
     update(): void {

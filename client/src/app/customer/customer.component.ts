@@ -9,9 +9,10 @@ import { CustomerService } from '../service/customer/customer.service';
     styleUrls: ['./customer.component.css']
 })
 
-export class CustomerComponent  implements OnInit {
+export class CustomerComponent implements OnInit {
 
     customers: Customer[];
+    error: string;
 
     constructor(private customerService: CustomerService) {}
 
@@ -25,6 +26,8 @@ export class CustomerComponent  implements OnInit {
                 customers => {
                     console.log(customers);
                     this.customers = customers
+                }, err => {
+                    this.error = err.error.message;
                 }
             );
     }

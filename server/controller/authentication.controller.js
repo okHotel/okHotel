@@ -1,38 +1,77 @@
+const express = require('express');
+const app = express.Router();
+
 const Customer = require('../model/customer.model.js');
 const bcrypt   = require('bcrypt-nodejs');
+const jwt = require('jsonwebtoken');
+const jwtConfig = require('../config/jwt');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+
+function generateToken(customer){
+    return jwt.sign({ customer: customer }, authConfig.secret, {
+        expiresIn: 10080
+    });
+}
+
+function setCustomerInfo(request){
+    return request;
+}
 
 // POST a Customer
-exports.create = (req, res) => {
+exports.create = (req, res, next) => {
     // Create a Customer
 
-    const SALT_FACTOR = 5;
-    bcrypt.genSalt(SALT_FACTOR, function(err, salt){
+    if(!req.body.username){
+        return res.status(422).send({error: 'You must enter an username'});
+    }
+    if(!req.body.password){
+        return res.status(422).send({error: 'You must enter a password'});
+    }
 
-        if(err){
-            return next(err);
+    Customer.findOne({username: req.body.username}, function(err, existingCustomer) {
+        if(existingCustomer){
+            return res.status(422).send({error: 'That username is already in use'});
         }
-        bcrypt.hash(req.body.password, salt, null, function(err, hash) {
-            if (err) {
-                return next(err);
-            }
-            const customer = new Customer(req.body);
-            customer.password = hash;
+        const SALT_FACTOR = 5;
+        bcrypt.genSalt(SALT_FACTOR, function(err, salt){
 
-            // Save a Customer in the MongoDB
-            customer.save()
-                .then(data => {
-                    res.json(data);
-                }).catch(err => {
-                console.log(err);
-                res.status(500).json({
-                    msg: err.message
+            if(err){
+                return res.json( {
+                    msg: err
                 });
+            }
+            bcrypt.hash(req.body.password, salt, null, function(err, hash) {
+                if (err) {
+                    return res.json( {
+                        msg: err
+                    });
+                }
+                const customer = new Customer(req.body);
+                customer.password = hash;
+
+                // Save a Customer in the MongoDB
+                customer.save()
+                    .then(data => {
+                        const userInfo = setUserInfo(existingCustomer);
+
+                        res.status(201).json({
+                            token: 'JWT ' + generateToken(userInfo),
+                            user: userInfo
+                        })
+                    }).catch(err => {
+                        console.log(err);
+                        res.status(500).json({
+                            msg: err.message
+                        });
+                    });
             });
         });
     });
 };
 
-exports.login = (req, res) => {
+exports.login = (req, res, next) => {
     Customer.findOne({username: req.body.username})
         .then(customer => {
             if(!customer) {
@@ -42,12 +81,38 @@ exports.login = (req, res) => {
             }
             bcrypt.compare(req.body.password, customer.password, function(err, isMatch){
 
+                let payload;
+
+                if (err) {
+                    return next(err);
+                }
+
+                if (!isMatch) {
+                    res.status(401).send({message: 'Invalid email or password.'});
+                    return;
+                }
+
                 if(err){
                     return cb(err);
                 } else {
                     if (isMatch) {
-                        console.log(customer.username + ' you are logged in!');
-                        res.json(customer.username + ' you are logged in!');
+                        payload = {
+                            _id: customer._id,
+                            sub: customer.username,
+                            role: customer.role
+                        };
+
+                        let expiry = new Date();
+                        expiry.setDate(expiry.getDate() + 1); // Il token scade dopo 1 giorno
+
+                        res.status(200).json({
+                            customer: { username: customer.username, role: customer.role},
+                            token: jwt.sign(payload, jwtConfig.jwtSecretKey, {
+                                algorithm: 'HS256',
+                                expiresIn: parseInt(expiry.getTime() / 1000),
+                            })
+                        });
+
                     }
                 }
             });
@@ -61,4 +126,43 @@ exports.login = (req, res) => {
             msg: "Error retrieving Customer with username " + req.body.username
         });
     });
-}
+};
+
+exports.requireAuthBy = function(roles){
+
+    return function(req, res, next){
+
+        var token;
+        var payload;
+        let authHeader = req.headers["authorization"];
+
+        if (!authHeader) {
+            return res.status(401).send({message: 'You are not authorized1'});
+        }
+
+        token = authHeader.split(" ")[1];
+        console.log(token)
+        try {
+            payload = jwt.verify(token, jwtConfig.jwtSecretKey);
+            console.log(roles.indexOf(payload.role) )
+
+            if (roles.indexOf(payload.role) > -1) {
+                //pass some user details through in case they are needed
+                req.customer = {
+                    customer: payload.sub,
+                    role: payload.role
+                };
+                next();
+            } else {
+                res.status(401).send({message: 'You are not authorized'});
+            }
+        } catch (e) {
+            if (e.name === 'TokenExpiredError') {
+                res.status(401).send({message: 'Token Expired'});
+            } else {
+                res.status(401).send({message: e});
+            }
+        }
+
+
+    }};
