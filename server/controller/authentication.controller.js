@@ -97,6 +97,7 @@ exports.login = (req, res, next) => {
                 } else {
                     if (isMatch) {
                         payload = {
+                            _id: customer._id,
                             sub: customer.username,
                             role: customer.role
                         };
@@ -143,7 +144,7 @@ exports.requireAuthBy = function(roles){
         console.log(token)
         try {
             payload = jwt.verify(token, jwtConfig.jwtSecretKey);
-            console.log(payload)
+            console.log(roles.indexOf(payload.role) )
 
             if (roles.indexOf(payload.role) > -1) {
                 //pass some user details through in case they are needed

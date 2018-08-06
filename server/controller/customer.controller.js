@@ -5,9 +5,6 @@ const Customer = require('../model/customer.model.js');
 
 // FETCH all Customers
 exports.findAll = (req, res) => {
-
-    checkAuthorization(req);
-    
     Customer.find({})
         .then(customers => {
             res.json(customers);
@@ -21,7 +18,14 @@ exports.findAll = (req, res) => {
 // FIND a Customer
 exports.findOne = (req, res) => {
 
-    checkAuthorization(req);
+    let authHeader = req.headers["authorization"];
+
+    let token = authHeader.split(" ")[1];
+    let payload = jwt.verify(token, jwtConfig.jwtSecretKey);
+
+    if (req.params.customerId !== payload._id && payload.role !== 'admin') {
+        return res.status(401).send({message: 'You are not authorized'});
+    }
 
     Customer.findById(req.params.customerId)
         .then(customer => {
@@ -46,6 +50,18 @@ exports.findOne = (req, res) => {
 // UPDATE a Customer
 exports.update = (req, res) => {
     // Find customer and update it
+
+    let authHeader = req.headers["authorization"];
+
+    let token = authHeader.split(" ")[1];
+    let payload = jwt.verify(token, jwtConfig.jwtSecretKey);
+    console.log(payload)
+    console.log(req.params)
+    console.log(payload._id)
+    if (req.params.customerId !== payload._id) {
+        return res.status(401).send({message: 'You are not authorized'});
+    }
+
     Customer.findByIdAndUpdate(req.body._id, req.body, {new: true})
         .then(customer => {
             if(!customer) {
@@ -68,6 +84,18 @@ exports.update = (req, res) => {
 
 // DELETE a Customer
 exports.delete = (req, res) => {
+
+    let authHeader = req.headers["authorization"];
+
+    let token = authHeader.split(" ")[1];
+    let payload = jwt.verify(token, jwtConfig.jwtSecretKey);
+    console.log(payload)
+    console.log(req.params)
+    console.log(payload._id)
+    if (req.params.customerId !== payload._id || payload.role !== 'admin') {
+        return res.status(401).send({message: 'You are not authorized'});
+    }
+
     Customer.findByIdAndRemove(req.params.customerId)
         .then(customer => {
             if(!customer) {
@@ -87,14 +115,3 @@ exports.delete = (req, res) => {
         });
     });
 };
-
-function checkAuthorization(req) {
-    var token;
-    var payload;
-
-    if (!req.headers.authorization) {
-        return res.status(401).send({message: 'You are not authorized'});
-    }
-
-    token = req.headers.authorization.split(' ')[1];
-}
