@@ -18,8 +18,8 @@ export class MenuService {
   private baseUrl = 'http://localhost:3000';
   private menuUrl = this.baseUrl + '/menu';  // URL to web api
 
-  private lunchDishes: string[];
-  private dinnerDishes: string[];
+  public lunchDishes: string[];
+  public dinnerDishes: string[];
 
   constructor(  private http: HttpClient) { }
 
@@ -30,10 +30,9 @@ export class MenuService {
   }
 
   setLunchDishes(ld: string[]){this.lunchDishes = ld;}
-  getLunchDishes(){return this.lunchDishes;}
 
   setDinnerDishes(dd: string[]){this.dinnerDishes = dd;}
-  getDinnerDishes(){return this.dinnerDishes;}
+
 
 
 }

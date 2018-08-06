@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {MenuService} from '../../service/menu/menu.service';
 
 
@@ -17,7 +17,6 @@ export class AddDishesComponent implements OnInit {
 
   ngOnInit() {
   }
-
 
 
 }

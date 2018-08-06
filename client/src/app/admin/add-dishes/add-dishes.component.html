@@ -1,17 +1,21 @@
 
 <h3>Lunch</h3>
-<div *ngFor="let dish of menu.getLunchDishes()">
+
+<div *ngFor="let dish of menu.lunchDishes">
   <p>{{dish}}</p>
 </div>
+
 <input type="text"/><br>
 <button>Add</button><br>
 
 
 
 <h3>Dinner</h3>
-<div *ngFor="let dish of menu.getDinnerDishes()">
+<div *ngFor="let dish of menu.dinnerDishes">
   <p>{{dish}}</p>
 </div>
+
+
 <input type="text"/><br>
 <button>Add</button><br>
 
