@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {PlanService} from '../service/plans/plan.service';
 
 @Component({
     selector: 'app-home',
@@ -7,12 +8,32 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HomeComponent implements OnInit{
 
+    floor: String[] = [];
+    image: String[] = [];
     slideIndex = 1;
     slidesBinding = [false, true, true];
 
+    constructor(private planService: PlanService){}
+
+
+    //per ogni record nel db,
     ngOnInit() {
-        this.showSlides(this.slideIndex);
+
+        //prendo i path delle immagini e il # di floor dal db e li metto in un array
+        this.planService.getPlans()
+            .subscribe( plans => {
+                plans.forEach( (obj) => {
+                    this.image.push(obj.imagePath);
+                    this.floor.push(obj.floor);
+                })
+            });
+
+        console.log(this.image);
+        console.log(this.floor);
+        //this.showSlides(this.slideIndex);
+
     }
+
 
      // Next/previous controls
      plusSlides(n) {

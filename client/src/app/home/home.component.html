@@ -2,20 +2,20 @@
 <div class="slideShowContainer">
 
     <div class="slides" [hidden]="slidesBinding[0]">
-        <div class="text">1° Floor</div>
-        <img id="planImage" alt="Hotel plan">
+        <div class="text" [innerHTML]="floor[0]"> </div>
+        <img class="planImage" alt="Hotel plan" [src]="image[0]">
     </div>
 
     <div class="slides" [hidden]="slidesBinding[1]">
-        <div class="text">2° Floor</div>
-        <img id="planImage1"  alt="Hotel plan">
-
+        <div class="text" [innerHTML]="floor[1]"></div>
+        <img class="planImage" alt="Hotel plan" [src]="image[1]">
     </div>
 
     <div class="slides" [hidden]="slidesBinding[2]">
-        <div class="text">3° Floor</div>
-        <img id="planImage2" alt="Hotel plan">
+        <div class="text" [innerHTML]="floor[2]"></div>
+        <img class="planImage" alt="Hotel plan" [src]="image[2]">
     </div>
+
 
     <!--<a class="top-left" href="/restaurant" >Restaurant</a>
     <div class="top-right">Lounge</div>

@@ -31,6 +31,8 @@ export class CustomerDetailComponent implements OnInit {
                 this.customer = customer;
                 this.customerNeeds = customer.otherNeeds;
             });
+
+        console.log(this.customer)
     }
 
     update(): void {

@@ -8,32 +8,18 @@
     max-width: 90%;
     position: relative;
     margin: auto;
-    background-color: #00B7FF;
+
 
 }
 
-#planImage{
-    padding: 23% 23%;
-    background: url("../../../res/plan_floor.png") no-repeat;
+.planImage{
+    padding: 3% 3%;
+    background: no-repeat;
+    width: 50%;
     background-size: contain;
-    margin-left: 25%;
+    margin-left: 26%;
 
 }
-
-#planImage1{
-    padding: 23% 23%;
-    background: url("../../../res/fiore.png") no-repeat;
-    background-size: contain;
-    margin-left: 25%;
-}
-
-#planImage2{
-    padding: 23% 23%;
-    background: url("../../../res/fiore2.png") no-repeat;
-    background-size: contain;
-    margin-left: 25%;
-}
-
 
 .prev, .next {
     cursor: pointer;
@@ -58,7 +44,7 @@
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
+    background-color: dimgrey;
 }
 
 #dot-div{
@@ -75,6 +61,7 @@
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
+
 }
 
 .active, .dot:hover {
