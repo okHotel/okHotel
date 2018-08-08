@@ -27,13 +27,21 @@ export class CustomerService {
 
     getCustomer(id: string): Observable<Customer> {
         const url = `${this.customersUrl}/${id}`;
-        return this.http.get<Customer>(url, this.httpOption);
+
+        let httpHeaders = AuthService.getHeaderWithAuthorization();
+        console.log({headers: httpHeaders});
+
+        return this.http.get<Customer>(url, {headers: httpHeaders});
     }
 
     getLoggedCustomer(): Observable<Customer> {
         const id = AuthService.getPayload()._id;
         const url = `${this.customersUrl}/${id}`;
-        return this.http.get<Customer>(url, this.httpOption);
+
+        let httpHeaders = AuthService.getHeaderWithAuthorization();
+        console.log({headers: httpHeaders});
+
+        return this.http.get<Customer>(url, {headers: httpHeaders});
     }
 
     deleteCustomer (customer: Customer | string): Observable<Customer> {
