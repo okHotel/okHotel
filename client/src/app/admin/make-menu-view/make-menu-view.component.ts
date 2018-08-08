@@ -17,9 +17,9 @@ export class MakeMenuViewComponent implements OnInit {
 
   saveMenu(){}
 
-  updateMenu(ddd: Date){
+  updateMenu(d: Date){
 
-    let myDate = '' + ddd;
+    let myDate = '' + d;
 
     this.menu.getDateMenu(myDate)
         .subscribe(

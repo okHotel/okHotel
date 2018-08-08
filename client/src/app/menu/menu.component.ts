@@ -1,27 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {HandleHeaderService} from '../handleHeader.service';
+import {MenuService} from '../service/menu/menu.service';
+import {Menu} from '../admin/make-menu-view/menu';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+    selector: 'app-menu',
+    templateUrl: './menu.component.html',
+    styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private router: Router, private handleHeader: HandleHeaderService) { }
+    lunch_dishes: String[];
+    dinner_dishes: String[];
 
-  ngOnInit() {
-      this.handleHeader.setState(true);
-  }
+    constructor(private router: Router, private handleHeader: HandleHeaderService, private menu: MenuService) { }
 
-  home() {
+    ngOnInit() {
 
-    this.router.navigateByUrl('/home' );
-  }
+        this.menu.getDateMenu("2018-08-07T22:00:00.000Z").subscribe(
+            data => {
+              console.log("ok");
+                data.lunch_dishes.forEach(x => this.lunch_dishes.push(x));
+                data.dinner_dishes.forEach(x => this.dinner_dishes.push(x));
+            },
+            error => {console.log(error)}
+        );
+        this.handleHeader.setState(true);
+    }
 
-  addVariations(){
-    this.router.navigateByUrl('/menu-variations' );
-  }
+    home() {
+
+        this.router.navigateByUrl('/home' );
+    }
+
+    addVariations(){
+        this.router.navigateByUrl('/menu-variations' );
+    }
 
 }
