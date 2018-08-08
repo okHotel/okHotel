@@ -1,5 +1,5 @@
 <div [hidden]="!isCustomerLoggedIn" >
-    <a id="profileLink" (click)="goToProfile()">{{customer.bookingName}} {{customer.bookingSurname}}</a>
+    <a id="profileLink" (click)="goToProfile()">{{customer?.bookingName}} {{customer?.bookingSurname}}</a>
     <!--<button id="profileButton" alt="The profile icon" (click)="profile()"></button>-->
     <button>
     <i class="material-icons">account_circle</i>

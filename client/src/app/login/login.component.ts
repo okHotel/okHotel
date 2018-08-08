@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../service/customer/customer.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from "../service/auth/auth.service";
 
 @Component({
@@ -14,10 +14,14 @@ export class LoginComponent implements OnInit {
     isCustomerLoggedIn: boolean;
     username: string;
     password: string;
+    destinationUrl: string = '';
 
-    constructor(private customerService: CustomerService, private authService: AuthService, private router : Router) { }
+    constructor(private customerService: CustomerService, private authService: AuthService,
+                private router : Router, private route: ActivatedRoute) { }
 
     ngOnInit() {
+        this.route.queryParams
+            .subscribe(params => this.destinationUrl = params['destinationUrl'] || '/');
     }
 
     login(){
@@ -31,7 +35,7 @@ export class LoginComponent implements OnInit {
 
                 console.log(localStorage);
 
-                this.router.navigate(['/']);
+                this.router.navigate([this.destinationUrl]);
             }},
             (err : HttpErrorResponse)=>{
                 this.isLoginError = true;

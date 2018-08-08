@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { RouterModule, Routes } from '@angular/router';
+import {Router, RouterModule, Routes} from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
@@ -27,20 +27,19 @@ import {BookingService} from "./service/booking/booking.service";
 import {AuthService} from "./service/auth/auth.service";
 
 const appRoutes: Routes = [
-
-    { path: '', component: HomeComponent},
-    { path: 'login', component:   LoginComponent},
-    { path: 'restaurant', component: MenuComponent},
-    { path: 'menu-variations', component: MenuVariationsComponent},
-    { path: 'menu', component: MenuComponent},
-    { path: 'admin-profile', component: AdminProfileComponent},
-    { path: 'make-menu', component: MakeMenuViewComponent},
-    { path: 'make-variation', component: AddVariationComponent},
-    { path: 'pantry', component: PantryComponent},
-    { path: 'statistics', component: AdminStatisticsComponent},
-    { path: 'customers', component: CustomerComponent },
+    { path: '', component: HomeComponent, canActivate: [AuthService]},
+    { path: 'login', component: LoginComponent},
+    { path: 'restaurant', component: MenuComponent, canActivate: [AuthService]},
+    { path: 'menu-variations', component: MenuVariationsComponent, canActivate: [AuthService]},
+    { path: 'menu', component: MenuComponent, canActivate: [AuthService]},
+    { path: 'admin-profile', component: AdminProfileComponent, canActivate: [AuthService]},
+    { path: 'make-menu', component: MakeMenuViewComponent, canActivate: [AuthService]},
+    { path: 'make-variation', component: AddVariationComponent, canActivate: [AuthService]},
+    { path: 'pantry', component: PantryComponent, canActivate: [AuthService]},
+    { path: 'statistics', component: AdminStatisticsComponent, canActivate: [AuthService]},
+    { path: 'customers', component: CustomerComponent, canActivate: [AuthService] },
     { path: 'registration', component: RegistrationComponent },
-    { path: 'customers/:id', component: CustomerDetailComponent },
+    { path: 'customers/:id', component: CustomerDetailComponent, canActivate: [AuthService] },
     { path: 'profile', component: ProfileComponent },
 ];
 
@@ -75,4 +74,4 @@ const appRoutes: Routes = [
   providers: [CustomerService, BookingService, AuthService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
