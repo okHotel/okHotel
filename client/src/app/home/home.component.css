@@ -89,35 +89,38 @@
     from {opacity: .4}
     to {opacity: 1}
 }
-/*.top-left {
+
+#restaurant {
     position: absolute;
-    top: 11%;
-    left: 35%;
+    top: 23%;
+    left: 36%;
 }
 
-.top-right {
+#lounge {
     position: absolute;
-    top: 13%;
+    top: 21%;
     right: 30%;
 }
 
-.centered-left {
+#reception {
     position: absolute;
-    top: 45%;
-    left: 33%;
+    top: 50%;
+    left: 36%;
     transform: translate(-50%, -50%);
 }
 
-.centered-right {
+#coatroom {
     position: absolute;
-    top: 45%;
-    left: 64%;
+    top: 50%;
+    left: 62%;
     transform: translate(50%, 50%);
 }
 
-.bottom-center {
+#entrance {
     position: absolute;
-    bottom: 9%;
+    bottom: 16%;
     left: 48%;
-}*/
+}
+
+
 
