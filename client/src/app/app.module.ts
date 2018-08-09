@@ -26,6 +26,7 @@ import {CustomerDetailComponent} from "./customer-detail/customer-detail.compone
 import {BookingService} from "./service/booking/booking.service";
 import {AuthService} from "./service/auth/auth.service";
 
+
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
     { path: 'login', component: LoginComponent},
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
     { path: 'customers', component: CustomerComponent, canActivate: [AuthService] },
     { path: 'registration', component: RegistrationComponent },
     { path: 'customers/:id', component: CustomerDetailComponent, canActivate: [AuthService] },
-    { path: 'profile', component: ProfileComponent },
+    { path: 'profile', component: ProfileComponent }
 ];
 
 @NgModule({

@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
             (err : HttpErrorResponse)=>{
                 this.isLoginError = true;
                 // print login failed due to wrong username or password
+                console.log("errore");
                 console.log(err)
             });
     }
