@@ -18,15 +18,14 @@ export class MenuService {
   private baseUrl = 'http://localhost:3000';
   private menuUrl = this.baseUrl + '/menu';  // URL to web api
 
-  public lunchDishes: string[];
-  public dinnerDishes: string[];
+  public lunchDishes: string[] = [];
+  public dinnerDishes: string[] = [];
 
   constructor(  private http: HttpClient) { }
 
 
   getDateMenu(date: String): Observable<Menu> {
       const url = `${this.menuUrl}/${date}`;
-      console.log(url);
       return this.http.get<Menu>(url);
   }
 
@@ -34,6 +33,9 @@ export class MenuService {
 
   setDinnerDishes(dd: string[]){this.dinnerDishes = dd;}
 
-
+  addLunchDish(dish: string){
+      console.log(dish);
+      this.lunchDishes.push(dish);}
+  addDinnerDish(dish: string){this.dinnerDishes.push(dish);}
 
 }

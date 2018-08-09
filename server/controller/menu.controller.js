@@ -36,7 +36,6 @@ exports.findAll = (req, res) => {
 // FIND a menu
 exports.findOne = (req, res) => {
     date1 =  req.params.date;
-    console.log("qui");
     Menu.findOne({date: date1})
         .then(menu => {
             if(!menu) {

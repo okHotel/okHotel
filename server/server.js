@@ -11,6 +11,7 @@ const mongoose = require('mongoose');
 const customerRoutes = require('./routes/customer.routes');
 const bookingRoutes = require('./routes/booking.routes');
 const authenticationRoutes = require('./routes/authentication.routes');
+const menuRoutes = require('./routes/menu.routes');
 const planRoutes = require('./routes/plans.routes');
 
 

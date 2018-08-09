@@ -1,22 +1,38 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {MenuService} from '../../service/menu/menu.service';
+import {connectableObservableDescriptor} from 'rxjs/internal/observable/ConnectableObservable';
 
 
 @Component({
-  selector: 'app-add-dishes',
-  templateUrl: './add-dishes.component.html',
-  styleUrls: ['./add-dishes.component.css']
+    selector: 'app-add-dishes',
+    templateUrl: './add-dishes.component.html',
+    styleUrls: ['./add-dishes.component.css']
 })
 export class AddDishesComponent implements OnInit {
 
-    menu: MenuService
+    lunch: string;
+    dinner: string;
 
-  constructor(menu1: MenuService) {
-        this.menu = menu1;
-  }
+    constructor(public menu: MenuService) {
 
-  ngOnInit() {
-  }
+    }
 
+    ngOnInit() {
+    }
 
+    addLunchDish(){
+        this.menu.addLunchDish(this.lunch);
+    }
+
+    addDinnerDish(){
+        this.menu.addDinnerDish(this.dinner);
+    }
+
+    saveLunch(event: any){
+        this.lunch = event.target.value;
+    }
+
+    saveDinner(event: any){
+        this.dinner = event.target.value;
+    }
 }

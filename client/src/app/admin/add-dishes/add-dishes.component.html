@@ -5,8 +5,8 @@
   <p>{{dish}}</p>
 </div>
 
-<input type="text"/><br>
-<button>Add</button><br>
+<input type="text" (keyup)="saveLunch($event)"/><br>
+<button (click)="addLunchDish()">Add</button><br>
 
 
 
@@ -16,6 +16,6 @@
 </div>
 
 
-<input type="text"/><br>
-<button>Add</button><br>
+<input type="text" (keyup)="saveDinner($event)"/><br>
+<button (click)="addDinnerDish()">Add</button><br>
 
