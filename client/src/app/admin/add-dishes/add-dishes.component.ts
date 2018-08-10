@@ -10,29 +10,32 @@ import {connectableObservableDescriptor} from 'rxjs/internal/observable/Connecta
 })
 export class AddDishesComponent implements OnInit {
 
-    lunch: string;
-    dinner: string;
+    dish = "";
 
-    constructor(public menu: MenuService) {
+    constructor(public menu: MenuService) {}
 
-    }
+    ngOnInit() {}
 
-    ngOnInit() {
+    composeDish(event: any){
+        this.dish = event.target.value;
     }
 
     addLunchDish(){
-        this.menu.addLunchDish(this.lunch);
+        this.menu.addLunchDish(this.dish);
     }
+
+    deleteLunchDish(dish: string){
+        console.log(dish);
+        this.menu.deleteLunchDish(dish);
+    }
+
 
     addDinnerDish(){
-        this.menu.addDinnerDish(this.dinner);
+        this.menu.addDinnerDish(this.dish);
     }
 
-    saveLunch(event: any){
-        this.lunch = event.target.value;
+    deleteDinnerDish(dish: string){
+        this.menu.deleteDinnerDish(dish);
     }
 
-    saveDinner(event: any){
-        this.dinner = event.target.value;
-    }
 }

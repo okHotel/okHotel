@@ -2,41 +2,43 @@ import { Component, OnInit } from '@angular/core';
 import {Menu} from './menu';
 import {MenuService} from '../../service/menu/menu.service';
 @Component({
-  selector: 'app-make-menu-view',
-  templateUrl: './make-menu-view.component.html',
-  styleUrls: ['./make-menu-view.component.css']
+    selector: 'app-make-menu-view',
+    templateUrl: './make-menu-view.component.html',
+    styleUrls: ['./make-menu-view.component.css']
 })
 export class MakeMenuViewComponent implements OnInit {
 
-  date: Date;
+    dateMenu: Date;
 
-  constructor(private menu: MenuService) { }
+    constructor(private menu: MenuService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  saveMenu(){}
+    saveMenu(){}
 
-  updateMenu(d: Date){
+    serachDateMenu(event: any){
 
-    let myDate = '' + d;
+        this.dateMenu = event.target.value;
+        let stringDate = '' + event.target.value;
 
-    this.menu.getDateMenu(myDate)
-        .subscribe(
-            data => {
+        this.menu.getDateMenu(stringDate)
+            .subscribe(
+                data => {
 
-            console.log("DB OK");
-            console.log(data);
+                    console.log("DB OK");
 
-              this.menu.setLunchDishes(data.lunch_dishes);
-              this.menu.setDinnerDishes(data.dinner_dishes);
+                    this.menu.setLunchDishes(data.lunch_dishes);
+                    this.menu.setDinnerDishes(data.dinner_dishes);
 
-            },
+                },
 
-        error => {
-            console.log("DB error");
-        });
+                error => {
+                    console.log("DB error");
+                });
 
 
-  }
+    }
+
+    deleteMenu(){}
 }

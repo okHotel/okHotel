@@ -15,27 +15,32 @@ const httpOptions = {
 
 export class MenuService {
 
-  private baseUrl = 'http://localhost:3000';
-  private menuUrl = this.baseUrl + '/menu';  // URL to web api
+    private baseUrl = 'http://localhost:3000';
+    private menuUrl = this.baseUrl + '/menu';  // URL to web api
 
-  public lunchDishes: string[] = [];
-  public dinnerDishes: string[] = [];
+    public lunchDishes: string[] = [];
+    public dinnerDishes: string[] = [];
 
-  constructor(  private http: HttpClient) { }
+    constructor(  private http: HttpClient) { }
 
 
-  getDateMenu(date: String): Observable<Menu> {
-      const url = `${this.menuUrl}/${date}`;
-      return this.http.get<Menu>(url);
-  }
+    getDateMenu(date: String): Observable<Menu> {
+        const url = `${this.menuUrl}/${date}`;
+        return this.http.get<Menu>(url);
+    }
 
-  setLunchDishes(ld: string[]){this.lunchDishes = ld;}
+    setLunchDishes(ld: string[]){this.lunchDishes = ld;}
 
-  setDinnerDishes(dd: string[]){this.dinnerDishes = dd;}
+    addLunchDish(dish: string){this.lunchDishes.push(dish);}
 
-  addLunchDish(dish: string){
-      console.log(dish);
-      this.lunchDishes.push(dish);}
-  addDinnerDish(dish: string){this.dinnerDishes.push(dish);}
+    deleteLunchDish(dish: string){this.lunchDishes = this.lunchDishes.filter(x => x != dish);}
+    
+
+    setDinnerDishes(dd: string[]){this.dinnerDishes = dd;}
+
+    addDinnerDish(dish: string){this.dinnerDishes.push(dish);}
+
+    deleteDinnerDish(dish: string){this.dinnerDishes = this.dinnerDishes.filter(x => x != dish);}
+
 
 }

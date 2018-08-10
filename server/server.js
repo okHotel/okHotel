@@ -38,6 +38,7 @@ app.use('/customers', customerRoutes);
 app.use('/bookings', bookingRoutes);
 app.use('/auth', authenticationRoutes);
 app.use('/menu', menuRoutes);
+app.use('/plan', planRoutes);
 
 // Create a Server
 const server = app.listen(3000, function () {
