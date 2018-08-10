@@ -18,7 +18,8 @@ export class MenuComponent implements OnInit {
 
     ngOnInit() {
 
-        this.menu.getDateMenu("2018-08-07T22:00:00.000Z").subscribe(
+        this.menu.setDate(new Date("2018-08-07T22:00:00.000Z"));
+        this.menu.getDateMenu().subscribe(
             data => {
               console.log("ok");
                 data.lunch_dishes.forEach(x => this.lunch_dishes.push(x));

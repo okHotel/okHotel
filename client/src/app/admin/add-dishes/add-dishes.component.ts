@@ -16,26 +16,14 @@ export class AddDishesComponent implements OnInit {
 
     ngOnInit() {}
 
-    composeDish(event: any){
-        this.dish = event.target.value;
-    }
+    composeDish(event: any){this.dish = event.target.value;}
 
-    addLunchDish(){
-        this.menu.addLunchDish(this.dish);
-    }
+    addLunchDish(){this.menu.addLunchDish(this.dish);}
 
-    deleteLunchDish(dish: string){
-        console.log(dish);
-        this.menu.deleteLunchDish(dish);
-    }
+    deleteLunchDish(dish: string){this.menu.deleteLunchDish(dish);}
 
+    addDinnerDish(){this.menu.addDinnerDish(this.dish);}
 
-    addDinnerDish(){
-        this.menu.addDinnerDish(this.dish);
-    }
-
-    deleteDinnerDish(dish: string){
-        this.menu.deleteDinnerDish(dish);
-    }
+    deleteDinnerDish(dish: string){this.menu.deleteDinnerDish(dish);}
 
 }

@@ -8,21 +8,26 @@ import {MenuService} from '../../service/menu/menu.service';
 })
 export class MakeMenuViewComponent implements OnInit {
 
-    dateMenu: Date;
+    menuLoaded: boolean = false;
+    date: Date;
 
     constructor(private menu: MenuService) { }
 
     ngOnInit() {
     }
 
-    saveMenu(){}
+    setDateMenu(event: any){
+        this.date = new Date(event.target.value);
+        this.menu.setDate(this.date);
 
-    serachDateMenu(event: any){
+        if(this.date <= new Date()){
+            this.serachDateMenu();
+        }
+    }
 
-        this.dateMenu = event.target.value;
-        let stringDate = '' + event.target.value;
+    serachDateMenu(){
 
-        this.menu.getDateMenu(stringDate)
+        this.menu.getDateMenu()
             .subscribe(
                 data => {
 
@@ -30,15 +35,34 @@ export class MakeMenuViewComponent implements OnInit {
 
                     this.menu.setLunchDishes(data.lunch_dishes);
                     this.menu.setDinnerDishes(data.dinner_dishes);
+                    this.menuLoaded = true;
 
                 },
 
                 error => {
                     console.log("DB error");
+                    this.menuLoaded = false;
                 });
 
 
     }
 
-    deleteMenu(){}
+    saveMenu(){
+      if(this.checkDate()){
+
+      }
+    }
+
+    deleteMenu(){
+        if(this.menuLoaded){
+
+        }
+    }
+
+    checkDate(): boolean{
+        if(this.menuLoaded || this.menu.date ){
+
+        }
+        return true;
+    }
 }
