@@ -8,3 +8,5 @@
 <div *ngFor="let cust of customers; let rowIndex=index" [hidden]="error">
   <a [routerLink]="['/customers', cust._id]" style="color:black"><span class="badge badge-dark">{{rowIndex + 1}}</span> -> {{cust.bookingName}} {{cust.bookingSurname}}</a>
 </div>
+
+<app-barcode-scanner></app-barcode-scanner>

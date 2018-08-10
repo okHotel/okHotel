@@ -25,7 +25,10 @@ import { RegistrationComponent } from './registration/registration.component';
 import {CustomerDetailComponent} from "./customer-detail/customer-detail.component";
 import {BookingService} from "./service/booking/booking.service";
 import {AuthService} from "./service/auth/auth.service";
-
+import {BarcodeDecoderService} from "./service/barcode-scanner/barcode-decoder.service";
+import {BarcodeScannerComponent} from "./barcode-scanner/barcode-scanner.component";
+import { MatCardModule } from '@angular/material';
+import {BarcodeValidatorService} from "./service/barcode-scanner/barcode-validator.service";
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
@@ -59,20 +62,22 @@ const appRoutes: Routes = [
     RegistrationComponent,
     ProfileComponent,
     RoomNumberComponent,
-      AdminProfileComponent,
-      MakeMenuViewComponent,
-      AddDishesComponent,
-      AddVariationComponent,
-      PantryComponent,
-      AdminStatisticsComponent
+    AdminProfileComponent,
+    MakeMenuViewComponent,
+    AddDishesComponent,
+    AddVariationComponent,
+    PantryComponent,
+    AdminStatisticsComponent,
+    BarcodeScannerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    MatCardModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CustomerService, BookingService, AuthService],
+  providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService, BarcodeValidatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
