@@ -17,7 +17,6 @@ import {AdminProfileComponent} from './admin/admin-profile/admin-profile.compone
 import { MakeMenuViewComponent } from './admin/make-menu-view/make-menu-view.component';
 import { AddDishesComponent } from './admin/add-dishes/add-dishes.component';
 import { AddVariationComponent } from './admin/add-variation/add-variation.component';
-import { PantryComponent } from './admin/pantry/pantry.component';
 import {CustomerService} from "./service/customer/customer.service";
 import {HttpClientModule} from "@angular/common/http";
 import { CustomerComponent } from './customer/customer.component';
@@ -25,10 +24,21 @@ import { RegistrationComponent } from './registration/registration.component';
 import {CustomerDetailComponent} from "./customer-detail/customer-detail.component";
 import {BookingService} from "./service/booking/booking.service";
 import {AuthService} from "./service/auth/auth.service";
-import {BarcodeDecoderService} from "./service/barcode-scanner/barcode-decoder.service";
-import {BarcodeScannerComponent} from "./barcode-scanner/barcode-scanner.component";
-import { MatCardModule } from '@angular/material';
-import {BarcodeValidatorService} from "./service/barcode-scanner/barcode-validator.service";
+import {BarcodeDecoderService} from "./service/pantry/barcode-scanner/barcode-decoder.service";
+import {BarcodeScannerComponent} from "./admin/pantry/barcode-scanner/barcode-scanner.component";
+import {
+    MatCardModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatToolbarModule, MatInputModule, MatSortModule
+} from '@angular/material';
+import {BarcodeValidatorService} from "./service/pantry/barcode-scanner/barcode-validator.service";
+import {PantryComponent} from "./admin/pantry/pantry.component";
+import { ProductComponent } from './admin/pantry/product/product.component';
+import {PantryService} from "./service/pantry/pantry.service";
+import {CommonModule} from "@angular/common";
+import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
@@ -64,20 +74,32 @@ const appRoutes: Routes = [
     RoomNumberComponent,
     AdminProfileComponent,
     MakeMenuViewComponent,
+    PantryComponent,
     AddDishesComponent,
     AddVariationComponent,
-    PantryComponent,
     AdminStatisticsComponent,
-    BarcodeScannerComponent
+    BarcodeScannerComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    MatCardModule,
-    RouterModule.forRoot(appRoutes)
+      CommonModule,
+      MatCardModule,
+      MatPaginatorModule,
+      MatToolbarModule,
+      MatInputModule,
+      MatTableModule,
+      MatSortModule,
+      BrowserAnimationsModule,
+      NoopAnimationsModule,
+      RouterModule.forRoot(appRoutes)
   ],
-  providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService, BarcodeValidatorService],
+  exports: [CommonModule, MatToolbarModule, MatInputModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule,
+            NoopAnimationsModule, MatSortModule],
+  providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService,
+      BarcodeValidatorService, PantryService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

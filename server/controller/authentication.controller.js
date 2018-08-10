@@ -141,10 +141,8 @@ exports.requireAuthBy = function(roles){
         }
 
         token = authHeader.split(" ")[1];
-        console.log(token)
         try {
             payload = jwt.verify(token, jwtConfig.jwtSecretKey);
-            console.log(roles.indexOf(payload.role) )
 
             if (roles.indexOf(payload.role) > -1) {
                 //pass some user details through in case they are needed

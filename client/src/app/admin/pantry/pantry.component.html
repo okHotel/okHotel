@@ -1,29 +1,48 @@
 <app-profile></app-profile>
 
-<button>
-  <i class="material-icons">view_list</i>
-Food available in pantry
-</button>
-
 <div>
   <i class="material-icons">search</i>
   <input type="text" placeholder="Search...">
 </div>
 
+<app-barcode-scanner></app-barcode-scanner>
 
-<table summary="Food available in pantry"  style="width:50%" >
-  <tr>
-    <th scope="col">Name</th>
-    <th scope="col">Quantity</th>
-  </tr>
+<div class="product" *ngIf="dataSource">
+  <i class="material-icons">view_list</i>
+  Food available in pantry
 
-  <div *ngFor="let category of products" >
-  <tr>
-    <td scope="row" colspan="2" >{{category.name}}</td>
-  </tr>
-  <tr *ngFor="let food of category.food ">
-    <td scope="row">{{food.name}}</td>
-    <td scope="row">{{food.quantity}}</td>
-  </tr>
-  </div>
-</table>
+  <mat-table #table matSort="sort" class="pantry-table mat-elevation-z8" [dataSource]="dataSource">
+
+    <ng-container matColumnDef="code">
+      <mat-header-cell *matHeaderCellDef> Code </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.code}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.quantity}} {{element.unit}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let element; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="5" [pageSize]="5" [pageSizeOptions]="[5, 10, 25]">
+  </mat-paginator>
+
+</div>
+
+<div [hidden]="!error"
+     class="alert alert-danger">
+  {{error}}
+</div>

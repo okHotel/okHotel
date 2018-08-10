@@ -1,0 +1,63 @@
+<div>
+
+  <app-barcode-scanner></app-barcode-scanner>
+
+  <form #pantryForm="ngForm">
+
+    <div class="form-group">
+      <label for="name">Product name</label>
+      <input type="text" class="form-control" id="name" placeholder="Give product's name"
+             required
+             [(ngModel)]="product.name" name="name" #name="ngModel">
+      <div [hidden]="name.valid || name.pristine"
+           class="alert alert-danger">
+        Product name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <input type="text" class="form-control" id="category" placeholder="Give product's category"
+             required
+             [(ngModel)]="product.category" name="category" #category="ngModel">
+      <div [hidden]="category.valid || category.pristine"
+           class="alert alert-danger">
+        Product's category is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input type="number" class="form-control" id="quantity"
+             placeholder="Give product's quantity"
+             required
+             [(ngModel)]="product.quantity" name="quantity" #quantity="ngModel">
+      <div [hidden]="quantity.valid || quantity.pristine"
+           class="alert alert-danger">
+        Quantity is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="code">Product code</label>
+      <!-- Text or number? -->
+      <input type="text" class="form-control" id="code" placeholder="Give product's code"
+             required
+             [(ngModel)]="product.code" name="code" #code="ngModel">
+      <div [hidden]="code.valid || code.pristine"
+           class="alert alert-danger">
+        Product code is required
+      </div>
+    </div>
+
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+      <button type="button" class="btn btn-dark" (click)="save()" [disabled]="!pantryForm.form.valid">Save</button>
+    </div>
+  </form>
+</div>
+
+<div [hidden]="!error"
+     class="alert alert-danger">
+  {{error}}
+</div>

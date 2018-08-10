@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, ViewChild, AfterContentInit } from '@angular/core';
-import { BarcodeDecoderService } from '../service/barcode-scanner/barcode-decoder.service'
+import { BarcodeDecoderService } from '../../../service/pantry/barcode-scanner/barcode-decoder.service'
 // import { BarcodeValidatorService } from '../services/barcode-validator.service';
 import { Subject } from 'rxjs';
-import {BarcodeValidatorService} from "../service/barcode-scanner/barcode-validator.service";
+import {BarcodeValidatorService} from "../../../service/pantry/barcode-scanner/barcode-validator.service";
 
 @Component({
     selector: 'app-barcode-scanner',
