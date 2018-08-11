@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {Menu} from './menu';
 import {MenuService} from '../../service/menu/menu.service';
 @Component({
@@ -8,10 +8,12 @@ import {MenuService} from '../../service/menu/menu.service';
 })
 export class MakeMenuViewComponent implements OnInit {
 
-    menuLoaded: boolean = false;
     date: Date;
+    isDateWrong: boolean = false;
+    isLoadedDate: boolean = false;
 
-    constructor(private menu: MenuService) { }
+
+    constructor(public menu: MenuService) { }
 
     ngOnInit() {
     }
@@ -33,36 +35,37 @@ export class MakeMenuViewComponent implements OnInit {
 
                     console.log("DB OK");
 
-                    this.menu.setLunchDishes(data.lunch_dishes);
-                    this.menu.setDinnerDishes(data.dinner_dishes);
-                    this.menuLoaded = true;
-
+                   this.menu.setMenu(data);
+                    this.isLoadedDate = true;
                 },
 
                 error => {
                     console.log("DB error");
-                    this.menuLoaded = false;
+                    this.isLoadedDate = false;
                 });
 
 
     }
 
     saveMenu(){
-      if(this.checkDate()){
-
-      }
+        if(this.checkDate()){
+           this.menu.saveMenu();
+        }
     }
 
     deleteMenu(){
-        if(this.menuLoaded){
-
+        if(this.checkDate()){
+            //TODO delete menu
         }
+
+
     }
 
-    checkDate(): boolean{
-        if(this.menuLoaded || this.menu.date ){
-
+    checkDate(){
+        if( this.isLoadedDate || this.date >= new Date()){
+            return true;
+        }else {
+            this.isDateWrong = true;
         }
-        return true;
     }
 }

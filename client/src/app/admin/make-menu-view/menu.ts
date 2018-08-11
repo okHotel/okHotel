@@ -16,4 +16,14 @@ export class  Menu {
         dinner: number[];
         dinnerVariations: number[]
     }
+
+
+    constructor();
+    constructor(date?: Date, lc?: string[], dn?: string[]){
+        this.date = date;
+        this.lunch_dishes = lc;
+        this.dinner_dishes = dn;
+    }
+
+
 }

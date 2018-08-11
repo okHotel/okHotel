@@ -8,7 +8,7 @@
 </button><br>
 
 <span> Select menu date
-<input type="date" (change)="setDateMenu($event)"/>
+<input   type="date" (change)="setDateMenu($event)"/>
 </span><br>
 
 <button>Fill in the fields with a saved menu</button><br>
@@ -19,7 +19,7 @@
 <button (click)="saveMenu()">Done</button><br>
 <button (click)="deleteMenu()">Delete</button><br>
 
-<div [hidden]="menuLoaded"
+<div [hidden]="!isDateWrong"
      class="alert alert-danger">
     Insert a date menu valid
 </div>
