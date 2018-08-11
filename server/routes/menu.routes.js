@@ -8,11 +8,14 @@ const menu = require('../controller/menu.controller.js');
 // Retrieve all Customer
 app.get('/', menu.findAll);
 
+
+//Update a Customer with Id
+app.put('/', menu.update);
+
 // Retrieve a single Customer by Id
 app.get('/:date', menu.findOne);
 
-//Update a Customer with Id
-app.put('/', menu.create);
+
 
 /*// Delete a Customer with Id
 app.delete('/:customerId', customers.delete);

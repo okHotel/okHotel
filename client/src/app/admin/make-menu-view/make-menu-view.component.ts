@@ -49,7 +49,7 @@ export class MakeMenuViewComponent implements OnInit {
 
     saveMenu(){
         if(this.checkDate()){
-           this.menu.saveMenu();
+           this.menu.saveMenu().subscribe( data =>{ console.log("OK "+ data)})
         }
     }
 
@@ -62,10 +62,11 @@ export class MakeMenuViewComponent implements OnInit {
     }
 
     checkDate(){
-        if( this.isLoadedDate || this.date >= new Date()){
+        return true;
+        /*if( this.isLoadedDate || this.date >= new Date()){
             return true;
         }else {
             this.isDateWrong = true;
-        }
+        }*/
     }
 }

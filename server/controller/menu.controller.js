@@ -19,22 +19,9 @@ exports.create1 = (req, res) => {
     });
 };
 
-exports.create = (req, res) =>  {
-
-    console.log("createeeee");
-
-    /*MyModel.findOneAndUpdate(
-        {date: date1}, // find a document with that filter
-        modelDoc, // document to insert when nothing was found
-        {upsert: true, new: true, runValidators: true}, // options
-        function (err, doc) { // callback
-            if (err) {
-                // handle error
-            } else {
-                // handle document
-            }
-        }
-    );*/
+exports.update =  (req, res) => {
+    console.log(req.body.date);
+    res.send({status: 'SUCCESS'});
 }
 
 // FETCH all menu

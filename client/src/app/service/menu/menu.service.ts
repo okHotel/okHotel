@@ -3,9 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Menu} from '../../admin/make-menu-view/menu';
 import {DatePipe} from '@angular/common';
-import {DateFormatter} from '@angular/common/src/pipes/deprecated/intl';
-import {Customer} from '../../customer/customer';
-
 
 
 const httpOptions = {
@@ -53,10 +50,8 @@ export class MenuService {
 
     saveMenu(): Observable<any>{
 
-        const url = `${this.menuUrl}/insertMenu`;
-        console.log("saveee "+ url);
-        console.log(this.menu);
-        return this.http.put(url, this.menu, httpOptions );
+        const url = `${this.menuUrl}/`;
+        return this.http.put(url, this.menu, httpOptions);
     }
 
 
