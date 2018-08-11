@@ -31,7 +31,7 @@ import {
     MatTableModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatToolbarModule, MatInputModule, MatSortModule
+    MatToolbarModule, MatInputModule, MatSortModule, MatSelectModule, MatIconModule
 } from '@angular/material';
 import {BarcodeValidatorService} from "./service/pantry/barcode-scanner/barcode-validator.service";
 import {PantryComponent} from "./admin/pantry/pantry.component";
@@ -93,6 +93,8 @@ const appRoutes: Routes = [
       MatInputModule,
       MatTableModule,
       MatSortModule,
+      MatSelectModule,
+      MatIconModule,
       BrowserAnimationsModule,
       NoopAnimationsModule,
       RouterModule.forRoot(appRoutes)
