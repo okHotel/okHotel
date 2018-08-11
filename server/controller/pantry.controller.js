@@ -3,7 +3,7 @@
 const Pantry = require('../model/pantry.model.js');
 
 /**
- * metodo per inserire/aggiornare un document nella collection Pantry
+ * metodo per inserire un document nella collection Pantry
  */
 exports.insertProduct = (req, res) => {
 
@@ -13,7 +13,38 @@ exports.insertProduct = (req, res) => {
         checkCode(req.category)) {
 
         const product = new Pantry(req.body);
-        product.findByIdAndUpdate(req.code);
+        product.save();
+
+    }else{
+        res.status(422).send({error: 'Uncorrect input for product'})
+    }
+
+};
+
+/**
+ * metodo per aggiornare un document nella collection Pantry
+ */
+exports.updateProduct = (req, res) => {
+
+    if(checkCode(req.quantity)){
+        Pantry.findByIdAndUpdate(req.code, req.body, {new: true})
+            .then(customer => {
+                if(!customer) {
+                    return res.status(404).json({
+                        msg: "Product not found with code" + req.params.code
+                    });
+                }
+                res.json(customer);
+            }).catch(err => {
+            if(err.kind === 'ObjectId') {
+                return res.status(404).json({
+                    msg: "Product not found with code " + req.params.code
+                });
+            }
+            return res.status(500).json({
+                msg: "Error updating product with code " + req.param.code
+            });
+        });
 
     }else{
         res.status(422).send({error: 'Uncorrect input for product'})
@@ -56,6 +87,8 @@ exports.checkCategory = (category) => {
  * ricevo dal client nome/codice e quantità con cui aggiornare il prodotto
  */
 exports.findOneByNameAndUpdate = (req, res) => {
+
+
 
 };
 
