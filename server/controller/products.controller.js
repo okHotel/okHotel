@@ -1,9 +1,12 @@
 
 
-const Pantry = require('../model/pantry.model.js');
+const Product = require('../model/products.model.js');
 
 exports.findAll = (req, res) => {
-    Pantry.find({})
+
+
+    Product.find({})
+        .sort({category: 'asc'})
         .then(pantry => {
             res.json(pantry);
         }).catch(err => {
@@ -23,7 +26,7 @@ exports.insertProduct = (req, res) => {
         checkCode(req.quantity) &&
         checkCode(req.category)) {
 
-        const product = new Pantry(req.body);
+        const product = new Product(req.body);
         product.save();
 
     }else{
@@ -40,7 +43,7 @@ exports.updateProduct = (req, res) => {
 /*
     if(checkCode(req.quantity)){
 */
-        Pantry.findByIdAndUpdate(req.code, req.body, {new: true})
+        Product.findByIdAndUpdate(req.code, req.body, {new: true})
             .then(customer => {
                 if(!customer) {
                     return res.status(404).json({
@@ -95,17 +98,6 @@ exports.checkCategory = (category) => {
     return code.size() != 0 && regex.test(category);
 };
 
-
-
-/**
- * ricerca a buon fine: metodo per inserire un document nella collection Pantry,
- * ricevo dal client nome/codice e quantità con cui aggiornare il prodotto
- */
-exports.findOneByNameAndUpdate = (req, res) => {
-
-
-
-};
 
 /**
  *ricerca fallisce: metodo per inserire un document nella collection Pantry,

@@ -5,7 +5,7 @@
  */
 const express = require('express');
 const app = express.Router();
-const pantry = require('../controller/pantry.controller.js');
+const product = require('../controller/products.controller.js');
 
 /**
  * INSERIMENTO
@@ -14,22 +14,22 @@ const pantry = require('../controller/pantry.controller.js');
  * e creo un nuovo record in db
  */
 
-app.post('/pantry', pantry.insertProduct);
+app.post('/', product.insertProduct);
 
 /**
  * UPDATE
  * se la ricerca lato client (per nome) va a buon fine,
  * ricevo dal client il nome e la quantità con cui aggiornare il prodotto in db
  */
-app.put('/name', pantry.findOneByNameAndUpdate);
+app.put('/', product.findOneByNameAndUpdate);
 
 /**
  * UPDATE
  * se la ricerca lato client (per codice) va a buon fine,
  * ricevo dal client il codice e la quantità con cui aggiornare il prodotto in db
  */
-app.put('/code', pantry.findOneByCodeAndUpdate);
+app.put('/', product.findOneByCodeAndUpdate);
 
-app.get('/', pantry.findAll);
+app.get('/', product.findAll);
 
 module.exports = app;
