@@ -1,8 +1,10 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Product, Unit} from "./product/product";
+import {Product, Unit} from "./product";
 import {ActivatedRoute} from "@angular/router";
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
-import {ELEMENT_DATA, PantryService} from "../../service/pantry/pantry.service";
+import {Subject} from "rxjs";
+import {BarcodeDecoderService} from "../../service/pantry/barcode-scanner/barcode-decoder.service";
+import {BarcodeValidatorService} from "../../service/pantry/barcode-scanner/barcode-validator.service";
 
 @Component({
   selector: 'app-pantry',
@@ -12,26 +14,44 @@ import {ELEMENT_DATA, PantryService} from "../../service/pantry/pantry.service";
 export class PantryComponent {
 
     displayedColumns = ['code', 'name', 'category', 'quantity'];
-    dataSource;
+    dataSource = new MatTableDataSource(ELEMENT_DATA);
+    lastResult: any;
+    message: string;
     error: string;
-    selectedRowIndex: number = -1;
 
+    code$ = new Subject<any>();
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
+    @ViewChild('interactive') interactive;
 
-    constructor(private pantryService: PantryService) {}
+    constructor(private decoderService: BarcodeDecoderService, private barcodeValidator: BarcodeValidatorService) {};
 
-    /*
-      products = [new FoodCategory('Pasta', [new Food('Fusilli', 34), new Food('Penne',5)]),
-                  new FoodCategory('Verdure', [new Food('Fagiolini', 23), new Food('Carciofi', 6), new Food('Mais',6)]),
-                  new FoodCategory('Dolce', [new Food('Cacao',44), new Food('Vanillina', 33), new Food('Cioccolato Fondente',6)])
-      ]
-    */
-
-    //  = new MatTableDataSource(ELEMENT_DATA);
     ngOnInit() {
-//      this.pantryService.getPantry().subscribe(res => this.dataSource = new MatTableDataSource(res));
-      this.pantryService.getPantry().subscribe(res => this.dataSource = new MatTableDataSource(ELEMENT_DATA));
+        this.decoderService.onLiveStreamInit();
+        this.decoderService.onDecodeProcessed();
+        this.decoderService
+            .onDecodeDetected()
+            .then(code => {
+                this.lastResult = code;
+                this.decoderService.onPlaySound();
+                this.code$.next(code);
+                this.applyFilter(code.toString());
+                console.log(code)
+            })
+            .catch((err) => this.error = `Something Wrong: ${err}`);
+
+        this.barcodeValidator
+            .doSearchbyCode(this.code$)
+            .subscribe(
+                res => this.message = res,
+                err => {
+                    this.message = `An Error! ${err.json().error}`;
+                },
+            );
+    }
+
+    ngAfterContentInit() {
+        this.interactive.nativeElement.children[0].style.position = 'absolute';
     }
 
     ngAfterViewInit() {
@@ -45,7 +65,20 @@ export class PantryComponent {
         this.dataSource.filter = filterValue;
     }
 
-    rowClicked(row) {
-        console.log(row);
+    ngOnDestroy() {
+        this.decoderService.onDecodeStop();
     }
 }
+
+const ELEMENT_DATA: Product[] = [
+    {code: 1, name: 'Spaghetti', category: 'pasta', quantity: 1, unit: Unit.PACKAGES},
+    {code: 5012345678900, name: 'Latte', category: 'colazioni', quantity: 10, unit: Unit.L},
+    {code: 4, name: 'Passata di pomodoro', category: 'conserve', quantity: 6, unit: Unit.L},
+    {code: 10, name: 'Olio', category: 'condimenti', quantity: 10, unit: Unit.L},
+    {code: 3, name: 'Sale', category: 'condimenti', quantity: 100, unit: Unit.KG},
+    {code: 5, name: 'Fagiolini', category: 'verdure', quantity: 13, unit: Unit.KG},
+    {code: 5, name: 'Fusilli', category: 'pasta', quantity: 13, unit: Unit.KG},
+    {code: 5, name: 'Cacao', category: 'dolce', quantity: 100, unit: Unit.KG},
+    {code: 5, name: 'Carciofi', category: 'verdure', quantity: 20, unit: Unit.KG}
+
+];

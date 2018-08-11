@@ -1,13 +1,9 @@
 <app-profile></app-profile>
 
 <div>
-  <form>
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search..">
-    </mat-form-field>
-  </form>
-
-  <app-barcode-scanner></app-barcode-scanner>
+  <!--  <mat-form-field> -->
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search..">
+   <!-- </mat-form-field> -->
 </div>
 
 <div class="product" *ngIf="dataSource">
@@ -37,8 +33,7 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-
-    <mat-row *matRowDef="let element; columns: displayedColumns;" (click) = "rowClicked(element)"
+    <mat-row *matRowDef="let element; columns: displayedColumns;"
              [routerLink]="['/pantry', element.code]"></mat-row>
   </mat-table>
 
@@ -47,6 +42,9 @@
 
 </div>
 
+<div>
+  <div id="interactive" class="viewport" #interactive></div>
+</div>
 <div [hidden]="!error"
      class="alert alert-danger">
   {{error}}

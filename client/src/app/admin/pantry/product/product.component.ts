@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
-import {Product, Unit} from "./product";
-import {ELEMENT_DATA, PantryService} from "../../../service/pantry/pantry.service";
+import {Product, Unit} from "../product";
+import {PantryService} from "../../../service/pantry/pantry.service";
 
 @Component({
     selector: 'app-product',

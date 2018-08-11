@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {Product, Unit} from "../../admin/pantry/product/product";
+import {Product, Unit} from "../../admin/pantry/product";
 import {AuthService} from "../auth/auth.service";
 import {Customer} from "../../customer/customer";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
@@ -15,7 +15,6 @@ export class PantryService {
     private httpOption = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-
 
     constructor(private http: HttpClient) { }
 
@@ -41,16 +40,3 @@ export class PantryService {
         return this.http.put(this.pantryUrl, product, this.httpOption);
     }
 }
-
-export const ELEMENT_DATA: Product[] = [
-    {code: 1, name: 'Spaghetti', category: 'pasta', quantity: 1, unit: Unit.PACKAGES},
-    {code: 2, name: 'Latte', category: 'colazioni', quantity: 10, unit: Unit.L},
-    {code: 4, name: 'Passata di pomodoro', category: 'conserve', quantity: 6, unit: Unit.L},
-    {code: 10, name: 'Olio', category: 'condimenti', quantity: 10, unit: Unit.L},
-    {code: 3, name: 'Sale', category: 'condimenti', quantity: 100, unit: Unit.KG},
-    {code: 5, name: 'Fagiolini', category: 'verdure', quantity: 13, unit: Unit.KG},
-    {code: 5, name: 'Fusilli', category: 'pasta', quantity: 13, unit: Unit.KG},
-    {code: 5, name: 'Carciofi', category: 'verdure', quantity: 20, unit: Unit.KG}
-
-];
-
