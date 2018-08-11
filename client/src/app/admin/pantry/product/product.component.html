@@ -1,8 +1,18 @@
 <div>
 
-  <app-barcode-scanner></app-barcode-scanner>
-
   <form #pantryForm="ngForm">
+
+    <div class="form-group">
+      <label for="code">Product code</label>
+      <!-- Text or number? -->
+      <input type="text" class="form-control" id="code" placeholder="Give product's code"
+             required
+             [(ngModel)]="product.code" name="code" #code="ngModel">
+      <div [hidden]="code.valid || code.pristine"
+           class="alert alert-danger">
+        Product code is required
+      </div>
+    </div>
 
     <div class="form-group">
       <label for="name">Product name</label>
@@ -28,7 +38,7 @@
 
     <div class="form-group">
       <label for="quantity">Quantity</label>
-      <input type="number" class="form-control" id="quantity"
+      <input type="number" [min]="1" class="form-control" id="quantity"
              placeholder="Give product's quantity"
              required
              [(ngModel)]="product.quantity" name="quantity" #quantity="ngModel">
@@ -38,17 +48,6 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="code">Product code</label>
-      <!-- Text or number? -->
-      <input type="text" class="form-control" id="code" placeholder="Give product's code"
-             required
-             [(ngModel)]="product.code" name="code" #code="ngModel">
-      <div [hidden]="code.valid || code.pristine"
-           class="alert alert-danger">
-        Product code is required
-      </div>
-    </div>
 
     <div class="btn-group btn-group-sm">
       <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>

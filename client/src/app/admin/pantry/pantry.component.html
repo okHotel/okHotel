@@ -1,11 +1,14 @@
 <app-profile></app-profile>
 
 <div>
-  <i class="material-icons">search</i>
-  <input type="text" placeholder="Search...">
-</div>
+  <form>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search..">
+    </mat-form-field>
+  </form>
 
-<app-barcode-scanner></app-barcode-scanner>
+  <app-barcode-scanner></app-barcode-scanner>
+</div>
 
 <div class="product" *ngIf="dataSource">
   <i class="material-icons">view_list</i>
@@ -34,7 +37,9 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let element; columns: displayedColumns;"></mat-row>
+
+    <mat-row *matRowDef="let element; columns: displayedColumns;" (click) = "rowClicked(element)"
+             [routerLink]="['/pantry', element.code]"></mat-row>
   </mat-table>
 
   <mat-paginator [length]="5" [pageSize]="5" [pageSizeOptions]="[5, 10, 25]">

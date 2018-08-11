@@ -1,7 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Product, Unit} from "./product";
+import {Product, Unit} from "./product/product";
 import {ActivatedRoute} from "@angular/router";
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import {ELEMENT_DATA, PantryService} from "../../service/pantry/pantry.service";
 
 @Component({
   selector: 'app-pantry',
@@ -11,11 +12,14 @@ import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 export class PantryComponent {
 
     displayedColumns = ['code', 'name', 'category', 'quantity'];
-    dataSource = new MatTableDataSource(ELEMENT_DATA);
+    dataSource;
     error: string;
+    selectedRowIndex: number = -1;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
+
+    constructor(private pantryService: PantryService) {}
 
     /*
       products = [new FoodCategory('Pasta', [new Food('Fusilli', 34), new Food('Penne',5)]),
@@ -24,21 +28,24 @@ export class PantryComponent {
       ]
     */
 
+    //  = new MatTableDataSource(ELEMENT_DATA);
+    ngOnInit() {
+//      this.pantryService.getPantry().subscribe(res => this.dataSource = new MatTableDataSource(res));
+      this.pantryService.getPantry().subscribe(res => this.dataSource = new MatTableDataSource(ELEMENT_DATA));
+    }
+
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
     }
 
+    applyFilter(filterValue: string) {
+        filterValue = filterValue.trim();
+        filterValue = filterValue.toLowerCase();
+        this.dataSource.filter = filterValue;
+    }
+
+    rowClicked(row) {
+        console.log(row);
+    }
 }
-
-const ELEMENT_DATA: Product[] = [
-    {code: 1, name: 'Spaghetti', category: 'pasta', quantity: 1, unit: Unit.PACKAGES},
-    {code: 2, name: 'Latte', category: 'colazioni', quantity: 10, unit: Unit.L},
-    {code: 4, name: 'Passata di pomodoro', category: 'conserve', quantity: 6, unit: Unit.L},
-    {code: 10, name: 'Olio', category: 'condimenti', quantity: 10, unit: Unit.L},
-    {code: 3, name: 'Sale', category: 'condimenti', quantity: 100, unit: Unit.KG},
-    {code: 5, name: 'Fagiolini', category: 'verdure', quantity: 13, unit: Unit.KG},
-    {code: 5, name: 'Fusilli', category: 'pasta', quantity: 13, unit: Unit.KG},
-    {code: 5, name: 'Carciofi', category: 'verdure', quantity: 20, unit: Unit.KG}
-
-];

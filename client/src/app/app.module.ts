@@ -31,7 +31,7 @@ import {
     MatTableModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatToolbarModule, MatInputModule, MatSortModule
+    MatToolbarModule, MatInputModule, MatSortModule, MatFormFieldModule
 } from '@angular/material';
 import {BarcodeValidatorService} from "./service/pantry/barcode-scanner/barcode-validator.service";
 import {PantryComponent} from "./admin/pantry/pantry.component";
@@ -50,6 +50,7 @@ const appRoutes: Routes = [
     { path: 'make-menu', component: MakeMenuViewComponent, canActivate: [AuthService]},
     { path: 'make-variation', component: AddVariationComponent, canActivate: [AuthService]},
     { path: 'pantry', component: PantryComponent, canActivate: [AuthService]},
+    { path: 'pantry/:id', component: ProductComponent, canActivate: [AuthService]},
     { path: 'statistics', component: AdminStatisticsComponent, canActivate: [AuthService]},
     { path: 'customers', component: CustomerComponent, canActivate: [AuthService] },
     { path: 'registration', component: RegistrationComponent },
@@ -92,11 +93,12 @@ const appRoutes: Routes = [
       MatInputModule,
       MatTableModule,
       MatSortModule,
+      MatFormFieldModule,
       BrowserAnimationsModule,
       NoopAnimationsModule,
       RouterModule.forRoot(appRoutes)
   ],
-  exports: [CommonModule, MatToolbarModule, MatInputModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule,
+  exports: [CommonModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule,
             NoopAnimationsModule, MatSortModule],
   providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService,
       BarcodeValidatorService, PantryService],

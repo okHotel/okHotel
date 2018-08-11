@@ -6,3 +6,8 @@ table, th, td {
     min-height: 360px;
     margin-top: 10px;
 }
+
+.mat-row:hover {
+    background-color: #cfcfcf;
+    color: white;
+}
