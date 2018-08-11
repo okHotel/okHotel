@@ -12,6 +12,7 @@ const customerRoutes = require('./routes/customer.routes');
 const bookingRoutes = require('./routes/booking.routes');
 const authenticationRoutes = require('./routes/authentication.routes');
 const planRoutes = require('./routes/plans.routes');
+const pantryRoutes = require('./routes/pantry.routes');
 
 mongoose.Promise = global.Promise;
 
@@ -36,6 +37,7 @@ app.use('/customers', customerRoutes);
 app.use('/bookings', bookingRoutes);
 app.use('/auth', authenticationRoutes);
 app.use('/plan', planRoutes);
+app.use('/pantry', pantryRoutes);
 // Create a Server
 const server = app.listen(3000, function () {
 
