@@ -21,7 +21,27 @@ exports.create1 = (req, res) => {
 
 exports.update =  (req, res) => {
     console.log(req.body.date);
-    res.send({status: 'SUCCESS'});
+//    res.send({status: 'SUCCESS'});
+
+/*    Menu.findOneAndUpdate(req.body.date, req.body)
+        .then(customer => {
+            if(!customer) {
+                return res.status(404).json({
+                    msg: "Customer not found with id " + req.body.date
+                });
+            }
+            res.json(customer);
+        }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).json({
+                msg: "Customer not found with id " + req.body.date
+            });
+        }
+        return res.status(500).json({
+            msg: "Error updating customer with id " + req.body.date
+        });
+    });
+*/
 }
 
 // FETCH all menu
