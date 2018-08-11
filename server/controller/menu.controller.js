@@ -1,7 +1,7 @@
 const Menu = require('../model/menu.model.js');
 
 // POST a Menu
-exports.create = (req, res) => {
+exports.create1 = (req, res) => {
 
     // Create a Menu
 
@@ -19,9 +19,26 @@ exports.create = (req, res) => {
     });
 };
 
+exports.create = (req, res) =>  {
+
+    console.log("createeeee");
+
+    /*MyModel.findOneAndUpdate(
+        {date: date1}, // find a document with that filter
+        modelDoc, // document to insert when nothing was found
+        {upsert: true, new: true, runValidators: true}, // options
+        function (err, doc) { // callback
+            if (err) {
+                // handle error
+            } else {
+                // handle document
+            }
+        }
+    );*/
+}
+
 // FETCH all menu
 exports.findAll = (req, res) => {
-    console.log("qua");
     Menu.find({})
         .then(menu => {
             console.log(menu);
@@ -43,7 +60,6 @@ exports.findOne = (req, res) => {
                     msg: "Menu of " + date1 + "not found"
                 });
             }
-            console.log(menu);
             res.json(menu);
         })
         .catch(err => {

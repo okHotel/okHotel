@@ -12,7 +12,7 @@ app.get('/', menu.findAll);
 app.get('/:date', menu.findOne);
 
 //Update a Customer with Id
-app.put('/createMenu', menu.create);
+app.put('/', menu.create);
 
 /*// Delete a Customer with Id
 app.delete('/:customerId', customers.delete);

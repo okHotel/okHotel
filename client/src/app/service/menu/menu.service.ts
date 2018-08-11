@@ -33,10 +33,8 @@ export class MenuService {
 
         var datePipe = new DatePipe('en-US');
         let str = datePipe.transform(this.menu.date, 'yyyy-MM-dd'); //TODO use Date and not string
-
-        console.log(str);
-
         const url = `${this.menuUrl}/${str}`;
+
         return this.http.get<Menu>(url);
     }
 
@@ -47,15 +45,18 @@ export class MenuService {
     addLunchDish(dish: string){this.menu.lunch_dishes.push(dish);}
 
     deleteLunchDish(dish: string){this.menu.lunch_dishes = this.menu.lunch_dishes.filter(x => x != dish);}
-    
 
     addDinnerDish(dish: string){this.menu.dinner_dishes.push(dish);}
 
     deleteDinnerDish(dish: string){this.menu.dinner_dishes = this.menu.dinner_dishes.filter(x => x != dish);}
 
 
-    saveMenu(){
-        return this.http.put(this.menuUrl, this.menu);
+    saveMenu(): Observable<any>{
+
+        const url = `${this.menuUrl}/insertMenu`;
+        console.log("saveee "+ url);
+        console.log(this.menu);
+        return this.http.put(url, this.menu, httpOptions );
     }
 
 
