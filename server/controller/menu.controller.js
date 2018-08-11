@@ -23,25 +23,25 @@ exports.update =  (req, res) => {
     console.log(req.body.date);
 //    res.send({status: 'SUCCESS'});
 
-/*    Menu.findOneAndUpdate(req.body.date, req.body)
-        .then(customer => {
-            if(!customer) {
+    Menu.findByIdAndUpdate(req.body._id, req.body, {new: true})
+        .then(menu => {
+            if(!menu) {
                 return res.status(404).json({
-                    msg: "Customer not found with id " + req.body.date
+                    msg: "Menu not found with id " + req.params._id
                 });
             }
-            res.json(customer);
+            res.json(menu);
         }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).json({
-                msg: "Customer not found with id " + req.body.date
+                msg: "Menu not found with id " + req.params._id
             });
         }
         return res.status(500).json({
-            msg: "Error updating customer with id " + req.body.date
+            msg: "Error updating menu with id " + req.params._id
         });
     });
-*/
+
 }
 
 // FETCH all menu
