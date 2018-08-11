@@ -29,7 +29,6 @@ import {BarcodeScannerComponent} from "./admin/pantry/barcode-scanner/barcode-sc
 import {
     MatCardModule,
     MatTableModule,
-    MatProgressSpinnerModule,
     MatPaginatorModule,
     MatToolbarModule, MatInputModule, MatSortModule, MatSelectModule, MatIconModule
 } from '@angular/material';

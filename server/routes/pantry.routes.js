@@ -3,7 +3,6 @@
  * quando viene fatta una chiamata http a local host 3000/pantry, =>
  * allora richiama uno dei metodi pantry.***
  */
-
 const express = require('express');
 const app = express.Router();
 const pantry = require('../controller/pantry.controller.js');
@@ -22,14 +21,15 @@ app.post('/pantry', pantry.insertProduct);
  * se la ricerca lato client (per nome) va a buon fine,
  * ricevo dal client il nome e la quantità con cui aggiornare il prodotto in db
  */
-app.put('/pantry', pantry.findOneByNameAndUpdate);
+app.put('/name', pantry.findOneByNameAndUpdate);
 
 /**
  * UPDATE
  * se la ricerca lato client (per codice) va a buon fine,
  * ricevo dal client il codice e la quantità con cui aggiornare il prodotto in db
  */
-app.put('/pantry', pantry.findOneByCodeAndUpdate);
+app.put('/code', pantry.findOneByCodeAndUpdate);
 
+app.get('/', pantry.findAll);
 
 module.exports = app;

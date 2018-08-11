@@ -5,6 +5,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {Subject} from "rxjs";
 import {BarcodeDecoderService} from "../../service/pantry/barcode-scanner/barcode-decoder.service";
 import {BarcodeValidatorService} from "../../service/pantry/barcode-scanner/barcode-validator.service";
+import {PantryService} from "../../service/pantry/pantry.service";
 
 @Component({
   selector: 'app-pantry',
@@ -13,8 +14,8 @@ import {BarcodeValidatorService} from "../../service/pantry/barcode-scanner/barc
 })
 export class PantryComponent {
 
-    displayedColumns = ['code', 'name', 'category', 'quantity'];
-    dataSource = new MatTableDataSource(ELEMENT_DATA);
+    displayedColumns = ['code', 'name', 'category', 'quantity', 'unit'];
+    dataSource: MatTableDataSource<Product> = new MatTableDataSource();
     lastResult: any;
     message: string;
     error: string;
@@ -24,9 +25,19 @@ export class PantryComponent {
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild('interactive') interactive;
 
-    constructor(private decoderService: BarcodeDecoderService, private barcodeValidator: BarcodeValidatorService) {};
+    constructor(private decoderService: BarcodeDecoderService, private barcodeValidator: BarcodeValidatorService,
+                private pantryService: PantryService) {}
 
     ngOnInit() {
+
+        this.pantryService.getPantry().subscribe(
+            res => {
+                this.dataSource = new MatTableDataSource(res);
+                this.dataSource.paginator = this.paginator;
+                this.dataSource.sort = this.sort;
+            }
+        );
+
         this.decoderService.onLiveStreamInit();
         this.decoderService.onDecodeProcessed();
         this.decoderService
@@ -55,8 +66,7 @@ export class PantryComponent {
     }
 
     ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+
     }
 
     applyFilter(filterValue: string) {
@@ -69,16 +79,3 @@ export class PantryComponent {
         this.decoderService.onDecodeStop();
     }
 }
-
-const ELEMENT_DATA: Product[] = [
-    {code: 1, name: 'Spaghetti', category: 'pasta', quantity: 1, unit: Unit.PACKAGES},
-    {code: 5012345678900, name: 'Latte', category: 'colazioni', quantity: 10, unit: Unit.L},
-    {code: 4, name: 'Passata di pomodoro', category: 'conserve', quantity: 6, unit: Unit.L},
-    {code: 10, name: 'Olio', category: 'condimenti', quantity: 10, unit: Unit.L},
-    {code: 3, name: 'Sale', category: 'condimenti', quantity: 100, unit: Unit.KG},
-    {code: 5, name: 'Fagiolini', category: 'verdure', quantity: 13, unit: Unit.KG},
-    {code: 5, name: 'Fusilli', category: 'pasta', quantity: 13, unit: Unit.KG},
-    {code: 5, name: 'Cacao', category: 'dolce', quantity: 100, unit: Unit.KG},
-    {code: 5, name: 'Carciofi', category: 'verdure', quantity: 20, unit: Unit.KG}
-
-];

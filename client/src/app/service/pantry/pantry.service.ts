@@ -11,7 +11,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class PantryService {
 
     private baseUrl = 'http://localhost:3000';
-    private pantryUrl = this.baseUrl + '/customers';  // URL to web api
+    private pantryUrl = this.baseUrl + '/pantry';  // URL to web api
     private httpOption = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };

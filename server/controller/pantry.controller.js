@@ -2,6 +2,17 @@
 
 const Pantry = require('../model/pantry.model.js');
 
+exports.findAll = (req, res) => {
+    Pantry.find({})
+        .then(pantry => {
+            res.json(pantry);
+        }).catch(err => {
+        res.status(500).send({
+            msg: err.message
+        });
+    });
+};
+
 /**
  * metodo per inserire un document nella collection Pantry
  */
@@ -26,7 +37,9 @@ exports.insertProduct = (req, res) => {
  */
 exports.updateProduct = (req, res) => {
 
+/*
     if(checkCode(req.quantity)){
+*/
         Pantry.findByIdAndUpdate(req.code, req.body, {new: true})
             .then(customer => {
                 if(!customer) {
@@ -46,9 +59,11 @@ exports.updateProduct = (req, res) => {
             });
         });
 
+/*
     }else{
         res.status(422).send({error: 'Uncorrect input for product'})
     }
+*/
 
 };
 
