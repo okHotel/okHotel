@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenuVariationsComponent } from './menu-variations/menu-variations.component';
 import { HomeComponent } from './home/home.component';
-import { FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminStatisticsComponent } from './admin/admin-statistics/admin-statistics.component';
 import {RoomNumberComponent} from './admin/room-number/room-number.component';
@@ -30,14 +30,16 @@ import {
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
-    MatToolbarModule, MatInputModule, MatSortModule, MatSelectModule, MatIconModule
+    MatToolbarModule, MatInputModule, MatSortModule, MatSelectModule, MatIconModule, MatButtonModule, MatDialogModule
 } from '@angular/material';
 import {BarcodeValidatorService} from "./service/pantry/barcode-scanner/barcode-validator.service";
-import {PantryComponent} from "./admin/pantry/pantry.component";
-import { ProductComponent } from './admin/pantry/product/product.component';
+import {AddProductComponent} from "./admin/pantry/add-product/add-product.component";
 import {PantryService} from "./service/pantry/pantry.service";
 import {CommonModule} from "@angular/common";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import { EditProductComponent } from './admin/pantry/edit-product/edit-product.component';
+import { DeleteProductComponent } from './admin/pantry/delete-product/delete-product.component';
+import { ProductsComponent } from './admin/pantry/products.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
@@ -48,8 +50,7 @@ const appRoutes: Routes = [
     { path: 'admin-profile', component: AdminProfileComponent, canActivate: [AuthService]},
     { path: 'make-menu', component: MakeMenuViewComponent, canActivate: [AuthService]},
     { path: 'make-variation', component: AddVariationComponent, canActivate: [AuthService]},
-    { path: 'pantry', component: PantryComponent, canActivate: [AuthService]},
-    { path: 'pantry/:id', component: ProductComponent, canActivate: [AuthService]},
+    { path: 'pantry', component: ProductsComponent, canActivate: [AuthService]},
     { path: 'statistics', component: AdminStatisticsComponent, canActivate: [AuthService]},
     { path: 'customers', component: CustomerComponent, canActivate: [AuthService] },
     { path: 'registration', component: RegistrationComponent },
@@ -74,30 +75,44 @@ const appRoutes: Routes = [
     RoomNumberComponent,
     AdminProfileComponent,
     MakeMenuViewComponent,
-    PantryComponent,
+    ProductsComponent,
+    AddProductComponent,
+    EditProductComponent,
+    DeleteProductComponent,
     AddDishesComponent,
     AddVariationComponent,
     AdminStatisticsComponent,
     BarcodeScannerComponent,
-    ProductComponent,
+    EditProductComponent,
+    DeleteProductComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-      CommonModule,
-      MatCardModule,
-      MatPaginatorModule,
-      MatToolbarModule,
-      MatInputModule,
-      MatTableModule,
-      MatSortModule,
-      MatSelectModule,
-      MatIconModule,
       BrowserAnimationsModule,
-      NoopAnimationsModule,
+      HttpClientModule,
+      MatDialogModule,
+      MatCardModule,
+      FormsModule,
+      MatButtonModule,
+      MatInputModule,
+      MatIconModule,
+      MatSortModule,
+      MatTableModule,
+      MatToolbarModule,
+      MatPaginatorModule,
+      ReactiveFormsModule,
       RouterModule.forRoot(appRoutes)
   ],
+
+    entryComponents: [
+        AddProductComponent,
+        EditProductComponent,
+        DeleteProductComponent,
+        ProductsComponent
+    ],
   exports: [CommonModule, MatToolbarModule, MatInputModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule,
             NoopAnimationsModule, MatSortModule],
   providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService,

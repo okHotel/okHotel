@@ -1,8 +1,8 @@
 export class Product {
-    code: Number;
-    name: String;
-    category: String;
-    quantity: Number;
+    code: number;
+    name: string;
+    category: string;
+    quantity: number;
     unit: Unit;
 }
 

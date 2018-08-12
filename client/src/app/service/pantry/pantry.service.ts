@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
 import {Product, Unit} from "../../admin/pantry/product";
-import {AuthService} from "../auth/auth.service";
-import {Customer} from "../../customer/customer";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PantryService {
 
     private baseUrl = 'http://localhost:3000';
@@ -16,27 +12,62 @@ export class PantryService {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    constructor(private http: HttpClient) { }
+    dataChange: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
+    // Temporarily stores product from dialogs
+    dialogData: Product = new Product();
 
-    getPantry(): Observable<Product[]> {
-        const url = `${this.pantryUrl}`;
+    constructor (private httpClient: HttpClient) {}
 
-        let httpHeaders = AuthService.getHeaderWithAuthorization();
-        console.log({headers: httpHeaders});
-
-        return this.http.get<Product[]>(url, {headers: httpHeaders});
+    get data(): Product[] {
+        return this.dataChange.value;
     }
 
-    getProduct(id: string): Observable<Product> {
-        const url = `${this.pantryUrl}/${{id}}`;
-
-        let httpHeaders = AuthService.getHeaderWithAuthorization();
-        console.log({headers: httpHeaders});
-
-        return this.http.get<Product>(url, {headers: httpHeaders});
+    getDialogData() {
+        return this.dialogData;
     }
 
-    updateProduct(product: Product): Observable<any> {
-        return this.http.put(this.pantryUrl, product, this.httpOption);
+    /** CRUD METHODS */
+    getProducts(): void {
+        this.httpClient.get<Product[]>(this.pantryUrl).subscribe(data => {
+                this.dataChange.next(data);
+            },
+            (error: HttpErrorResponse) => {
+                console.log (error.name + ' ' + error.message);
+            });
     }
+
+// REAL LIFE CRUD Methods I've used in my projects. ToasterService uses Material Toasts for displaying messages:
+    // ADD, POST METHOD
+    addProduct(product: Product): void {
+    this.httpClient.post(this.pantryUrl, product).subscribe(data => {
+      this.dialogData = product;
+//      this.toasterService.showToaster('Successfully added', 3000);
+      },
+      (err: HttpErrorResponse) => {
+//      this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+    });
+   }
+    // UPDATE, PUT METHOD
+     updateProduct(product: Product): void {
+        console.log(product)
+    this.httpClient.put(this.pantryUrl, product).subscribe(data => {
+        this.dialogData = product;
+//        this.toasterService.showToaster('Successfully edited', 3000);
+      },
+      (err: HttpErrorResponse) => {
+//        this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
+  }
+  // DELETE METHOD
+  deleteProduct(code: number): void {
+    this.httpClient.delete(this.pantryUrl + '/' + code).subscribe(data => {
+      console.log(data['']);
+//        this.toasterService.showToaster('Successfully deleted', 3000);
+      },
+      (err: HttpErrorResponse) => {
+//        this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
+  }
 }

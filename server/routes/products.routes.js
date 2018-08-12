@@ -21,14 +21,14 @@ app.post('/', product.insertProduct);
  * se la ricerca lato client (per nome) va a buon fine,
  * ricevo dal client il nome e la quantità con cui aggiornare il prodotto in db
  */
-app.put('/', product.findOneByNameAndUpdate);
+//app.put('/', product.findOneByNameAndUpdate);
 
 /**
  * UPDATE
  * se la ricerca lato client (per codice) va a buon fine,
  * ricevo dal client il codice e la quantità con cui aggiornare il prodotto in db
  */
-app.put('/', product.findOneByCodeAndUpdate);
+app.put('/', product.updateProduct);
 
 app.get('/', product.findAll);
 
