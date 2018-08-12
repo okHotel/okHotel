@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const MenuSchema = mongoose.Schema({
     __id: String,
-    date: String,
+    date: Date,
     lunch_dishes: [String],
     dinner_dishes: [String],
     otherNotes: {

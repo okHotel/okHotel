@@ -18,12 +18,10 @@ export class  Menu {
     }
 
 
-    constructor();
-    constructor(date?: Date, lc?: string[], dn?: string[]){
-        this.date = date;
-        this.lunch_dishes = lc;
-        this.dinner_dishes = dn;
-    }
+    constructor(){
+        this.lunch_dishes = [];
+        this.dinner_dishes = [];
+    };
 
 
 }

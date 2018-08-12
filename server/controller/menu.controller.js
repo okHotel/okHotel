@@ -1,10 +1,9 @@
 const Menu = require('../model/menu.model.js');
 
 // POST a Menu
-exports.create1 = (req, res) => {
+exports.create = (req, res) => {
 
     // Create a Menu
-
     const menu = new Menu(req.body);
 
     // Save a Menu in the MongoDB
@@ -20,10 +19,8 @@ exports.create1 = (req, res) => {
 };
 
 exports.update =  (req, res) => {
-    console.log(req.body.date);
-//    res.send({status: 'SUCCESS'});
 
-    Menu.findByIdAndUpdate(req.body._id, req.body, {new: true})
+    Menu.findByIdAndUpdate(req.body._id, req.body)
         .then(menu => {
             if(!menu) {
                 return res.status(404).json({
@@ -41,7 +38,6 @@ exports.update =  (req, res) => {
             msg: "Error updating menu with id " + req.params._id
         });
     });
-
 }
 
 // FETCH all menu
@@ -60,7 +56,10 @@ exports.findAll = (req, res) => {
 // FIND a menu
 exports.findOne = (req, res) => {
     date1 =  req.params.date;
-    Menu.findOne({date: date1})
+    console.log('qui');
+    Menu.findOne({
+        date: date1
+    })
         .then(menu => {
             if(!menu) {
                 return res.status(404).json({

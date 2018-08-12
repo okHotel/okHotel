@@ -12,7 +12,6 @@ export class MakeMenuViewComponent implements OnInit {
     isDateWrong: boolean = false;
     isLoadedDate: boolean = false;
 
-
     constructor(public menu: MenuService) { }
 
     ngOnInit() {
@@ -42,6 +41,7 @@ export class MakeMenuViewComponent implements OnInit {
                 error => {
                     console.log("DB error");
                     this.isLoadedDate = false;
+                    this.menu.setMenu(new Menu());
                 });
 
 

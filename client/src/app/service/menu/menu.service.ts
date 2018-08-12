@@ -29,8 +29,10 @@ export class MenuService {
     getDateMenu(): Observable<Menu> {
 
         var datePipe = new DatePipe('en-US');
-        let str = datePipe.transform(this.menu.date, 'yyyy-MM-dd'); //TODO use Date and not string
-        const url = `${this.menuUrl}/${str}`;
+        //let str = datePipe.transform(this.menu.date, 'yyyy-MM-dd'); //TODO use Date and not string
+
+        const url = `${this.menuUrl}/${this.menu.date}`;
+        console.log(url);
 
         return this.http.get<Menu>(url);
     }
@@ -49,8 +51,13 @@ export class MenuService {
 
 
     saveMenu(): Observable<any>{
+        let url = "";
 
-        const url = `${this.menuUrl}/`;
+        if(this.menu._id == undefined) {
+             url = `${this.menuUrl}/create`;
+        }else {
+             url = `${this.menuUrl}/update`;
+        }
         return this.http.put(url, this.menu, httpOptions);
     }
 
