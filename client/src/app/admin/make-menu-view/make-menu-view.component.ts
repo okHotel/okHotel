@@ -8,7 +8,7 @@ import {MenuService} from '../../service/menu/menu.service';
 })
 export class MakeMenuViewComponent implements OnInit {
 
-    date: Date;
+    date: Date = new Date();
     isDateWrong: boolean = false;
     isLoadedDate: boolean = false;
 
@@ -18,12 +18,14 @@ export class MakeMenuViewComponent implements OnInit {
     }
 
     setDateMenu(event: any){
-        this.date = new Date(event.target.value);
+        console.log(event.target.value);
+        console.log(this.date);
+       // this.date = new Date(event.target.value);
         this.menu.setDate(this.date);
 
-        if(this.date <= new Date()){
+      //  if(this.date <= new Date()){
             this.serachDateMenu();
-        }
+        //}
     }
 
     serachDateMenu(){

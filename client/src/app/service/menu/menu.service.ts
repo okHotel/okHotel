@@ -58,6 +58,7 @@ export class MenuService {
         }else {
              url = `${this.menuUrl}/update`;
         }
+        console.log(this.menu.date);
         return this.http.put(url, this.menu, httpOptions);
     }
 
