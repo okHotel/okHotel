@@ -2,8 +2,13 @@
 
 const Product = require('../model/products.model.js');
 
+/**
+ * metodo per mostrare nella UI
+ * tutti i prodotti della dispensa
+ * @param req
+ * @param res
+ */
 exports.findAll = (req, res) => {
-
 
     Product.find({})
         .sort({category: 'asc'})
@@ -30,29 +35,35 @@ exports.insertProduct = (req, res) => {
         product.save();
 
     }else{
-        res.status(422).send({error: 'Uncorrect input for product'})
+        res.status(422).send({error: 'Incorrect input for product'})
     }
 
 };
 
 /**
- * metodo per aggiornare un document nella collection Pantry
+ * metodo per aggiornare un document nella collection Products
  */
 exports.updateProduct = (req, res) => {
 
-/*
-    if(checkCode(req.quantity)){
-*/
+
         Product.findByIdAndUpdate(req.code, req.body, {new: true})
-            .then(customer => {
-                if(!customer) {
+            .then(product => {
+
+                if (!product) {
                     return res.status(404).json({
                         msg: "Product not found with code" + req.params.code
                     });
                 }
-                res.json(customer);
+
+                if(!isQuantityAcceptable(req.quantity)) {
+                    return res.status(404).json({
+                        msg: "Product quantity is invalid" + req.params.code
+                    });
+                }
+
+                res.json(product);
             }).catch(err => {
-            if(err.kind === 'ObjectId') {
+            if (err.kind === 'ObjectId') {
                 return res.status(404).json({
                     msg: "Product not found with code " + req.params.code
                 });
@@ -60,13 +71,9 @@ exports.updateProduct = (req, res) => {
             return res.status(500).json({
                 msg: "Error updating product with code " + req.param.code
             });
+
         });
 
-/*
-    }else{
-        res.status(422).send({error: 'Uncorrect input for product'})
-    }
-*/
 
 };
 
@@ -98,13 +105,15 @@ exports.checkCategory = (category) => {
     return code.size() != 0 && regex.test(category);
 };
 
-
 /**
- *ricerca fallisce: metodo per inserire un document nella collection Pantry,
- *ricevo dal client i campi del prodotto (nome, categoria, 	quantità e codice)
+ * metodo per controllare che la nuova quantità inserita
+ * per il prodotto contenga solo numeri
+ * @param quantity
  */
+exports.isQuantityAcceptable = (quantity) => {
+    const regex = '^[0-9]+$';
 
-exports.findOneByCodeAndUpdate = (req, res) => {
+    return regex.test(quantity);
+}
 
-};
 
