@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {HandleHeaderService} from '../handleHeader.service';
 import {MenuService} from '../service/menu/menu.service';
-import {Menu} from '../admin/make-menu-view/menu';
+
 
 @Component({
     selector: 'app-menu',
@@ -14,7 +13,7 @@ export class MenuComponent implements OnInit {
     lunch_dishes: String[];
     dinner_dishes: String[];
 
-    constructor(private router: Router, private handleHeader: HandleHeaderService, private menu: MenuService) { }
+    constructor(private router: Router, private menu: MenuService) { }
 
     ngOnInit() {
 
@@ -27,12 +26,10 @@ export class MenuComponent implements OnInit {
             },
             error => {console.log(error)}
         );
-        this.handleHeader.setState(true);
     }
 
     home() {
-
-        this.router.navigateByUrl('/home' );
+        this.router.navigateByUrl('' );
     }
 
     addVariations(){
