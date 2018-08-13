@@ -3,6 +3,8 @@ const Menu = require('../model/menu.model.js');
 // POST a Menu
 exports.create = (req, res) => {
 
+    console.log(req.body);
+
     // Create a Menu
     const menu = new Menu(req.body);
 
@@ -56,7 +58,6 @@ exports.findAll = (req, res) => {
 // FIND a menu
 exports.findOne = (req, res) => {
     date1 =  req.params.date;
-    console.log('qui');
     Menu.findOne({
         date: date1
     })
