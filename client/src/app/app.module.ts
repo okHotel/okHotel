@@ -25,6 +25,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import {CustomerDetailComponent} from "./customer-detail/customer-detail.component";
 import {BookingService} from "./service/booking/booking.service";
 import {AuthService} from "./service/auth/auth.service";
+import { DatePipe } from '@angular/common'
 
 
 const appRoutes: Routes = [
@@ -72,7 +73,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CustomerService, BookingService, AuthService],
+  providers: [CustomerService, BookingService, AuthService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

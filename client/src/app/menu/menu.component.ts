@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {MenuService} from '../service/menu/menu.service';
+import { DatePipe } from '@angular/common'
 
 
 @Component({
@@ -13,16 +14,18 @@ export class MenuComponent implements OnInit {
     lunch_dishes: String[];
     dinner_dishes: String[];
 
-    constructor(private router: Router, private menu: MenuService) { }
+    constructor(private router: Router, private menu: MenuService, private datepipe: DatePipe) { }
 
     ngOnInit() {
 
-        this.menu.setDate(new Date("2018-08-07T22:00:00.000Z"));
+        let latest_date = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
+
+        this.menu.setDate(new Date(latest_date));
         this.menu.getDateMenu().subscribe(
             data => {
-              console.log("ok");
-                data.lunch_dishes.forEach(x => this.lunch_dishes.push(x));
-                data.dinner_dishes.forEach(x => this.dinner_dishes.push(x));
+                console.log("Menu loaded");
+                this.lunch_dishes = data.lunch_dishes;
+                this.dinner_dishes = data.dinner_dishes;
             },
             error => {console.log(error)}
         );
