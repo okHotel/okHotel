@@ -7,7 +7,7 @@
 const mongoose = require('mongoose');
 
 const PantrySchema = mongoose.Schema({
-
+    __id: String,
     name: String,
     code: Number,
     quantity: Number,

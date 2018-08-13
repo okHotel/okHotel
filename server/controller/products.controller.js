@@ -1,5 +1,3 @@
-
-
 const Product = require('../model/products.model.js');
 
 /**
@@ -25,18 +23,19 @@ exports.findAll = (req, res) => {
  * metodo per inserire un document nella collection Pantry
  */
 exports.insertProduct = (req, res) => {
-
-    if(checkName(req.name) &&
-        checkCode(req.code) &&
-        checkCode(req.quantity) &&
-        checkCode(req.category)) {
-
-        const product = new Product(req.body);
-        product.save();
-
-    }else{
-        res.status(422).send({error: 'Incorrect input for product'})
-    }
+    console.log('inserting')
+    const product = new Product(req.body);
+    product.save()
+        .then(data => {
+            res.status(201).json({
+                msg: 'product added successfully'
+            })
+        }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            msg: err.message
+        });
+    });
 
 };
 
@@ -44,37 +43,48 @@ exports.insertProduct = (req, res) => {
  * metodo per aggiornare un document nella collection Products
  */
 exports.updateProduct = (req, res) => {
-
-
-        Product.findByIdAndUpdate(req.code, req.body, {new: true})
+        Product.findByIdAndUpdate(req.body._id, req.body, {new: true})
             .then(product => {
-
+                console.log('Updating product')
                 if (!product) {
                     return res.status(404).json({
-                        msg: "Product not found with code" + req.params.code
-                    });
-                }
-
-                if(!isQuantityAcceptable(req.quantity)) {
-                    return res.status(404).json({
-                        msg: "Product quantity is invalid" + req.params.code
+                        msg: "Product not found with code1" + req.body.code
                     });
                 }
 
                 res.json(product);
             }).catch(err => {
-            if (err.kind === 'ObjectId') {
+                if (err.kind === 'ObjectId') {
+                    return res.status(404).json({
+                        msg: "Product not found with code2 " + req.body.code
+                    });
+                }
+                return res.status(500).json({
+                    msg: "Error updating product with code3 " + req.body.code
+                });
+            });
+};
+
+exports.delete = (req, res) => {
+
+    Product.findByIdAndRemove(req.params.productId)
+        .then(product => {
+            if(!product) {
                 return res.status(404).json({
-                    msg: "Product not found with code " + req.params.code
+                    msg: "Product not found with id " + req.params.productId
                 });
             }
-            return res.status(500).json({
-                msg: "Error updating product with code " + req.param.code
+            res.json({msg: "Product deleted successfully!"});
+        }).catch(err => {
+        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+            return res.status(404).json({
+                msg: "Product not found with id " + req.params.productId
             });
-
+        }
+        return res.status(500).json({
+            msg: "Could not delete product with id " + req.params.productId
         });
-
-
+    });
 };
 
 /**

@@ -11,6 +11,7 @@ import {Product} from "../product";
 })
 
 export class AddProductComponent {
+
     constructor(public dialogRef: MatDialogRef<AddProductComponent>,
                 @Inject(MAT_DIALOG_DATA) public product: Product,
                 public pantryService: PantryService) { }
@@ -21,22 +22,22 @@ export class AddProductComponent {
     ]);
 
     getErrorMessage() {
-        return this.formControl.hasError('required') ? 'Required field' :
+        return this.formControl.hasError('required') ? 'Required field' : '';
 /*
             this.formControl.hasError('email') ? 'Not a valid email' :
 */
-                '';
+
     }
 
     submit() {
         // emppty stuff
     }
 
-    onNoClick(): void {
+    onCancel(): void {
         this.dialogRef.close();
     }
 
-    public confirmAdd(): void {
+    public onSave(): void {
         this.pantryService.addProduct(this.product);
     }
 }

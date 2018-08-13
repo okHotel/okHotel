@@ -1,6 +1,7 @@
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Component, Inject} from '@angular/core';
 import {PantryService} from "../../../service/pantry/pantry.service";
+import {Product} from "../product";
 
 @Component({
     selector: 'app-delete-product',
@@ -8,15 +9,21 @@ import {PantryService} from "../../../service/pantry/pantry.service";
     styleUrls: ['./delete-product.component.css']
 })
 export class DeleteProductComponent {
+    isDeleteSelected: boolean = false;
 
     constructor(public dialogRef: MatDialogRef<DeleteProductComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: any, public pantryService: PantryService) { }
+                @Inject(MAT_DIALOG_DATA) public data: Product, public pantryService: PantryService) { }
 
     onNoClick(): void {
         this.dialogRef.close();
     }
 
     confirmDelete(): void {
-        this.pantryService.deleteProduct(this.data.code);
+        if (this.isDeleteSelected) {
+            this.pantryService.deleteProduct(this.data._id);
+        } else {
+            this.pantryService.updateQuantityTo(0, this.data);
+        }
     }
+
 }

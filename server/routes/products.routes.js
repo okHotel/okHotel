@@ -32,4 +32,6 @@ app.put('/', product.updateProduct);
 
 app.get('/', product.findAll);
 
+app.delete('/:productId', product.delete);
+
 module.exports = app;

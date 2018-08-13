@@ -28,14 +28,16 @@ export class EditProductComponent {
     }
 
     submit() {
-        // emppty stuff
+
     }
 
-    onNoClick(): void {
+    onCancel(): void {
         this.dialogRef.close();
     }
 
-    stopEdit(): void {
+    onSave(): void {
         this.pantryService.updateProduct(this.data);
     }
+
+
 }

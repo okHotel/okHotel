@@ -43,7 +43,7 @@ export class ProductDataSource extends DataSource<Product> {
             // Filter data
             this.filteredData = this._pantryService.data.slice().filter((product: Product) => {
                 const searchStr = (product.code + product.name +
-                    product.category + product.quantity + product.unit).toLowerCase();
+                    product.category + product.quantity + product.unit).toString().toLowerCase();
                 return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
             });
 

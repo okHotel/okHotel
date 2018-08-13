@@ -49,7 +49,7 @@ export class ProductsComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            if (result === 1) {
+            if (result) {
                 // After dialog is closed we're doing frontend updates
                 // For add we're just pushing a new row inside DataService
                 this.productService.dataChange.value.push(this.dataService.getDialogData());
@@ -58,13 +58,13 @@ export class ProductsComponent implements OnInit {
         });
     }
 
-    startEdit(i: number, code: number, name: string, category: string, quantity: number, unit: string) {
+    startEdit(i: number, _id: string, code: number, name: string, category: string, quantity: number, unit: string) {
         this.id = code;
         // index row is used just for debugging proposes and can be removed
         this.index = i;
         console.log(this.index);
         const dialogRef = this.dialog.open(EditProductComponent, {
-            data: {code: code, name: name, category: category, quantity: quantity, unit: unit}
+            data: { _id: _id, code: code, name: name, category: category, quantity: quantity, unit: unit}
         });
 
         dialogRef.afterClosed().subscribe(result => {
@@ -75,15 +75,16 @@ export class ProductsComponent implements OnInit {
                 this.productService.dataChange.value[foundIndex] = this.dataService.getDialogData();
                 // And lastly refresh table
                 this.refreshTable();
+                this.loadData();
             }
         });
     }
 
-    deleteItem(i: number, code: number, name: string, quantity: number, category: string, unit: string) {
+    deleteItem(i: number, _id: string, code: number, name: string, quantity: number, category: string, unit: string) {
         this.index = i;
         this.id = code;
         const dialogRef = this.dialog.open(DeleteProductComponent, {
-            data: {code: code, name: name, category: quantity, quantity: category, unit: unit}
+            data: {_id: _id, code: code, name: name, category: quantity, quantity: category, unit: unit}
         });
 
         dialogRef.afterClosed().subscribe(result => {

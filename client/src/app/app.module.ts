@@ -30,7 +30,14 @@ import {
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
-    MatToolbarModule, MatInputModule, MatSortModule, MatSelectModule, MatIconModule, MatButtonModule, MatDialogModule
+    MatToolbarModule,
+    MatInputModule,
+    MatSortModule,
+    MatSelectModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatCheckboxModule
 } from '@angular/material';
 import {BarcodeValidatorService} from "./service/pantry/barcode-scanner/barcode-validator.service";
 import {AddProductComponent} from "./admin/pantry/add-product/add-product.component";
@@ -101,6 +108,7 @@ const appRoutes: Routes = [
       MatIconModule,
       MatSortModule,
       MatTableModule,
+      MatCheckboxModule,
       MatToolbarModule,
       MatPaginatorModule,
       ReactiveFormsModule,
