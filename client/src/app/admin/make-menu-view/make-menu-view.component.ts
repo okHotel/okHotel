@@ -21,16 +21,18 @@ export class MakeMenuViewComponent implements OnInit {
         console.log(event.target.value);
         console.log(this.date);
        // this.date = new Date(event.target.value);
-        this.menu.setDate(this.date);
+
 
       //  if(this.date <= new Date()){
-            this.serachDateMenu();
+        this.serachDateMenu();
         //}
+
+
     }
 
-    serachDateMenu(){
+    serachDateMenu() {
 
-        this.menu.getDateMenu()
+        return this.menu.getDateMenu()
             .subscribe(
                 data => {
 
@@ -44,6 +46,7 @@ export class MakeMenuViewComponent implements OnInit {
                     console.log("DB error");
                     this.isLoadedDate = false;
                     this.menu.setMenu(new Menu());
+                    this.menu.setDate(this.date);
                 });
 
 
