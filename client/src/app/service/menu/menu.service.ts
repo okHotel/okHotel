@@ -28,9 +28,6 @@ export class MenuService {
 
     getDateMenu(): Observable<Menu> {
 
-        var datePipe = new DatePipe('en-US');
-        //let str = datePipe.transform(this.menu.date, 'yyyy-MM-dd'); //TODO use Date and not string
-
         const url = `${this.menuUrl}/${this.menu.date}`;
         console.log(url);
 
@@ -58,8 +55,12 @@ export class MenuService {
         }else {
              url = `${this.menuUrl}/update`;
         }
-        console.log(this.menu.date);
         return this.http.put(url, this.menu, httpOptions);
+    }
+
+    deleteMenu(){
+        const url = `${this.menuUrl}/${this.menu.date}`;
+        return this.http.delete(url);
     }
 
 

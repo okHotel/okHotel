@@ -81,3 +81,29 @@ exports.findOne = (req, res) => {
         });
     });
 };
+
+
+exports.delete = (req, res) => {
+
+    console.log(req.params.date);
+
+    Menu.findOneAndRemove({
+        date:  req.params.date
+    }).then(menu => {
+        if(!menu) {
+            return res.status(404).json({
+                msg: "Menu not found with date " + req.params.date
+            });
+        }
+        res.json({msg: "Menu deleted successfully!"});
+    }).catch(err => {
+        if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+            return res.status(404).json({
+                msg: "Menu not found with id " + req.params.date
+            });
+        }
+        return res.status(500).json({
+            msg: "Could not delete menu with id " + req.params.date
+        });
+    });
+};

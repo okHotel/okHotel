@@ -22,7 +22,7 @@ export class MakeMenuViewComponent implements OnInit {
         console.log(this.date);
        // this.date = new Date(event.target.value);
 
-
+        this.menu.setDate(this.date);
       //  if(this.date <= new Date()){
         this.serachDateMenu();
         //}
@@ -54,24 +54,26 @@ export class MakeMenuViewComponent implements OnInit {
 
     saveMenu(){
         if(this.checkDate()){
-           this.menu.saveMenu().subscribe( data =>{ console.log("OK "+ data)})
+           this.menu.saveMenu().subscribe( data =>{ console.log("Saved menu "+ data)});
         }
     }
 
     deleteMenu(){
         if(this.checkDate()){
-            //TODO delete menu
+            this.menu.deleteMenu().subscribe( data => { console.log("Deleted menu "+ data)});
         }
-
-
+        this.menu.setMenu(new Menu());
+        this.menu.setDate(this.date);
     }
 
     checkDate(){
         return true;
+        //TODO filter some date that you don't want to use i.e. past dates
         /*if( this.isLoadedDate || this.date >= new Date()){
             return true;
         }else {
             this.isDateWrong = true;
+            return false;
         }*/
     }
 }

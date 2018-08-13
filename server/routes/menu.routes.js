@@ -17,9 +17,7 @@ app.put('/update', menu.update);
 // Retrieve a single Menu by Id
 app.get('/:date', menu.findOne);
 
+// Delete a Menu with a Date
+app.delete('/:date', menu.delete);
 
-
-/*// Delete a Customer with Id
-app.delete('/:customerId', customers.delete);
-*/
 module.exports = app;
