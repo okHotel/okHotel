@@ -18,9 +18,9 @@ export class MenuComponent implements OnInit {
 
     ngOnInit() {
 
-        let latest_date = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
-
+        let latest_date: string = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
         this.menu.setDate(new Date(latest_date));
+
         this.menu.getDateMenu().subscribe(
             data => {
                 console.log("Menu loaded");

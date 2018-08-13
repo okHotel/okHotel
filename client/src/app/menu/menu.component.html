@@ -1,17 +1,16 @@
 <app-profile></app-profile>
-<table summary="The courses you can select for lunch">
-    <caption>Please choose what you want to eat for lunch</caption>
+<table summary="The courses you can select for lunch" >
+    <caption>Lunch</caption>
   <tr>
     <th></th>
     <th scope="col">Int</th>
     <th scope="col">1/2</th>
     <th scope="col">Variation</th>
   </tr>
+
+  <div *ngFor="let dish of lunch_dishes">
   <tr>
-    <td scope="row">Main courses</td>
-  </tr>
-  <tr>
-    <td scope="row">Pesto</td>
+    <td scope="row"  >{{dish}}</td>
     <td>
       <select name="numbers">
           <optgroup label="Number of portions">
@@ -21,6 +20,7 @@
           </optgroup>
       </select>
     </td>
+
     <td>
       <select name="numbers">
           <optgroup label="Number of portions">
@@ -34,141 +34,47 @@
       <button type="button" (click)="addVariations()">+</button>
     </td>
   </tr>
+    </div>
+</table>
+
+
+<table summary="The courses you can select for dinner" >
+  <caption>Dinner</caption>
   <tr>
-    <td scope="row">Pomodoro</td>
+    <th></th>
+    <th scope="col">Int</th>
+    <th scope="col">1/2</th>
+    <th scope="col">Variation</th>
+  </tr>
+
+  <div *ngFor="let dish of dinner_dishes">
+  <tr>
+      <td scope="row"  >{{dish}}</td>
+      <td>
+        <select name="numbers">
+          <optgroup label="Number of portions">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </optgroup>
+        </select>
+      </td>
+
     <td>
       <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
+        <optgroup label="Number of portions">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </optgroup>
       </select>
     </td>
     <td>
       <button type="button" (click)="addVariations()">+</button>
     </td>
   </tr>
-  <tr>
-    <td scope="row">Omelet</td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <button type="button" (click)="addVariations()">+</button>
-    </td>
-  </tr>
-  <tr>
-    <td scope="row">Chicken</td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <button type="button" (click)="addVariations()">+</button>
-    </td>
-  </tr>
-  <tr>
-    <td scope="row">Fruit</td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-  </tr>
-  <tr>
-    <td scope="row">Desserts</td>
-  </tr>
-  <tr>
-    <td scope="row">Ice cream</td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <button type="button" (click)="addVariations()">+</button>
-    </td>
-  </tr>
-  <tr>
-    <td scope="row">Sherbet</td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <button type="button" (click)="addVariations()">+</button>
-    </td>
-  </tr>
+  </div>
+
 </table>
 
 
