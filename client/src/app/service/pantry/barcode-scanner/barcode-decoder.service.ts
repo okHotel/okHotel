@@ -26,8 +26,8 @@ export class BarcodeDecoderService {
         DECODER_LIVE_CONFIG.inputStream = {
             type: 'LiveStream',
             constraints: {
-                width: { min: 640 },
-                height: { min: 480 },
+                width: { min: 440 },
+                height: { min: 280 },
                 facingMode: 'environment',
                 aspectRatio: {
                     min: 1,

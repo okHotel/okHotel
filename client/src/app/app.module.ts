@@ -25,7 +25,6 @@ import {CustomerDetailComponent} from "./customer-detail/customer-detail.compone
 import {BookingService} from "./service/booking/booking.service";
 import {AuthService} from "./service/auth/auth.service";
 import {BarcodeDecoderService} from "./service/pantry/barcode-scanner/barcode-decoder.service";
-import {BarcodeScannerComponent} from "./admin/pantry/barcode-scanner/barcode-scanner.component";
 import {
     MatCardModule,
     MatTableModule,
@@ -89,7 +88,6 @@ const appRoutes: Routes = [
     AddDishesComponent,
     AddVariationComponent,
     AdminStatisticsComponent,
-    BarcodeScannerComponent,
     EditProductComponent,
     DeleteProductComponent,
     ProductsComponent,

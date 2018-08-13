@@ -8,11 +8,14 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import {PantryService} from "../../service/pantry/pantry.service";
-import {ProductDataSource} from "./ProductDataSource";
+import {ProductDataSource} from "./product.dataSource";
 import {EditProductComponent} from "./edit-product/edit-product.component";
 import {DeleteProductComponent} from "./delete-product/delete-product.component";
 import {AddProductComponent} from "./add-product/add-product.component";
 import {Product} from "./product";
+import {BarcodeDecoderService} from "../../service/pantry/barcode-scanner/barcode-decoder.service";
+import {BarcodeValidatorService} from "../../service/pantry/barcode-scanner/barcode-validator.service";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-products',
@@ -27,25 +30,58 @@ export class ProductsComponent implements OnInit {
     index: number;
     id: number;
 
-    constructor(public httpClient: HttpClient,
-                public dialog: MatDialog,
-                public dataService: PantryService) {}
-
+    lastResult: any;
+    message: any;
+    error: any;
+    code$ = new Subject<any>();
+    @ViewChild('interactive') interactive;
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild('filter') filter: ElementRef;
+    barcode;
+
+    constructor(public httpClient: HttpClient,
+                public dialog: MatDialog,
+                public dataService: PantryService,
+                private decoderService: BarcodeDecoderService,
+                private barcodeValidator: BarcodeValidatorService) {}
 
     ngOnInit() {
         this.loadData();
+
+        this.decoderService.onLiveStreamInit();
+        this.decoderService.onDecodeProcessed();
+
+        this.decoderService
+            .onDecodeDetected()
+            .then(code => {
+                this.lastResult = code;
+                this.decoderService.onPlaySound();
+                this.code$.next(code);
+                this.barcode = code;
+                this.dataSource.filter = code.toString();
+                this.filter.nativeElement.value = code.toString();
+                console.log(code)
+            })
+            .catch((err) => this.error = `Something Wrong: ${err}`);
+
+        this.barcodeValidator
+            .doSearchbyCode(this.code$)
+            .subscribe();
     }
 
     refresh() {
         this.loadData();
     }
 
-    addNew(product: Product) {
+    addNew() {
+
+        let code;
+        if (this.barcode != undefined) {
+            code = this.barcode;
+        }
         const dialogRef = this.dialog.open(AddProductComponent, {
-            data: {product: product }
+            data: {code: code}
         });
 
         dialogRef.afterClosed().subscribe(result => {
@@ -97,9 +133,7 @@ export class ProductsComponent implements OnInit {
         });
     }
 
-
-    // If you don't need a filter or a pagination this can be simplified, you just use code from else block
-    private refreshTable() {
+    public refreshTable() {
         // if there's a paginator active we're using it for refresh
         if (this.dataSource._paginator.hasNextPage()) {
             this.dataSource._paginator.nextPage();
@@ -110,6 +144,7 @@ export class ProductsComponent implements OnInit {
             this.dataSource._paginator.nextPage();
             // in all other cases including active filter we do it like this
         } else {
+            console.log('int refresh table')
             this.dataSource.filter = '';
             this.dataSource.filter = this.filter.nativeElement.value;
         }
@@ -127,5 +162,13 @@ export class ProductsComponent implements OnInit {
                 }
                 this.dataSource.filter = this.filter.nativeElement.value;
             });
+    }
+
+    ngAfterContentInit() {
+        this.interactive.nativeElement.children[0].style.position = 'absolute';
+    }
+
+    ngOnDestroy() {
+        this.decoderService.onDecodeStop();
     }
 }

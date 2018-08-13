@@ -1,5 +1,5 @@
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {PantryService} from "../../../service/pantry/pantry.service";
 import {Product} from "../product";
@@ -12,21 +12,26 @@ import {Product} from "../product";
 
 export class AddProductComponent {
 
+    product: Product = new Product();
+    isCodeReadOnly: boolean = false;
+
     constructor(public dialogRef: MatDialogRef<AddProductComponent>,
-                @Inject(MAT_DIALOG_DATA) public product: Product,
-                public pantryService: PantryService) { }
+                @Inject(MAT_DIALOG_DATA) public data,
+                public pantryService: PantryService) {
+        console.log('product: ');
+        this.product.code = data.code;
+        if (this.product.code != 0) {
+            this.isCodeReadOnly = true;
+        }
+        console.log(this.isCodeReadOnly)
+    }
 
     formControl = new FormControl('', [
         Validators.required
-        // Validators.email,
     ]);
 
     getErrorMessage() {
         return this.formControl.hasError('required') ? 'Required field' : '';
-/*
-            this.formControl.hasError('email') ? 'Not a valid email' :
-*/
-
     }
 
     submit() {

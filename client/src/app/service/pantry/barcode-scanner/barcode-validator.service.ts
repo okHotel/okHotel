@@ -8,10 +8,6 @@ export class BarcodeValidatorService {
 
     constructor(private _http: HttpClient) { }
 
-    private endpoints = {
-        search: 'https://exmpale-barcode-service.com',//sample endpoint to validate your barcode
-    };
-
     doSearchbyCode(codes: Observable<any>, debounceMs = 400) {
         return codes
             .pipe(
