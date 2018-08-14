@@ -48,4 +48,11 @@ export class AddProductComponent implements OnInit {
     public onSave(): void {
         this.pantryService.addProduct(this.product);
     }
+
+    isInvalid(code) {
+       return code.length !== 8 &&
+           code.length !== 13 &&
+           code.length !== 14 &&
+           code.length !== 17;
+    }
 }
