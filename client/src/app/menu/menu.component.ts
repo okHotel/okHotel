@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {MenuService} from '../service/menu/menu.service';
 import { DatePipe } from '@angular/common'
+import {CustomerService} from '../service/customer/customer.service';
+import {Customer} from '../customer/customer';
 
 
 @Component({
@@ -13,8 +15,9 @@ export class MenuComponent implements OnInit {
 
     lunch_dishes: String[];
     dinner_dishes: String[];
+    people: number[];
 
-    constructor(private router: Router, private menu: MenuService, private datepipe: DatePipe) { }
+    constructor(private router: Router, private menu: MenuService, private datepipe: DatePipe, private customerService: CustomerService) { }
 
     ngOnInit() {
 
@@ -29,6 +32,10 @@ export class MenuComponent implements OnInit {
             },
             error => {console.log(error)}
         );
+
+        this.customerService.getLoggedCustomer().subscribe( data => {
+           this.people = Array(data.numberOfPeople);
+        })
     }
 
     home() {
