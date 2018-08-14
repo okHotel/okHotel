@@ -10,25 +10,28 @@ import {Product} from "../product";
     styleUrls: ['./add-product.component.css']
 })
 
-export class AddProductComponent {
+export class AddProductComponent implements OnInit {
 
     product: Product = new Product();
     isCodeReadOnly: boolean = false;
 
     constructor(public dialogRef: MatDialogRef<AddProductComponent>,
                 @Inject(MAT_DIALOG_DATA) public data,
-                public pantryService: PantryService) {
-        console.log('product: ');
-        this.product.code = data.code;
-        if (this.product.code != 0) {
-            this.isCodeReadOnly = true;
-        }
-        console.log(this.isCodeReadOnly)
-    }
+                public pantryService: PantryService) {}
 
     formControl = new FormControl('', [
         Validators.required
     ]);
+
+    ngOnInit() {
+        console.log('product: ');
+        console.log(this.data.code)
+        this.product.code = this.data.code;
+        if (this.product.code != undefined) {
+            this.isCodeReadOnly = true;
+        }
+        console.log(this.isCodeReadOnly)
+    }
 
     getErrorMessage() {
         return this.formControl.hasError('required') ? 'Required field' : '';
