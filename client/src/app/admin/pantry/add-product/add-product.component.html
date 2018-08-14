@@ -46,7 +46,7 @@
     </div>
 
     <div mat-dialog-actions>
-      <button [disabled]="isInvalid(product.code)"  mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="onSave()">Save</button>
+      <button mat-button [type]="submit" [disabled]="!formControl.valid || isInvalid(product.code)" [mat-dialog-close]="1" (click)="onSave()">Save</button>
       <button mat-button (click)="onCancel()" tabindex="-1">Cancel</button>
     </div>
   </form>

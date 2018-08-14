@@ -43,5 +43,11 @@ export class EditProductComponent {
         this.pantryService.updateProduct(this.data);
     }
 
+    isInvalid(code) {
+        return code.length !== 8 &&
+            code.length !== 13 &&
+            code.length !== 14 &&
+            code.length !== 17;
+    }
 
 }
