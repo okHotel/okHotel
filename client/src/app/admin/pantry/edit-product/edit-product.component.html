@@ -5,7 +5,7 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Code" [(ngModel)]="data.code" name="code" required >
+        <input type="text" matInput #input pattern="[0-9]*" class="form-control" placeholder="Code" [(ngModel)]="data.code" name="code" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
