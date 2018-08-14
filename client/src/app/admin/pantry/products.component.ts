@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit {
     productService: PantryService | null;
     dataSource: ProductDataSource | null;
     index: number;
-    id: number;
+    id: string;
 
     lastResult: any;
     message: any;
@@ -94,7 +94,7 @@ export class ProductsComponent implements OnInit {
         });
     }
 
-    startEdit(i: number, _id: string, code: number, name: string, category: string, quantity: number, unit: string) {
+    startEdit(i: number, _id: string, code: string, name: string, category: string, quantity: number, unit: string) {
         this.id = code;
         // index row is used just for debugging proposes and can be removed
         this.index = i;
@@ -116,7 +116,7 @@ export class ProductsComponent implements OnInit {
         });
     }
 
-    deleteItem(i: number, _id: string, code: number, name: string, quantity: number, category: string, unit: string) {
+    deleteItem(i: number, _id: string, code: string, name: string, quantity: number, category: string, unit: string) {
         this.index = i;
         this.id = code;
         const dialogRef = this.dialog.open(DeleteProductComponent, {
