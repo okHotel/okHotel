@@ -1,8 +1,8 @@
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {PantryService} from "../../../service/pantry/pantry.service";
-import {Product} from "../product";
+import {PantryService} from '../../../service/pantry/pantry.service';
+import {Product} from '../product';
 
 @Component({
     selector: 'app-add-product',
@@ -13,7 +13,7 @@ import {Product} from "../product";
 export class AddProductComponent implements OnInit {
 
     product: Product = new Product();
-    isCodeReadOnly: boolean = false;
+    isCodeReadOnly: Boolean = false;
 
     constructor(public dialogRef: MatDialogRef<AddProductComponent>,
                 @Inject(MAT_DIALOG_DATA) public data,
@@ -27,10 +27,10 @@ export class AddProductComponent implements OnInit {
         console.log('product: ');
         console.log(this.data.code)
         this.product.code = this.data.code;
-        if (this.product.code != undefined) {
+        if (this.product.code !== undefined) {
             this.isCodeReadOnly = true;
         }
-        console.log(this.isCodeReadOnly)
+        console.log(this.isCodeReadOnly);
     }
 
     getErrorMessage() {

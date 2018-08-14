@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import {Router, RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
@@ -17,14 +17,14 @@ import {AdminProfileComponent} from './admin/admin-profile/admin-profile.compone
 import { MakeMenuViewComponent } from './admin/make-menu-view/make-menu-view.component';
 import { AddDishesComponent } from './admin/add-dishes/add-dishes.component';
 import { AddVariationComponent } from './admin/add-variation/add-variation.component';
-import {CustomerService} from "./service/customer/customer.service";
-import {HttpClientModule} from "@angular/common/http";
+import {CustomerService} from './service/customer/customer.service';
+import {HttpClientModule} from '@angular/common/http';
 import { CustomerComponent } from './customer/customer.component';
 import { RegistrationComponent } from './registration/registration.component';
-import {CustomerDetailComponent} from "./customer-detail/customer-detail.component";
-import {BookingService} from "./service/booking/booking.service";
-import {AuthService} from "./service/auth/auth.service";
-import {BarcodeDecoderService} from "./service/pantry/barcode-scanner/barcode-decoder.service";
+import {CustomerDetailComponent} from './customer-detail/customer-detail.component';
+import {BookingService} from './service/booking/booking.service';
+import {AuthService} from './service/auth/auth.service';
+import {BarcodeDecoderService} from './service/pantry/barcode-scanner/barcode-decoder.service';
 import {
     MatCardModule,
     MatTableModule,
@@ -32,17 +32,16 @@ import {
     MatToolbarModule,
     MatInputModule,
     MatSortModule,
-    MatSelectModule,
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
     MatCheckboxModule
 } from '@angular/material';
-import {BarcodeValidatorService} from "./service/pantry/barcode-scanner/barcode-validator.service";
-import {AddProductComponent} from "./admin/pantry/add-product/add-product.component";
-import {PantryService} from "./service/pantry/pantry.service";
-import {CommonModule} from "@angular/common";
-import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {BarcodeValidatorService} from './service/pantry/barcode-scanner/barcode-validator.service';
+import {AddProductComponent} from './admin/pantry/add-product/add-product.component';
+import {PantryService} from './service/pantry/pantry.service';
+import {CommonModule} from '@angular/common';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { EditProductComponent } from './admin/pantry/edit-product/edit-product.component';
 import { DeleteProductComponent } from './admin/pantry/delete-product/delete-product.component';
 import { ProductsComponent } from './admin/pantry/products.component';
