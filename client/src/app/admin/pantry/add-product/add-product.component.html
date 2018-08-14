@@ -24,19 +24,24 @@
       <mat-form-field color="accent">
         <input matInput #inputstate class="form-control" placeholder="Category" [(ngModel)]="product.category" name="category" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-        <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
         <input matInput type="number" placeholder="Quantity" [(ngModel)]="product.quantity" name="quantity">
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Unit" [(ngModel)]="product.unit" name="unit">
+        <mat-select [(ngModel)]="product.unit" name="unit" placeholder="Unit">
+          <mat-option *ngFor="let unit of units"  [value]=unit>
+            {{unit}}
+          </mat-option>
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-select>
       </mat-form-field>
     </div>
 

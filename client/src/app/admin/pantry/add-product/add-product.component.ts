@@ -2,7 +2,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {PantryService} from '../../../service/pantry/pantry.service';
-import {Product} from '../product';
+import {Product, Unit} from '../product';
 
 @Component({
     selector: 'app-add-product',
@@ -14,6 +14,7 @@ export class AddProductComponent implements OnInit {
 
     product: Product = new Product();
     isCodeReadOnly: Boolean = false;
+    units = Object.values(Unit);
 
     constructor(public dialogRef: MatDialogRef<AddProductComponent>,
                 @Inject(MAT_DIALOG_DATA) public data,

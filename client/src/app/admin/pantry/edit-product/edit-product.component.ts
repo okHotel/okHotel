@@ -2,7 +2,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Component, Inject} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {PantryService} from "../../../service/pantry/pantry.service";
-import {Product} from "../product";
+import {Product, Unit} from "../product";
 
 @Component({
     selector: 'app-edit-product',
@@ -19,12 +19,15 @@ export class EditProductComponent {
         // Validators.email,
     ]);
 
+    units = Object.values(Unit);
+
     getErrorMessage() {
         return this.formControl.hasError('required') ? 'Required field' :
 /*
             this.formControl.hasError('email') ? 'Not a valid email' :
 */
                 '';
+
     }
 
     submit() {
