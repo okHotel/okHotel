@@ -110,7 +110,7 @@ export class ProductsComponent implements OnInit {
                 // Then you update that record using data from dialogData (values you enetered)
                 this.productService.dataChange.value[foundIndex] = this.dataService.getDialogData();
                 // And lastly refresh table
-                this.refreshTable();
+//                this.refreshTable();
                 this.loadData();
             }
         });

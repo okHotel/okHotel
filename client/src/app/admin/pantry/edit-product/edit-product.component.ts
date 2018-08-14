@@ -36,6 +36,7 @@ export class EditProductComponent {
     }
 
     onSave(): void {
+        console.log(this.data);
         this.pantryService.updateProduct(this.data);
     }
 

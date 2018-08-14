@@ -11,7 +11,8 @@ const PantrySchema = mongoose.Schema({
     name: String,
     code: Number,
     quantity: Number,
-    category: String
+    category: String,
+    unit: String
 
 });
 
