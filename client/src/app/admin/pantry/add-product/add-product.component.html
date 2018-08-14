@@ -6,7 +6,7 @@
     <div class="form">
       <mat-form-field color="accent">
         <input [disabled]="isCodeReadOnly" matInput #input type="text" pattern="[0-9]*" class="form-control" placeholder="Code" [(ngModel)]="product.code"
-               name="code" required >
+               name="code" required appInputValidator>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
