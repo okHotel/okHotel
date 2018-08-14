@@ -125,10 +125,14 @@ export class ProductsComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result === 1) {
+
+/*
                 const foundIndex = this.productService.dataChange.value.findIndex(x => x.code === this.id);
                 // for delete we use splice in order to remove single object from DataService
                 this.productService.dataChange.value.splice(foundIndex, 1);
-                this.refreshTable();
+*/
+                this.loadData();
+//                this.refreshTable();
             }
         });
     }
