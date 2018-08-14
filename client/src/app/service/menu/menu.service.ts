@@ -15,6 +15,7 @@ const httpOptions = {
 
 export class MenuService {
 
+    public showVariations: boolean = false;
     private baseUrl = 'http://localhost:3000';
     private menuUrl = this.baseUrl + '/menu';  // URL to web api
 

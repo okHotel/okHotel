@@ -32,8 +32,6 @@ const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
     { path: 'login', component: LoginComponent},
     { path: 'restaurant', component: MenuComponent, canActivate: [AuthService]},
-    { path: 'menu-variations', component: MenuVariationsComponent, canActivate: [AuthService]},
-    { path: 'menu', component: MenuComponent, canActivate: [AuthService]},
     { path: 'admin-profile', component: AdminProfileComponent, canActivate: [AuthService]},
     { path: 'make-menu', component: MakeMenuViewComponent, canActivate: [AuthService]},
     { path: 'make-variation', component: AddVariationComponent, canActivate: [AuthService]},

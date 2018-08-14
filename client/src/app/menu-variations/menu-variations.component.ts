@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {MenuService} from '../service/menu/menu.service';
 
 @Component({
     selector: 'app-menu-variations',
@@ -12,12 +13,12 @@ export class MenuVariationsComponent implements OnInit {
 
   public variation = ['Wheat', 'Milk', 'Egg', 'Starwberry', 'Fish'];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private menu: MenuService) { }
 
   ngOnInit() { }
 
   goToMenu(){
-    this.router.navigateByUrl('/menu');
+    this.menu.showVariations = false;
   }
 
 }

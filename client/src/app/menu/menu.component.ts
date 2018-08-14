@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit {
     dinner_dishes: String[];
     people: number[] = [];
 
-    constructor(private router: Router, private menu: MenuService, private datepipe: DatePipe, private customerService: CustomerService) { }
+    constructor(private router: Router, public menu: MenuService, private datepipe: DatePipe, private customerService: CustomerService) { }
 
     ngOnInit() {
 
@@ -33,7 +33,6 @@ export class MenuComponent implements OnInit {
             error => {console.log(error)}
         );
 
-
         this.customerService.getLoggedCustomer().subscribe( data => {
             for (let i = 0; i < data.numberOfPeople; i++){
                 this.people.push(i);
@@ -46,7 +45,7 @@ export class MenuComponent implements OnInit {
     }
 
     addVariations(){
-        this.router.navigateByUrl('/menu-variations' );
+        this.menu.showVariations = true;
     }
 
 }
