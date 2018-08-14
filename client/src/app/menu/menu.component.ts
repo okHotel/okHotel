@@ -15,7 +15,7 @@ export class MenuComponent implements OnInit {
 
     lunch_dishes: String[];
     dinner_dishes: String[];
-    people: number[];
+    people: number[] = [];
 
     constructor(private router: Router, private menu: MenuService, private datepipe: DatePipe, private customerService: CustomerService) { }
 
@@ -33,8 +33,11 @@ export class MenuComponent implements OnInit {
             error => {console.log(error)}
         );
 
+
         this.customerService.getLoggedCustomer().subscribe( data => {
-           this.people = Array(data.numberOfPeople);
+            for (let i = 0; i < data.numberOfPeople; i++){
+                this.people.push(i);
+            }
         })
     }
 

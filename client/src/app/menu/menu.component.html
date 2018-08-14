@@ -13,20 +13,16 @@
     <td scope="row"  >{{dish}}</td>
     <td>
       <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
+        <optgroup label="Number of portions">
+          <option *ngFor="let n of people" value="n">{{n}}</option>
+        </optgroup>
       </select>
     </td>
 
     <td>
       <select name="numbers">
           <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
+        <option *ngFor="let n of people" value="n">{{n}}</option>
           </optgroup>
       </select>
     </td>
@@ -52,16 +48,16 @@
       <td scope="row"  >{{dish}}</td>
       <td>
         <select name="numbers">
-          <optgroup label="Number of portions" *ngFor="let n of people">
-            <option value="n">{{n}}</option>
+          <optgroup label="Number of portions">
+            <option *ngFor="let n of people" value="n">{{n}}</option>
           </optgroup>
         </select>
       </td>
 
     <td>
       <select name="numbers">
-        <optgroup label="Number of portions" *ngFor="let n of people">
-          <option value="n">{{n}}</option>
+        <optgroup label="Number of portions" >
+          <option *ngFor="let n of people" value="n">{{n}}</option>
         </optgroup>
       </select>
     </td>
