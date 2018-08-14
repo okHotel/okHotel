@@ -23,4 +23,8 @@ export class VariationService {
     getVariations(): Observable<Variation[]> {
         return this.http.get<Variation[]>(this.variationsUrl);
     }
+
+    addVariation(): void {
+        return this.http.put<Variation[]>(this.variationsUrl);
+    }
 }

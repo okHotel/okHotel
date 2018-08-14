@@ -24,4 +24,9 @@ export class AddVariationComponent implements OnInit {
             });
     }
 
+    addVariation(){
+
+        this.variationService.addVariation();
+    }
+
 }
