@@ -4,5 +4,14 @@ export class Product {
     name: string;
     category: string;
     quantity: number;
-    unit: string;
+    unit: Unit;
+}
+
+export enum Unit {
+    BOXES = 'boxes',
+    GR = 'grams',
+    L = 'l',
+    KG = 'Kg',
+    PACKS = 'paks',
+    PACKETS = 'packets'
 }

@@ -35,11 +35,22 @@
       </mat-form-field>
     </div>
 
-    <div class="form">
+      <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Unit" [(ngModel)]="data.unit" name="unit">
+          <mat-select [(ngModel)]="data.unit" name="unit" placeholder="Unit">
+              <mat-option *ngFor="let unit of units"  [value]=unit>
+                  {{unit}}
+              </mat-option>
+          </mat-select>
       </mat-form-field>
-    </div>
+      </div>
+
+<!--
+    <select id="roomNumber" [(ngModel)]="customer.roomNumber" name="roomNumber" #roomNumber="ngModel">
+      <option *ngFor="let number of roomsNumber" [ngValue]=number > {{number}} </option>
+    </select>
+-->
+
 
     <div mat-dialog-actions>
       <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="onSave()">Save</button>
