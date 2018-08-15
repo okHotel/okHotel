@@ -24,3 +24,4 @@ export class AdminStatisticsComponent implements OnInit {
         this.router.navigateByUrl('/home');
     }
 }
+

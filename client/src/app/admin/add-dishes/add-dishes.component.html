@@ -1,17 +1,21 @@
 
 <h3>Lunch</h3>
-<div *ngFor="let dish of lunch_dishes">
-  <p>{{dish}}</p>
+
+<div *ngFor="let dish of menu.menu.lunch_dishes">
+  <button (click)="deleteLunchDish(dish)"><i class="material-icons prefix">clear</i> </button> {{dish}}
 </div>
-<input type="text"/><br>
-<button>Add</button><br>
+
+<input type="text" (keyup)="composeDish($event)"/><br>
+<button (click)="addLunchDish()">Add</button><br>
 
 
 
 <h3>Dinner</h3>
-<div *ngFor="let dish of dinner_dishes">
-  <p>{{dish}}</p>
+<div *ngFor="let dish of menu.menu.dinner_dishes">
+  <button (click)="deleteDinnerDish(dish)"><i class="material-icons prefix">clear</i> </button> {{dish}}
 </div>
-<input type="text"/><br>
-<button>Add</button><br>
+
+
+<input type="text" (keyup)="composeDish($event)"/><br>
+<button (click)="addDinnerDish()">Add</button><br>
 

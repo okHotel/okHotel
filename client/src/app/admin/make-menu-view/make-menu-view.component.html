@@ -1,20 +1,23 @@
 <app-profile></app-profile><br>
 
-<button>
-   <span>
-       <i class='material-icons'>add_circle_outline</i>
-   Insert menu
-   </span>
-</button><br>
 
 <span> Select menu date
-<input type="date"/>
+<input   type="date" [(ngModel)]="date" (keyup)="setDateMenu($event)"/>
 </span><br>
 
-<button>Fill in the fields with a saved menu</button><br>
-<button>Save</button><br>
+<!--<button>Fill in the fields with a saved menu</button><br>
+<button>Save</button><br>-->
 
 <app-add-dishes></app-add-dishes>
 
-<button>Done</button><br>
-<button>Delete</button><br>
+<button (click)="saveMenu()">Done</button><br>
+<button (click)="deleteMenu()">Delete</button><br>
+
+<div [hidden]="!isDateWrong"
+     class="alert alert-danger">
+    Insert a date menu valid
+</div>
+
+
+
+

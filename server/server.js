@@ -11,6 +11,7 @@ const mongoose = require('mongoose');
 const customerRoutes = require('./routes/customer.routes');
 const bookingRoutes = require('./routes/booking.routes');
 const authenticationRoutes = require('./routes/authentication.routes');
+const menuRoutes = require('./routes/menu.routes');
 const planRoutes = require('./routes/plans.routes');
 const productRoutes = require('./routes/products.routes');
 
@@ -36,8 +37,10 @@ app.use(cors(corsOptions));
 app.use('/customers', customerRoutes);
 app.use('/bookings', bookingRoutes);
 app.use('/auth', authenticationRoutes);
+app.use('/menu', menuRoutes);
 app.use('/plan', planRoutes);
 app.use('/product', productRoutes);
+
 // Create a Server
 const server = app.listen(3000, function () {
 
