@@ -2,7 +2,7 @@
     <a id="profileLink" (click)="goToProfile()">{{customer?.bookingName}} {{customer?.bookingSurname}}</a>
     <!--<button id="profileButton" alt="The profile icon" (click)="profile()"></button>-->
     <button mat-button (click)="goToProfile()">
-    <i class="material-icons">person</i>
+        <mat-icon aria-label="Profile">person</mat-icon>
     </button>
     <button mat-button class="btn-large btn-submit" (click)="logout()">Logout</button>
 </div>
