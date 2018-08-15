@@ -89,7 +89,8 @@ export class ProductsComponent implements OnInit {
                 // After dialog is closed we're doing frontend updates
                 // For add we're just pushing a new row inside DataService
                 this.productService.dataChange.value.push(this.dataService.getDialogData());
-                this.refreshTable();
+                // this.refreshTable();
+                this.loadData();
             }
         });
     }
