@@ -25,13 +25,10 @@ export class AddProductComponent implements OnInit {
     ]);
 
     ngOnInit() {
-        console.log('product: ');
-        console.log(this.data.code)
         this.product.code = this.data.code;
         if (this.product.code !== undefined) {
             this.isCodeReadOnly = true;
         }
-        console.log(this.isCodeReadOnly);
     }
 
     getErrorMessage() {
@@ -50,10 +47,10 @@ export class AddProductComponent implements OnInit {
         this.pantryService.addProduct(this.product);
     }
 
-    isInvalid(code) {
+    isCodeInvalid(code) {
        return code.length !== 8 &&
            code.length !== 13 &&
            code.length !== 14 &&
-           code.length !== 17;
+           code.length !== 17 && code !== undefined;
     }
 }

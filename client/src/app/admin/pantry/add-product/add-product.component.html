@@ -6,7 +6,7 @@
     <div class="form">
       <mat-form-field color="accent">
         <input [disabled]="isCodeReadOnly" matInput #input type="text" class="form-control" placeholder="Code" [(ngModel)]="product.code"
-               name="code" >
+               name="code" pattern="[0-9]*">
         <mat-error >{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
@@ -29,14 +29,14 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput type="number" placeholder="Quantity" [(ngModel)]="product.quantity" name="quantity">
+        <input matInput type="number" placeholder="Quantity" [(ngModel)]="product.quantity" name="quantity" pattern="[0-9]*" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <mat-select [(ngModel)]="product.unit" name="unit" placeholder="Unit">
+        <mat-select [(ngModel)]="product.unit" name="unit" placeholder="Unit" required>
           <mat-option *ngFor="let unit of units"  [value]=unit>
             {{unit}}
           </mat-option>
@@ -46,7 +46,7 @@
     </div>
 
     <div mat-dialog-actions>
-      <button mat-button [type]="submit" [disabled]="!formControl.valid || isInvalid(product.code)" [mat-dialog-close]="1" (click)="onSave()">Save</button>
+      <button mat-button [type]="submit" [disabled]="!formControl.valid || isCodeInvalid(product.code)" [mat-dialog-close]="1" (click)="onSave()">Save</button>
       <button mat-button (click)="onCancel()" tabindex="-1">Cancel</button>
     </div>
   </form>
