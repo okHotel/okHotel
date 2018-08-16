@@ -17,6 +17,9 @@ export class MenuComponent implements OnInit {
     dinner_dishes: String[];
     people: number[] = [];
 
+    lunchReservations = "";//: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    dinnerReservations: number[] = [];
+
     constructor(private router: Router, public menu: MenuService, private datepipe: DatePipe, private customerService: CustomerService) { }
 
     ngOnInit() {

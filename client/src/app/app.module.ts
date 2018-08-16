@@ -26,6 +26,8 @@ import {CustomerDetailComponent} from "./customer-detail/customer-detail.compone
 import {BookingService} from "./service/booking/booking.service";
 import {AuthService} from "./service/auth/auth.service";
 import { DatePipe } from '@angular/common'
+import {MatFormFieldModule, MatSelectModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 const appRoutes: Routes = [
@@ -69,7 +71,10 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+      MatFormFieldModule,
+      MatSelectModule,
+      BrowserAnimationsModule
   ],
   providers: [CustomerService, BookingService, AuthService, DatePipe],
   bootstrap: [AppComponent]

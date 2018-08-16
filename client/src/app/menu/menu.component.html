@@ -1,4 +1,6 @@
 <app-profile></app-profile>
+<p>lunch: {{lunchReservations}}</p>
+
 <table summary="The courses you can select for lunch" >
     <caption>Lunch</caption>
   <tr>
@@ -12,11 +14,22 @@
   <tr>
     <td scope="row"  >{{dish}}</td>
     <td>
+
+     <mat-form-field color="accent">
+        <mat-select [(ngModel)]="lunchReservations" >
+          <mat-option *ngFor="let n of people" value=n>
+            {{n}}
+          </mat-option>
+          <!--<mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>-->
+        </mat-select>
+      </mat-form-field>
+
       <select name="numbers">
         <optgroup label="Number of portions">
           <option *ngFor="let n of people" value="n">{{n}}</option>
         </optgroup>
       </select>
+
     </td>
 
     <td>
