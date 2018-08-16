@@ -12,7 +12,6 @@ import { HomeComponent } from './home/home.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminStatisticsComponent } from './admin/admin-statistics/admin-statistics.component';
-import {RoomNumberComponent} from './admin/room-number/room-number.component';
 import {AdminProfileComponent} from './admin/admin-profile/admin-profile.component';
 import { MakeMenuViewComponent } from './admin/make-menu-view/make-menu-view.component';
 import { AddDishesComponent } from './admin/add-dishes/add-dishes.component';
@@ -78,7 +77,6 @@ const appRoutes: Routes = [
     CustomerComponent,
     RegistrationComponent,
     ProfileComponent,
-    RoomNumberComponent,
     AdminProfileComponent,
     MakeMenuViewComponent,
     ProductsComponent,
