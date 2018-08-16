@@ -1,6 +1,4 @@
 <app-profile></app-profile>
-<p>lunch: {{lunchReservations}}</p>
-
 <table summary="The courses you can select for lunch" >
     <caption>Lunch</caption>
   <tr>
@@ -10,36 +8,29 @@
     <th scope="col">Variation</th>
   </tr>
 
+  <mat-error *ngIf="checkLunchReservation()">{{getErrorMessage()}}</mat-error>
   <div *ngFor="let dish of lunch_dishes">
   <tr>
-    <td scope="row"  >{{dish}}</td>
+    <td scope="row">{{dish}}</td>
     <td>
 
-     <mat-form-field color="accent">
-        <mat-select [(ngModel)]="lunchReservations" >
-          <mat-option *ngFor="let n of people" value=n>
+     <mat-form-field color="accent" >
+        <mat-select placeholder="0">
+          <mat-option *ngFor="let n of people" value=n (click)="setLunch(lunch_dishes.indexOf(dish)*2, n)">
             {{n}}
           </mat-option>
-          <!--<mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>-->
         </mat-select>
       </mat-form-field>
 
-      <select name="numbers">
-        <optgroup label="Number of portions">
-          <option *ngFor="let n of people" value="n">{{n}}</option>
-        </optgroup>
-      </select>
 
-    </td>
+      <mat-form-field color="accent">
+        <mat-select placeholder="0">
+          <mat-option *ngFor="let n of people" value=n (click)="setLunch(lunch_dishes.indexOf(dish)*2+1, n)">
+            {{n}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option *ngFor="let n of people" value="n">{{n}}</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
       <button type="button" (click)="addVariations()">+</button>
     </td>
   </tr>
@@ -56,23 +47,27 @@
     <th scope="col">Variation</th>
   </tr>
 
+  <mat-error *ngIf="checkDinnerReservation()">{{getErrorMessage()}}</mat-error>
   <div *ngFor="let dish of dinner_dishes">
   <tr>
       <td scope="row"  >{{dish}}</td>
       <td>
-        <select name="numbers">
-          <optgroup label="Number of portions">
-            <option *ngFor="let n of people" value="n">{{n}}</option>
-          </optgroup>
-        </select>
-      </td>
+        <mat-form-field color="accent" >
+          <mat-select placeholder="0">
+            <mat-option *ngFor="let n of people" value=n (click)="setDinner(dinner_dishes.indexOf(dish)*2, n)">
+              {{n}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-    <td>
-      <select name="numbers">
-        <optgroup label="Number of portions" >
-          <option *ngFor="let n of people" value="n">{{n}}</option>
-        </optgroup>
-      </select>
+
+        <mat-form-field color="accent">
+          <mat-select placeholder="0">
+            <mat-option *ngFor="let n of people" value=n (click)="setDinner(dinner_dishes.indexOf(dish)*2+1, n)">
+              {{n}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
     </td>
     <td>
       <button type="button" (click)="addVariations()">+</button>
@@ -86,6 +81,6 @@
 <p>Other notes</p><br>
 <textarea></textarea><br><br>
 
-<button type="button" (click)="home()">Save</button>
+<button type="button" [disabled]="checkSave()"  (click)="home()">Save</button>
 
 <app-menu-variations *ngIf="menu.showVariations"></app-menu-variations>
