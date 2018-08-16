@@ -75,7 +75,9 @@ export class RegistrationComponent{
     }
 
     addNeed() {
-        this.customerNeeds.push(this.need);
+        if (this.need.length > 0) {
+            this.customerNeeds.push(this.need);
+        }
     }
 
     private save(): void {

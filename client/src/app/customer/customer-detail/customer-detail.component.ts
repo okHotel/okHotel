@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from '../customer/customer';
-import { CustomerService } from '../service/customer/customer.service';
+import { Customer } from '../customer';
+import { CustomerService } from '../../service/customer/customer.service';
 
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
@@ -16,7 +16,7 @@ export class CustomerDetailComponent implements OnInit {
     submitted = false;
     message: string;
     customerNeeds: string[] = [];
-    need: string;
+    need: string = '';
     error: string;
 
     constructor(
@@ -42,10 +42,13 @@ export class CustomerDetailComponent implements OnInit {
         this.customer.otherNeeds = this.customerNeeds;
         this.customerService.updateCustomer(this.customer)
             .subscribe(result => this.message = "Customer Updated Successfully!");
+
     }
 
     addNeed() {
-        this.customerNeeds.push(this.need);
+        if (this.need.length > 0) {
+            this.customerNeeds.push(this.need);
+        }
     }
 
     delete(): void {

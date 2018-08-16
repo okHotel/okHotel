@@ -21,7 +21,7 @@ import {CustomerService} from './service/customer/customer.service';
 import {HttpClientModule} from '@angular/common/http';
 import { CustomerComponent } from './customer/customer.component';
 import { RegistrationComponent } from './registration/registration.component';
-import {CustomerDetailComponent} from './customer-detail/customer-detail.component';
+import {CustomerDetailComponent} from './customer/customer-detail/customer-detail.component';
 import {BookingService} from './service/booking/booking.service';
 import {AuthService} from './service/auth/auth.service';
 import {BarcodeDecoderService} from './service/pantry/barcode-scanner/barcode-decoder.service';
