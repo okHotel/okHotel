@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Customer} from "../../customer/customer";
-import {Observable} from "rxjs/index";
+import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
 import * as jwt_decode from "jwt-decode";

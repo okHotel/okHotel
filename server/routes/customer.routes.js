@@ -12,7 +12,7 @@ app.get('/', authController.requireAuthBy(['admin']), customers.findAll);
 app.get('/:customerId/', authController.requireAuthBy(['customer', 'admin']), customers.findOne);
 
 // Update a Customer with Id
-app.put('/', customers.update, authController.requireAuthBy(['customer']), customers.update);
+app.put('/', customers.update, authController.requireAuthBy(['customer', 'admin']), customers.update);
 
 // Delete a Customer with Id
 app.delete('/:customerId', authController.requireAuthBy(['customer', 'admin']), customers.delete);
