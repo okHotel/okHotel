@@ -45,13 +45,6 @@
       </mat-form-field>
       </div>
 
-<!--
-    <select id="roomNumber" [(ngModel)]="customer.roomNumber" name="roomNumber" #roomNumber="ngModel">
-      <option *ngFor="let number of roomsNumber" [ngValue]=number > {{number}} </option>
-    </select>
--->
-
-
     <div mat-dialog-actions>
       <button mat-button [type]="submit" [disabled]="!formControl.valid || isInvalid(data.code)" [mat-dialog-close]="1" (click)="onSave()">Save</button>
       <button mat-button (click)="onCancel()" tabindex="-1">Cancel</button>
