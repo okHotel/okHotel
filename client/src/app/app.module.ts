@@ -45,6 +45,7 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
 import { EditProductComponent } from './admin/pantry/edit-product/edit-product.component';
 import { DeleteProductComponent } from './admin/pantry/delete-product/delete-product.component';
 import { ProductsComponent } from './admin/pantry/products.component';
+import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
@@ -90,6 +91,7 @@ const appRoutes: Routes = [
     EditProductComponent,
     DeleteProductComponent,
     ProductsComponent,
+    DeleteCustomerComponent,
   ],
   imports: [
     BrowserModule,
@@ -118,6 +120,7 @@ const appRoutes: Routes = [
         AddProductComponent,
         EditProductComponent,
         DeleteProductComponent,
+        DeleteCustomerComponent,
         ProductsComponent
     ],
   exports: [CommonModule, MatToolbarModule, MatInputModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule,

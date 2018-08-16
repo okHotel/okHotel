@@ -38,6 +38,7 @@ export class CustomerService {
             },
             (error: HttpErrorResponse) => {
                 console.log (error.name + ' ' + error.message);
+                this.dataChange.error(error)
             });
     }
 
@@ -60,11 +61,14 @@ export class CustomerService {
         return this.http.get<Customer>(url, {headers: httpHeaders});
     }
 
-    deleteCustomer (customer: Customer | string): Observable<Customer> {
-        const id = typeof customer === 'string' ? customer : customer._id;
+    deleteCustomer (id: string): Observable<Customer> {
         const url = `${this.customersUrl}/${id}`;
+        console.log(url);
+        console.log(AuthService.getHeaderWithAuthorization());
+        let httpHeaders = AuthService.getHeaderWithAuthorization();
+        console.log({headers: httpHeaders});
 
-        return this.http.delete<Customer>(url, this.httpOption);
+        return this.http.delete<Customer>(url, {headers: httpHeaders});
     }
 
     updateCustomer (customer: Customer): Observable<any> {

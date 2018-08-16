@@ -1,11 +1,12 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { Customer } from './customer';
 import { CustomerService } from '../service/customer/customer.service';
-import {MatPaginator, MatSort} from '@angular/material';
+import {MatDialog, MatPaginator, MatSort} from '@angular/material';
 import {Observable} from 'rxjs/Observable';
 import {CustomerDataSource} from "./customer.dataSource";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {DeleteCustomerComponent} from "./delete-customer/delete-customer.component";
 
 @Component({
     selector: 'app-customer',
@@ -20,7 +21,7 @@ export class CustomerComponent implements OnInit {
 
     displayedColumns = ['bookingName', 'bookingSurname', 'actions'];
     dataSource: CustomerDataSource | null;
-    message: any;
+    message: string;
     index: number;
     id: string;
 
@@ -28,25 +29,11 @@ export class CustomerComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild('filter') filter: ElementRef;
 
-    constructor(private router: Router, private http: HttpClient, public customerService: CustomerService) {}
+    constructor(private dialog: MatDialog, private router: Router, private http: HttpClient, public customerService: CustomerService) {}
 
     ngOnInit(): void {
         this.loadData();
     }
-
-/*
-    getCustomers() {
-        return this.customerService.getCustomers()
-            .subscribe(
-                customers => {
-                    console.log(customers);
-                    this.customers = customers
-                }, err => {
-                    this.error = err.error.message;
-                }
-            );
-    }
-*/
 
     getDetails(id: string) {
         this.router.navigate(['/customers/' + id])
@@ -56,8 +43,17 @@ export class CustomerComponent implements OnInit {
         this.router.navigate(['/registration'])
     }
 
-    delete(id: string) {
+    delete(_id: string, bookingName: string, bookingSurname: string, roomNumber: number) {
+        this.id = _id;
+        const dialogRef = this.dialog.open(DeleteCustomerComponent, {
+            data: {_id: _id, bookingName: bookingName, bookingSurname: bookingSurname, roomNumber: roomNumber}
+        });
 
+        dialogRef.afterClosed().subscribe(result => {
+            if (result === 1) {
+                this.loadData();
+            }
+        });
     }
 
     private loadData() {

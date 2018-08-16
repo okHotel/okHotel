@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 function generateToken(customer){
-    return jwt.sign({ customer: customer }, authConfig.secret, {
+    return jwt.sign({ customer: customer }, jwtConfig.jwtSecretKey, {
         expiresIn: 10080
     });
 }
@@ -53,7 +53,7 @@ exports.create = (req, res, next) => {
                 // Save a Customer in the MongoDB
                 customer.save()
                     .then(data => {
-                        const userInfo = setUserInfo(existingCustomer);
+                        const userInfo = setCustomerInfo(existingCustomer);
 
                         res.status(201).json({
                             token: 'JWT ' + generateToken(userInfo),

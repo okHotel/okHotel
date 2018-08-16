@@ -26,22 +26,22 @@ exports.findRoomsNumber = (req, res) => {
 
 // FIND a Booking
 exports.findOne = (req, res) => {
-    Booking.findOne({bookingName: req.params.productName, bookingSurname: req.params.bookingSurname})
+    Booking.findOne({bookingName: req.params.bookingName, bookingSurname: req.params.bookingSurname})
         .then(reservation => {
             if(!reservation) {
                 return res.status(404).json({
-                    msg: "Booking not found with " + req.params.productName + " " + req.params.bookingSurname
+                    msg: "Booking not found with " + req.params.bookingName + " " + req.params.bookingSurname
                 });
             }
             res.json(reservation);
         }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).json({
-                msg: "Booking not found with " +  req.params.productName + " " + req.params.bookingSurname
+                msg: "Booking not found with " +  req.params.bookingName + " " + req.params.bookingSurname
             });
         }
         return res.status(500).json({
-            msg: "Error retrieving booking with " +  req.params.productName + " " + req.params.bookingSurname
+            msg: "Error retrieving booking with " +  req.params.bookingName + " " + req.params.bookingSurname
         });
     });
 };
