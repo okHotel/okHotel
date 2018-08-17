@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+const Reservation = {
+    roomNumber:Number,
+    type: String,
+    dish: String,
+    quantity: Number
+}
+
+
 const MenuSchema = mongoose.Schema({
     __id: String,
     date: Date,
@@ -10,15 +18,8 @@ const MenuSchema = mongoose.Schema({
         text: String
     },
 
-    Reservations:{
-        roomNUmber:Number,
-        lunch: [Number],
-        lunchVariation: [Number],
-
-        dinner:[Number],
-        dinnerVariations: [Number]
-    }
-}, {
+    reservations: [Reservation]
+},{
     timestamps: true
 });
 

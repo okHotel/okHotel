@@ -20,12 +20,16 @@
     <!-- ID Column -->
     <ng-container matColumnDef="bookingName">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-      <mat-cell *matCellDef="let row" >{{row.bookingName}}</mat-cell>
+      <mat-cell *matCellDef="let row" >
+        <span class="mobile-label">Name:</span>
+        {{row.bookingName}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="bookingSurname">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Surname</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.bookingSurname}}</mat-cell>
+      <mat-cell *matCellDef="let row">
+        <span class="mobile-label">Surname:</span>
+        {{row.bookingSurname}}</mat-cell>
     </ng-container>
 
     <!-- actions -->

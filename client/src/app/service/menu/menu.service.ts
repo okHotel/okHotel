@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Menu} from '../../menu';
-import {DatePipe} from '@angular/common';
-import {Reservation} from '../../Reservation';
+import {Menu} from '../../menu/menu';
+import {Reservation} from '../../menu/reservation';
 
 
 const httpOptions = {
@@ -24,19 +23,16 @@ export class MenuService {
 
     constructor(  private http: HttpClient) { }
 
-    setDate(date: Date){
+    setDate(date: Date) {
         this.menu.date = date;
     }
 
     getDateMenu(): Observable<Menu> {
-
         const url = `${this.menuUrl}/${this.menu.date}`;
-        console.log(url);
-
         return this.http.get<Menu>(url);
     }
 
-    setMenu(menu1: Menu){
+    setMenu(menu1: Menu) {
         this.menu = menu1;
     }
 
@@ -48,26 +44,22 @@ export class MenuService {
 
     deleteDinnerDish(dish: string){this.menu.dinner_dishes = this.menu.dinner_dishes.filter(x => x != dish);}
 
+    saveMenu(): Observable<any> {
 
-    saveMenu(): Observable<any>{
+        console.log(this.menu);
         let url = "";
 
-        if(this.menu._id == undefined) {
+        if ( this.menu._id === undefined) {
              url = `${this.menuUrl}/create`;
-        }else {
+        } else {
              url = `${this.menuUrl}/update`;
         }
         return this.http.put(url, this.menu, httpOptions);
     }
 
-    deleteMenu(){
+    deleteMenu() {
         const url = `${this.menuUrl}/${this.menu.date}`;
         return this.http.delete(url);
     }
-
-    saveReservation(res: Reservation){
-       // this.menu.Reservations.push(res);
-    }
-
 
 }

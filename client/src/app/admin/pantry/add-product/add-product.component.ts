@@ -25,9 +25,11 @@ export class AddProductComponent implements OnInit {
     ]);
 
     ngOnInit() {
-        this.product.code = this.data.code;
         if (this.product.code !== undefined) {
+            this.product.code = this.data.code;
             this.isCodeReadOnly = true;
+        } else {
+            this.product.code = '';
         }
     }
 
@@ -51,6 +53,6 @@ export class AddProductComponent implements OnInit {
        return code.length !== 8 &&
            code.length !== 13 &&
            code.length !== 14 &&
-           code.length !== 17 && code !== undefined;
+           code.length !== 17;
     }
 }

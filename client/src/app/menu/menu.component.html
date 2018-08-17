@@ -1,5 +1,6 @@
-<app-profile></app-profile>
-<table summary="The courses you can select for lunch" >
+  <app-profile></app-profile>
+<table summary="The courses you can select for lunch">
+    <caption>Please choose what you want to eat for lunch</caption>
     <caption>Lunch</caption>
   <tr>
     <th></th>
@@ -8,24 +9,23 @@
     <th scope="col">Variation</th>
   </tr>
 
-  <mat-error *ngIf="checkLunchReservation()">{{getErrorMessage()}}</mat-error>
-  <div *ngFor="let dish of lunch_dishes">
+  <mat-error *ngIf="checkReservation(l)">{{getErrorMessage()}}</mat-error>
+  <div *ngFor="let dish of myMenu.lunch_dishes">
   <tr>
     <td scope="row">{{dish}}</td>
     <td>
 
      <mat-form-field color="accent" >
         <mat-select placeholder="0">
-          <mat-option *ngFor="let n of people" value=n (click)="setLunch(lunch_dishes.indexOf(dish)*2, n)">
+          <mat-option *ngFor="let n of people" value=n (click)="setReservation(l, dish, n)">
             {{n}}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-
       <mat-form-field color="accent">
         <mat-select placeholder="0">
-          <mat-option *ngFor="let n of people" value=n (click)="setLunch(lunch_dishes.indexOf(dish)*2+1, n)">
+          <mat-option *ngFor="let n of people" value=n (click)="setReservation(l, dish, n)">
             {{n}}
           </mat-option>
         </mat-select>
@@ -37,7 +37,6 @@
     </div>
 </table>
 
-
 <table summary="The courses you can select for dinner" >
   <caption>Dinner</caption>
   <tr>
@@ -47,14 +46,14 @@
     <th scope="col">Variation</th>
   </tr>
 
-  <mat-error *ngIf="checkDinnerReservation()">{{getErrorMessage()}}</mat-error>
-  <div *ngFor="let dish of dinner_dishes">
+  <mat-error *ngIf="checkReservation(d)">{{getErrorMessage()}}</mat-error>
+  <div *ngFor="let dish of myMenu.dinner_dishes">
   <tr>
-      <td scope="row"  >{{dish}}</td>
+      <td scope="row">{{dish}}</td>
       <td>
         <mat-form-field color="accent" >
           <mat-select placeholder="0">
-            <mat-option *ngFor="let n of people" value=n (click)="setDinner(dinner_dishes.indexOf(dish)*2, n)">
+            <mat-option *ngFor="let n of people" value=n (click)="setReservation(d, dish, n)">
               {{n}}
             </mat-option>
           </mat-select>
@@ -63,7 +62,7 @@
 
         <mat-form-field color="accent">
           <mat-select placeholder="0">
-            <mat-option *ngFor="let n of people" value=n (click)="setDinner(dinner_dishes.indexOf(dish)*2+1, n)">
+            <mat-option *ngFor="let n of people" value=n (click)="setReservation(d, dish, n)">
               {{n}}
             </mat-option>
           </mat-select>

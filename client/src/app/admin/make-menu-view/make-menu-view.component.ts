@@ -1,5 +1,5 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
-import {Menu} from '../../menu';
+import {Menu} from '../../menu/menu';
 import {MenuService} from '../../service/menu/menu.service';
 @Component({
     selector: 'app-make-menu-view',

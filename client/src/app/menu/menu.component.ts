@@ -3,7 +3,9 @@ import {Router} from '@angular/router';
 import {MenuService} from '../service/menu/menu.service';
 import { DatePipe } from '@angular/common';
 import {CustomerService} from '../service/customer/customer.service';
-import {Reservation} from '../Reservation';
+import {Meal, Reservation} from './reservation';
+import {Menu} from './menu';
+
 
 @Component({
     selector: 'app-menu',
@@ -12,12 +14,11 @@ import {Reservation} from '../Reservation';
 })
 export class MenuComponent implements OnInit {
 
-    lunch_dishes: String[];
-    dinner_dishes: String[];
+    l = Meal.LUNCH;
+    d = Meal.DINNER;
+    myMenu: Menu;
     people: number[] = [];
-
-
-    reservation: Reservation;
+    room: number;
 
     constructor(private router: Router, public menu: MenuService, private datepipe: DatePipe, private customerService: CustomerService) { }
 
@@ -29,8 +30,7 @@ export class MenuComponent implements OnInit {
         this.menu.getDateMenu().subscribe(
             data => {
                 console.log("Menu loaded");
-                this.lunch_dishes = data.lunch_dishes;
-                this.dinner_dishes = data.dinner_dishes;
+                this.myMenu = data;
             },
             error => {console.log(error)}
         );
@@ -39,45 +39,46 @@ export class MenuComponent implements OnInit {
             for (let i = 0; i <= data.numberOfPeople; i++) {
                 this.people.push(i);
             }
-            this.reservation =  new Reservation(data.roomNumber);
+            this.room = data.roomNumber;
         });
 
 
     }
 
     saveReservations() {
-        console.log(this.reservation.lunch);
-        console.log(this.reservation.dinner);
-        this.menu.saveReservation(this.reservation);
-        //this.router.navigateByUrl('' );
+        this.menu.setMenu(this.myMenu);
+        this.menu.saveMenu().subscribe();
     }
 
     addVariations() {
         this.menu.showVariations = true;
     }
 
-    setLunch(index: number, value: number) {
-        this.reservation.lunch.splice(index, 1, value);
+
+    setReservation(selectedType: Meal, selectedDish: string, selectedQuantity: number) {
+        const reservation: Reservation = {
+            roomNumber: this.room,
+            type: selectedType,
+            quantity: selectedQuantity,
+            dish: selectedDish
+        };
+
+        this.myMenu.reservations.push(reservation);
     }
 
-    setDinner(index: number, value: number) {
-        this.reservation.dinner.splice(index, 1, value);
-    }
-
-    checkLunchReservation() {
+    checkReservation(type: Meal) {
         let total = 0;
-        this.reservation.lunch.forEach(e => total += e);
+
+        this.myMenu.reservations.forEach(e => {
+            if (e.type === type ) {
+            total += e.quantity;
+        }});
+
         return total > this.people.length*2;
     }
 
-    checkDinnerReservation() {
-        let total = 0;
-        this.reservation.dinner.forEach(e => total += e);
-        return total > this.people.length*3;
-    }
-
     checkSave() {
-        return this.checkLunchReservation() || this.checkDinnerReservation();
+        return this.checkReservation(Meal.LUNCH) || this.checkReservation(Meal.DINNER);
     }
 
     getErrorMessage() {

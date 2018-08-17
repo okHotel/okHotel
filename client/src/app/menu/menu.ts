@@ -1,4 +1,4 @@
-import {Reservation} from './Reservation';
+import {Reservation} from './reservation';
 
 export class  Menu {
     _id: string;
@@ -11,12 +11,13 @@ export class  Menu {
         text: string
     };
 
-    Reservations: Reservation[];
+    reservations: Reservation[];
 
 
     constructor() {
         this.lunch_dishes = [];
         this.dinner_dishes = [];
+        this.reservations = [];
     };
 
 

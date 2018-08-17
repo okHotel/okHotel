@@ -3,7 +3,7 @@ const Menu = require('../model/menu.model.js');
 // POST a Menu
 exports.create = (req, res) => {
 
-    console.log(req.body);
+    console.log("create " +req.body);
 
     // Create a Menu
     const menu = new Menu(req.body);
@@ -22,6 +22,8 @@ exports.create = (req, res) => {
 
 exports.update =  (req, res) => {
 
+    console.log("update " + req.body);
+
     Menu.findByIdAndUpdate(req.body._id, req.body)
         .then(menu => {
             if(!menu) {
@@ -30,6 +32,7 @@ exports.update =  (req, res) => {
                 });
             }
             res.json(menu);
+
         }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).json({

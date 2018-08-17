@@ -75,7 +75,6 @@ export class ProductsComponent implements OnInit {
     }
 
     addNew() {
-
         let code;
         if (this.barcode != undefined) {
             code = this.barcode;
