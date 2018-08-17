@@ -11,14 +11,14 @@ const Reservation = {
 const MenuSchema = mongoose.Schema({
     __id: String,
     date: Date,
-    lunch_dishes: [String],
-    dinner_dishes: [String],
+    lunch_dishes: [],
+    dinner_dishes: [],
     otherNotes: {
         roomNUmber: Number,
         text: String
     },
 
-    reservations: [Reservation]
+    reservations: []
 },{
     timestamps: true
 });

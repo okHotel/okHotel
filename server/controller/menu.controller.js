@@ -2,7 +2,6 @@ const Menu = require('../model/menu.model.js');
 
 // POST a Menu
 exports.create = (req, res) => {
-
     console.log("create " +req.body);
 
     // Create a Menu
@@ -22,26 +21,26 @@ exports.create = (req, res) => {
 
 exports.update =  (req, res) => {
 
-    console.log("update " + req.body);
+    console.log(req.body);
 
     Menu.findByIdAndUpdate(req.body._id, req.body)
         .then(menu => {
             if(!menu) {
                 return res.status(404).json({
-                    msg: "Menu not found with id " + req.params._id
+                    msg: "Menu not found with id " + req.body._id
                 });
             }
             res.json(menu);
 
         }).catch(err => {
-        if(err.kind === 'ObjectId') {
-            return res.status(404).json({
-                msg: "Menu not found with id " + req.params._id
+            if(err.kind === 'ObjectId') {
+                return res.status(404).json({
+                    msg: "Menu not found with id " + req.body._id
+                });
+            }
+            return res.status(500).json({
+                msg: "Error updating menu with id " + req.body._id + err.toString()
             });
-        }
-        return res.status(500).json({
-            msg: "Error updating menu with id " + req.params._id
-        });
     });
 }
 
@@ -110,3 +109,6 @@ exports.delete = (req, res) => {
         });
     });
 };
+
+
+// CastError: Cast to [string] failed for value "[{"roomNumber":132,"type":"lunch","quantity":3,"dish":"a2"},{"roomNumber":132,"type":"lunch","quantity":47,"dish":"a3"},{"roomNumber":132,"type":"lunch","quantity":1,"dish":"a3"}]" at path "reservations""
