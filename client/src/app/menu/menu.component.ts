@@ -6,7 +6,6 @@ import {CustomerService} from '../service/customer/customer.service';
 import {Meal, Reservation} from './reservation';
 import {Menu} from './menu';
 
-
 @Component({
     selector: 'app-menu',
     templateUrl: './menu.component.html',
@@ -58,7 +57,7 @@ export class MenuComponent implements OnInit {
     setReservation(selectedType: Meal, selectedDish: string, selectedQuantity: number) {
         const reservation: Reservation = {
             roomNumber: this.room,
-            type: selectedType,
+            type: selectedType.toString(),
             quantity: selectedQuantity,
             dish: selectedDish
         };
