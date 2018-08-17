@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // Configuring the database
 const dbConfig = require('./config/database.js');
@@ -14,6 +14,7 @@ const authenticationRoutes = require('./routes/authentication.routes');
 const menuRoutes = require('./routes/menu.routes');
 const planRoutes = require('./routes/plans.routes');
 const productRoutes = require('./routes/products.routes');
+const menuStatisticsRoutes = require('./routes/menu-statistic.routes');
 
 mongoose.Promise = global.Promise;
 
@@ -40,6 +41,7 @@ app.use('/auth', authenticationRoutes);
 app.use('/menu', menuRoutes);
 app.use('/plan', planRoutes);
 app.use('/product', productRoutes);
+app.use('/menu-statistics', menuStatisticsRoutes);
 
 // Create a Server
 const server = app.listen(3000, function () {

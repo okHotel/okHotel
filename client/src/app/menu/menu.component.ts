@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {HandleHeaderService} from '../handleHeader.service';
 import {MenuService} from '../service/menu/menu.service';
-import {Menu} from '../admin/make-menu-view/menu';
 
 @Component({
     selector: 'app-menu',
