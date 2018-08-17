@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Menu} from '../../admin/make-menu-view/menu';
+import {Menu} from '../../menu';
 import {DatePipe} from '@angular/common';
+import {Reservation} from '../../Reservation';
 
 
 const httpOptions = {
@@ -62,6 +63,10 @@ export class MenuService {
     deleteMenu(){
         const url = `${this.menuUrl}/${this.menu.date}`;
         return this.http.delete(url);
+    }
+
+    saveReservation(res: Reservation){
+       // this.menu.Reservations.push(res);
     }
 
 

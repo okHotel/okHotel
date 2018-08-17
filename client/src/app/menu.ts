@@ -1,24 +1,20 @@
+import {Reservation} from './Reservation';
+
 export class  Menu {
     _id: string;
     date: Date;
     lunch_dishes: string[];
     dinner_dishes: string[];
+
     otherNotes: {
-        roomNUmber: number;
+        roomNumber: number;
         text: string
     };
 
-    Reservations: {
-        roomNUmber: number;
-        lunch: number[];
-        lunchVariation: number[];
-
-        dinner: number[];
-        dinnerVariations: number[]
-    }
+    Reservations: Reservation[];
 
 
-    constructor(){
+    constructor() {
         this.lunch_dishes = [];
         this.dinner_dishes = [];
     };
