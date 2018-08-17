@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {VariationService} from '../../service/variation/variation.service';
+import {Variation} from './variation';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-add-variation',
@@ -9,8 +11,9 @@ import {VariationService} from '../../service/variation/variation.service';
 export class AddVariationComponent implements OnInit {
 
     variations: String[] = [];
+    variation = new Variation();
 
-    constructor(private variationService: VariationService) {
+    constructor(private router: Router, private variationService: VariationService) {
 
     }
 
@@ -20,13 +23,17 @@ export class AddVariationComponent implements OnInit {
             .subscribe( variations => {
                 variations.forEach((obj) => {
                     this.variations.push(obj.type);
-                })
+                });
             });
+        this.variation.type = '';
     }
 
-    addVariation(){
 
-        this.variationService.addVariation();
+
+    public addVariation(type: string) {
+        this.variation.type = type;
+        this.variationService.addVariation(this.variation)
+            .subscribe();
     }
 
 }

@@ -13,22 +13,13 @@ exports.findAll = (req, res) => {
 };
 
 exports.addVariation = (req, res) => {
-
-    if(checkVariation(req.type())) {
-
+    console.log('contenuto dell input ' + req.body);
         const variation = new Variation(req.body);
 
         variation.save();
-    }
 
 };
 
 exports.removeVariation = (req, res) => {
 
 };
-
-exports.checkVariation = (variation) => {
-    const regex = '^[0-9]*$';
-
-    return variation.size() != 0 && regex.test(variation);
-}

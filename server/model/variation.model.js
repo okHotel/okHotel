@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const VariationSchema = mongoose.Schema({
-
+    __id: String,
     type: String
 
 });

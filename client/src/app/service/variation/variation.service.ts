@@ -10,7 +10,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class VariationService {
     private baseUrl = 'http://localhost:3000';
-    //'/variations' è il percorso preso da server.js
+    // '/variations' è il percorso preso da server.js
     private variationsUrl = this.baseUrl + '/variations';  // URL to web api
 
     constructor(private http: HttpClient) { }
@@ -24,7 +24,8 @@ export class VariationService {
         return this.http.get<Variation[]>(this.variationsUrl);
     }
 
-    addVariation(): void {
-        return this.http.put<Variation[]>(this.variationsUrl);
+    addVariation(variation: Variation): Observable<any> {
+
+        return this.http.put<Variation[]>(this.variationsUrl, variation);
     }
 }
