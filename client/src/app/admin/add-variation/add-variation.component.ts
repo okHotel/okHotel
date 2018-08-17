@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {VariationService} from '../../service/variation/variation.service';
 import {Variation} from './variation';
 import {Router} from '@angular/router';
@@ -28,12 +28,14 @@ export class AddVariationComponent implements OnInit {
         this.variation.type = '';
     }
 
-
-
     public addVariation(type: string) {
         this.variation.type = type;
         this.variationService.addVariation(this.variation)
             .subscribe();
+        location.reload();
     }
 
+    public isInputInValid(type: string) {
+        return type.length === 0 || !type.match('^[a-zA-Z]+$');
+    }
 }

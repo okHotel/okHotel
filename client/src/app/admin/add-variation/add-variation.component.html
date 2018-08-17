@@ -9,6 +9,6 @@
   <p>{{variation}}</p>
 </div>
 
-<input type="text" pattern="[A-Za-z]" [(ngModel)]="variation.type" /><br>
+<input type="text" [(ngModel)]="variation.type" /><br>
 
-<button (click)="addVariation(variation.type)" [disabled]="variation.type.length == 0" >Add</button>
+<button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)" >Add</button>
