@@ -5,14 +5,14 @@ const Menu = require('../model/menu.model.js');
 
 // FETCH all Customers
 exports.findAll = (req, res) => {
-    Menu.aggregate( [{ $project: { lunch: { $add: [{$arrayElemAt: ['$Reservations.lunch', -1]} , 1] } } }])
-    .then(menu => {
-        res.json(menu);
-    }).catch(err => {
-    res.status(500).send({
-        msg: err.message
+    Menu.find({})
+        .then(menu => {
+            res.json(menu);
+        }).catch(err => {
+        res.status(500).send({
+            msg: err.message
+        });
     });
-});
 };
 
 /*exports.findOne = (req, res) => {

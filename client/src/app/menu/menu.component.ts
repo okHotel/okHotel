@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {MenuService} from '../service/menu/menu.service';
 import { DatePipe } from '@angular/common';
 import {CustomerService} from '../service/customer/customer.service';
+import {Meal, Reservation} from './reservation';
 
 @Component({
     selector: 'app-menu',
@@ -15,6 +16,7 @@ export class MenuComponent implements OnInit {
     dinner_dishes: String[];
     people: number[] = [];
 
+    reservations: Reservation[] = [];
     lunchReservations: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
     dinnerReservations: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
@@ -55,8 +57,15 @@ export class MenuComponent implements OnInit {
         this.lunchReservations.splice(index, 1, value);
     }
 
-    setDinner(index: number, value: number) {
-        this.dinnerReservations.splice(index, 1, value);
+    setReservation(selectedType: Meal, selectedDish: string, selectedQuantity: number) {
+//        this.dinnerReservations.splice(index, 1, value);
+        const reservation = {
+            roomNumber: 0,
+            type: selectedType,
+            dish: selectedDish,
+            quantity: selectedQuantity
+        }
+        this.reservations.push(reservation);
     }
 
     checkLunchReservation() {

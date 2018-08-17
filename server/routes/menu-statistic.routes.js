@@ -8,6 +8,6 @@ const reservations = require('../controller/menu-statistic.controller');
 app.get('/', reservations.findAll);
 
 // Retrieve a single Customer by Id
-//app.get('/:date', reservations.findOne);
+// app.get('/:date', reservations.findOne);
 
 module.exports = app;
