@@ -1,178 +1,87 @@
   <app-profile></app-profile>
 <table summary="The courses you can select for lunch">
     <caption>Please choose what you want to eat for lunch</caption>
+    <caption>Lunch</caption>
   <tr>
     <th></th>
     <th scope="col">Int</th>
     <th scope="col">1/2</th>
     <th scope="col">Variation</th>
   </tr>
+
+  <mat-error *ngIf="checkLunchReservation()">{{getErrorMessage()}}</mat-error>
+  <div *ngFor="let dish of lunch_dishes">
   <tr>
-    <td scope="row">Main courses</td>
-  </tr>
-  <tr>
-    <td scope="row">Pesto</td>
+    <td scope="row">{{dish}}</td>
     <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
+
+     <mat-form-field color="accent" >
+        <mat-select placeholder="0">
+          <mat-option *ngFor="let n of people" value=n (click)="setLunch(lunch_dishes.indexOf(dish)*2, n)">
+            {{n}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field color="accent">
+        <mat-select placeholder="0">
+          <mat-option *ngFor="let n of people" value=n (click)="setLunch(lunch_dishes.indexOf(dish)*2+1, n)">
+            {{n}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button type="button" (click)="addVariations()">+</button>
     </td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
+  </tr>
+    </div>
+</table>
+
+
+<table summary="The courses you can select for dinner" >
+  <caption>Dinner</caption>
+  <tr>
+    <th></th>
+    <th scope="col">Int</th>
+    <th scope="col">1/2</th>
+    <th scope="col">Variation</th>
+  </tr>
+
+  <mat-error *ngIf="checkDinnerReservation()">{{getErrorMessage()}}</mat-error>
+  <div *ngFor="let dish of dinner_dishes">
+  <tr>
+      <td scope="row"  >{{dish}}</td>
+      <td>
+        <mat-form-field color="accent" >
+          <mat-select placeholder="0">
+            <mat-option *ngFor="let n of people" value=n (click)="setDinner(dinner_dishes.indexOf(dish)*2, n)">
+              {{n}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field color="accent">
+          <mat-select placeholder="0">
+            <mat-option *ngFor="let n of people" value=n (click)="setDinner(dinner_dishes.indexOf(dish)*2+1, n)">
+              {{n}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
     </td>
     <td>
       <button type="button" (click)="addVariations()">+</button>
     </td>
   </tr>
-  <tr>
-    <td scope="row">Pomodoro</td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <button type="button" (click)="addVariations()">+</button>
-    </td>
-  </tr>
-  <tr>
-    <td scope="row">Omelet</td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <button type="button" (click)="addVariations()">+</button>
-    </td>
-  </tr>
-  <tr>
-    <td scope="row">Chicken</td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <button type="button" (click)="addVariations()">+</button>
-    </td>
-  </tr>
-  <tr>
-    <td scope="row">Fruit</td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-  </tr>
-  <tr>
-    <td scope="row">Desserts</td>
-  </tr>
-  <tr>
-    <td scope="row">Ice cream</td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <button type="button" (click)="addVariations()">+</button>
-    </td>
-  </tr>
-  <tr>
-    <td scope="row">Sherbet</td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <select name="numbers">
-          <optgroup label="Number of portions">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-          </optgroup>
-      </select>
-    </td>
-    <td>
-      <button type="button" (click)="addVariations()">+</button>
-    </td>
-  </tr>
+  </div>
+
 </table>
 
 
 <p>Other notes</p><br>
 <textarea></textarea><br><br>
 
-<button type="button" (click)="home()">Save</button>
+<button type="button" [disabled]="checkSave()"  (click)="home()">Save</button>
+
+<app-menu-variations *ngIf="menu.showVariations"></app-menu-variations>

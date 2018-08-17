@@ -23,6 +23,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import {CustomerDetailComponent} from './customer/customer-detail/customer-detail.component';
 import {BookingService} from './service/booking/booking.service';
 import {AuthService} from './service/auth/auth.service';
+import { DatePipe } from '@angular/common';
+import {MatFormFieldModule, MatSelectModule} from '@angular/material';
 import {BarcodeDecoderService} from './service/pantry/barcode-scanner/barcode-decoder.service';
 import {
     MatCardModule,
@@ -34,7 +36,7 @@ import {
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
-    MatCheckboxModule, MatSelectModule, MatListModule
+    MatCheckboxModule, MatListModule
 } from '@angular/material';
 import {BarcodeValidatorService} from './service/pantry/barcode-scanner/barcode-validator.service';
 import {AddProductComponent} from './admin/pantry/add-product/add-product.component';
@@ -46,12 +48,11 @@ import { DeleteProductComponent } from './admin/pantry/delete-product/delete-pro
 import { ProductsComponent } from './admin/pantry/products.component';
 import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
 
+
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
     { path: 'login', component: LoginComponent},
     { path: 'restaurant', component: MenuComponent, canActivate: [AuthService]},
-    { path: 'menu-variations', component: MenuVariationsComponent, canActivate: [AuthService]},
-    { path: 'menu', component: MenuComponent, canActivate: [AuthService]},
     { path: 'admin-profile', component: AdminProfileComponent, canActivate: [AuthService]},
     { path: 'make-menu', component: MakeMenuViewComponent, canActivate: [AuthService]},
     { path: 'make-variation', component: AddVariationComponent, canActivate: [AuthService]},
@@ -64,55 +65,55 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    NavComponent,
-    LoginComponent,
-    MenuComponent,
-    MenuVariationsComponent,
-    HomeComponent,
-    CustomerDetailComponent,
-    CustomerComponent,
-    RegistrationComponent,
-    ProfileComponent,
-    AdminProfileComponent,
-    MakeMenuViewComponent,
-    ProductsComponent,
-    AddProductComponent,
-    EditProductComponent,
-    DeleteProductComponent,
-    AddDishesComponent,
-    AddVariationComponent,
-    AdminStatisticsComponent,
-    EditProductComponent,
-    DeleteProductComponent,
-    ProductsComponent,
-    DeleteCustomerComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-      BrowserAnimationsModule,
-      HttpClientModule,
-      MatDialogModule,
-      MatCardModule,
-      FormsModule,
-      MatButtonModule,
-      MatInputModule,
-      MatIconModule,
-      MatSelectModule,
-      MatSortModule,
-      MatTableModule,
-      MatListModule,
-      MatCheckboxModule,
-      MatToolbarModule,
-      MatPaginatorModule,
-      ReactiveFormsModule,
-      RouterModule.forRoot(appRoutes)
-  ],
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        NavComponent,
+        LoginComponent,
+        MenuComponent,
+        MenuVariationsComponent,
+        HomeComponent,
+        CustomerDetailComponent,
+        CustomerComponent,
+        RegistrationComponent,
+        ProfileComponent,
+        AdminProfileComponent,
+        MakeMenuViewComponent,
+        ProductsComponent,
+        AddProductComponent,
+        EditProductComponent,
+        DeleteProductComponent,
+        AddDishesComponent,
+        AddVariationComponent,
+        AdminStatisticsComponent,
+        EditProductComponent,
+        DeleteProductComponent,
+        ProductsComponent,
+        DeleteCustomerComponent,
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        MatDialogModule,
+        MatCardModule,
+        FormsModule,
+        MatButtonModule,
+        MatInputModule,
+        MatIconModule,
+        MatSelectModule,
+        MatSortModule,
+        MatTableModule,
+        MatListModule,
+        MatCheckboxModule,
+        MatToolbarModule,
+        MatPaginatorModule,
+        ReactiveFormsModule,
+        RouterModule.forRoot(appRoutes)
+    ],
 
     entryComponents: [
         AddProductComponent,
@@ -121,10 +122,10 @@ const appRoutes: Routes = [
         DeleteCustomerComponent,
         ProductsComponent
     ],
-  exports: [CommonModule, MatToolbarModule, MatInputModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule,
-            NoopAnimationsModule, MatSortModule],
-  providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService,
-      BarcodeValidatorService, PantryService],
-  bootstrap: [AppComponent]
+    exports: [CommonModule, MatToolbarModule, MatInputModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule,
+        NoopAnimationsModule, MatSortModule],
+    providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService,
+        BarcodeValidatorService, PantryService, DatePipe],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}
