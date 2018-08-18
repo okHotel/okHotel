@@ -47,6 +47,7 @@ import { EditProductComponent } from './admin/pantry/edit-product/edit-product.c
 import { DeleteProductComponent } from './admin/pantry/delete-product/delete-product.component';
 import { ProductsComponent } from './admin/pantry/products.component';
 import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
+import { MenuStatisticsComponent } from './menu/menu-statistics/menu-statistics.component';
 
 
 const appRoutes: Routes = [
@@ -58,6 +59,7 @@ const appRoutes: Routes = [
     { path: 'make-variation', component: AddVariationComponent, canActivate: [AuthService]},
     { path: 'pantry', component: ProductsComponent, canActivate: [AuthService]},
     { path: 'statistics', component: AdminStatisticsComponent, canActivate: [AuthService]},
+    { path: 'menu/statistics/:date',  component: MenuStatisticsComponent, canActivate: [AuthService]},
     { path: 'customers', component: CustomerComponent, canActivate: [AuthService] },
     { path: 'registration', component: RegistrationComponent },
     { path: 'customers/:id', component: CustomerDetailComponent, canActivate: [AuthService] },
@@ -91,6 +93,7 @@ const appRoutes: Routes = [
         DeleteProductComponent,
         ProductsComponent,
         DeleteCustomerComponent,
+        MenuStatisticsComponent,
     ],
     imports: [
         BrowserModule,

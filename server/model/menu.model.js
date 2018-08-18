@@ -18,7 +18,7 @@ const MenuSchema = mongoose.Schema({
         text: String
     },
 
-    reservations: []
+    reservations: [{Reservation}]
 },{
     timestamps: true
 });
