@@ -38,4 +38,7 @@ export class AddVariationComponent implements OnInit {
     public isInputInValid(type: string) {
         return type.length === 0 || !type.match('^[a-zA-Z]+$');
     }
+
+    public getErrorMessage() {
+    }
 }
