@@ -15,6 +15,8 @@ export class MenuComponent implements OnInit {
 
     l = Meal.LUNCH;
     d = Meal.DINNER;
+    hl = Meal.HALF_LUNCH;
+    hd = Meal.HALF_DINNER;
     myMenu: Menu;
     people: number[] = [];
     room: number;
@@ -75,17 +77,17 @@ export class MenuComponent implements OnInit {
         }
     }
 
-    checkReservation(type: Meal) {
+    checkReservation(type1: Meal, type2: Meal) {
         let total = 0;
 
         this.myMenu.reservations.forEach(e => {
-            if (e.type === type) {
+            if (e.type === type1 || e.type === type2) {
                 total += e.quantity;
             }});
 
-        const mul_factor = type === Meal.LUNCH ? 2 : 3;
+        const mul_factor = type1 === Meal.LUNCH ? 2 : 3;
 
-        return total > (this.people.length-1) * mul_factor; 
+        return total > (this.people.length-1) * mul_factor;
     }
 
     checkSave() {

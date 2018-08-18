@@ -7,5 +7,7 @@ export class Reservation {
 
 export enum Meal {
     LUNCH = 'lunch',
-    DINNER = 'dinner'
+    DINNER = 'dinner',
+    HALF_LUNCH = "halfLunch",
+    HALF_DINNER = "halfDinner"
 }

@@ -9,7 +9,7 @@
     <th scope="col">Variation</th>
   </tr>
 
-  <mat-error *ngIf="checkReservation(l)">{{getErrorMessage()}}</mat-error>
+  <mat-error *ngIf="checkReservation(l, hl)">{{getErrorMessage()}}</mat-error>
   <div *ngFor="let dish of myMenu.lunch_dishes">
   <tr>
     <td scope="row">{{dish}}</td>
@@ -24,8 +24,8 @@
       </mat-form-field>
 
       <mat-form-field color="accent">
-        <mat-select placeholder="0">
-          <mat-option *ngFor="let n of people" value=n (click)="setReservation(l, dish, n)">
+        <mat-select placeholder={{getRes(hl,dish)}}>
+          <mat-option *ngFor="let n of people" value=n (click)="setReservation(hl, dish, n)">
             {{n}}
           </mat-option>
         </mat-select>
@@ -46,13 +46,13 @@
     <th scope="col">Variation</th>
   </tr>
 
-  <mat-error *ngIf="checkReservation(d)">{{getErrorMessage()}}</mat-error>
+  <mat-error *ngIf="checkReservation(d, hd)">{{getErrorMessage()}}</mat-error>
   <div *ngFor="let dish of myMenu.dinner_dishes">
   <tr>
       <td scope="row">{{dish}}</td>
       <td>
         <mat-form-field color="accent" >
-          <mat-select placeholder="0">
+          <mat-select placeholder={{getRes(d,dish)}}>
             <mat-option *ngFor="let n of people" value=n (click)="setReservation(d, dish, n)">
               {{n}}
             </mat-option>
@@ -61,8 +61,8 @@
 
 
         <mat-form-field color="accent">
-          <mat-select placeholder="0">
-            <mat-option *ngFor="let n of people" value=n (click)="setReservation(d, dish, n)">
+          <mat-select placeholder={{getRes(hd,dish)}}>
+            <mat-option *ngFor="let n of people" value=n (click)="setReservation(hd, dish, n)">
               {{n}}
             </mat-option>
           </mat-select>
