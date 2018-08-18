@@ -55,26 +55,37 @@ export class MenuComponent implements OnInit {
 
 
     setReservation(selectedType: Meal, selectedDish: string, selectedQuantity: number) {
-        const reservation: Reservation = {
-            roomNumber: this.room,
-            type: selectedType.toString(),
-            quantity: selectedQuantity,
-            dish: selectedDish
-        };
+        let newRes = true;
 
-        this.myMenu.reservations.push(reservation);
+        this.myMenu.reservations.forEach( r => {
+            if (r.type === selectedType && r.dish === selectedDish) {
+                r.quantity = selectedQuantity;
+                newRes = false;
+            }
+        });
+
+        if (newRes) {
+            const reservation: Reservation = {
+                roomNumber: this.room,
+                type: selectedType.toString(),
+                quantity: selectedQuantity,
+                dish: selectedDish
+            };
+            this.myMenu.reservations.push(reservation);
+        }
     }
 
     checkReservation(type: Meal) {
         let total = 0;
 
         this.myMenu.reservations.forEach(e => {
-            if (e.type === type ) {
-            total += e.quantity;
-        }});
+            if (e.type === type) {
+                total += e.quantity;
+            }});
 
         const mul_factor = type === Meal.LUNCH ? 2 : 3;
-        return total > this.people.length * mul_factor;
+
+        return total > (this.people.length-1) * mul_factor; 
     }
 
     checkSave() {
@@ -83,5 +94,15 @@ export class MenuComponent implements OnInit {
 
     getErrorMessage() {
         return "Number of dishes booked too high";
+    }
+
+    getRes(type: Meal, dish: string) {
+        let res = 0;
+        this.myMenu.reservations.forEach( r => {
+            if (r.type === type && r.dish === dish) {
+                res = r.quantity;
+            }
+        })
+        return res;
     }
 }

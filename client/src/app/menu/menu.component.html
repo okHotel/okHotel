@@ -16,7 +16,7 @@
     <td>
 
      <mat-form-field color="accent" >
-        <mat-select placeholder="0">
+        <mat-select placeholder={{getRes(l,dish)}}>
           <mat-option *ngFor="let n of people" value=n (click)="setReservation(l, dish, n)">
             {{n}}
           </mat-option>
