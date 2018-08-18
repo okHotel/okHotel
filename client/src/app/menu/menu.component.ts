@@ -73,7 +73,8 @@ export class MenuComponent implements OnInit {
             total += e.quantity;
         }});
 
-        return total > this.people.length*2;
+        const mul_factor = type === Meal.LUNCH ? 2 : 3;
+        return total > this.people.length * mul_factor;
     }
 
     checkSave() {
