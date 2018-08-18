@@ -78,7 +78,7 @@
 
 
 <p>Other notes</p><br>
-<textarea></textarea><br><br>
+<textarea (keypress)="setNotes($event)" placeholder={{getNote()}}></textarea><br><br>
 
 <button type="button" [disabled]="checkSave()"  (click)="saveReservations()">Save</button>
 

@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import {CustomerService} from '../service/customer/customer.service';
 import {Meal, Reservation} from './reservation';
 import {Menu} from './menu';
+import {Note} from './Note';
 
 @Component({
     selector: 'app-menu',
@@ -21,7 +22,8 @@ export class MenuComponent implements OnInit {
     people: number[] = [];
     room: number;
 
-    constructor(private router: Router, public menu: MenuService, private datepipe: DatePipe, private customerService: CustomerService) { }
+    constructor(private router: Router, public menu: MenuService, private datepipe: DatePipe, private customerService: CustomerService) {
+    }
 
     ngOnInit() {
 
@@ -30,20 +32,20 @@ export class MenuComponent implements OnInit {
 
         this.menu.getDateMenu().subscribe(
             data => {
-                console.log("Menu loaded");
+                console.log('Menu loaded');
                 this.myMenu = data;
             },
-            error => {console.log(error)}
+            error => {
+                console.log(error);
+            }
         );
 
-        this.customerService.getLoggedCustomer().subscribe( data => {
+        this.customerService.getLoggedCustomer().subscribe(data => {
             for (let i = 0; i <= data.numberOfPeople; i++) {
                 this.people.push(i);
             }
             this.room = data.roomNumber;
         });
-
-
     }
 
     saveReservations() {
@@ -59,8 +61,8 @@ export class MenuComponent implements OnInit {
     setReservation(selectedType: Meal, selectedDish: string, selectedQuantity: number) {
         let newRes = true;
 
-        this.myMenu.reservations.forEach( r => {
-            if (r.type === selectedType && r.dish === selectedDish) {
+        this.myMenu.reservations.forEach(r => {
+            if (r.roomNumber === this.room && r.type === selectedType && r.dish === selectedDish) {
                 r.quantity = selectedQuantity;
                 newRes = false;
             }
@@ -81,30 +83,61 @@ export class MenuComponent implements OnInit {
         let total = 0;
 
         this.myMenu.reservations.forEach(e => {
-            if (e.type === type1 || e.type === type2) {
+            if (e.roomNumber === this.room &&  e.type === type1 || e.type === type2) {
                 total += e.quantity;
-            }});
+            }
+        });
 
         const mul_factor = type1 === Meal.LUNCH ? 2 : 3;
 
-        return total > (this.people.length-1) * mul_factor;
+        return total > (this.people.length - 1) * mul_factor;
     }
 
     checkSave() {
-        return this.checkReservation(Meal.LUNCH) || this.checkReservation(Meal.DINNER);
+        return this.checkReservation(Meal.LUNCH, Meal.HALF_LUNCH) || this.checkReservation(Meal.DINNER, Meal.HALF_DINNER);
     }
 
     getErrorMessage() {
-        return "Number of dishes booked too high";
+        return 'Number of dishes booked too high';
     }
 
     getRes(type: Meal, dish: string) {
         let res = 0;
-        this.myMenu.reservations.forEach( r => {
-            if (r.type === type && r.dish === dish) {
+        this.myMenu.reservations.forEach(r => {
+            if (r.roomNumber === this.room && r.type === type && r.dish === dish) {
                 res = r.quantity;
             }
         })
+        return res;
+    }
+
+    setNotes(event: any) {
+        let newNote = true;
+
+        this.myMenu.otherNotes.forEach(n => {
+            if (n.roomNumber === this.room) {
+                newNote = false;
+                n.text = event.target.value;
+            }
+        });
+
+        if (newNote) {
+            const note: Note = {
+                roomNumber: this.room,
+                text: event.target.value
+            };
+            this.myMenu.otherNotes.push(note);
+        }
+
+    }
+
+    getNote() {
+        let res = '';
+        this.myMenu.otherNotes.forEach( n => {
+            if (n.roomNumber === this.room) {
+                res = n.text;
+            }
+        });
         return res;
     }
 }

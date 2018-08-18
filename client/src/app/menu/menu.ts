@@ -1,4 +1,5 @@
 import {Reservation} from './reservation';
+import  {Note} from './Note';
 
 export class  Menu {
     _id: string;
@@ -6,10 +7,7 @@ export class  Menu {
     lunch_dishes: string[];
     dinner_dishes: string[];
 
-    otherNotes: {
-        roomNumber: number;
-        text: string
-    };
+    otherNotes: Note[];
 
     reservations: Reservation[];
 
