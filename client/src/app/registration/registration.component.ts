@@ -21,6 +21,7 @@ export class RegistrationComponent{
     customerNeeds: string[] = [];
     need: string;
     registrationSuccessed = true;
+    message: string = "Input not valid";
 
     constructor(
         private customerService: CustomerService,
@@ -50,6 +51,7 @@ export class RegistrationComponent{
                     if (this.checkInputIsValid(data)) {
 
                         console.log("new customer added");
+                        this.customer.role = 'customer';
                         this.save();
                         this.registrationSuccessed = true;
 
@@ -61,9 +63,7 @@ export class RegistrationComponent{
                         this.submitted = false;
                     }
 
-                },
-
-                error => {
+                },error => {
                     console.log("DB error");
                     this.registrationSuccessed = false;
                     this.submitted = false;
@@ -75,7 +75,9 @@ export class RegistrationComponent{
     }
 
     addNeed() {
-        this.customerNeeds.push(this.need);
+        if (this.need.length > 0) {
+            this.customerNeeds.push(this.need);
+        }
     }
 
     private save(): void {
@@ -92,6 +94,7 @@ export class RegistrationComponent{
     }
 
     private checkInputIsValid(booking: Booking) {
+
 
         return this.checkPasswordSameAs(this.confirmPassword)
             && this.checkNameSameAs(booking.bookingName)

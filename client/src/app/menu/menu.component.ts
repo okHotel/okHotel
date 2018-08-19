@@ -1,27 +1,86 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {HandleHeaderService} from '../handleHeader.service';
+import {MenuService} from '../service/menu/menu.service';
+import { DatePipe } from '@angular/common';
+import {CustomerService} from '../service/customer/customer.service';
+import {Meal, Reservation} from './reservation';
+import {Menu} from './menu';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+    selector: 'app-menu',
+    templateUrl: './menu.component.html',
+    styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private router: Router, private handleHeader: HandleHeaderService) { }
+    l = Meal.LUNCH;
+    d = Meal.DINNER;
+    myMenu: Menu;
+    people: number[] = [];
+    room: number;
 
-  ngOnInit() {
-      this.handleHeader.setState(true);
-  }
+    constructor(private router: Router, public menu: MenuService, private datepipe: DatePipe, private customerService: CustomerService) { }
 
-  home() {
+    ngOnInit() {
 
-    this.router.navigateByUrl('/home' );
-  }
+        const latest_date: string = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
+        this.menu.setDate(new Date(latest_date));
 
-  addVariations(){
-    this.router.navigateByUrl('/menu-variations' );
-  }
+        this.menu.getDateMenu().subscribe(
+            data => {
+                console.log("Menu loaded");
+                this.myMenu = data;
+            },
+            error => {console.log(error)}
+        );
 
+        this.customerService.getLoggedCustomer().subscribe( data => {
+            for (let i = 0; i <= data.numberOfPeople; i++) {
+                this.people.push(i);
+            }
+            this.room = data.roomNumber;
+        });
+
+
+    }
+
+    saveReservations() {
+        this.menu.setMenu(this.myMenu);
+        this.menu.saveMenu().subscribe();
+    }
+
+    addVariations() {
+        this.menu.showVariations = true;
+    }
+
+
+    setReservation(selectedType: Meal, selectedDish: string, selectedQuantity: number) {
+        const reservation: Reservation = {
+            roomNumber: this.room,
+            type: selectedType.toString(),
+            quantity: selectedQuantity,
+            dish: selectedDish
+        };
+
+        this.myMenu.reservations.push(reservation);
+    }
+
+    checkReservation(type: Meal) {
+        let total = 0;
+
+        this.myMenu.reservations.forEach(e => {
+            if (e.type === type ) {
+            total += e.quantity;
+        }});
+
+        return total > this.people.length*2;
+    }
+
+    checkSave() {
+        return this.checkReservation(Meal.LUNCH) || this.checkReservation(Meal.DINNER);
+    }
+
+    getErrorMessage() {
+        return "Number of dishes booked too high";
+    }
 }

@@ -13,7 +13,7 @@ export class AdminProfileComponent implements OnInit {
 
   isLoading = false;
   services = [new Service('Resturant', 'restaurant', true),
-      new Service('Pantry', 'view_list', true),
+      new Service('Product', 'view_list', true),
   new Service('Swimming Pool', 'pool', false),
   new Service( 'Beach', 'beach_access', false)];
 

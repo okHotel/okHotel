@@ -1,20 +1,32 @@
-<app-profile></app-profile><br>
+<app-profile></app-profile>
 
-<button>
-   <span>
-       <i class='material-icons'>add_circle_outline</i>
-   Insert menu
-   </span>
-</button><br>
+<div class="container mat-elevation-z8" [hidden]="error">
+    <h3>New menu</h3>
 
+<!--
 <span> Select menu date
-<input type="date"/>
+<input type="date" [(ngModel)]="date" (keyup)="setDateMenu($event)"/>
 </span><br>
+-->
 
-<button>Fill in the fields with a saved menu</button><br>
-<button>Save</button><br>
+<div class="form">
+    <mat-form-field color="accent">
+        <input type="date" matInput placeholder="Select menu date" [(ngModel)]="date" name="date"
+               (keyup)="setDateMenu($event)">
+    </mat-form-field>
+</div>
+
+    <!--<button>Fill in the fields with a saved menu</button><br>
+    <button>Save</button><br>-->
 
 <app-add-dishes></app-add-dishes>
 
-<button>Done</button><br>
-<button>Delete</button><br>
+<button mat-button (click)="saveMenu()">Done</button>
+<button mat-button (click)="deleteMenu()">Delete</button>
+
+<div [hidden]="!isDateWrong"
+     class="alert alert-danger">
+    Insert a date menu valid
+</div>
+    
+</div>

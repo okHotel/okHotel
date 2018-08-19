@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express.Router();
-
 const Customer = require('../model/customer.model.js');
 const bcrypt   = require('bcrypt-nodejs');
 const jwt = require('jsonwebtoken');
@@ -10,7 +9,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 function generateToken(customer){
-    return jwt.sign({ customer: customer }, authConfig.secret, {
+    return jwt.sign({ customer: customer }, jwtConfig.jwtSecretKey, {
         expiresIn: 10080
     });
 }
@@ -54,7 +53,7 @@ exports.create = (req, res, next) => {
                 // Save a Customer in the MongoDB
                 customer.save()
                     .then(data => {
-                        const userInfo = setUserInfo(existingCustomer);
+                        const userInfo = setCustomerInfo(existingCustomer);
 
                         res.status(201).json({
                             token: 'JWT ' + generateToken(userInfo),
@@ -141,10 +140,8 @@ exports.requireAuthBy = function(roles){
         }
 
         token = authHeader.split(" ")[1];
-        console.log(token)
         try {
             payload = jwt.verify(token, jwtConfig.jwtSecretKey);
-            console.log(roles.indexOf(payload.role) )
 
             if (roles.indexOf(payload.role) > -1) {
                 //pass some user details through in case they are needed

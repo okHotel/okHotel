@@ -1,10 +1,72 @@
-<h5>All Customers</h5>
-
 <div [hidden]="!error"
      class="alert alert-danger">
   {{error}}
 </div>
 
-<div *ngFor="let cust of customers; let rowIndex=index" [hidden]="error">
-  <a [routerLink]="['/customers', cust._id]" style="color:black"><span class="badge badge-dark">{{rowIndex + 1}}</span> -> {{cust.bookingName}} {{cust.bookingSurname}}</a>
+<div class="container mat-elevation-z8" [hidden]="error">
+  <h3>All Customers</h3>
+
+  <div class="form">
+    <mat-form-field floatPlaceholder="never" color="accent">
+      <input matInput #filter placeholder="Search..">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="bookingName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let row" >
+        <span class="mobile-label">Name:</span>
+        {{row.bookingName}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="bookingSurname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Surname</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <span class="mobile-label">Surname:</span>
+        {{row.bookingSurname}}</mat-cell>
+    </ng-container>
+
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef class="right">
+        <button mat-icon-button color="primary" (click)="addNew()">
+          <mat-icon aria-label="Add a new customer">add</mat-icon>
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row;" class="right">
+        <button mat-icon-button color="accent" (click)="getDetails(row._id)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="delete(row._id, row.bookingName, row.bookingSurname, row.roomNumber)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+  <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
+    No results
+  </div>
+
+  <mat-paginator #paginator
+                 [length]="dataSource.filteredData.length"
+                 [pageIndex]="0"
+                 [pageSize]="5"
+                 [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+
+  <div id="interactive" class="viewport" #interactive></div>
+
 </div>

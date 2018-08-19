@@ -56,9 +56,9 @@ exports.update = (req, res) => {
     let token = authHeader.split(" ")[1];
     let payload = jwt.verify(token, jwtConfig.jwtSecretKey);
     console.log(payload)
-    console.log(req.params)
+    console.log(req.body)
     console.log(payload._id)
-    if (req.params.customerId !== payload._id) {
+    if (req.body._id !== payload._id) {
         return res.status(401).send({message: 'You are not authorized'});
     }
 
@@ -66,25 +66,24 @@ exports.update = (req, res) => {
         .then(customer => {
             if(!customer) {
                 return res.status(404).json({
-                    msg: "Customer not found with id " + req.params.customerId
+                    msg: "Customer not found with id " + req.body._id
                 });
             }
             res.json(customer);
         }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).json({
-                msg: "Customer not found with id " + req.params.customerId
+                msg: "Customer not found with id " + req.body._id
             });
         }
         return res.status(500).json({
-            msg: "Error updating customer with id " + req.params.customerId
+            msg: "Error updating customer with id " + req.body._id
         });
     });
 };
 
 // DELETE a Customer
 exports.delete = (req, res) => {
-
     let authHeader = req.headers["authorization"];
 
     let token = authHeader.split(" ")[1];

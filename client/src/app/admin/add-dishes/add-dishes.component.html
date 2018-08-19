@@ -1,17 +1,26 @@
-
 <h3>Lunch</h3>
-<div *ngFor="let dish of lunch_dishes">
-  <p>{{dish}}</p>
+<!--
+<input matInput type="text" (keyup)="composeDish($event)"/><br>
+-->
+<div *ngFor="let dish of menu.menu.lunch_dishes">
+  <button mat-button (click)="deleteLunchDish(dish)"><i class="material-icons prefix">clear</i> </button> {{dish}}
 </div>
-<input type="text"/><br>
-<button>Add</button><br>
 
-
+<div class="form">
+  <mat-form-field color="accent">
+    <input matInput #input name="dish" (keyup)="composeDish($event)" />
+  </mat-form-field>
+  <button mat-button type="button" (click)="addLunchDish()"><i class="material-icons">add</i></button>
+</div>
 
 <h3>Dinner</h3>
-<div *ngFor="let dish of dinner_dishes">
-  <p>{{dish}}</p>
+<div *ngFor="let dish of menu.menu.dinner_dishes">
+  <button mat-button (click)="deleteDinnerDish(dish)"><i class="material-icons prefix">clear</i> </button> {{dish}}
 </div>
-<input type="text"/><br>
-<button>Add</button><br>
 
+<div class="form">
+  <mat-form-field color="accent">
+    <input matInput #input name="dish" (keyup)="composeDish($event)" />
+  </mat-form-field>
+  <button mat-button type="button" (click)="addDinnerDish()"><i class="material-icons">add</i></button>
+</div>

@@ -3,29 +3,43 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Customer } from '../../customer/customer';
 import {AuthService} from "../auth/auth.service";
-
+import {BehaviorSubject} from "../../../../node_modules/rxjs/BehaviorSubject";
+import {Product} from "../../admin/pantry/product";
+import {HttpErrorResponse} from "../../../../node_modules/@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
 })
 export class CustomerService {
+
     private baseUrl = 'http://localhost:3000';
+
     private customersUrl = this.baseUrl + '/customers';  // URL to web api
     private httpOption = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
+
+    dataChange: BehaviorSubject<Customer[]> = new BehaviorSubject<Customer[]>([]);
 
     constructor(private http: HttpClient) {
         let headers = AuthService.getHeaderWithAuthorization();
         this.httpOption = {headers}
     }
 
-    getCustomers (): Observable<Customer[]> {
-        console.log(this.httpOption);
-        let httpHeaders = AuthService.getHeaderWithAuthorization();
-        console.log({headers: httpHeaders});
+    get data(): Customer[] {
+        return this.dataChange.value;
+    }
 
-        return this.http.get<Customer[]>(this.customersUrl, {headers: httpHeaders});
+    getCustomers(): void {
+        let httpHeaders = AuthService.getHeaderWithAuthorization();
+
+        this.http.get<Customer[]>(this.customersUrl, {headers: httpHeaders}).subscribe(data => {
+                this.dataChange.next(data);
+            },
+            (error: HttpErrorResponse) => {
+                console.log (error.name + ' ' + error.message);
+                this.dataChange.error(error)
+            });
     }
 
     getCustomer(id: string): Observable<Customer> {
@@ -47,11 +61,14 @@ export class CustomerService {
         return this.http.get<Customer>(url, {headers: httpHeaders});
     }
 
-    deleteCustomer (customer: Customer | string): Observable<Customer> {
-        const id = typeof customer === 'string' ? customer : customer._id;
+    deleteCustomer (id: string): Observable<Customer> {
         const url = `${this.customersUrl}/${id}`;
+        console.log(url);
+        console.log(AuthService.getHeaderWithAuthorization());
+        let httpHeaders = AuthService.getHeaderWithAuthorization();
+        console.log({headers: httpHeaders});
 
-        return this.http.delete<Customer>(url, this.httpOption);
+        return this.http.delete<Customer>(url, {headers: httpHeaders});
     }
 
     updateCustomer (customer: Customer): Observable<any> {
