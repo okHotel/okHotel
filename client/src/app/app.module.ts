@@ -25,6 +25,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import {CustomerDetailComponent} from "./customer-detail/customer-detail.component";
 import {BookingService} from "./service/booking/booking.service";
 import {AuthService} from "./service/auth/auth.service";
+import {MatFormFieldModule, MatInputModule} from '@angular/material';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 
 const appRoutes: Routes = [
@@ -42,6 +44,7 @@ const appRoutes: Routes = [
     { path: 'registration', component: RegistrationComponent },
     { path: 'customers/:id', component: CustomerDetailComponent, canActivate: [AuthService] },
     { path: 'profile', component: ProfileComponent }
+
 ];
 
 @NgModule({
@@ -64,13 +67,18 @@ const appRoutes: Routes = [
       AddDishesComponent,
       AddVariationComponent,
       PantryComponent,
-      AdminStatisticsComponent
+      AdminStatisticsComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+      MatFormFieldModule,
+      MatInputModule,
+      BrowserAnimationsModule,
+      NoopAnimationsModule
   ],
   providers: [CustomerService, BookingService, AuthService],
   bootstrap: [AppComponent]
