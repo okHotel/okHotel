@@ -3,11 +3,15 @@
 <button>
     <i class="material-icons">autorenew</i>
 </button>
-<span> Insert Variation</span>
+<span> Insert Variations</span>
 
 <div *ngFor="let variation of variations">
   <p>{{variation}}</p>
 </div>
 
-<input type="text"/><br>
-<button>Add</button>
+<div #divControl="ngDiv">
+<input type="text" [(ngModel)]="variation.type" placeholder="Variation" /><br>
+    <mat-error>{{getErrorMessage()}}</mat-error>
+</div>
+
+<button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)" >Add</button>
