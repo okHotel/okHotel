@@ -12,6 +12,7 @@ export class AddVariationComponent implements OnInit {
 
     variations: String[] = [];
     variation = new Variation();
+    map: Map<number, String> = new Map<number, String>();
 
     constructor(private router: Router, private variationService: VariationService) {
 
@@ -19,10 +20,13 @@ export class AddVariationComponent implements OnInit {
 
     ngOnInit() {
 
+        let i = 0;
         this.variationService.getVariations()
             .subscribe( variations => {
                 variations.forEach((obj) => {
                     this.variations.push(obj.type);
+                    this.map.set(i, obj._id);
+                    i++;
                 });
             });
 
@@ -41,8 +45,10 @@ export class AddVariationComponent implements OnInit {
         return type.length === 0 || !type.match('^[a-zA-Z]+$');
     }
 
-    public deleteVariation(type: string){
-        this.variationService.deleteVariation(type)
+    public deleteVariation(i: number) {
+        const id = this.map.get(i);
+
+        this.variationService.deleteVariation(id)
             .subscribe();
         location.reload();
     }

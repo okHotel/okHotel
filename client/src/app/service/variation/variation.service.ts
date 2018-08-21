@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 
 
 
+
 @Injectable({
     providedIn: 'root'
 })
@@ -29,8 +30,10 @@ export class VariationService {
         return this.http.put<Variation[]>(this.variationsUrl, variation);
     }
 
-    deleteVariation(type: String): Observable<any> {
-
-        return this.http.put<Variation[]>(this.variationsUrl, type);
+    deleteVariation(id: String) {
+        const url = `${this.variationsUrl}/${id}`;
+        return this.http.delete(url);
     }
+
+
 }

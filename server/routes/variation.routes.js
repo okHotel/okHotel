@@ -8,6 +8,8 @@ app.get('/', variations.findAll);
 
 app.put('/', variations.addVariation);
 
-app.put('/', variations.removeVariation);
+app.delete('/:id', variations.removeVariation);
+
+
 
 module.exports = app;
