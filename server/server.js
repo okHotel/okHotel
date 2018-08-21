@@ -13,13 +13,9 @@ const bookingRoutes = require('./routes/booking.routes');
 const authenticationRoutes = require('./routes/authentication.routes');
 const menuRoutes = require('./routes/menu.routes');
 const planRoutes = require('./routes/plans.routes');
-<<<<<<< HEAD
-const variationRoutes = require('./routes/variation.routes');
-=======
 const productRoutes = require('./routes/products.routes');
 const menuStatisticsRoutes = require('./routes/menu-statistic.routes');
->>>>>>> restaurant
-
+const variationRoutes = require('./routes/variation.routes');
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
@@ -44,9 +40,9 @@ app.use('/bookings', bookingRoutes);
 app.use('/auth', authenticationRoutes);
 app.use('/menu', menuRoutes);
 app.use('/plan', planRoutes);
-
 app.use('/product', productRoutes);
 app.use('/menu-statistics', menuStatisticsRoutes);
+app.use('/variations', variationRoutes);
 
 
 // Create a Server

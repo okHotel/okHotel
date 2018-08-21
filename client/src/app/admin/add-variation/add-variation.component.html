@@ -1,6 +1,6 @@
 <app-profile></app-profile><br>
 
-<form #addCustomerForm="ngForm">
+
 
     <div class="form-group">
         <label for="variation" >Insert Variations</label>
@@ -10,8 +10,7 @@
         <input id="variation" type="text" class="form-control" placeholder="Variation"
                required name="variation" [(ngModel)]="variation.type">
     </div>
-        <button mat-button #button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)">
-            <i class="material-icons">add</i>
-        </button>
+    <button mat-button #button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)">
+        <i class="material-icons">add</i>
+    </button>
 
-</form>

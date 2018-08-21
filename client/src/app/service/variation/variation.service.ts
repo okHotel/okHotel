@@ -28,4 +28,9 @@ export class VariationService {
 
         return this.http.put<Variation[]>(this.variationsUrl, variation);
     }
+
+    deleteVariation(type: String): Observable<any> {
+
+        return this.http.put<Variation[]>(this.variationsUrl, type);
+    }
 }

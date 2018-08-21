@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {VariationService} from '../../service/variation/variation.service';
 import {Variation} from './variation';
 import {Router} from '@angular/router';
@@ -25,6 +25,8 @@ export class AddVariationComponent implements OnInit {
                     this.variations.push(obj.type);
                 });
             });
+
+        console.log(this.variations);
         this.variation.type = '';
     }
 
@@ -39,6 +41,12 @@ export class AddVariationComponent implements OnInit {
         return type.length === 0 || !type.match('^[a-zA-Z]+$');
     }
 
-    public getErrorMessage() {
+    public deleteVariation(type: string){
+        this.variationService.deleteVariation(type)
+            .subscribe();
+        location.reload();
     }
+
+    /*public getErrorMessage() {
+    }*/
 }
