@@ -8,17 +8,30 @@
     <th scope="col">Allergy</th>
   </tr>
 
-  <tr *ngFor="let v of variation">
+  <tr *ngFor="let v of variations">
     <td scope="row">{{v}}</td>
     <td>
-      <label for="Int">{{v}} Intollerance</label>
-      <input id="Int" type="number" min="0" >
+      <mat-form-field color="accent" >
+        <mat-select placeholder="{{getVariations(intollerance, v)}}" >
+          <mat-option *ngFor="let n of people" value=n (click)="setVariation(v, intollerance, n)">
+            {{n}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </td>
+
     <td>
-      <label for="All">{{v}} Allergy</label>
-      <input id="All" type="number" min="0">
+      <mat-form-field color="accent" >
+        <mat-select placeholder="{{getVariations(allergy, v)}}">
+          <mat-option *ngFor="let n of people" value=n (click)="setVariation(v, allergy, n)">
+            {{n}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </td>
   </tr>
+
+
 
 
 </table>

@@ -10,7 +10,7 @@
   </tr>
 
   <mat-error *ngIf="checkReservation(l, hl)">{{getErrorMessage()}}</mat-error>
-  <div *ngFor="let dish of myMenu.lunch_dishes">
+  <div *ngFor="let dish of menu.menu.lunch_dishes">
   <tr>
     <td scope="row">{{dish}}</td>
     <td>
@@ -47,7 +47,7 @@
   </tr>
 
   <mat-error *ngIf="checkReservation(d, hd)">{{getErrorMessage()}}</mat-error>
-  <div *ngFor="let dish of myMenu.dinner_dishes">
+  <div *ngFor="let dish of menu.menu.dinner_dishes">
   <tr>
       <td scope="row">{{dish}}</td>
       <td>

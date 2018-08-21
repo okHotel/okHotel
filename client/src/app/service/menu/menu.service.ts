@@ -13,13 +13,13 @@ const httpOptions = {
 
 export class MenuService {
 
-    public showVariations: boolean = false;
+    public showVariations = false;
     private baseUrl = 'http://localhost:3000';
     private menuUrl = this.baseUrl + '/menu';  // URL to web api
 
     public menu: Menu = new Menu();
 
-    constructor(  private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
     setDate(date: Date) {
         this.menu.date = date;

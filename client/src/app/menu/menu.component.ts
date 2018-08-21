@@ -18,7 +18,6 @@ export class MenuComponent implements OnInit {
     d = Meal.DINNER;
     hl = Meal.HALF_LUNCH;
     hd = Meal.HALF_DINNER;
-    myMenu: Menu;
     people: number[] = [];
     room: number;
 
@@ -32,8 +31,8 @@ export class MenuComponent implements OnInit {
 
         this.menu.getDateMenu().subscribe(
             data => {
+                this.menu.setMenu(data);
                 console.log('Menu loaded');
-                this.myMenu = data;
             },
             error => {
                 console.log(error);
@@ -49,7 +48,6 @@ export class MenuComponent implements OnInit {
     }
 
     saveReservations() {
-        this.menu.setMenu(this.myMenu);
         this.menu.saveMenu().subscribe();
     }
 
@@ -57,11 +55,10 @@ export class MenuComponent implements OnInit {
         this.menu.showVariations = true;
     }
 
-
     setReservation(selectedType: Meal, selectedDish: string, selectedQuantity: number) {
         let newRes = true;
 
-        this.myMenu.reservations.forEach(r => {
+        this.menu.menu.reservations.forEach(r => {
             if (r.roomNumber === this.room && r.type === selectedType && r.dish === selectedDish) {
                 r.quantity = selectedQuantity;
                 newRes = false;
@@ -75,14 +72,14 @@ export class MenuComponent implements OnInit {
                 quantity: selectedQuantity,
                 dish: selectedDish
             };
-            this.myMenu.reservations.push(reservation);
+            this.menu.menu.reservations.push(reservation);
         }
     }
 
     checkReservation(type1: Meal, type2: Meal) {
         let total = 0;
 
-        this.myMenu.reservations.forEach(e => {
+        this.menu.menu.reservations.forEach(e => {
             if (e.roomNumber === this.room &&  e.type === type1 || e.type === type2) {
                 total += e.quantity;
             }
@@ -103,7 +100,7 @@ export class MenuComponent implements OnInit {
 
     getRes(type: Meal, dish: string) {
         let res = 0;
-        this.myMenu.reservations.forEach(r => {
+        this.menu.menu.reservations.forEach(r => {
             if (r.roomNumber === this.room && r.type === type && r.dish === dish) {
                 res = r.quantity;
             }
@@ -114,7 +111,7 @@ export class MenuComponent implements OnInit {
     setNotes(event: any) {
         let newNote = true;
 
-        this.myMenu.otherNotes.forEach(n => {
+        this.menu.menu.otherNotes.forEach(n => {
             if (n.roomNumber === this.room) {
                 newNote = false;
                 n.text = event.target.value;
@@ -126,14 +123,14 @@ export class MenuComponent implements OnInit {
                 roomNumber: this.room,
                 text: event.target.value
             };
-            this.myMenu.otherNotes.push(note);
+            this.menu.menu.otherNotes.push(note);
         }
 
     }
 
     getNote() {
         let res = '';
-        this.myMenu.otherNotes.forEach( n => {
+        this.menu.menu.otherNotes.forEach( n => {
             if (n.roomNumber === this.room) {
                 res = n.text;
             }
