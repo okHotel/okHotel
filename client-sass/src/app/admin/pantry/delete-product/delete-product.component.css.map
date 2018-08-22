@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAW;EACP,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;;AAG1B,cAAe;EACX,KAAK,EAAE,IAAI",
+"sources": ["delete-product.component.scss"],
+"names": [],
+"file": "delete-product.component.css"
+}

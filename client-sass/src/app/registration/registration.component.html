@@ -1,0 +1,119 @@
+<div [hidden]="submitted" class="container mat-elevation-z8">
+  <h3>Add Customer</h3>
+
+  <div [hidden]="registrationSuccessed"  class="alert alert-danger">
+    Input not valid
+  </div>
+
+  <form class="mat-dialog-content" #addCustomerForm="ngForm">
+    <div class="form">
+      <mat-form-field color="accent">
+      <mat-select id="roomNumber" [(ngModel)]="customer.roomNumber" name="roomNumber" #roomNumber="ngModel" placeholder="Room number" required>
+        <mat-option *ngFor="let number of roomsNumber" [value]=number required> {{number}} </mat-option>
+      </mat-select>
+      <div [hidden]="roomNumber.valid || roomNumber.pristine"
+           class="alert alert-danger">
+        Room number is required
+      </div>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input type="text" class="form-control" id="bookingName" placeholder="Give Customer's booking name"
+             required
+             [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
+      <div [hidden]="bookingName.valid || bookingName.pristine"
+           class="alert alert-danger">
+        Booking Name is required
+      </div>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+      <input matInput #input type="text" class="form-control" id="bookingSurname" placeholder="Give Customer's booking surname"
+             required
+             [(ngModel)]="customer.bookingSurname" name="bookingSurname" #bookingSurname="ngModel">
+      <div [hidden]="bookingSurname.valid || bookingSurname.pristine"
+           class="alert alert-danger">
+        Booking Surname is required
+      </div>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+      <input matInput #input type="text" class="form-control" id="username" placeholder="Give Customer's username"
+             required [(ngModel)]="customer.username" name="username" #username="ngModel">
+      <div [hidden]="username.valid || username.pristine"
+           class="alert alert-danger">
+        The customer username is required
+      </div>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input type="text" class="form-control" id="password" placeholder="Give Customer's password"
+             required
+             [(ngModel)]="customer.password" name="password" #password="ngModel">
+      <div [hidden]="password.valid || password.pristine"
+           class="alert alert-danger">
+        The password is required
+      </div>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+      <input matInput #input type="text" class="form-control" id="confirmPassword" placeholder="Confirm your submitted password"
+             required
+             [(ngModel)]="confirmPassword" name="checkPassword" #checkPassword="ngModel">
+      <div [hidden]="checkPassword.valid || checkPassword.pristine"
+           class="alert alert-danger">
+        The confirmation password is required
+      </div>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input type="number" class="form-control" id="numberOfPeople"
+             placeholder="Give the number of people in the room"
+             min="1"
+             required
+             [(ngModel)]="customer.numberOfPeople" name="numberOfPeople" #numberOfPeople="ngModel">
+      <div [hidden]="numberOfPeople.valid || numberOfPeople.pristine"
+           class="alert alert-danger">
+        The number of people in the room is required
+      </div>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+      Other needs:
+        <mat-list>
+          <mat-list-item *ngFor="let need of customerNeeds">{{need}}</mat-list-item>
+        </mat-list>
+        <input matInput #input id='otherNeeds' name="need" [(ngModel)]="need" />
+      </mat-form-field>
+      <button mat-button type="button" (click)="addNeed(need)"><i class="material-icons">add</i></button>
+    </div>
+
+    <div class="btn-group btn-group-sm">
+      <button mat-button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+      <button mat-button type="button" class="btn btn-dark" (click)="addCustomer()" [disabled]="!addCustomerForm.form.valid">Add</button>
+    </div>
+  </form>
+</div>
+
+<div [hidden]="!submitted || !registrationSuccessed">
+  <p>Submitted Successfully! -> <span class="badge badge-light">{{customer.bookingName}}  {{customer.bookingSurname}}</span></p>
+  <div class="btn-group btn-group-sm">
+    <button mat-button (click)="goBack()">Back</button>
+    <button mat-button (click)="newCustomer(); addCustomerForm.reset()">Continue</button>
+  </div>
+</div>
+

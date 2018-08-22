@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAW;EACP,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,SAAS,EAAE,KAAK;;AAGpB,cAAe;EACX,KAAK,EAAE,IAAI;;AAGf,KAAM;EACF,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,GAAG;;AAGpB,eAAgB;EACZ,SAAS,EAAE,IAAI;EACf,SAAS,EAAE,CAAC",
+"sources": ["edit-product.component.scss"],
+"names": [],
+"file": "edit-product.component.css"
+}

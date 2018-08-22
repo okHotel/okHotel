@@ -1,0 +1,54 @@
+<div class="container">
+  <h3 mat-dialog-title>Add new Product</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit()" #formControl="ngForm">
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input [disabled]="isCodeReadOnly" matInput #input type="text" class="form-control" placeholder="Code" [(ngModel)]="product.code"
+               name="code" pattern="[0-9]*">
+        <mat-error >{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <!--Textarea for demo purposes-->
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Name" [(ngModel)]="product.name" name="name" required >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <!--Contains mat-hint for characters count and has maxLengt set-->
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #inputstate class="form-control" placeholder="Category" [(ngModel)]="product.category" name="category" required >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput type="number" placeholder="Quantity" [(ngModel)]="product.quantity" name="quantity" pattern="[0-9]*" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <mat-select [(ngModel)]="product.unit" name="unit" placeholder="Unit" required>
+          <mat-option *ngFor="let unit of units"  [value]=unit>
+            {{unit}}
+          </mat-option>
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+
+      <button mat-button [type]="submit" [disabled]="!formControl.valid || isCodeInvalid(product.code)" [mat-dialog-close]="1" (click)="onSave()">Save</button>
+      <button mat-button (click)="onCancel()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>

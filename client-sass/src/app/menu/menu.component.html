@@ -1,0 +1,85 @@
+  <app-profile></app-profile>
+<table summary="The courses you can select for lunch">
+    <caption>Please choose what you want to eat for lunch</caption>
+    <caption>Lunch</caption>
+  <tr>
+    <th></th>
+    <th scope="col">Int Portion</th>
+    <th scope="col">1/2 Portion</th>
+    <th scope="col">Variation</th>
+  </tr>
+
+  <mat-error *ngIf="checkReservation(l, hl)">{{getErrorMessage()}}</mat-error>
+  <div *ngFor="let dish of menu.menu.lunch_dishes">
+  <tr>
+    <td scope="row">{{dish}}</td>
+    <td>
+
+     <mat-form-field color="accent" >
+        <mat-select placeholder={{getRes(l,dish)}}>
+          <mat-option *ngFor="let n of people" value=n (click)="setReservation(l, dish, n)">
+            {{n}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field color="accent">
+        <mat-select placeholder={{getRes(hl,dish)}}>
+          <mat-option *ngFor="let n of people" value=n (click)="setReservation(hl, dish, n)">
+            {{n}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button type="button" (click)="addVariations()">+</button>
+    </td>
+  </tr>
+    </div>
+</table>
+
+<table summary="The courses you can select for dinner" >
+  <caption>Dinner</caption>
+  <tr>
+    <th></th>
+    <th scope="col">Int</th>
+    <th scope="col">1/2</th>
+    <th scope="col">Variation</th>
+  </tr>
+
+  <mat-error *ngIf="checkReservation(d, hd)">{{getErrorMessage()}}</mat-error>
+  <div *ngFor="let dish of menu.menu.dinner_dishes">
+  <tr>
+      <td scope="row">{{dish}}</td>
+      <td>
+        <mat-form-field color="accent" >
+          <mat-select placeholder={{getRes(d,dish)}}>
+            <mat-option *ngFor="let n of people" value=n (click)="setReservation(d, dish, n)">
+              {{n}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field color="accent">
+          <mat-select placeholder={{getRes(hd,dish)}}>
+            <mat-option *ngFor="let n of people" value=n (click)="setReservation(hd, dish, n)">
+              {{n}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    </td>
+    <td>
+      <button type="button" (click)="addVariations()">+</button>
+    </td>
+  </tr>
+  </div>
+
+</table>
+
+
+<p>Other notes</p><br>
+<textarea (keypress)="setNotes($event)" placeholder={{getNote()}}></textarea><br><br>
+
+<button type="button" [disabled]="checkSave()"  (click)="saveReservations()">Save</button>
+
+<app-menu-variations *ngIf="menu.showVariations"></app-menu-variations>
