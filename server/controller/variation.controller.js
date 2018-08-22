@@ -21,5 +21,21 @@ exports.addVariation = (req, res) => {
 };
 
 exports.removeVariation = (req, res) => {
+console.log("REEEEEQ" + req.params.id)
 
+
+    Variation.findOneAndRemove({
+        _id:  req.params.id
+    }).then(variation => {
+        res.json({msg: "Variation deleted successfully!"});
+    }).catch(err => {
+        if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+            return res.status(404).json({
+                msg: "Variation not found with id " + req.params._id
+            });
+        }
+        return res.status(500).json({
+            msg: "Could not delete variation with id " + req.params._id
+        });
+    });
 };

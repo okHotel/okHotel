@@ -42,12 +42,10 @@ app.use('/bookings', bookingRoutes);
 app.use('/auth', authenticationRoutes);
 app.use('/menu', menuRoutes);
 app.use('/plan', planRoutes);
-
 app.use('/product', productRoutes);
 app.use('/menu-statistics', menuStatisticsRoutes);
-
-
 app.use('/variations', variationRoutes);
+
 
 // Create a Server
 const server = app.listen(3000, function () {

@@ -20,6 +20,7 @@ import {CustomerService} from './service/customer/customer.service';
 import {HttpClientModule} from '@angular/common/http';
 import { CustomerComponent } from './customer/customer.component';
 import { RegistrationComponent } from './registration/registration.component';
+
 import {CustomerDetailComponent} from './customer/customer-detail/customer-detail.component';
 import {BookingService} from './service/booking/booking.service';
 import {AuthService} from './service/auth/auth.service';
@@ -49,6 +50,7 @@ import { ProductsComponent } from './admin/pantry/products.component';
 import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
 
 
+
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
     { path: 'login', component: LoginComponent},
@@ -62,6 +64,7 @@ const appRoutes: Routes = [
     { path: 'registration', component: RegistrationComponent },
     { path: 'customers/:id', component: CustomerDetailComponent, canActivate: [AuthService] },
     { path: 'profile', component: ProfileComponent }
+
 ];
 
 @NgModule({
@@ -127,5 +130,6 @@ const appRoutes: Routes = [
     providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService,
         BarcodeValidatorService, PantryService, DatePipe],
     bootstrap: [AppComponent]
+
 })
 export class AppModule {}
