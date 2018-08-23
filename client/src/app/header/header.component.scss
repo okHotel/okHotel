@@ -1,10 +1,14 @@
+@import "../../styles.scss";
 div {
-  margin: 0 auto;
+  margin: 0 auto ;
   text-align: center;
+  width: 100vw;
+
+
 }
 
 a {
-  font-family: 'myFont', serif;
+
   font-size: 200%;
 }
 

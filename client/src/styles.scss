@@ -7,3 +7,9 @@
 
 /* You can add global styles to this file, and also import other style files */
 
+$main-color: #eae4d9;
+
+body {
+  background-color: $main-color;
+  font-family: 'myFont', serif;
+}
