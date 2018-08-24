@@ -1,7 +1,11 @@
+@import '../../../styles.scss';
+
 .container {
     display: flex;
     flex-direction: column;
     min-width: 450px;
+  padding: 2%;
+  background-color: $div-color;
 }
 
 .container > * {
@@ -17,3 +21,4 @@
     font-size: 16px;
     flex-grow: 1;
 }
+
