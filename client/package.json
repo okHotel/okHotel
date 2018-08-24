@@ -30,7 +30,8 @@
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.2.2",
     "tslint-angular": "^1.1.2",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "@material-ui/core": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.6.8",

@@ -1,12 +1,13 @@
-<div [hidden]="!isCustomerLoggedIn" >
-    <a id="profileLink" (click)="goToProfile()">{{customer?.bookingName}} {{customer?.bookingSurname}}</a>
-    <!--<button id="profileButton" alt="The profile icon" (click)="profile()"></button>-->
-    <button mat-button (click)="goToProfile()">
-        <mat-icon aria-label="Profile">person</mat-icon>
-    </button>
+<div [hidden]="!isCustomerLoggedIn" id="navDiv">
+  <!--<button id="profileButton" alt="The profile icon" (click)="profile()"></button>-->
+  <button mat-button (click)="goToProfile()">
+    <mat-icon aria-label="Profile">person</mat-icon>
+  </button>
+  <a id="profileLink" (click)="goToProfile()">{{customer?.bookingName}} {{customer?.bookingSurname}}</a>
+    <br>
     <button mat-button class="btn-large btn-submit" (click)="logout()">Logout</button>
 </div>
 
 <div [hidden]="isCustomerLoggedIn">
-    <button mat-button class="btn-large btn-submit" (click)="goToLogin()">Login</button>
+  <button mat-button class="btn-large btn-submit" (click)="goToLogin()">Login</button>
 </div>

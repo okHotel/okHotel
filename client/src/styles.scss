@@ -1,15 +1,44 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/theming';
 
-@font-face {
-  font-family: 'myFont';
-  src: url("/assets/font/pt_serif-web-italic-webfont.woff") format('opentype');
+
+::ng-deep .mat-tooltip {
+  font-size: 50px;
 }
 
 /* You can add global styles to this file, and also import other style files */
 
 $main-color: #eae4d9;
 
+// Define a custom typography config that overrides the font-family as well as the
+// headlines and body-1 levels.
+
+$config: mat-typography-config();
+
+$custom-typography: mat-typography-config(
+  $font-family: 'myFont',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+
+
+@include mat-core($custom-typography)
+
+
+@font-face {
+  font-family: 'myFont';
+  src: url("/assets/font/pt_serif-web-italic-webfont.woff") format('opentype');
+}
+
 body {
   background-color: $main-color;
   font-family: 'myFont', serif;
 }
+
+.mat-button{
+  font-size: 105%;
+}
+
+
+
+
