@@ -8,7 +8,7 @@
         <!--
               <label for="bookingName">Booking name</label>
         -->
-        <input type="text" class="form-control" id="bookingName" placeholder="Booking name"
+        <input readonly type="text" class="form-control" id="bookingName" placeholder="Booking name"
                required matInput #input
                [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
         <div [hidden]="bookingName.valid || bookingName.pristine"
@@ -23,7 +23,7 @@
         <!--
               <label for="bookingSurname">Booking Surname</label>
         -->
-        <input type="text" class="form-control" id="bookingSurname" placeholder="Booking surname"
+        <input readonly type="text" class="form-control" id="bookingSurname" placeholder="Booking surname"
                required matInput #input
                [(ngModel)]="customer.bookingSurname" name="bookingSurname" #bookingSurname="ngModel">
         <div [hidden]="bookingSurname.valid || bookingSurname.pristine"
@@ -38,7 +38,7 @@
         <!--
               <label for="numberOfPeople">People in the room</label>
         -->
-        <input type="number" class="form-control" id="numberOfPeople"
+        <input readonly type="text" class="form-control" id="numberOfPeople"
                placeholder="Number of people in the room"
                required matInput #input
                [(ngModel)]="customer.numberOfPeople" name="numberOfPeople" #numberOfPeople="ngModel">
@@ -65,7 +65,7 @@
     </div>
     <button mat-button (click)="addNeed(need)"><i class="material-icons">add</i></button>
 
-    <div class="btn-group btn-group-sm">
+    <div class="btn-group-btn-group-sm">
       <button mat-button (click)="goBack()">Back</button>
       <button mat-button (click)="update()" [disabled]="!detailCustomerForm.form.valid">Update</button>
       <button mat-button (click)="delete()">Delete</button>
