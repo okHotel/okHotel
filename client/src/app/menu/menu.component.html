@@ -107,14 +107,27 @@
 
 <div class="w3-row">
 
-  <div class="w3-col l4 m6 s4 w3-left">&nbsp;</div>
-  <div class="w3-col l8 m6 s8 w3-left w3-red">
+  <div class="w3-col l3 m3 s3 w3-center">&nbsp;</div>
 
-    <p id="otherNotes">Other notes</p><br>
-    <textarea (keypress)="setNotes($event)" placeholder={{getNote()}}></textarea><br><br>
 
-    <button type="button" [disabled]="checkSave()"  (click)="saveReservations()">Save</button>
-
-    <app-menu-variations *ngIf="menu.showVariations"></app-menu-variations>
+  <div class="w3-col l6 m6 s6 w3-center">
+    <div id="notes">
+      <p>Other notes</p><br>
+      <textarea (keypress)="setNotes($event)" placeholder={{getNote()}}></textarea><br><br>
+    </div>
   </div>
+
+  <div class="w3-col l3 m3 s3 w3-center">&nbsp;</div>
+
+</div>
+
+<div class="w3-row">
+  <div class="w3-col l4 m6 s4 w3-left">&nbsp;</div>
+  <div class="w3-col l8 m6 s8 w3-center" id="save">
+    <button  mat-button  [disabled]="checkSave()"  (click)="saveReservations()">Save</button>
+  </div>
+</div>
+
+<div class="w3-row">
+  <app-menu-variations *ngIf="menu.showVariations"></app-menu-variations>
 </div>
