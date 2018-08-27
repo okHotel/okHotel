@@ -7,36 +7,16 @@
 
 }
 
-#loginDiv{
-  /*to choose color https://www.w3schools.com/colors/colors_picker.asp*/
+#formDiv {
+  padding: 2%;
   background-color: $main-color;
-  padding: 7%;
-  text-align: center;
-  width: 20%;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-
 }
 
-#material-icons-prefix-user, #material-icons-prefix-pass{
-  margin-right: 6%;
-  margin-bottom: 5%;
-
+#buttDiv
+{
+  margin-top: 5%;
+  text-align: right;
 }
-
-#loginButton, #registrationButton, #buttDiv{
-  float: right;
-}
-
-
-#input-field-col-s12, input{
-  float: right;
-  width: 80%;
-}
-
 
 
 

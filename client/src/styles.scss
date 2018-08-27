@@ -35,12 +35,11 @@ $custom-typography: mat-typography-config(
 
 body {
   background-color: $main-color;
-  font-family: 'myFont', serif;
+  font-family: 'myFont', serif !important;
 }
 
 .mat-button{
   font-size: 105%;
-
 }
 
 

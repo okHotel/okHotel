@@ -1,22 +1,22 @@
 /*
 Error: Invalid CSS after "...tom-typography)": expected selector or at-rule, was "@font-face {"
-        on line 30 of ../../styles.scss
+        on line 31 of ../../styles.scss
         from line 1 of login.component.scss
 
-25: 
 26: 
-27: @include mat-core($custom-typography)
-28: 
+27: 
+28: @include mat-core($custom-typography)
 29: 
-30: @font-face {
-31:   font-family: 'myFont';
-32:   src: url("/assets/font/pt_serif-web-italic-webfont.woff") format('opentype');
-33: }
-34: 
-35: body {
+30: 
+31: @font-face {
+32:   font-family: 'myFont';
+33:   src: url("/assets/font/pt_serif-web-italic-webfont.woff") format('opentype');
+34: }
+35: 
+36: body {
 
 Backtrace:
-../../styles.scss:30
+../../styles.scss:31
 login.component.scss:1
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.7/lib/sass/scss/parser.rb:1278:in `expected'
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.7/lib/sass/scss/parser.rb:1208:in `expected'
@@ -65,4 +65,4 @@ login.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"...tom-typography)\": expected selector or at-rule, was \"@font-face {\"\A         on line 30 of ../../styles.scss\A         from line 1 of login.component.scss\A \A 25: \A 26: \A 27: @include mat-core($custom-typography)\A 28: \A 29: \A 30: @font-face {\A 31:   font-family: 'myFont';\A 32:   src: url(\"/assets/font/pt_serif-web-italic-webfont.woff\") format('opentype');\A 33: }\A 34: \A 35: body {"; }
+  content: "Error: Invalid CSS after \"...tom-typography)\": expected selector or at-rule, was \"@font-face {\"\A         on line 31 of ../../styles.scss\A         from line 1 of login.component.scss\A \A 26: \A 27: \A 28: @include mat-core($custom-typography)\A 29: \A 30: \A 31: @font-face {\A 32:   font-family: 'myFont';\A 33:   src: url(\"/assets/font/pt_serif-web-italic-webfont.woff\") format('opentype');\A 34: }\A 35: \A 36: body {"; }
