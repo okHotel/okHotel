@@ -3,30 +3,6 @@
 * {box-sizing:border-box}
 
 
-.slideShowContainer {
-  /*position: relative;
-  text-align: center;
-  color: black;*/
-  max-width: 90%;
-  position: relative;
-  margin: auto;
-  background-color: $div-color;
-  padding: 5%;
-
-
-
-
-}
-
-.planImage{
-  padding: 3% 3%;
-  background: no-repeat;
-  width: 50%;
-  background-size: contain;
-  margin-left: 26%;
-
-}
-
 .prev, .next {
   cursor: pointer;
   position: absolute;
@@ -56,9 +32,44 @@
   background-color: $dot-selected-color;
 }
 
-#dot-div{
-  text-align: center;
-  padding: 3%;
+
+.planImage{
+
+  background: no-repeat;
+  width: 50%;
+  background-size: contain;
+
+
+}
+
+#restaurant {
+  position: absolute;
+  top: 30%;
+  left: 33%;
+}
+
+#lounge {
+  position: absolute;
+  top: 30%;
+  right: 28%;
+}
+
+#reception {
+  position: absolute;
+  top: 52%;
+  left: 30%;
+}
+
+#coatroom {
+  position: absolute;
+  top: 57%;
+  right: 29%;
+}
+
+#entrance {
+  position: absolute;
+  top: 81%;
+  left: 47%;
 }
 
 .dot {
@@ -73,6 +84,11 @@
 
 }
 
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: $dot-selected-color;
+}
+
 .active, .dot:hover {
   background-color: $dot-selected-color;
 }
@@ -85,10 +101,6 @@
   animation-duration: 1.5s;
 }
 
-.text{
-  text-align: center;
-}
-
 @-webkit-keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
@@ -97,36 +109,6 @@
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
-}
-
-#restaurant {
-  position: absolute;
-  top: 25%;
-  left: 34%;
-}
-
-#lounge {
-  position: absolute;
-  top: 25%;
-  right: 33%;
-}
-
-#reception {
-  position: absolute;
-  top: 45%;
-  left: 34%;
-}
-
-#coatroom {
-  position: absolute;
-  top: 45%;
-  right: 33%;
-}
-
-#entrance {
-  position: absolute;
-  top: 65%;
-  left: 49%;
 }
 
 
