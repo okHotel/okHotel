@@ -8,118 +8,121 @@ import {BookingService} from "../service/booking/booking.service";
 import {AuthService} from "../service/auth/auth.service";
 
 @Component({
-    selector: 'registration-customer',
-    templateUrl: './registration.component.html',
-    styleUrls: ['./registration.component.scss']
+  selector: 'registration-customer',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.scss']
 })
-export class RegistrationComponent{
+export class RegistrationComponent implements OnInit {
 
-    customer = new Customer();
-    submitted = false;
-    roomsNumber: number[] = [];
-    confirmPassword: string;
-    customerNeeds: string[] = [];
-    need: string;
-    registrationSuccessed = true;
-    message: string = "Input not valid";
+  customer = new Customer();
+  submitted = false;
+  roomsNumber: number[] = [];
+  confirmPassword: string;
+  customerNeeds: string[] = [];
+  need: string;
+  registrationSuccessed = true;
+  message = 'Input not valid';
 
-    constructor(
-        private customerService: CustomerService,
-        private authService: AuthService,
-        private bookingService: BookingService,
-        private location: Location
-    ) { }
+  constructor(
+    private customerService: CustomerService,
+    private authService: AuthService,
+    private bookingService: BookingService,
+    private location: Location
+  ) { }
 
-    ngOnInit() {
-        this.getRoomsNumber();
+  ngOnInit() {
+    this.getRoomsNumber();
+  }
+
+  newCustomer(): void {
+    this.submitted = false;
+    this.customer = new Customer();
+  }
+
+  addCustomer() {
+    this.submitted = true;
+
+    this.bookingService
+      .getBooking(this.customer.bookingName, this.customer.bookingSurname)
+      .subscribe(
+
+        data => {
+
+          if (this.checkInputIsValid(data)) {
+
+            console.log('new customer added');
+            this.customer.role = 'customer';
+            this.save();
+            this.registrationSuccessed = true;
+
+          } else {
+
+            //TODO reindirizza bene
+            console.log('Input error');
+            this.registrationSuccessed = false;
+            this.submitted = false;
+          }
+
+        }, error => {
+          console.log('DB error');
+          this.registrationSuccessed = false;
+          this.submitted = false;
+        });
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  addNeed() {
+    if (this.need.length > 0) {
+      this.customerNeeds.push(this.need);
     }
+  }
 
-    newCustomer(): void {
-        this.submitted = false;
-        this.customer = new Customer();
-    }
+  removeNeed(need) {
+    this.customerNeeds = this.customerNeeds.filter( x => x !== need);
+  }
 
-    addCustomer() {
-        this.submitted = true;
+  private save(): void {
+    this.customer.otherNeeds = this.customerNeeds;
+    console.log(this.customer);
+    this.authService.addCustomer(this.customer)
+      .subscribe();
+  }
 
-        this.bookingService
-            .getBooking(this.customer.bookingName, this.customer.bookingSurname)
-            .subscribe(
+  private getRoomsNumber() {
+    this.bookingService.getRoomsNumber()
+      .subscribe(roomsNumber =>
+        roomsNumber.forEach(n => this.roomsNumber.push(n['roomNumber'])));
+  }
 
-                data => {
+  private checkInputIsValid(booking: Booking) {
 
-                    if (this.checkInputIsValid(data)) {
+    return this.checkPasswordSameAs(this.confirmPassword)
+      && this.checkNameSameAs(booking.bookingName)
+      && this.checkSurnameSameAs(booking.bookingSurname)
+      && this.checkRoomNumberSameAs(booking.roomNumber)
+      && this.checkNumberOfPeopleSameAs(booking.numberOfPeople);
+  }
 
-                        console.log("new customer added");
-                        this.customer.role = 'customer';
-                        this.save();
-                        this.registrationSuccessed = true;
+  private checkPasswordSameAs(password: string) {
+    return this.customer.password === password;
+  }
 
-                    } else {
+  private checkNameSameAs(name: string) {
+    return this.customer.bookingName === name;
+  }
 
-                        //TODO reindirizza bene
-                        console.log("Input error");
-                        this.registrationSuccessed = false;
-                        this.submitted = false;
-                    }
+  private checkSurnameSameAs(surname: string) {
+    return this.customer.bookingSurname === surname;
+  }
 
-                },error => {
-                    console.log("DB error");
-                    this.registrationSuccessed = false;
-                    this.submitted = false;
-                });
-    }
+  private checkRoomNumberSameAs(roomNumber: number) {
+    return this.customer.roomNumber === roomNumber;
+  }
 
-    goBack(): void {
-        this.location.back();
-    }
-
-    addNeed() {
-        if (this.need.length > 0) {
-            this.customerNeeds.push(this.need);
-        }
-    }
-
-    private save(): void {
-        this.customer.otherNeeds = this.customerNeeds;
-        console.log(this.customer);
-        this.authService.addCustomer(this.customer)
-            .subscribe();
-    }
-
-    private getRoomsNumber() {
-        this.bookingService.getRoomsNumber()
-            .subscribe(roomsNumber =>
-                roomsNumber.forEach(n => this.roomsNumber.push(n['roomNumber'])));
-    }
-
-    private checkInputIsValid(booking: Booking) {
-
-
-        return this.checkPasswordSameAs(this.confirmPassword)
-            && this.checkNameSameAs(booking.bookingName)
-            && this.checkSurnameSameAs(booking.bookingSurname)
-            && this.checkRoomNumberSameAs(booking.roomNumber)
-            && this.checkNumberOfPeopleSameAs(booking.numberOfPeople)
-    }
-
-    private checkPasswordSameAs(password: string) {
-        return this.customer.password == password
-    }
-
-    private checkNameSameAs(name: string) {
-        return this.customer.bookingName == name
-    }
-
-    private checkSurnameSameAs(surname: string) {
-        return this.customer.bookingSurname == surname
-    }
-
-    private checkRoomNumberSameAs(roomNumber: number) {
-        return this.customer.roomNumber == roomNumber
-    }
-
-    private checkNumberOfPeopleSameAs(numberOfPeople: number) {
-        return this.customer.numberOfPeople == numberOfPeople
-    }
+  private checkNumberOfPeopleSameAs(numberOfPeople: number) {
+    return this.customer.numberOfPeople === numberOfPeople;
+  }
 }

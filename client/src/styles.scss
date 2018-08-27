@@ -25,7 +25,7 @@ $custom-typography: mat-typography-config(
 );
 
 
-@include mat-core($custom-typography)
+@include mat-core($custom-typography);
 
 
 @font-face {
