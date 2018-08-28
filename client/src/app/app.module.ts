@@ -100,6 +100,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     MatDialogModule,
     MatCardModule,
+    MatFormFieldModule,
     FormsModule,
     MatButtonModule,
     MatInputModule,

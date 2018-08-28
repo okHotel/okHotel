@@ -61,7 +61,7 @@ export class ProductsComponent implements OnInit {
                 this.barcode = code;
                 this.dataSource.filter = code.toString();
                 this.filter.nativeElement.value = code.toString();
-                console.log(code)
+//                console.log(code)
             })
             .catch((err) => this.error = `Something Wrong: ${err}`);
 

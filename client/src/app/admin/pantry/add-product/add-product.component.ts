@@ -25,9 +25,11 @@ export class AddProductComponent implements OnInit {
     ]);
 
     ngOnInit() {
-        if (this.product.code !== undefined) {
-            this.product.code = this.data.code;
-            this.isCodeReadOnly = true;
+      console.log(this.product.code);
+
+        if (this.data.code !== undefined) {
+          this.product.code = this.data.code;
+          this.isCodeReadOnly = true;
         } else {
             this.product.code = '';
         }
