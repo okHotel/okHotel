@@ -1,12 +1,26 @@
 
+<div class="w3-row">
+  <div class="w3-col l2 m12 s12 w3-right">
+    <button (click)="logOut()">Log out</button>
+  </div>
+</div>
 
-<main>
 
-  <button *ngFor="let service of services" [disabled]="service.isEnabled == false">
-    <i [hidden]="!isLoading" class='material-icons'>spinner</i>
-    <span [hidden]="isLoading">{{service.name}} <i class='material-icons'>{{service.icon}}</i></span>
-  </button>
 
-  <button (click)="logOut()">Log out</button>
-</main>
+<div class="w3-row" >
+
+  <div class="w3-col l4 m12 s12 w3-left">&nbsp;</div>
+
+  <div class="w3-col l4 m12 s12 w3-center" id="buttonDiv">
+    <button *ngFor="let service of services" [disabled]="service.isEnabled == false">
+      <i [hidden]="!isLoading" class='material-icons'>spinner</i>
+      <span [hidden]="isLoading">{{service.name}} <i class='material-icons'>{{service.icon}}</i></span>
+    </button>
+  </div>
+
+  <div class="w3-col l4 m12 s12 w3-right">&nbsp;</div>
+
+</div>
+
+
 
