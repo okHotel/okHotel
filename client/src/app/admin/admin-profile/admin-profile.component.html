@@ -4,9 +4,9 @@
 
   <button *ngFor="let service of services" [disabled]="service.isEnabled == false">
     <i [hidden]="!isLoading" class='material-icons'>spinner</i>
-    <span [hidden]="isLoading">{{service.name}} <i class='material-icons'>{{service.icon}}</i></span>
+    <span [hidden]="isLoading" (click)="gotTo(service)">{{service.name}} <i class='material-icons'>{{service.icon}}</i></span>
   </button>
 
-  <button (click)="logOut()">Log out</button>
+  <button (click)="logOut()">Logout</button>
 </main>
 

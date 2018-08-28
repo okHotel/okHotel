@@ -12,10 +12,10 @@ import {Router} from '@angular/router';
 export class AdminProfileComponent implements OnInit {
 
   isLoading = false;
-  services = [new Service('Resturant', 'restaurant', true),
-      new Service('Product', 'view_list', true),
-  new Service('Swimming Pool', 'pool', false),
-  new Service( 'Beach', 'beach_access', false)];
+  services = [new Service('Resturant', 'restaurant', true, 'statistics'),
+      new Service('Product', 'view_list', true, 'pantry'),
+  new Service('Swimming Pool', 'pool', false, 'swimming'),
+  new Service( 'Beach', 'beach_access', false, 'beach')];
 
   constructor(private router: Router) { }
 
@@ -26,9 +26,15 @@ export class AdminProfileComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
+  gotTo(service: Service) {
+    if (service.isEnabled) {
+      this.router.navigateByUrl(service.path);
+    }
+  }
+
 }
 
 export class Service {
 
-    constructor(public name: String, public icon: String, public isEnabled: Boolean) { }
+    constructor(public name: String, public icon: String, public isEnabled: Boolean, public path: string) { }
 }
