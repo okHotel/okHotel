@@ -23,5 +23,13 @@ export class AdminStatisticsComponent implements OnInit {
     goToHome(){
         this.router.navigateByUrl('/home');
     }
+
+  goToMakeMenu() {
+    this.router.navigateByUrl('/make-menu');
+  }
+
+  goToMakeVariation() {
+    this.router.navigateByUrl('/make-variation');
+  }
 }
 

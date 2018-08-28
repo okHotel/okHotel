@@ -6,12 +6,12 @@
   <span >Print <i class='material-icons'>print</i></span>
 </button>
 
-<button>
+<button (click)="goToMakeMenu()">
   <span >New Menu <i class='material-icons'>add_circle</i></span>
 </button>
 
 <button>
-  <span >New Variation <i class='material-icons'>autorenew</i></span>
+  <span (click)="goToMakeVariation()">New Variation <i class='material-icons'>autorenew</i></span>
 </button>
 
 <app-nav></app-nav>
