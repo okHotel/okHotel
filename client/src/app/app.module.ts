@@ -20,6 +20,7 @@ import {CustomerService} from './service/customer/customer.service';
 import {HttpClientModule} from '@angular/common/http';
 import { CustomerComponent } from './customer/customer.component';
 import { RegistrationComponent } from './registration/registration.component';
+
 import {CustomerDetailComponent} from './customer/customer-detail/customer-detail.component';
 import {BookingService} from './service/booking/booking.service';
 import {AuthService} from './service/auth/auth.service';
@@ -49,19 +50,20 @@ import { ProductsComponent } from './admin/pantry/products.component';
 import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
 
 
+
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthService]},
-  { path: 'login', component: LoginComponent},
-  { path: 'restaurant', component: MenuComponent, canActivate: [AuthService]},
-  { path: 'admin-profile', component: AdminProfileComponent, canActivate: [AuthService]},
-  { path: 'make-menu', component: MakeMenuViewComponent, canActivate: [AuthService]},
-  { path: 'make-variation', component: AddVariationComponent, canActivate: [AuthService]},
-  { path: 'pantry', component: ProductsComponent, canActivate: [AuthService]},
-  { path: 'statistics', component: AdminStatisticsComponent, canActivate: [AuthService]},
-  { path: 'customers', component: CustomerComponent, canActivate: [AuthService] },
-  { path: 'registration', component: RegistrationComponent },
-  { path: 'customers/:id', component: CustomerDetailComponent, canActivate: [AuthService] },
-  { path: 'profile', component: ProfileComponent }
+    { path: '', component: HomeComponent, canActivate: [AuthService]},
+    { path: 'login', component: LoginComponent},
+    { path: 'restaurant', component: MenuComponent, canActivate: [AuthService]},
+    { path: 'admin-profile', component: AdminProfileComponent, canActivate: [AuthService]},
+    { path: 'make-menu', component: MakeMenuViewComponent, canActivate: [AuthService]},
+    { path: 'make-variation', component: AddVariationComponent, canActivate: [AuthService]},
+    { path: 'pantry', component: ProductsComponent, canActivate: [AuthService]},
+    { path: 'statistics', component: AdminStatisticsComponent, canActivate: [AuthService]},
+    { path: 'customers', component: CustomerComponent, canActivate: [AuthService] },
+    { path: 'registration', component: RegistrationComponent },
+    { path: 'customers/:id', component: CustomerDetailComponent, canActivate: [AuthService] },
+    { path: 'profile', component: ProfileComponent }
 ];
 
 @NgModule({
@@ -116,17 +118,18 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
 
-  entryComponents: [
-    AddProductComponent,
-    EditProductComponent,
-    DeleteProductComponent,
-    DeleteCustomerComponent,
-    ProductsComponent
-  ],
-  exports: [CommonModule, MatToolbarModule, MatInputModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule,
-    NoopAnimationsModule, MatSortModule],
-  providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService,
-    BarcodeValidatorService, PantryService, DatePipe],
-  bootstrap: [AppComponent]
+    entryComponents: [
+        AddProductComponent,
+        EditProductComponent,
+        DeleteProductComponent,
+        DeleteCustomerComponent,
+        ProductsComponent
+    ],
+    exports: [CommonModule, MatToolbarModule, MatInputModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule,
+        NoopAnimationsModule, MatSortModule],
+    providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService,
+        BarcodeValidatorService, PantryService, DatePipe],
+    bootstrap: [AppComponent]
+
 })
 export class AppModule {}

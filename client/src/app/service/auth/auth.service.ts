@@ -21,7 +21,7 @@ export class AuthService implements CanActivate {
     constructor(
       private http: HttpClient, private router: Router
   ) {
-        let headers = AuthService.getHeaderWithAuthorization();
+        const headers = AuthService.getHeaderWithAuthorization();
         this.httpOptions = {headers}
     }
 
@@ -73,6 +73,6 @@ export class AuthService implements CanActivate {
   }
 
   static logout() {
-      localStorage.removeItem('token')
+      localStorage.removeItem('token');
   }
 }
