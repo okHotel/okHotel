@@ -3,7 +3,10 @@
   {{error}}
 </div>
 
-<div class="container mat-elevation-z8" [hidden]="error">
+<div class="w3-row">
+  <div class="w3-col l2">&nbsp;</div>
+
+  <div class="container mat-elevation-z8 w3-col s12 m12 l8" [hidden]="error">
   <h3>All Customers</h3>
 
   <div class="form">
@@ -67,6 +70,6 @@
                  [pageSizeOptions]="[5, 10, 25, 100]">
   </mat-paginator>
 
-  <div id="interactive" class="viewport" #interactive></div>
-
+    <div class="w3-col l2">&nbsp;</div>
+  </div>
 </div>

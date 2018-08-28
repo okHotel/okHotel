@@ -29,7 +29,6 @@ export class CustomerDetailComponent implements OnInit {
         const id = this.route.snapshot.paramMap.get('id');
         this.customerService.getCustomer(id)
             .subscribe(customer => {
-
                     this.customer = customer;
                     this.customerNeeds = customer.otherNeeds;
                 }, err => {

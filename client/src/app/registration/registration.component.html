@@ -1,8 +1,8 @@
 <div class="w3-row">
 
-  <div class="w3-col l2 m2 s2 ">&nbsp;</div>
+  <div class="w3-col l2">&nbsp;</div>
 
-  <div class="w3-col l8 m8 s8">
+  <div class="w3-col l8">
     <div [hidden]="submitted" class="container mat-elevation-z8" id="FormDiv">
       <h3>Add Customer</h3>
 
@@ -109,29 +109,14 @@
           </mat-form-field>
           <button mat-button type="button" (click)="addNeed(need)"><i class="material-icons">add</i></button>
         </div>
-
-        <div id="ButtDiv">
-          <div class="btn-group btn-group-sm">
+         <div class="btn-group btn-group-sm">
             <button mat-button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
             <button mat-button type="button" class="btn btn-dark" (click)="addCustomer()" [disabled]="!addCustomerForm.form.valid">Add</button>
           </div>
-
-          <div [hidden]="!submitted || !registrationSuccessed">
-            <p>Submitted Successfully! -> <span class="badge badge-light">{{customer.bookingName}}  {{customer.bookingSurname}}</span></p>
-            <div class="btn-group btn-group-sm">
-              <button mat-button (click)="goBack()">Back</button>
-              <button mat-button (click)="newCustomer(); addCustomerForm.reset()">Continue</button>
-            </div>
-          </div>
-        </div>
-
       </form>
     </div>
 
-
-
-
   </div>
 
-  <div class="w3-col l2 m2 s2 ">&nbsp;</div>
+  <div class="w3-col l2">&nbsp;</div>
 </div>

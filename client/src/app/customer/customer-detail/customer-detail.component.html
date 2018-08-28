@@ -2,8 +2,8 @@
 
   <div class="w3-col s2 m2 l2">&nbsp;</div>
 
-  <div class="w3-col s8 m8 l8">
-    <div [hidden]="submitted || error" class="container mat-elevation-z8">
+  <div class="w3-col s8 m8 l8 mat-elevation-z8 container">
+    <div [hidden]="submitted || error">
     <h3 mat-dialog-title>{{customer.bookingSurname}} {{customer.bookingName}}</h3>
 
     <form #detailCustomerForm="ngForm" class="mat-dialog-content">
@@ -65,16 +65,16 @@
 
           <input matInput #input id='otherNeeds' name="need" [(ngModel)]="need" />
         </mat-form-field>
-
+        <button mat-button (click)="addNeed(need)"><i class="material-icons">add</i></button>
       </div>
-      <button mat-button (click)="addNeed(need)"><i class="material-icons">add</i></button>
+      <button class="btn-group-btn-group-sm" mat-button (click)="goBack()">Back</button>
+      <button class="btn-group-btn-group-sm" mat-button (click)="update()" [disabled]="!detailCustomerForm.form.valid">Update</button>
+      <!--
+              <button class="btn-group-btn-group-sm" mat-button (click)="delete()">Delete</button>
+      -->
 
-        <button class="btn-group-btn-group-sm" mat-button (click)="goBack()">Back</button>
-        <button class="btn-group-btn-group-sm" mat-button (click)="update()" [disabled]="!detailCustomerForm.form.valid">Update</button>
-<!--
-        <button class="btn-group-btn-group-sm" mat-button (click)="delete()">Delete</button>
--->
     </form>
+
     </div>
   </div>
 <!--
