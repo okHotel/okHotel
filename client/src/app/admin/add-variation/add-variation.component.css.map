@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,oBAAoB;EAEhB,OAAO,EAAE,GAAG",
+"mappings": "AAAA,oBAAoB;EAChB,OAAO,EAAE,GAAG",
 "sources": ["add-variation.component.scss"],
 "names": [],
 "file": "add-variation.component.css"
