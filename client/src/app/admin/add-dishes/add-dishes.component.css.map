@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AACA,GAAI;EACF,OAAO,EAAE,EAAE;;AAGb,yBAA0B;EACxB,YAAY,EAAE,GAAG;;AAGnB,EAAG;EACD,WAAW,EAAE,MAAM",
+"sources": ["add-dishes.component.scss"],
 "names": [],
 "file": "add-dishes.component.css"
 }
