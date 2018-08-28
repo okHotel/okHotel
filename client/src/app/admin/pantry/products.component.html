@@ -1,17 +1,15 @@
-<!--<mat-toolbar color="primary">
-  <span>Angular MatTable CRUD Example</span>
-  <span class="spacer"></span>
-  Reload data:
-  <button mat-icon-button (click)="refresh()">
-    <mat-icon>refresh</mat-icon>
-  </button>
-</mat-toolbar>-->
+<div class="w3-row">
 
-<div class="container mat-elevation-z8">
+  <div class="w3-col l2">&nbsp;</div>
+
+  <div class="container mat-elevation-z8 w3-col s12 m12 l8">
 
   <h3>Pantry</h3>
+  <button class="add-product-small" mat-icon-button color="primary" (click)="addNew()">
+    <mat-icon aria-label="Add">add</mat-icon>
+  </button>
 
-  <div class="form">
+    <div class="form">
     <mat-form-field floatPlaceholder="never" color="accent">
       <input matInput #filter placeholder="Search..">
     </mat-form-field>
@@ -95,6 +93,10 @@
                  [pageSizeOptions]="[5, 10, 25, 100]">
   </mat-paginator>
 
-    <div id="interactive" class="viewport" #interactive></div>
+  <div id="interactive" class="viewport" #interactive></div>
+
+</div>
+
+<div class="w3-col l2">&nbsp;</div>
 
 </div>

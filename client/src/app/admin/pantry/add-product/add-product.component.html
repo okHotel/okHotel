@@ -29,7 +29,7 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput type="number" placeholder="Quantity" [(ngModel)]="product.quantity" name="quantity" pattern="[0-9]*" required>
+        <input matInput type="text" placeholder="Quantity" [(ngModel)]="product.quantity" name="quantity" pattern="[0-9]*" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
