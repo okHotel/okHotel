@@ -1,41 +1,44 @@
-<button type="button" (click)="goToMenu()" >&#x2715;</button>
+<div class="w3-row">
 
-<table summary="The variations you can select for lunch">
-  <caption>Please choose what variations you need for lunch</caption>
-  <tr>
-    <th></th>
-    <th scope="col">Intolerance</th>
-    <th scope="col">Allergy</th>
-  </tr>
+  <div class="w3-col l12 m12 s12 w3-center">
+    <div id="container">
 
-  <tr *ngFor="let v of variations">
-    <td scope="row">{{v}}</td>
-    <td>
-      <mat-form-field color="accent" >
-        <mat-select placeholder="{{getVariations(intollerance, v)}}" >
-          <mat-option *ngFor="let n of people" value=n (click)="setVariation(v, intollerance, n)">
-            {{n}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </td>
+      <button id="close" type="button" (click)="goToMenu()" >&#x2715;</button>
 
-    <td>
-      <mat-form-field color="accent" >
-        <mat-select placeholder="{{getVariations(allergy, v)}}">
-          <mat-option *ngFor="let n of people" value=n (click)="setVariation(v, allergy, n)">
-            {{n}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </td>
-  </tr>
+      <table summary="The variations you can select for lunch">
+        <caption>Please choose what variations you need</caption>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Intolerance</th>
+          <th scope="col">Allergy</th>
+        </tr>
 
+        <tr *ngFor="let v of variations">
+          <td scope="row">{{v}}</td>
+          <td>
+            <mat-form-field color="accent" >
+              <mat-select placeholder="{{getVariations(intollerance, v)}}" >
+                <mat-option *ngFor="let n of people" value=n (click)="setVariation(v, intollerance, n)">
+                  {{n}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
 
+          <td>
+            <mat-form-field color="accent" >
+              <mat-select placeholder="{{getVariations(allergy, v)}}">
+                <mat-option *ngFor="let n of people" value=n (click)="setVariation(v, allergy, n)">
+                  {{n}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
 
+      </table>
 
-</table>
+    </div>
 
-
-
-
+  </div>
+</div>

@@ -109,7 +109,6 @@
 
   <div class="w3-col l3 m3 s3 w3-center">&nbsp;</div>
 
-
   <div class="w3-col l6 m6 s6 w3-center">
     <div id="notes">
       <p>Other notes</p><br>
@@ -122,12 +121,20 @@
 </div>
 
 <div class="w3-row">
+
+  <div class="w3-col l4 m4 s4 w3-left">&nbsp;</div>
+
+  <div class="w3-col l4 m4 s4 w3-center">
+    <app-menu-variations *ngIf="menu.showVariations"></app-menu-variations>
+  </div>
+
+  <div class="w3-col l4 m4 s4 w3-left">&nbsp;</div>
+
+</div>
+
+<div class="w3-row">
   <div class="w3-col l4 m6 s4 w3-left">&nbsp;</div>
   <div class="w3-col l8 m6 s8 w3-center" id="save">
     <button  mat-button  [disabled]="checkSave()"  (click)="saveReservations()">Save</button>
   </div>
-</div>
-
-<div class="w3-row">
-  <app-menu-variations *ngIf="menu.showVariations"></app-menu-variations>
 </div>
