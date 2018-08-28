@@ -1,8 +1,9 @@
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {PantryService} from '../../../service/pantry/pantry.service';
 import {Product, Unit} from '../product';
+import {ActivatedRoute} from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-add-product',
@@ -16,9 +17,9 @@ export class AddProductComponent implements OnInit {
     isCodeReadOnly: Boolean = false;
     units = Object.values(Unit);
 
-    constructor(public dialogRef: MatDialogRef<AddProductComponent>,
-                @Inject(MAT_DIALOG_DATA) public data,
-                public pantryService: PantryService) {}
+    constructor(public pantryService: PantryService,
+                private route: ActivatedRoute,
+                private location: Location) {}
 
     formControl = new FormControl('', [
         Validators.required
@@ -26,13 +27,14 @@ export class AddProductComponent implements OnInit {
 
     ngOnInit() {
       console.log(this.product.code);
+      const code = this.route.snapshot.paramMap.get('code');
 
-        if (this.data.code !== undefined) {
-          this.product.code = this.data.code;
-          this.isCodeReadOnly = true;
-        } else {
-            this.product.code = '';
-        }
+      if (code !== null) {
+        this.product.code = code;
+        this.isCodeReadOnly = true;
+      } else {
+          this.product.code = '';
+      }
     }
 
     getErrorMessage() {
@@ -41,10 +43,6 @@ export class AddProductComponent implements OnInit {
 
     submit() {
         // emppty stuff
-    }
-
-    onCancel(): void {
-        this.dialogRef.close();
     }
 
     public onSave(): void {
@@ -57,4 +55,9 @@ export class AddProductComponent implements OnInit {
            code.length !== 14 &&
            code.length !== 17;
     }
+
+    goBack(): void {
+      this.location.back();
+    }
+
 }

@@ -38,21 +38,25 @@ export class PantryService {
             });
     }
 
-    addProduct(product: Product): void {
-        this.httpClient.post(this.pantryUrl, product).subscribe();
-   }
+    getProduct(id: string): Observable<Product> {
+      const url = this.pantryUrl + '/' + id;
+      return this.httpClient.get<Product>(url);
+    }
 
-   updateProduct(product: Product) {
-        this.httpClient.put(this.pantryUrl, product, this.httpOption).subscribe();
+    addProduct(product: Product): void {
+       this.httpClient.post(this.pantryUrl, product).subscribe();
+     }
+
+    updateProduct(product: Product) {
+      this.httpClient.put(this.pantryUrl, product, this.httpOption).subscribe();
     }
 
     deleteProduct(id: string): void {
-        this.httpClient.delete(this.pantryUrl + '/' + id).subscribe();
-  }
+      this.httpClient.delete(this.pantryUrl + '/' + id).subscribe();
+    }
 
-  updateQuantityTo(value: number, product: Product) {
-    product.quantity = value;
-    this.updateProduct(product);
-  }
-
+    updateQuantityTo(value: number, product: Product) {
+      product.quantity = value;
+      this.updateProduct(product);
+    }
 }

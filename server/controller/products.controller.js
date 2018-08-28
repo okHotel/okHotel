@@ -19,6 +19,28 @@ exports.findAll = (req, res) => {
     });
 };
 
+exports.findProduct = (req, res) => {
+
+    Product.findById(req.params.productId)
+        .then(product => {
+            if(!product) {
+                return res.status(404).json({
+                    msg: "Product not found with id " + req.params.productId
+                });
+            }
+            res.json(product);
+        }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).json({
+                msg: "Product not found with id " + req.params.productId
+            });
+        }
+        return res.status(500).json({
+            msg: "Error retrieving Product with id " + req.params.productId
+        });
+    });
+};
+
 /**
  * metodo per inserire un document nella collection Pantry
  */

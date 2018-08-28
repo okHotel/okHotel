@@ -49,8 +49,6 @@ import { DeleteProductComponent } from './admin/pantry/delete-product/delete-pro
 import { ProductsComponent } from './admin/pantry/products.component';
 import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
 
-
-
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
     { path: 'login', component: LoginComponent},
@@ -59,6 +57,9 @@ const appRoutes: Routes = [
     { path: 'make-menu', component: MakeMenuViewComponent, canActivate: [AuthService]},
     { path: 'make-variation', component: AddVariationComponent, canActivate: [AuthService]},
     { path: 'pantry', component: ProductsComponent, canActivate: [AuthService]},
+    { path: 'pantry/add-product', component: AddProductComponent, canActivate: [AuthService]},
+    { path: 'pantry/add-product/:code', component: AddProductComponent, canActivate: [AuthService]},
+    { path: 'pantry/edit-product/:id', component: EditProductComponent, canActivate: [AuthService]},
     { path: 'statistics', component: AdminStatisticsComponent, canActivate: [AuthService]},
     { path: 'customers', component: CustomerComponent, canActivate: [AuthService] },
     { path: 'registration', component: RegistrationComponent },

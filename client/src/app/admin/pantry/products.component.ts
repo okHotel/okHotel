@@ -16,11 +16,12 @@ import {Product} from "./product";
 import {BarcodeDecoderService} from "../../service/pantry/barcode-scanner/barcode-decoder.service";
 import {BarcodeValidatorService} from "../../service/pantry/barcode-scanner/barcode-validator.service";
 import {Subject} from "rxjs";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
 
@@ -41,6 +42,7 @@ export class ProductsComponent implements OnInit {
     barcode;
 
     constructor(public httpClient: HttpClient,
+                public router: Router,
                 public dialog: MatDialog,
                 public dataService: PantryService,
                 private decoderService: BarcodeDecoderService,
@@ -61,7 +63,7 @@ export class ProductsComponent implements OnInit {
                 this.barcode = code;
                 this.dataSource.filter = code.toString();
                 this.filter.nativeElement.value = code.toString();
-//                console.log(code)
+                console.log(code)
             })
             .catch((err) => this.error = `Something Wrong: ${err}`);
 
@@ -75,45 +77,15 @@ export class ProductsComponent implements OnInit {
     }
 
     addNew() {
-        let code;
         if (this.barcode != undefined) {
-            code = this.barcode;
+          this.router.navigate(['/pantry/add-product/' + this.barcode]);
+        } else {
+          this.router.navigate(['/pantry/add-product/']);
         }
-        const dialogRef = this.dialog.open(AddProductComponent, {
-            data: {code: code}
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                // After dialog is closed we're doing frontend updates
-                // For add we're just pushing a new row inside DataService
-                this.productService.dataChange.value.push(this.dataService.getDialogData());
-                // this.refreshTable();
-                this.loadData();
-            }
-        });
     }
 
-    startEdit(i: number, _id: string, code: string, name: string, category: string, quantity: number, unit: string) {
-        this.id = code;
-        // index row is used just for debugging proposes and can be removed
-        this.index = i;
-        console.log(this.index);
-        const dialogRef = this.dialog.open(EditProductComponent, {
-            data: { _id: _id, code: code, name: name, category: category, quantity: quantity, unit: unit}
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result === 1) {
-                // When using an edit things are little different, firstly we find record inside DataService by id
-                const foundIndex = this.productService.dataChange.value.findIndex(x => x.code === this.id);
-                // Then you update that record using data from dialogData (values you enetered)
-                this.productService.dataChange.value[foundIndex] = this.dataService.getDialogData();
-                // And lastly refresh table
-//                this.refreshTable();
-                this.loadData();
-            }
-        });
+    startEdit(_id: string) {
+      this.router.navigate(['/pantry/edit-product/' + _id]);
     }
 
     deleteItem(i: number, _id: string, code: string, name: string, quantity: number, category: string, unit: string) {
@@ -125,14 +97,7 @@ export class ProductsComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result === 1) {
-
-/*
-                const foundIndex = this.productService.dataChange.value.findIndex(x => x.code === this.id);
-                // for delete we use splice in order to remove single object from DataService
-                this.productService.dataChange.value.splice(foundIndex, 1);
-*/
                 this.loadData();
-//                this.refreshTable();
             }
         });
     }
