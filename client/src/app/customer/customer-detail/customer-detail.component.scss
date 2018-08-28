@@ -1,13 +1,5 @@
 @import '../../../styles.scss';
 
-.container {
-    display: flex;
-    flex-direction: column;
-    min-width: 450px;
-  padding: 2%;
-  background-color: $div-color;
-}
-
 .container > * {
     width: 100%;
 }
@@ -24,8 +16,6 @@
 
 .btn-group-btn-group-sm{
   float: right;
-
-  margin-top: 6%;
 }
 
 #otherNeeds{

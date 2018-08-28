@@ -14,20 +14,12 @@ export class EditProductComponent {
     constructor(public dialogRef: MatDialogRef<EditProductComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: Product, public pantryService: PantryService) { }
 
-    formControl = new FormControl('', [
-        Validators.required
-        // Validators.email,
-    ]);
+    formControl = new FormControl('', [Validators.required]);
 
     units = Object.values(Unit);
 
     getErrorMessage() {
-        return this.formControl.hasError('required') ? 'Required field' :
-/*
-            this.formControl.hasError('email') ? 'Not a valid email' :
-*/
-                '';
-
+        return this.formControl.hasError('required') ? 'Required field' : '';
     }
 
     submit() {

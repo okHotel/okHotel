@@ -1,7 +1,6 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~@angular/material/theming';
 
-
 ::ng-deep .mat-tooltip {
   font-size: 50px;
 }
@@ -24,13 +23,16 @@ $custom-typography: mat-typography-config(
   $body-1: mat-typography-level(16px, 24px, 500)
 );
 
-
-@include mat-core($custom-typography)
-
+@include mat-core($custom-typography);
 
 @font-face {
   font-family: 'myFont';
   src: url("/assets/font/pt_serif-web-italic-webfont.woff") format('opentype');
+}
+
+.container {
+  padding: 2%;
+  background-color: white;
 }
 
 body {
