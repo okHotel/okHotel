@@ -34,43 +34,12 @@
 
 
 .planImage{
-
   background: no-repeat;
   width: 50%;
   background-size: contain;
 
-
 }
 
-#restaurant {
-  position: absolute;
-  top: 30%;
-  left: 33%;
-}
-
-#lounge {
-  position: absolute;
-  top: 30%;
-  right: 28%;
-}
-
-#reception {
-  position: absolute;
-  top: 52%;
-  left: 30%;
-}
-
-#coatroom {
-  position: absolute;
-  top: 57%;
-  right: 29%;
-}
-
-#entrance {
-  position: absolute;
-  top: 81%;
-  left: 47%;
-}
 
 .dot {
   cursor: pointer;
@@ -112,4 +81,31 @@
 }
 
 
+
+#plan {
+  border: 1px solid black;
+  width: 50%;
+  height: 60%;
+  margin: 0 auto;
+  padding: 0.1%;
+}
+
+#restaurant, #lounge, #reception, #coatroom, #entrance{
+  border: 1px solid black;
+  width: 40%;
+  height: 90px;
+  overflow: scroll;
+  text-align: center;
+
+}
+
+#lounge, #coatroom {
+  float: right;
+}
+
+#coatroom {
+  top: 57%;
+  right: 29%;
+
+}
 

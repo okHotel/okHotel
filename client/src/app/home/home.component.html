@@ -5,16 +5,20 @@
 </div>
 
 <div class="w3-row">
+
   <div class="w3-col l12 m12 s12 w3-center">
-    <div class="slideShowContainer">
+    <div id="prova">
       <div class="slides" [hidden]="slidesBinding[0]">
         <div class="text" [innerHTML]="floor[0]"> </div>
-        <img class="planImage" alt="Hotel plan - first floor" [src]="image[0]">
-        <a id="restaurant" href="/restaurant" >Restaurant</a>
-        <div id="lounge">Lounge</div>
-        <div id="reception">Reception</div>
-        <div id="coatroom">Coatroom</div>
-        <div id="entrance">Entrance</div>
+        <div id="plan">
+          <div id="restaurant">
+            <a href="/restaurant">Restaurant</a>
+          </div>
+          <div id="lounge"><p>Lounge</p></div>
+          <div id="reception"><p>Reception</p></div>
+          <div id="coatroom"><p>Coatroom</p></div>
+          <div id="entrance"><p>Entrance</p></div>
+        </div>
       </div>
 
       <div class="slides" [hidden]="slidesBinding[1]">
@@ -26,10 +30,11 @@
         <div class="text" [innerHTML]="floor[2]"></div>
         <img class="planImage" alt="Hotel plan - third floor" [src]="image[2]">
       </div>
-    </div>
 
-    <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
-    <a class="next" (click)="plusSlides(1)">&#10095;</a>
+      <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+      <a class="next" (click)="plusSlides(1)">&#10095;</a>
+
+    </div>
   </div>
 </div>
 
@@ -40,8 +45,6 @@
     <span class="dot" (click)="currentSlide(3)"></span>
   </div>
 </div>
-
-
 
 
 
