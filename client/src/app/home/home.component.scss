@@ -92,6 +92,7 @@
   height: 60%;
   margin: 0 auto;
   padding: 0.1%;
+  overflow: hidden;
 }
 
 
@@ -115,7 +116,7 @@
 }
 
 #floor1, #floor2{
-  overflow: hidden;
+
 }
 
 .leftDiv, .rightDiv {
