@@ -66,6 +66,9 @@
     flex: 0 0 7%;
 }*/
 
+.mobile-label {
+  display: none;
+}
 
 @media(max-width: 600px) {
     /*Custom header label that shows in each column, with a set width and bold font*/
@@ -90,5 +93,4 @@
     mat-cell:first-child, mat-footer-cell:first-child, mat-header-cell:first-child {
         padding-left: 0;
     }
-
 }

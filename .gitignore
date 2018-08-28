@@ -46,3 +46,9 @@ Thumbs.db
 
 # Config and env files
 server/config/database.js
+
+#SASS and SCSS
+# client/.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map

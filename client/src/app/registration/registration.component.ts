@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import {Booking} from "../booking/booking";
 import {BookingService} from "../service/booking/booking.service";
 import {AuthService} from "../service/auth/auth.service";
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'registration-customer',
@@ -27,7 +28,8 @@ export class RegistrationComponent implements OnInit {
     private customerService: CustomerService,
     private authService: AuthService,
     private bookingService: BookingService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -88,7 +90,7 @@ export class RegistrationComponent implements OnInit {
     this.customer.otherNeeds = this.customerNeeds;
     console.log(this.customer);
     this.authService.addCustomer(this.customer)
-      .subscribe();
+      .subscribe(() => this.router.navigate(['/']));
   }
 
   private getRoomsNumber() {
