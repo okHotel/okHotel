@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
 
   isLoggedIn() {
     this.isCustomerLoggedIn = AuthService.isLoggedIn();
-    this.isAdmin = AuthService.getPayload().role === 'admin';
+    this.isAdmin = AuthService.isUserAdmin();
     return this.isCustomerLoggedIn;
   }
 

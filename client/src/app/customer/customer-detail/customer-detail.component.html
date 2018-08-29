@@ -12,7 +12,7 @@
           <!--
                 <label for="bookingName">Booking name</label>
           -->
-          <input readonly type="text" class="form-control" id="bookingName" placeholder="Booking name"
+          <input [disabled]="!canUserEdit" type="text" class="form-control" id="bookingName" placeholder="Booking name"
                  required matInput #input
                  [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
           <div [hidden]="bookingName.valid || bookingName.pristine"
@@ -27,7 +27,7 @@
           <!--
                 <label for="bookingSurname">Booking Surname</label>
           -->
-          <input readonly type="text" class="form-control" id="bookingSurname" placeholder="Booking surname"
+          <input [disabled]="!canUserEdit" type="text" class="form-control" id="bookingSurname" placeholder="Booking surname"
                  required matInput #input
                  [(ngModel)]="customer.bookingSurname" name="bookingSurname" #bookingSurname="ngModel">
           <div [hidden]="bookingSurname.valid || bookingSurname.pristine"
@@ -42,7 +42,7 @@
           <!--
                 <label for="numberOfPeople">People in the room</label>
           -->
-          <input readonly type="text" class="form-control" id="numberOfPeople"
+          <input [disabled]="!canUserEdit" type="text" class="form-control" id="numberOfPeople"
                  placeholder="Number of people in the room"
                  required matInput #input
                  [(ngModel)]="customer.numberOfPeople" name="numberOfPeople" #numberOfPeople="ngModel">

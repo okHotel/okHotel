@@ -75,4 +75,9 @@ export class AuthService implements CanActivate {
   static logout() {
       localStorage.removeItem('token');
   }
+
+  static isUserAdmin(): boolean {
+    return this.getPayload().role === 'admin';
+  }
+
 }

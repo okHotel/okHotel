@@ -3,6 +3,7 @@ import { Customer } from '../customer';
 import { CustomerService } from '../../service/customer/customer.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
+import {AuthService} from '../../service/auth/auth.service';
 
 @Component({
     selector: 'app-customer-details',
@@ -17,6 +18,7 @@ export class CustomerDetailComponent implements OnInit {
     customerNeeds: string[] = [];
     need: string = '';
     error: string;
+    canUserEdit: boolean = false;
 
     constructor(
         private customerService: CustomerService,
@@ -33,6 +35,7 @@ export class CustomerDetailComponent implements OnInit {
                 }, err => {
                     this.error = err.error.message;
                 });
+        this.canUserEdit = AuthService.isUserAdmin();
     }
 
     update(): void {
@@ -58,4 +61,5 @@ export class CustomerDetailComponent implements OnInit {
     goBack(): void {
         this.location.back();
     }
+
 }
