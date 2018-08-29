@@ -62,12 +62,17 @@
         <td>{{getTotalQuantitiesFor(dinner, meal.INTOLLERANCE)}}</td>
         <td>{{getTotalQuantitiesFor(dinner, meal.ALLERGY)}}</td>
       </tr>
-    </table>
+      </table>
 
+      <table summary="Other notes">
+        <caption>Other notes</caption>
 
-    <p>Other notes</p><br>
-    <textarea></textarea><br><br>
-    <button type="button" (click)="goToHome()">Ok</button>
+        <tr *ngFor="let note of menu.menu.otherNotes">
+        <td scope="row">{{note.roomNumber}}: {{note.text}}</td>
+      </tr>
+      </table>
+
+      <button type="button" (click)="goToHome()">Ok</button>
     </div>
   </div>
 </div>
