@@ -5,7 +5,23 @@ const Menu = require('../model/menu.model.js');
 
 // FETCH all Customers
 exports.findAll = (req, res) => {
-    Menu.find({})
+    console.log(req.params.date, req.params.dish)
+
+    Menu.aggregate([
+        {
+            $match: { $and : [ {date : new Date(req.params.date)}, {"reservations.dish" : req.params.dish} ]}
+        }, {
+            $group: {
+                _id: null,
+                total: {
+                    $sum: 'reservation.quantity'
+                }
+            }
+        }
+    ])
+/*
+    Menu.find({date: req.params.date})
+*/
         .then(menu => {
             res.json(menu);
         }).catch(err => {

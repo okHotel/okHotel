@@ -38,8 +38,8 @@
 
       <tr *ngFor="let lunch of menu.menu.lunch_dishes">
         <td scope="row">{{lunch}}</td>
-        <td>0</td>
-        <td>0</td>
+        <td>{{getTotalQuantitiesFor(lunch, meal.LUNCH)}}</td>
+        <td>{{getTotalQuantitiesFor(lunch, meal.HALF_LUNCH)}}</td>
       </tr>
     </table>
 
@@ -53,8 +53,8 @@
 
       <tr *ngFor="let dinner of menu.menu.dinner_dishes">
         <td scope="row">{{dinner}}</td>
-        <td>0</td>
-        <td>0</td>
+        <td>{{getTotalQuantitiesFor(dinner, meal.DINNER)}}</td>
+        <td>{{getTotalQuantitiesFor(dinner, meal.HALF_DINNER)}}</td>
       </tr>
     </table>
 

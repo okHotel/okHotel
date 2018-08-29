@@ -1,29 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {Menu} from '../../menu/menu';
+import {Menu} from '../menu';
 import {MenuService} from '../../service/menu/menu.service';
-import {Meal} from '../../menu/reservation';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Meal} from '../reservation';
 
 @Component({
-  selector: 'app-admin-statistics',
-  templateUrl: './admin-statistics.component.html',
-  styleUrls: ['./admin-statistics.component.scss']
+  selector: 'app-menu-statistics',
+  templateUrl: './menu-statistics.component.html',
+  styleUrls: ['./menu-statistics.component.css']
 })
-
-export class AdminStatisticsComponent implements OnInit {
+export class MenuStatisticsComponent implements OnInit {
 
   date: Date = new Date();
   isLoadedDate: boolean = false;
-  error: string;
-  meal = Meal;
 
   constructor(private router: Router, public menu: MenuService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  getTotalQuantitiesFor(dish: string, type: Meal): number {
+    let quantity: number = 0;
+    this.menu.menu.reservations
+        .filter(m => dish == m.dish)
+        .filter(t => type == t.type)
+        .forEach(m => quantity = quantity + m.quantity);
+
+    return quantity;
   }
 
   goToHome(){
-      this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/home');
   }
 
   goToMakeMenu() {
@@ -55,15 +61,4 @@ export class AdminStatisticsComponent implements OnInit {
         });
   }
 
-  getTotalQuantitiesFor(dish: string, type: Meal): number {
-    let quantity: number = 0;
-    this.menu.menu.reservations
-      .filter(m => dish == m.dish)
-      .filter(t => type == t.type)
-      .forEach(m => quantity = quantity + m.quantity);
-
-    return quantity;
-  }
-
 }
-
