@@ -55,11 +55,9 @@ exports.update = (req, res) => {
 
     let token = authHeader.split(" ")[1];
     let payload = jwt.verify(token, jwtConfig.jwtSecretKey);
-    console.log(payload)
-    console.log(req.body)
-    console.log(payload._id)
-    if (req.body._id !== payload._id) {
-        return res.status(401).send({message: 'You are not authorized'});
+
+    if (req.body._id !== payload._id && payload.role !== 'admin') {
+        return res.status(401).send({msg: 'You are not authorized1'});
     }
 
     Customer.findByIdAndUpdate(req.body._id, req.body, {new: true})
@@ -88,9 +86,6 @@ exports.delete = (req, res) => {
 
     let token = authHeader.split(" ")[1];
     let payload = jwt.verify(token, jwtConfig.jwtSecretKey);
-    console.log(payload)
-    console.log(req.params)
-    console.log(payload._id)
     if (req.params.customerId !== payload._id || payload.role !== 'admin') {
         return res.status(401).send({message: 'You are not authorized'});
     }

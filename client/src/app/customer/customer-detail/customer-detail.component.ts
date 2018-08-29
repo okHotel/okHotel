@@ -43,6 +43,7 @@ export class CustomerDetailComponent implements OnInit {
         this.customer.otherNeeds = this.customerNeeds;
         this.customerService.updateCustomer(this.customer)
             .subscribe(result => this.message = "Customer Updated Successfully!");
+        this.location.back();
 
     }
 
