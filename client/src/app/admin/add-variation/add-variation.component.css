@@ -1,5 +1,15 @@
+/*@import '../../../styles.scss'*/
+
 #saveButton:disabled{
 
     opacity: 0.3;
 
+}
+
+#variationDiv{
+    background-color: white;
+}
+
+mat-button{
+    /*background-color: $button-color;*/
 }
