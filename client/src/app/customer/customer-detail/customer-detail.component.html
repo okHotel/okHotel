@@ -1,8 +1,8 @@
 <div class="w3-row">
 
-  <div class="w3-col s2 m2 l2">&nbsp;</div>
+  <div class="w3-col s0 m1 l2">&nbsp;</div>
 
-  <div class="w3-col s8 m8 l8 mat-elevation-z8 container">
+  <div class="w3-col s12 m10 l8 mat-elevation-z8 container">
     <div [hidden]="submitted || error">
     <h3 mat-dialog-title>{{customer.bookingSurname}} {{customer.bookingName}}</h3>
 
@@ -85,7 +85,7 @@
   </div>
 </div>
 -->
-<div class="w3-col s8 m8 l8">
+<div class="w3-col s0 m1 l8">
   <div [hidden]="!error"
        class="alert alert-danger">
     {{error}}
