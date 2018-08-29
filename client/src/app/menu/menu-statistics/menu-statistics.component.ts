@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Menu} from '../menu';
 import {MenuService} from '../../service/menu/menu.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Meal} from '../reservation';
 
 @Component({
   selector: 'app-menu-statistics',
@@ -10,22 +11,54 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class MenuStatisticsComponent implements OnInit {
 
-  menu: Menu = new Menu();
+  date: Date = new Date();
+  isLoadedDate: boolean = false;
 
-  constructor(private menuService: MenuService, private route: ActivatedRoute) { }
+  constructor(private router: Router, public menu: MenuService) { }
 
-  ngOnInit() {
-    this.menuService.setDate(new Date(this.route.snapshot.paramMap.get('date')));
-    this.menuService.getDateMenu().subscribe(menu => this.menu = menu);
-  }
+  ngOnInit() {}
 
-  getTotalQuantitiesFor(dish: string): number {
+  getTotalQuantitiesFor(dish: string, type: Meal): number {
     let quantity: number = 0;
-    this.menu.reservations
+    this.menu.menu.reservations
         .filter(m => dish == m.dish)
+        .filter(t => type == t.type)
         .forEach(m => quantity = quantity + m.quantity);
 
     return quantity;
+  }
+
+  goToHome(){
+    this.router.navigateByUrl('/home');
+  }
+
+  goToMakeMenu() {
+    this.router.navigateByUrl('/make-menu');
+  }
+
+  goToMakeVariation() {
+    this.router.navigateByUrl('/make-variation');
+  }
+
+  setDateMenu(event: any){
+    this.menu.setDate(this.date);
+    this.serachDateMenu();
+  }
+
+  serachDateMenu() {
+    return this.menu.getDateMenu()
+      .subscribe(
+        data => {
+          this.menu.setMenu(data);
+          this.isLoadedDate = true;
+        },
+
+        error => {
+          console.log("DB error");
+          this.isLoadedDate = false;
+          this.menu.setMenu(new Menu());
+          this.menu.setDate(this.date);
+        });
   }
 
 }

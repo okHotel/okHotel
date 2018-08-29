@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {Menu} from '../../menu/menu';
 import {MenuService} from '../../service/menu/menu.service';
+import {Meal} from '../../menu/reservation';
 
 @Component({
   selector: 'app-admin-statistics',
@@ -11,13 +12,10 @@ import {MenuService} from '../../service/menu/menu.service';
 
 export class AdminStatisticsComponent implements OnInit {
 
-  public lunchDishes = ['Main courses', 'Pesto', 'Tomato', 'Omelet',
-      'Chicken', 'Fruit', 'Desserts', 'Ice cream', 'Sherbet'];
-
-  public dinnerDishes = ['Main courses', 'Carbonara', 'Tomato', 'Omelet',
-      'Chicken', 'Fruit', 'Desserts', 'Ice cream', 'Sherbet'];
   date: Date = new Date();
   isLoadedDate: boolean = false;
+  error: string;
+  meal = Meal;
 
   constructor(private router: Router, public menu: MenuService) { }
 
@@ -55,6 +53,16 @@ export class AdminStatisticsComponent implements OnInit {
           this.menu.setMenu(new Menu());
           this.menu.setDate(this.date);
         });
+  }
+
+  getTotalQuantitiesFor(dish: string, type: Meal): number {
+    let quantity: number = 0;
+    this.menu.menu.reservations
+      .filter(m => dish == m.dish)
+      .filter(t => type == t.type)
+      .forEach(m => quantity = quantity + m.quantity);
+
+    return quantity;
   }
 
 }

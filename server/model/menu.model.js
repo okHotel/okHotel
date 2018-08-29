@@ -19,8 +19,6 @@ const MenuSchema = mongoose.Schema({
     lunch_dishes: [],
     dinner_dishes: [],
     otherNotes: [],
-    reservations: []
-
     reservations: [{Reservation}]
 },{
     timestamps: true
