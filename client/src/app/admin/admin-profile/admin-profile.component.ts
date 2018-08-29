@@ -13,11 +13,11 @@ export class AdminProfileComponent implements OnInit {
 
   isLoading = false;
 
-  services = [new Service('Restaurant', 'restaurant', true, 'restaurant'),
+  services = [new Service('Restaurant', 'restaurant', true, 'statistics'),
       new Service('Product', 'view_list', true, 'pantry'),
+    new Service ('Customers', 'group', true, 'customers'),
   new Service('Swimming Pool', 'pool', false, ''),
-  new Service( 'Beach', 'beach_access', false, ''),
-  new Service ('Customers', 'customers', true, 'customers' )];
+  new Service( 'Beach', 'beach_access', false, '')];
 
 
   constructor(private router: Router) { }
