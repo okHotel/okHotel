@@ -6,10 +6,10 @@ Error: File to import not found or unreadable: ~@angular/material/theming.
 1: @import "../../styles.scss";
 2: 
 3: #backgroundDiv {
-4:   height: 100vh;
-5:   width: auto;
-6:   background-image: url("../../assets/login/background.png");
-7:   overflow: auto;
+4:   background-size: cover;
+5:   height: 90vh;
+6:   width: auto;
+7:   background-image: url("../../assets/login/background.png");
 
 Backtrace:
 ../../styles.scss:2
@@ -69,4 +69,4 @@ login.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of login.component.scss\A \A 1: @import \"../../styles.scss\";\A 2: \A 3: #backgroundDiv {\A 4:   height: 100vh;\A 5:   width: auto;\A 6:   background-image: url(\"../../assets/login/background.png\");\A 7:   overflow: auto;"; }
+  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of login.component.scss\A \A 1: @import \"../../styles.scss\";\A 2: \A 3: #backgroundDiv {\A 4:   background-size: cover;\A 5:   height: 90vh;\A 6:   width: auto;\A 7:   background-image: url(\"../../assets/login/background.png\");"; }

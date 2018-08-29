@@ -24,13 +24,13 @@
 
           <div class="form-group" >
             <div class="input-field-col-s12" id="buttDiv">
-              <button [disabled]="!loginForm.valid" class="btn-large btn-submit" id="loginButton" type="submit" (click)="login()">Login</button>
+              <button mat-button [disabled]="!loginForm.valid" class="btn-large btn-submit" id="loginButton" type="submit" (click)="login()">Login</button>
               <br>
-              <button [disabled]="loginForm.valid" class="btn-large btn-submit" id="registrationButton" type="button" (click)="navigateToRegistration()">Registration</button>
+              <button mat-button [disabled]="loginForm.valid" class="btn-large btn-submit" id="registrationButton" type="button" (click)="navigateToRegistration()">Registration</button>
             </div>
 
             <div [hidden]="!isCustomerLoggedIn">
-              <button class="btn-large btn-submit" type="button" (click)="logout()">Logout</button>
+              <button mat-button class="btn-large btn-submit" type="button" (click)="logout()">Logout</button>
             </div>
           </div>
         </div>
