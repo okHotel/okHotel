@@ -6,8 +6,6 @@
 
     <div class="container mat-elevation-z8" [hidden]="error">
 
-    <p>Restaurant</p>
-
     <button>
       <span >Print <i class='material-icons'>print</i></span>
     </button>
@@ -32,14 +30,18 @@
       <caption>See statistics for lunch</caption>
       <tr>
         <th>Lunch</th>
-        <th scope="col">Int</th>
-        <th scope="col">1/2</th>
+        <th scope="col">Whole portion</th>
+        <th scope="col">Half portion</th>
+        <th scope="col">Intollerance</th>
+        <th scope="col">Allergy</th>
       </tr>
 
       <tr *ngFor="let lunch of menu.menu.lunch_dishes">
         <td scope="row">{{lunch}}</td>
         <td>{{getTotalQuantitiesFor(lunch, meal.LUNCH)}}</td>
         <td>{{getTotalQuantitiesFor(lunch, meal.HALF_LUNCH)}}</td>
+        <td>{{getTotalQuantitiesFor(lunch, meal.INTOLLERANCE)}}</td>
+        <td>{{getTotalQuantitiesFor(lunch, meal.ALLERGY)}}</td>
       </tr>
     </table>
 
@@ -47,14 +49,18 @@
       <caption>See statistics for dinner</caption>
       <tr>
         <th>Dinner</th>
-        <th scope="col">Int</th>
-        <th scope="col">1/2</th>
+        <th scope="col">Whole portion</th>
+        <th scope="col">Half portion</th>
+        <th scope="col">Intollerance</th>
+        <th scope="col">Allergy</th>
       </tr>
 
       <tr *ngFor="let dinner of menu.menu.dinner_dishes">
         <td scope="row">{{dinner}}</td>
         <td>{{getTotalQuantitiesFor(dinner, meal.DINNER)}}</td>
         <td>{{getTotalQuantitiesFor(dinner, meal.HALF_DINNER)}}</td>
+        <td>{{getTotalQuantitiesFor(dinner, meal.INTOLLERANCE)}}</td>
+        <td>{{getTotalQuantitiesFor(dinner, meal.ALLERGY)}}</td>
       </tr>
     </table>
 
