@@ -51,8 +51,14 @@
 .mobile-label {
   display: none; }
 
+.add-product-small {
+  display: none; }
+
 @media (max-width: 600px) {
   /*Custom header label that shows in each column, with a set width and bold font*/
+  .add-product-small {
+    display: flex; }
+
   .mobile-label {
     width: 80px;
     display: inline-block;
