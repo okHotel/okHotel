@@ -50,6 +50,7 @@ export class CustomerDetailComponent implements OnInit {
     addNeed() {
         if (this.need.length > 0) {
             this.customerNeeds.push(this.need);
+            this.update();
         }
     }
 
