@@ -12,10 +12,12 @@ import {Router} from '@angular/router';
 export class AdminProfileComponent implements OnInit {
 
   isLoading = false;
-  services = [new Service('Resturant', 'restaurant', true, 'statistics'),
-      new Service('Product', 'view_list', true, 'pantry'),
-  new Service('Swimming Pool', 'pool', false, 'swimming'),
-  new Service( 'Beach', 'beach_access', false, 'beach')];
+
+  services = [new Service('Restaurant', 'restaurant', true),
+      new Service('Product', 'view_list', true),
+  new Service('Swimming Pool', 'pool', false),
+  new Service( 'Beach', 'beach_access', false)];
+
 
   constructor(private router: Router) { }
 

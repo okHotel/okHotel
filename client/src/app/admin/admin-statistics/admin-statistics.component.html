@@ -1,54 +1,67 @@
-<button type="button">Logout</button>
-<img src="">
-<p>Restaurant</p>
+<div class="w3-row">
 
-<button>
-  <span >Print <i class='material-icons'>print</i></span>
-</button>
+  <div class="w3-col l3 m3 s3 w3-center">&nbsp;</div>
 
-<button (click)="goToMakeMenu()">
-  <span >New Menu <i class='material-icons'>add_circle</i></span>
-</button>
+  <div class="w3-col l6 m6 s6 w3-center">
 
-<button>
-  <span (click)="goToMakeVariation()">New Variation <i class='material-icons'>autorenew</i></span>
-</button>
+    <div class="container mat-elevation-z8" [hidden]="error">
 
-<app-nav></app-nav>
+    <p>Restaurant</p>
 
-<table summary="Statistics for lunch">
-  <caption>See statistics for lunch</caption>
-  <tr>
-    <th>Lunch</th>
-    <th scope="col">Int</th>
-    <th scope="col">1/2</th>
-  </tr>
+    <button>
+      <span >Print <i class='material-icons'>print</i></span>
+    </button>
 
-  <tr *ngFor="let lunch of lunchDishes">
-    <td scope="row">{{lunch}}</td>
-    <td>0</td>
-    <td>0</td>
-  </tr>
-</table>
+    <button (click)="goToMakeMenu()">
+      <span >New Menu <i class='material-icons'>add_circle</i></span>
+    </button>
 
-<table summary="Statistics for dinner">
-  <caption>See statistics for dinner</caption>
-  <tr>
-    <th>Dinner</th>
-    <th scope="col">Int</th>
-    <th scope="col">1/2</th>
-  </tr>
+    <button>
+      <span (click)="goToMakeVariation()">New Variation <i class='material-icons'>autorenew</i></span>
+    </button>
 
-  <tr *ngFor="let dinner of dinnerDishes">
-    <td scope="row">{{dinner}}</td>
-    <td>0</td>
-    <td>0</td>
-  </tr>
-</table>
+      <div class="form">
+        <mat-form-field color="accent">
+          <input type="date" matInput placeholder="Select menu date" [(ngModel)]="date" name="date"
+                 (keyup)="setDateMenu($event)">
+        </mat-form-field>
+      </div>
 
 
-<p>Other notes</p><br>
-<textarea></textarea><br><br>
-<button type="button" (click)="goToHome()">Ok</button>
+    <table summary="Statistics for lunch">
+      <caption>See statistics for lunch</caption>
+      <tr>
+        <th>Lunch</th>
+        <th scope="col">Int</th>
+        <th scope="col">1/2</th>
+      </tr>
+
+      <tr *ngFor="let lunch of menu.menu.lunch_dishes">
+        <td scope="row">{{lunch}}</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
+
+    <table summary="Statistics for dinner">
+      <caption>See statistics for dinner</caption>
+      <tr>
+        <th>Dinner</th>
+        <th scope="col">Int</th>
+        <th scope="col">1/2</th>
+      </tr>
+
+      <tr *ngFor="let dinner of menu.menu.dinner_dishes">
+        <td scope="row">{{dinner}}</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
 
 
+    <p>Other notes</p><br>
+    <textarea></textarea><br><br>
+    <button type="button" (click)="goToHome()">Ok</button>
+    </div>
+  </div>
+</div>
