@@ -20,6 +20,8 @@ const MenuSchema = mongoose.Schema({
     dinner_dishes: [],
     otherNotes: [],
     reservations: []
+
+    reservations: [{Reservation}]
 },{
     timestamps: true
 });
