@@ -26,12 +26,9 @@ export class MakeMenuViewComponent implements OnInit {
       //  if(this.date <= new Date()){
         this.serachDateMenu();
         //}
-
-
     }
 
     serachDateMenu() {
-
         return this.menu.getDateMenu()
             .subscribe(
                 data => {
