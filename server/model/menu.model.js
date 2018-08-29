@@ -12,7 +12,6 @@ const Note = {
     text: String
 }
 
-
 const MenuSchema = mongoose.Schema({
     __id: String,
     date: Date,
