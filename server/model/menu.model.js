@@ -12,14 +12,13 @@ const Note = {
     text: String
 }
 
-
 const MenuSchema = mongoose.Schema({
     __id: String,
     date: Date,
     lunch_dishes: [],
     dinner_dishes: [],
     otherNotes: [],
-    reservations: [{Reservation}]
+    reservations: []
 },{
     timestamps: true
 });
