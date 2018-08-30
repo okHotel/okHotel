@@ -16,10 +16,14 @@ export class AdminStatisticsComponent implements OnInit {
   isLoadedDate: boolean = false;
   error: string;
   meal = Meal;
+  displayedColumns = ['dish', 'wholePortion', 'halfPortion', 'intollerance', 'allergy'];
+  lunchDataSource = [];
+  dinnerDataSource = [];
 
   constructor(private router: Router, public menu: MenuService) { }
 
   ngOnInit() {
+
   }
 
   goToHome(){
@@ -44,7 +48,10 @@ export class AdminStatisticsComponent implements OnInit {
       .subscribe(
         data => {
           this.menu.setMenu(data);
+          this.lunchDataSource = data.lunch_dishes;
+          this.dinnerDataSource = data.dinner_dishes;
           this.isLoadedDate = true;
+          console.log(data)
         },
 
         error => {

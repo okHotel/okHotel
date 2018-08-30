@@ -25,52 +25,99 @@
         </mat-form-field>
       </div>
 
+      <mat-table #table [dataSource]="lunchDataSource">
 
-    <table summary="Statistics for lunch">
-      <caption>See statistics for lunch</caption>
-      <tr>
-        <th>Lunch</th>
-        <th scope="col">Whole portion</th>
-        <th scope="col">Half portion</th>
-        <th scope="col">Intollerance</th>
-        <th scope="col">Allergy</th>
-      </tr>
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
 
-      <tr *ngFor="let lunch of menu.menu.lunch_dishes">
-        <td scope="row">{{lunch}}</td>
-        <td>{{getTotalQuantitiesFor(lunch, meal.LUNCH)}}</td>
-        <td>{{getTotalQuantitiesFor(lunch, meal.HALF_LUNCH)}}</td>
-        <td>{{getTotalQuantitiesFor(lunch, meal.INTOLLERANCE)}}</td>
-        <td>{{getTotalQuantitiesFor(lunch, meal.ALLERGY)}}</td>
-      </tr>
-    </table>
+        <!-- ID Column -->
+        <ng-container matColumnDef="dish">
+          <mat-header-cell *matHeaderCellDef>Lunch</mat-header-cell>
+          <mat-cell *matCellDef="let row" >
+            <span class="mobile-label">Lunch:</span>
+            {{row}}</mat-cell>
+        </ng-container>
 
-    <table summary="Statistics for dinner">
-      <caption>See statistics for dinner</caption>
-      <tr>
-        <th>Dinner</th>
-        <th scope="col">Whole portion</th>
-        <th scope="col">Half portion</th>
-        <th scope="col">Intollerance</th>
-        <th scope="col">Allergy</th>
-      </tr>
+        <ng-container matColumnDef="wholePortion">
+          <mat-header-cell *matHeaderCellDef >Whole Lunch</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <span class="mobile-label">Whole Lunch:</span>
+            {{getTotalQuantitiesFor(row, meal.LUNCH)}}</mat-cell>
+        </ng-container>
 
-      <tr *ngFor="let dinner of menu.menu.dinner_dishes">
-        <td scope="row">{{dinner}}</td>
-        <td>{{getTotalQuantitiesFor(dinner, meal.DINNER)}}</td>
-        <td>{{getTotalQuantitiesFor(dinner, meal.HALF_DINNER)}}</td>
-        <td>{{getTotalQuantitiesFor(dinner, meal.INTOLLERANCE)}}</td>
-        <td>{{getTotalQuantitiesFor(dinner, meal.ALLERGY)}}</td>
-      </tr>
-      </table>
+        <ng-container matColumnDef="halfPortion">
+          <mat-header-cell *matHeaderCellDef>Half Lunch</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <span class="mobile-label">Half Lunch:</span>
+            {{getTotalQuantitiesFor(row, meal.HALF_LUNCH)}}</mat-cell>
+        </ng-container>
 
-      <table summary="Other notes">
-        <caption>Other notes</caption>
+        <ng-container matColumnDef="intollerance">
+          <mat-header-cell *matHeaderCellDef>Intollerances</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <span class="mobile-label">Intollerances:</span>
+            {{getTotalQuantitiesFor(row, meal.INTOLLERANCE)}}</mat-cell>
+        </ng-container>
 
-        <tr *ngFor="let note of menu.menu.otherNotes">
-        <td scope="row">{{note.roomNumber}}: {{note.text}}</td>
-      </tr>
-      </table>
+        <ng-container matColumnDef="allergy">
+          <mat-header-cell *matHeaderCellDef>Allergy</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <span class="mobile-label">Allergy:</span>
+            {{getTotalQuantitiesFor(row, meal.ALLERGY)}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+
+      <mat-table #table [dataSource]="dinnerDataSource">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="dish">
+          <mat-header-cell *matHeaderCellDef>Dinner</mat-header-cell>
+          <mat-cell *matCellDef="let row" >
+            <span class="mobile-label">Dinner:</span>
+            {{row}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="wholePortion">
+          <mat-header-cell *matHeaderCellDef >Whole Dinner</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <span class="mobile-label">Whole Lunch:</span>
+            {{getTotalQuantitiesFor(row, meal.DINNER)}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="halfPortion">
+          <mat-header-cell *matHeaderCellDef>Half Dinner</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <span class="mobile-label">Half Dinner:</span>
+            {{getTotalQuantitiesFor(row, meal.HALF_DINNER)}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="intollerance">
+          <mat-header-cell *matHeaderCellDef>Intollerances</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <span class="mobile-label">Intollerances:</span>
+            {{getTotalQuantitiesFor(row, meal.INTOLLERANCE)}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="allergy">
+          <mat-header-cell *matHeaderCellDef>Allergy</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <span class="mobile-label">Allergy:</span>
+            {{getTotalQuantitiesFor(row, meal.ALLERGY)}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
 
       <button type="button" (click)="goToHome()">Ok</button>
     </div>

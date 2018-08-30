@@ -44,11 +44,11 @@
       </mat-header-cell>
 
       <mat-cell *matCellDef="let row;" class="right">
-        <button mat-icon-button color="accent" (click)="getDetails(row._id)">
+        <button mat-icon-button color=$dot-selected-color (click)="getDetails(row._id)">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
 
-        <button mat-icon-button color="accent" (click)="delete(row._id, row.bookingName, row.bookingSurname, row.roomNumber)">
+        <button mat-icon-button color=$dot-selected-color (click)="delete(row._id, row.bookingName, row.bookingSurname, row.roomNumber)">
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
       </mat-cell>

@@ -65,11 +65,11 @@
       </mat-header-cell>
 
       <mat-cell *matCellDef="let row; let i=index;">
-        <button mat-icon-button color="accent" (click)="startEdit(row._id)">
+        <button mat-icon-button color=$dot-selected-color (click)="startEdit(row._id)">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
 
-        <button mat-icon-button color="accent" (click)="deleteItem(i, row._id, row.code,
+        <button mat-icon-button color=$dot-selected-color (click)="deleteItem(i, row._id, row.code,
                                                         row.name, row.category, row.quantity, row.unit)">
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
