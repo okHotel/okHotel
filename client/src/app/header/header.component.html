@@ -1,13 +1,13 @@
-
 <div class="w3-row">
+  <div class="w3-col l5">&nbsp;</div>
+
   <div class="w3-col l2 m12 s12 w3-center">
-<div>
     <a id="OkHotelLink" (click)="home()">OkHotel</a><br>
-</div>
   </div>
 
-<div class="w3-row" *ngIf="isLoggedIn()">
-  <div class="w3-col l2 m12 s12 w3-right">
+  <div class="w3-col l5">&nbsp;</div>
+</div>
+
+<div *ngIf="isLoggedIn()">
     <app-profile></app-profile>
-  </div>
 </div>

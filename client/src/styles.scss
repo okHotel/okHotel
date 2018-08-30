@@ -46,29 +46,31 @@ body {
   font-size: 105%;
 }
 
-#backgroundDiv {
-  position: fixed;
-  top: $header-height;
-  left: 0;
+@media(min-width: 600px) {
 
-  /* Preserve aspet ratio */
-  min-width: 100%;
-  min-height: 100% - $header-height - $footer-height;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url("/assets/login/background.png");
+  #backgroundDiv {
+    position: fixed;
+    top: $header-height;
+    left: 0;
+
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100% - $header-height - $footer-height;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("/assets/login/background.png");
+  }
+
+  .centered {
+    margin: 0;
+    float: left;
+    width:100%;
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    left:50%;
+  }
 }
-
-.centered {
-  margin: 0px;
-  float: left;
-  width:100%;
-  position:absolute;
-  top: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  left:50%;
-}
-
 @media print {
 
   app-header, app-footer, button {
