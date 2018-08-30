@@ -13,7 +13,7 @@ import {Meal} from '../../menu/reservation';
 export class AdminStatisticsComponent implements OnInit {
 
   date: Date = new Date();
-  isLoadedDate: boolean = false;
+  isLoadedDate = false;
   error: string;
   meal = Meal;
 
@@ -23,7 +23,7 @@ export class AdminStatisticsComponent implements OnInit {
   }
 
   goToHome(){
-      this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/home');
   }
 
   goToMakeMenu() {
@@ -34,7 +34,7 @@ export class AdminStatisticsComponent implements OnInit {
     this.router.navigateByUrl('/make-variation');
   }
 
-  setDateMenu(event: any){
+  setDateMenu(event: any) {
     this.menu.setDate(this.date);
     this.serachDateMenu();
   }
@@ -48,7 +48,7 @@ export class AdminStatisticsComponent implements OnInit {
         },
 
         error => {
-          console.log("DB error");
+          console.log('DB error');
           this.isLoadedDate = false;
           this.menu.setMenu(new Menu());
           this.menu.setDate(this.date);
@@ -58,12 +58,15 @@ export class AdminStatisticsComponent implements OnInit {
   getTotalQuantitiesFor(dish: string, type: Meal): number {
     let quantity: number = 0;
     this.menu.menu.reservations
-      .filter(m => dish == m.dish)
-      .filter(t => type == t.type)
+      .filter(m => dish === m.dish)
+      .filter(t => type === t.type)
       .forEach(m => quantity = quantity + m.quantity);
 
     return quantity;
   }
 
+  onPrint() {
+    window.print();
+  }
 }
 
