@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {Menu} from '../../menu/menu';
 import {MenuService} from '../../service/menu/menu.service';
 import {Meal} from '../../menu/reservation';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-admin-statistics',
@@ -20,14 +21,14 @@ export class AdminStatisticsComponent implements OnInit {
   lunchDataSource = [];
   dinnerDataSource = [];
 
-  constructor(private router: Router, public menu: MenuService) { }
+  constructor(private router: Router, public menu: MenuService, private location: Location) { }
 
   ngOnInit() {
 
   }
 
-  goToHome(){
-    this.router.navigateByUrl('/home');
+  goBack(){
+    this.location.back();
   }
 
   goToMakeMenu() {
