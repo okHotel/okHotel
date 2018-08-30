@@ -8,6 +8,10 @@
         Print <i class='material-icons'>print</i>
       </button>
 
+      <button (click)="onPrint()">
+        Print <i class='material-icons'>print</i>
+      </button>
+
       <button class="btn-group-btn-group-sm" mat-button (click)="goToMakeMenu()">
         New Menu <i class='material-icons'>add_circle</i>
       </button>
@@ -71,7 +75,6 @@
       </mat-table>
 
       <mat-table #table [dataSource]="dinnerDataSource">
-
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
 
@@ -112,7 +115,6 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
       </mat-table>
@@ -122,4 +124,4 @@
 
   <div class="w3-col s0 m1 l2">&nbsp;</div>
 
-  </div>
+</div>
