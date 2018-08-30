@@ -4,98 +4,98 @@
 
   <div class="container mat-elevation-z8 w3-col s12 m12 l8">
 
-  <h3>Pantry</h3>
-  <button class="add-product-small" mat-icon-button color="primary" (click)="addNew()">
-    <mat-icon aria-label="Add">add</mat-icon>
-  </button>
+    <h3>Pantry</h3>
+    <button class="add-product-small" mat-icon-button color="primary" (click)="addNew()">
+      <mat-icon aria-label="Add">add</mat-icon>
+    </button>
 
     <div class="form">
-    <mat-form-field floatPlaceholder="never" color="accent">
-      <input matInput #filter placeholder="Search..">
-    </mat-form-field>
-  </div>
+      <mat-form-field floatPlaceholder="never" color="accent">
+        <input matInput #filter placeholder="Search..">
+      </mat-form-field>
+    </div>
 
-  <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- ID Column -->
-    <ng-container matColumnDef="code">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
-      <mat-cell *matCellDef="let row" >
-        <span class="mobile-label">Code:</span>
-        {{row.code}}</mat-cell>
-    </ng-container>
+      <!-- ID Column -->
+      <ng-container matColumnDef="code">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
+        <mat-cell *matCellDef="let row" >
+          <span class="mobile-label">Code:</span>
+          {{row.code}}</mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <span class="mobile-label">Name:</span>
-        {{row.name}}</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <span class="mobile-label">Name:</span>
+          {{row.name}}</mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="category">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <span class="mobile-label">Category:</span>
-        {{row.category}}</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <span class="mobile-label">Category:</span>
+          {{row.category}}</mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="quantity">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <span class="mobile-label">Quantity:</span>
-        {{row.quantity}}</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="quantity">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <span class="mobile-label">Quantity:</span>
+          {{row.quantity}}</mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="unit">
-      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <span class="mobile-label">Unit:</span>
-        {{row.unit}}</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="unit">
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <span class="mobile-label">Unit:</span>
+          {{row.unit}}</mat-cell>
+      </ng-container>
 
-    <!-- actions -->
-    <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef>
-        <button mat-icon-button color="primary" (click)="addNew()">
-          <mat-icon aria-label="Add">add</mat-icon>
-        </button>
-      </mat-header-cell>
+      <!-- actions -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="primary" (click)="addNew()">
+            <mat-icon aria-label="Add">add</mat-icon>
+          </button>
+        </mat-header-cell>
 
-      <mat-cell *matCellDef="let row; let i=index;">
-        <button mat-icon-button color="accent" (click)="startEdit(row._id)">
-          <mat-icon aria-label="Edit">edit</mat-icon>
-        </button>
+        <mat-cell *matCellDef="let row; let i=index;">
+          <button mat-icon-button color="accent" (click)="startEdit(row._id)">
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
 
-        <button mat-icon-button color="accent" (click)="deleteItem(i, row._id, row.code,
+          <button mat-icon-button color="accent" (click)="deleteItem(i, row._id, row.code,
                                                         row.name, row.category, row.quantity, row.unit)">
-          <mat-icon aria-label="Delete">delete</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
 
 
-  <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
-    No results
+    <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
+      No results
+    </div>
+
+    <mat-paginator #paginator
+                   [length]="dataSource.filteredData.length"
+                   [pageIndex]="0"
+                   [pageSize]="5"
+                   [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+
+    <div id="interactive" class="viewport" #interactive></div>
+
   </div>
 
-  <mat-paginator #paginator
-                 [length]="dataSource.filteredData.length"
-                 [pageIndex]="0"
-                 [pageSize]="5"
-                 [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
-
-  <div id="interactive" class="viewport" #interactive></div>
-
-</div>
-
-<div class="w3-col l2">&nbsp;</div>
+  <div class="w3-col l2">&nbsp;</div>
 
 </div>

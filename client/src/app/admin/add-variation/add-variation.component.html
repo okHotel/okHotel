@@ -1,4 +1,4 @@
-<app-profile></app-profile><br>
+
 
 
 <div class="w3-row">
@@ -13,7 +13,6 @@
             </div>
             <input id="variation" type="text" class="form-control" placeholder="Variation"
                    required name="variation" [(ngModel)]="variation.type" >
-
             <button mat-button #button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)">
                 <i class="material-icons">add</i>
             </button>

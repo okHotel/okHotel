@@ -1,14 +1,17 @@
 .w3-row {
   margin-top: 3%; }
 
-/*button{
-  width: 50%;
-  margin: 3%;
-  padding-bottom: 3%;
-  padding-top: 0;
-}*/
 #buttonDiv {
-  background-color: white;
-  padding: 2%; }
+  background-color: white; }
+
+button {
+  padding: 10%; }
+
+span {
+  vertical-align: middle; }
+
+.material-icons {
+  width: 32px;
+  height: 32px; }
 
 /*# sourceMappingURL=admin-profile.component.css.map */
