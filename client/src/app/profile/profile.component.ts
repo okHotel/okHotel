@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
-import {CustomerService} from "../service/customer/customer.service";
-import {Customer} from "../customer/customer";
-import {AuthService} from "../service/auth/auth.service";
+import {CustomerService} from '../service/customer/customer.service';
+import {Customer} from '../customer/customer';
+import {AuthService} from '../service/auth/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -32,6 +32,7 @@ export class ProfileComponent implements OnInit {
   logout() {
     AuthService.logout();
     this.isCustomerLoggedIn = false;
+    this.router.navigateByUrl('/login');
   }
 
   isLoggedIn() {
@@ -41,14 +42,14 @@ export class ProfileComponent implements OnInit {
   }
 
   checkLogin() {
-      if (this.isLoggedIn()) {
-          this.customerService.getLoggedCustomer().subscribe(res => {
-              this.customer = res;
-              this.isCustomerLoggedIn = true;
-          });
-      } else {
-          this.goToLogin();
-      }
+    if (this.isLoggedIn()) {
+      this.customerService.getLoggedCustomer().subscribe(res => {
+        this.customer = res;
+        this.isCustomerLoggedIn = true;
+      });
+    } else {
+      this.goToLogin();
+    }
   }
 
   goToServices() {
