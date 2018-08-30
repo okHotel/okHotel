@@ -1,4 +1,26 @@
+@import '../../../styles.scss';
+
 #saveButton:disabled{
     opacity: 0.3;
 }
+
+#variationDiv{
+  padding: 30%;
+  background-color: white;
+}
+
+
+#delDiv{
+  float: left;
+  margin-top: 1%;
+}
+
+#saveButton{
+  float: right;
+}
+
+label{
+  font-size: 130%;
+}
+
 
