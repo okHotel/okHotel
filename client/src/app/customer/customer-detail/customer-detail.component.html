@@ -48,7 +48,7 @@
                    [(ngModel)]="customer.numberOfPeople" name="numberOfPeople" #numberOfPeople="ngModel">
             <div [hidden]="numberOfPeople.valid || numberOfPeople.pristine"
                  class="alert alert-danger">
-              Age is required
+              Number of people is required
             </div>
           </mat-form-field>
         </div>
@@ -58,17 +58,17 @@
             Other needs:
             <mat-list>
               <mat-list-item *ngFor="let need of customer.otherNeeds">
-                <button mat-button (click)="addNeed(need)"><i class="material-icons">clear</i></button>
+                <button mat-button (click)="deleteNeedAndUpdate(need)"><i class="material-icons prefix">clear</i> </button>
                 {{need}}
               </mat-list-item>
             </mat-list>
 
             <input matInput #input id='otherNeeds' name="need" [(ngModel)]="need" />
           </mat-form-field>
-          <button mat-button (click)="addNeed(need)"><i class="material-icons">add</i></button>
+          <button mat-button (click)="addNeedAndUpdate(need)"><i class="material-icons">add</i></button>
         </div>
         <button class="btn-group-btn-group-sm" mat-button (click)="goBack()">Back</button>
-        <button class="btn-group-btn-group-sm" mat-button (click)="update()" [disabled]="!detailCustomerForm.form.valid">Update</button>
+        <button class="btn-group-btn-group-sm" mat-button (click)="updateAndGoBack()" [disabled]="!detailCustomerForm.form.valid">Update</button>
         <!--
                 <button class="btn-group-btn-group-sm" mat-button (click)="delete()">Delete</button>
         -->
