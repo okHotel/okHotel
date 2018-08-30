@@ -27,9 +27,9 @@
         <mat-form-field color="accent">
           <input matInput #inputstate class="form-control" placeholder="Category" [(ngModel)]="product.category" name="category" required >
           <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-  <!--
-          <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
-  -->
+          <!--
+                  <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
+          -->
         </mat-form-field>
       </div>
 
@@ -39,18 +39,18 @@
         </mat-form-field>
       </div>
 
-        <div class="form">
+      <div class="form">
         <mat-form-field color="accent">
-            <mat-select [(ngModel)]="product.unit" name="unit" placeholder="Unit">
-                <mat-option *ngFor="let unit of units" [value]=unit>
-                    {{unit}}
-                </mat-option>
-            </mat-select>
+          <mat-select [(ngModel)]="product.unit" name="unit" placeholder="Unit">
+            <mat-option *ngFor="let unit of units" [value]=unit>
+              {{unit}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
-        </div>
+      </div>
 
-        <button mat-button [type]="submit" [disabled]="!formControl.valid || isCodeInvalid(product.code)" (click)="saveAndGoBack()">Save</button>
-        <button mat-button (click)="goBack()" tabindex="-1">Cancel</button>
+      <button mat-button [type]="submit" [disabled]="!formControl.valid || isCodeInvalid(product.code)" (click)="saveAndGoBack()">Save</button>
+      <button mat-button (click)="goBack()" tabindex="-1">Cancel</button>
     </form>
   </div>
 

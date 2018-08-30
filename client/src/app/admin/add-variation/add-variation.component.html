@@ -1,20 +1,23 @@
-<app-profile></app-profile><br>
 
 
-<div >
-    <label for="variation" >Insert Variations</label>
-    <div *ngFor="let variation of variations; let i = index">
-        <p><button mat-button #button id="delButton" (click)="deleteVariation(i)">
-            <i class="material-icons">clear</i>
-        </button>{{variation}}</p>
+
+<div class="w3-row">
+    <div class="w3-col l3 m6 s4 w3-left">&nbsp;</div>
+    <div class="w3-col l6 m3 s4 w3-center">
+        <div id="variationDiv">
+            <label for="variation" >Insert Variations</label>
+            <div *ngFor="let variation of variations; let i = index" id="delDiv">
+                <p><button mat-button #button id="delButton" (click)="deleteVariation(i)">
+                    <i class="material-icons">clear</i>
+                </button>{{variation}}</p>
+            </div>
+            <input id="variation" type="text" class="form-control" placeholder="Variation"
+                   required name="variation" [(ngModel)]="variation.type" >
+            <button mat-button #button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)">
+                <i class="material-icons">add</i>
+            </button>
+        </div>
     </div>
-    <input id="variation" type="text" class="form-control" placeholder="Variation"
-           required name="variation" [(ngModel)]="variation.type" >
-
-
-    <button mat-button #button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)">
-        <i class="material-icons">add</i>
-    </button>
-
+    <div class="w3-col l3 m3 s4 w3-right">&nbsp;</div>
 </div>
 
