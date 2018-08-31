@@ -26,4 +26,11 @@ export class AddDishesComponent implements OnInit {
 
     deleteDinnerDish(dish: string){this.menu.deleteDinnerDish(dish);}
 
+    keyDownFunction(event) {
+      if (event.keyCode === 13) {
+        console.log('ciaoooo');
+        this.dish = event.target.value;
+      }
+    }
+
 }
