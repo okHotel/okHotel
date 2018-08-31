@@ -6,8 +6,8 @@
     <div [hidden]="submitted" class="container mat-elevation-z8" id="FormDiv">
       <h3>Add Customer</h3>
 
-      <div [hidden]="registrationSuccessed"  class="alert alert-danger">
-        Input not valid
+      <div [hidden]="registrationSuccessed"  class="w3-panel danger w3-round-large">
+        {{message}}
       </div>
 
       <form class="mat-dialog-content" #addCustomerForm="ngForm">
@@ -17,7 +17,7 @@
               <mat-option *ngFor="let number of roomsNumber" [value]=number required> {{number}} </mat-option>
             </mat-select>
             <div [hidden]="roomNumber.valid || roomNumber.pristine"
-                 class="alert alert-danger">
+                 class="w3-panel danger w3-round-large">
               Room number is required
             </div>
           </mat-form-field>
@@ -29,7 +29,7 @@
                    required
                    [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
             <div [hidden]="bookingName.valid || bookingName.pristine"
-                 class="alert alert-danger">
+                 class="w3-panel danger w3-round-large">
               Booking Name is required
             </div>
           </mat-form-field>
@@ -41,7 +41,7 @@
                    required
                    [(ngModel)]="customer.bookingSurname" name="bookingSurname" #bookingSurname="ngModel">
             <div [hidden]="bookingSurname.valid || bookingSurname.pristine"
-                 class="alert alert-danger">
+                 class="w3-panel danger w3-round-large">
               Booking Surname is required
             </div>
           </mat-form-field>
@@ -52,7 +52,7 @@
             <input matInput #input type="text" class="form-control" id="username" placeholder="Customer's username"
                    required [(ngModel)]="customer.username" name="username" #username="ngModel">
             <div [hidden]="username.valid || username.pristine"
-                 class="alert alert-danger">
+                 class="w3-panel danger w3-round-large">
               The customer username is required
             </div>
           </mat-form-field>
@@ -64,7 +64,7 @@
                    required
                    [(ngModel)]="customer.password" name="password" #password="ngModel">
             <div [hidden]="password.valid || password.pristine"
-                 class="alert alert-danger">
+                 class="w3-panel danger w3-round-large">
               The password is required
             </div>
           </mat-form-field>
@@ -76,7 +76,7 @@
                    required
                    [(ngModel)]="confirmPassword" name="checkPassword" #checkPassword="ngModel">
             <div [hidden]="checkPassword.valid || checkPassword.pristine"
-                 class="alert alert-danger">
+                 class="w3-panel danger w3-round-large">
               The confirmation password is required
             </div>
           </mat-form-field>
@@ -90,7 +90,7 @@
                    required
                    [(ngModel)]="customer.numberOfPeople" name="numberOfPeople" #numberOfPeople="ngModel">
             <div [hidden]="numberOfPeople.valid || numberOfPeople.pristine"
-                 class="alert alert-danger">
+                 class="w3-panel danger w3-round-large">
               The number of people in the room is required
             </div>
           </mat-form-field>
