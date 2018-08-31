@@ -96,7 +96,7 @@ export class AdminStatisticsComponent implements OnInit {
         .filter( r => (this.roomNumber === r.roomNumber))
         .forEach(m => quantity = quantity + m.quantity);
     }
-    
+
     return quantity;
   }
 
