@@ -5,22 +5,29 @@
 }
 
 #variationDiv{
-  padding: 30%;
+  padding: 5% 20% 20% 20%;
   background-color: white;
 }
 
+#variation, #variationsAddedDiv{
+  width: 90%;
+}
 
-#delDiv{
-  float: left;
-  margin-top: 1%;
+#variationsAddedDiv{
+  text-align: left;
+}
+
+#delButton{
+  floa: left;
 }
 
 #saveButton{
+  margin-top: 5%;
   float: right;
 }
 
 label{
-  font-size: 130%;
+  font-size: 120%;
 }
 
 
