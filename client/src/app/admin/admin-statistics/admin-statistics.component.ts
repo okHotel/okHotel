@@ -6,6 +6,7 @@ import {Meal} from '../../menu/reservation';
 import {Location} from '@angular/common';
 import {VariationService} from '../../service/variation/variation.service';
 import {BookingService} from '../../service/booking/booking.service';
+import {Note} from '../../menu/Note';
 
 @Component({
   selector: 'app-admin-statistics',
@@ -21,6 +22,8 @@ export class AdminStatisticsComponent implements OnInit {
   meal = Meal;
   displayedColumns = ['dish', 'wholePortion', 'halfPortion'];
   displayedVariationsColumns = ['dish', 'intollerance', 'allergy'];
+  displayedNotesColumns = ['roomNumber', 'text'];
+  otherNotesDataSource: Note[];
   lunchDataSource = [];
   dinnerDataSource = [];
   variationsDataSource = [];
@@ -64,8 +67,8 @@ export class AdminStatisticsComponent implements OnInit {
           this.menu.setMenu(data);
           this.lunchDataSource = data.lunch_dishes;
           this.dinnerDataSource = data.dinner_dishes;
+          this.otherNotesDataSource = data.otherNotes;
           this.isLoadedDate = true;
-          console.log(data)
         },
 
         error => {
