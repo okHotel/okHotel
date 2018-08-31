@@ -23,7 +23,7 @@
   <div class="w3-col l12 m12 s12 w3-center">
     <div class="form" id="lunchinput" >
       <mat-form-field color="accent" (keyup.enter)="addLunchDish()">
-        <input matInput #input type="text" name="dish" (keyup)="composeDish($event)" />
+        <input matInput #inputLunch type="text" name="dish" (keyup)="composeDish($event)" placeholder="Dish" />
       </mat-form-field>
       <button mat-button type="button" (click)="addLunchDish()"><i class="material-icons">add</i></button>
     </div>
@@ -54,7 +54,7 @@
   <div class="w3-col l12 m12 s12 w3-center">
     <div class="form" id="dinnerinput">
       <mat-form-field color="accent" (keyup.enter)="addDinnerDish()">
-        <input matInput #input name="dish" (keyup)="composeDish($event)" />
+        <input matInput #inputDinner name="dish" (keyup)="composeDish($event)" placeholder="Dish" />
       </mat-form-field>
       <button mat-button type="button" (click)="addDinnerDish()"><i class="material-icons">add</i></button>
     </div>
