@@ -52,3 +52,6 @@ server/config/database.js
 *.css.map
 *.sass.map
 *.scss.map
+
+# ssl certs
+server/certs/*
