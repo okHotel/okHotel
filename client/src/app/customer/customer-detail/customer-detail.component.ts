@@ -39,19 +39,28 @@ export class CustomerDetailComponent implements OnInit {
     }
 
     update(): void {
-        this.submitted = true;
+//        this.submitted = true;
         this.customer.otherNeeds = this.customerNeeds;
         this.customerService.updateCustomer(this.customer)
-            .subscribe(result => this.message = "Customer Updated Successfully!");
-        this.location.back();
-
+            .subscribe();
     }
 
-    addNeed() {
+    updateAndGoBack() {
+      this.update();
+      this.location.back();
+    }
+
+    addNeedAndUpdate() {
         if (this.need.length > 0) {
             this.customerNeeds.push(this.need);
             this.update();
         }
+    }
+
+    deleteNeedAndUpdate(need: string) {
+      this.customerNeeds = this.customerNeeds.filter( x => x !== need);
+      this.customer.otherNeeds = this.customer.otherNeeds.filter(x => x !== need);
+      this.update();
     }
 
     delete(): void {

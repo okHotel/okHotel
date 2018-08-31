@@ -29,9 +29,6 @@
               <button mat-button [disabled]="loginForm.valid" class="btn-large btn-submit" id="registrationButton" type="button" (click)="navigateToRegistration()">Registration</button>
             </div>
 
-            <div [hidden]="!isCustomerLoggedIn">
-              <button mat-button class="btn-large btn-submit" type="button" (click)="logout()">Logout</button>
-            </div>
           </div>
         </div>
 

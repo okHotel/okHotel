@@ -49,6 +49,11 @@ server/config/database.js
 
 #SASS and SCSS
 # client/.sass-cache/
+*.css*
 *.css.map
 *.sass.map
 *.scss.map
+
+# ssl cert
+server/certs/*
+

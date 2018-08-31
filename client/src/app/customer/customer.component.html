@@ -43,16 +43,16 @@
           </button>
         </mat-header-cell>
 
-        <mat-cell *matCellDef="let row;" class="right">
-          <button mat-icon-button color="accent" (click)="getDetails(row._id)">
-            <mat-icon aria-label="Edit">edit</mat-icon>
-          </button>
+      <mat-cell *matCellDef="let row;" class="right">
+        <button mat-icon-button color=$dot-selected-color (click)="getDetails(row._id)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
 
-          <button mat-icon-button color="accent" (click)="delete(row._id, row.bookingName, row.bookingSurname, row.roomNumber)">
-            <mat-icon aria-label="Delete">delete</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
+        <button mat-icon-button color=$dot-selected-color (click)="delete(row._id, row.bookingName, row.bookingSurname, row.roomNumber)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

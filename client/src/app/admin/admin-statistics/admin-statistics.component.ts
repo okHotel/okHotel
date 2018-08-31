@@ -3,6 +3,10 @@ import {Router} from '@angular/router';
 import {Menu} from '../../menu/menu';
 import {MenuService} from '../../service/menu/menu.service';
 import {Meal} from '../../menu/reservation';
+import {Location} from '@angular/common';
+import {VariationService} from '../../service/variation/variation.service';
+import {BookingService} from '../../service/booking/booking.service';
+import {Note} from '../../menu/Note';
 
 @Component({
   selector: 'app-admin-statistics',
@@ -13,17 +17,34 @@ import {Meal} from '../../menu/reservation';
 export class AdminStatisticsComponent implements OnInit {
 
   date: Date = new Date();
-  isLoadedDate: boolean = false;
+  isLoadedDate = false;
   error: string;
   meal = Meal;
+  displayedColumns = ['dish', 'wholePortion', 'halfPortion'];
+  displayedVariationsColumns = ['dish', 'intollerance', 'allergy'];
+  displayedNotesColumns = ['roomNumber', 'text'];
+  otherNotesDataSource: Note[];
+  lunchDataSource = [];
+  dinnerDataSource = [];
+  variationsDataSource = [];
+  roomsNumber: number[] = [];
+  roomNumber: number;
 
-  constructor(private router: Router, public menu: MenuService) { }
+  constructor(private router: Router, public menu: MenuService,
+              private variationService: VariationService,
+              private location: Location,
+              private bookingService: BookingService) { }
 
   ngOnInit() {
+    this.variationService.getVariations().subscribe(v => this.variationsDataSource = v);
+    this.bookingService.getRoomsNumber().subscribe(n => {
+      this.roomsNumber = n;
+      console.log(this.roomsNumber);
+    });
   }
 
-  goToHome(){
-      this.router.navigateByUrl('/home');
+  goBack(){
+    this.location.back();
   }
 
   goToMakeMenu() {
@@ -34,7 +55,7 @@ export class AdminStatisticsComponent implements OnInit {
     this.router.navigateByUrl('/make-variation');
   }
 
-  setDateMenu(event: any){
+  setDateMenu(event: any) {
     this.menu.setDate(this.date);
     this.serachDateMenu();
   }
@@ -44,11 +65,14 @@ export class AdminStatisticsComponent implements OnInit {
       .subscribe(
         data => {
           this.menu.setMenu(data);
+          this.lunchDataSource = data.lunch_dishes;
+          this.dinnerDataSource = data.dinner_dishes;
+          this.otherNotesDataSource = data.otherNotes;
           this.isLoadedDate = true;
         },
 
         error => {
-          console.log("DB error");
+          console.log('DB error');
           this.isLoadedDate = false;
           this.menu.setMenu(new Menu());
           this.menu.setDate(this.date);
@@ -57,13 +81,17 @@ export class AdminStatisticsComponent implements OnInit {
 
   getTotalQuantitiesFor(dish: string, type: Meal): number {
     let quantity: number = 0;
-    this.menu.menu.reservations
-      .filter(m => dish == m.dish)
-      .filter(t => type == t.type)
+    const reservations = this.menu.menu.reservations
+      .filter(m => dish === m.dish)
+      .filter(t => type === t.type)
+      .filter( r => this.roomNumber === r.roomNumber)
       .forEach(m => quantity = quantity + m.quantity);
 
     return quantity;
   }
 
+  onPrint() {
+    window.print();
+  }
 }
 

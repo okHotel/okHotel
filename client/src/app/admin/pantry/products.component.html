@@ -10,66 +10,67 @@
     </button>
 
     <div class="form">
-      <mat-form-field floatPlaceholder="never" color="accent">
-        <input matInput #filter placeholder="Search..">
-      </mat-form-field>
-    </div>
 
-    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+    <mat-form-field floatPlaceholder="never" color="accent">
+      <input matInput #filter placeholder="Search..">
+    </mat-form-field>
+  </div>
 
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
+  <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
 
-      <!-- ID Column -->
-      <ng-container matColumnDef="code">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
-        <mat-cell *matCellDef="let row" >
-          <span class="mobile-label">Code:</span>
-          {{row.code}}</mat-cell>
-      </ng-container>
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
 
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <span class="mobile-label">Name:</span>
-          {{row.name}}</mat-cell>
-      </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="code">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
+      <mat-cell *matCellDef="let row" >
+        <span class="mobile-label">Code:</span>
+        {{row.code}}</mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="category">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <span class="mobile-label">Category:</span>
-          {{row.category}}</mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <span class="mobile-label">Name:</span>
+        {{row.name}}</mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="quantity">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <span class="mobile-label">Quantity:</span>
-          {{row.quantity}}</mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <span class="mobile-label">Category:</span>
+        {{row.category}}</mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="unit">
-        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <span class="mobile-label">Unit:</span>
-          {{row.unit}}</mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <span class="mobile-label">Quantity:</span>
+        {{row.quantity}}</mat-cell>
+    </ng-container>
 
-      <!-- actions -->
-      <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef>
-          <button mat-icon-button color="primary" (click)="addNew()">
-            <mat-icon aria-label="Add">add</mat-icon>
-          </button>
-        </mat-header-cell>
+    <ng-container matColumnDef="unit">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <span class="mobile-label">Unit:</span>
+        {{row.unit}}</mat-cell>
+    </ng-container>
 
-        <mat-cell *matCellDef="let row; let i=index;">
-          <button mat-icon-button color="accent" (click)="startEdit(row._id)">
-            <mat-icon aria-label="Edit">edit</mat-icon>
-          </button>
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="primary" (click)="addNew()">
+          <mat-icon aria-label="Add">add</mat-icon>
+        </button>
+      </mat-header-cell>
 
-          <button mat-icon-button color="accent" (click)="deleteItem(i, row._id, row.code,
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color=$dot-selected-color (click)="startEdit(row._id)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color=$dot-selected-color (click)="deleteItem(i, row._id, row.code,
                                                         row.name, row.category, row.quantity, row.unit)">
             <mat-icon aria-label="Delete">delete</mat-icon>
           </button>
