@@ -81,11 +81,21 @@ export class AdminStatisticsComponent implements OnInit {
 
   getTotalQuantitiesFor(dish: string, type: Meal): number {
     let quantity: number = 0;
-    const reservations = this.menu.menu.reservations
-      .filter(m => dish === m.dish)
-      .filter(t => type === t.type)
-      .filter( r => this.roomNumber === r.roomNumber)
-      .forEach(m => quantity = quantity + m.quantity);
+
+    if (this.roomNumber != 0) {
+      const reservations = this.menu.menu.reservations
+        .filter(m => dish === m.dish)
+        .filter(t => type === t.type)
+        /*.filter( r => (this.roomNumber === r.roomNumber))
+  */      .forEach(m => quantity = quantity + m.quantity);
+
+    } else {
+      const reservations = this.menu.menu.reservations
+        .filter(m => dish === m.dish)
+        .filter(t => type === t.type)
+        .filter( r => (this.roomNumber === r.roomNumber))
+        .forEach(m => quantity = quantity + m.quantity);
+    }
 
     return quantity;
   }

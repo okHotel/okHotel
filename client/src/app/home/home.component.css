@@ -8,8 +8,8 @@ Error: File to import not found or unreadable: ~@angular/material/theming.
 3: * {box-sizing:border-box}
 4: 
 5: .slides{
-6:   padding: 5%;
-7:   background-color: white;
+6:   margin-top: 3%;
+7:   padding: 5%;
 
 Backtrace:
 ../../styles.scss:2
@@ -69,4 +69,4 @@ home.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of home.component.scss\A \A 1: @import \"../../styles.scss\";\A 2: \A 3: * {box-sizing:border-box}\A 4: \A 5: .slides{\A 6:   padding: 5%;\A 7:   background-color: white;"; }
+  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of home.component.scss\A \A 1: @import \"../../styles.scss\";\A 2: \A 3: * {box-sizing:border-box}\A 4: \A 5: .slides{\A 6:   margin-top: 3%;\A 7:   padding: 5%;"; }
