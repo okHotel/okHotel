@@ -61,12 +61,9 @@ export class CustomerService {
         return this.http.get<Customer>(url, {headers: httpHeaders});
     }
 
-    deleteCustomer (id: string): Observable<Customer> {
+    deleteCustomer(id: string): Observable<Customer> {
         const url = `${this.customersUrl}/${id}`;
-        console.log(url);
-        console.log(AuthService.getHeaderWithAuthorization());
         let httpHeaders = AuthService.getHeaderWithAuthorization();
-        console.log({headers: httpHeaders});
 
         return this.http.delete<Customer>(url, {headers: httpHeaders});
     }

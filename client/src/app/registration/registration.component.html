@@ -60,7 +60,7 @@
 
         <div class="form">
           <mat-form-field color="accent">
-            <input matInput #input type="text" class="form-control" id="password" placeholder="Password"
+            <input matInput #input type="password" class="form-control" id="password" placeholder="Password"
                    required
                    [(ngModel)]="customer.password" name="password" #password="ngModel">
             <div [hidden]="password.valid || password.pristine"
@@ -72,7 +72,7 @@
 
         <div class="form">
           <mat-form-field color="accent">
-            <input matInput #input type="text" class="form-control" id="confirmPassword" placeholder="Confirm password"
+            <input matInput #input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password"
                    required
                    [(ngModel)]="confirmPassword" name="checkPassword" #checkPassword="ngModel">
             <div [hidden]="checkPassword.valid || checkPassword.pristine"
@@ -97,15 +97,18 @@
         </div>
 
         <div class="form">
+          Other needs:
+          <mat-list>
+          <mat-list-item *ngFor="let need of customerNeeds">
+            <button mat-button type="button" (click)="removeNeed(need)"><i class="material-icons">clear</i></button>
+            {{need}}
+          </mat-list-item>
+        </mat-list>
+        </div>
+
+        <div class="form">
           <mat-form-field color="accent">
-            Other needs:
-            <mat-list>
-              <mat-list-item *ngFor="let need of customerNeeds">
-                <button mat-button type="button" (click)="removeNeed(need)"><i class="material-icons">clear</i></button>
-                {{need}}
-              </mat-list-item>
-            </mat-list>
-            <input matInput #input id='otherNeeds' name="need" [(ngModel)]="need" />
+            <input matInput #input id='otherNeeds' name="need" [(ngModel)]="need" placeholder="Wheelchair, baby, disabled, animals, .."/>
           </mat-form-field>
           <button mat-button type="button" (click)="addNeed(need)"><i class="material-icons">add</i></button>
         </div>

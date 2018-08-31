@@ -18,9 +18,10 @@ export class DeleteCustomerComponent {
     }
 
     confirmDelete(): void {
-      console.log("id");
-      console.log(this.data);
-      this.customerService.deleteCustomer(this.data._id);
+      console.log(this.data._id);
+
+      this.customerService.deleteCustomer(this.data._id)
+        .subscribe(result => console.log(result), error => console.log(error));
     }
 
 }
