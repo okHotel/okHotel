@@ -11,6 +11,8 @@ $main-color: #f3ede3;
 $div-color: white;
 $dot-selected-color: dimgrey;
 $button-hover: #cdc8be;
+$header-height: 18%;
+$footer-height: 18%;
 
 // Define a custom typography config that overrides the font-family as well as the
 // headlines and body-1 levels.
@@ -40,10 +42,30 @@ body {
   font-family: 'myFont', serif !important;
 }
 
+
 .mat-button {
   font-size: 105%;
 }
 
+@media(min-width: 600px) {
+
+  #backgroundDiv {
+//    position: fixed;
+    top: $header-height;
+    left: 0;
+
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("/assets/login/background.png");
+  }
+
+  .centered {
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+}
 @media print {
 
   app-header, app-footer, button, .btn-group-btn-group-sm {

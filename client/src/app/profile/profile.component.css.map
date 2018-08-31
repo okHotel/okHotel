@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,GAAI;EACF,UAAU,EAAE,KAAK",
+"mappings": "AAAA,OAAO;EACL,aAAa,EAAE,EAAE",
 "sources": ["profile.component.scss"],
 "names": [],
 "file": "profile.component.css"

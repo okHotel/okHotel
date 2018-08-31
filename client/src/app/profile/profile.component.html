@@ -1,42 +1,31 @@
-<div class="w3-row">
-  <div class="w3-col l12 m12 s12 w3-right">
-    <div [hidden]="!isCustomerLoggedIn" id="navDiv">
-      <!--<button id="profileButton" alt="The profile icon" (click)="profile()"></button>-->
-      <button mat-button (click)="goToProfile()">
-        <a id="profileLink" (click)="goToProfile()">{{customer?.bookingName}} {{customer?.bookingSurname}}   </a>
-        <mat-icon aria-label="Profile">person</mat-icon>
-      </button>
+    <div class="w3-bar" id="navBar">
+
+      <div [hidden]="isLoggedIn()">
+        <button mat-button class="w3-bar-item w3-right btn-large btn-submit" (click)="goToLogin()">Login</button>
+      </div>
+
+      <div [hidden]="!isLoggedIn()">
+        <button mat-button class="w3-bar-item w3-right btn-large btn-submit" (click)="logout()">
+          Logout
+          <mat-icon aria-label="Profile">logout</mat-icon>
+        </button>
+      </div>
+
+      <div [hidden]="!isLoggedIn() || !isAdmin">
+        <button mat-button class="w3-bar-item w3-right btn-large btn-submit" (click)="goToServices()">
+          Services
+          <mat-icon aria-label="Profile">settings</mat-icon>
+        </button>
+      </div>
+
+      <div [hidden]="!isLoggedIn()">
+            <button mat-button class="w3-bar-item w3-right btn-large btn-submit" (click)="goToProfile()">
+              {{customer?.bookingName}} {{customer?.bookingSurname}}
+              <mat-icon aria-label="Profile">person</mat-icon>
+            </button>
+          </div>
+
+
+
     </div>
-  </div>
-</div>
-
-<div class="w3-row">
-  <div class="w3-col l12 m12 s12 w3-right">
-    <div [hidden]="!isAdmin">
-      <button mat-button class="btn-large btn-submit" (click)="goToServices()">
-        Services
-        <mat-icon aria-label="Profile">settings</mat-icon>
-      </button>
-    </div>
-  </div>
-</div>
-
-<div class="w3-row">
-  <div class="w3-col l12 m12 s12 w3-right">
-    <button mat-button class="btn-large btn-submit" (click)="logout()">
-      Logout
-      <mat-icon aria-label="Profile">logout</mat-icon>
-    </button>
-  </div>
-</div>
-
-
-<div class="w3-row">
-  <div class="w3-col l12 m12 s12 w3-right">
-    <div [hidden]="isCustomerLoggedIn">
-      <button mat-button class="btn-large btn-submit" (click)="goToLogin()">Login</button>
-    </div>
-  </div>
-</div>
-
 

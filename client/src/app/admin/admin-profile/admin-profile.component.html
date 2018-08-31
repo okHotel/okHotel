@@ -1,8 +1,8 @@
-<div class="w3-row" >
+<div class="w3-row" id="backgroundDiv">
 
   <div class="w3-col l5 m12 s12 w3-left">&nbsp;</div>
 
-  <div class="w3-col l2 m12 s12 w3-center" id="buttonDiv">
+  <div class="w3-col l2 m12 s12 w3-center centered container mat-elevation-z8">
 
     <button  mat-button *ngFor="let service of services" [disabled]="service.isEnabled == false" (click)="gotTo(service)">
       <i [hidden]="!isLoading" class='material-icons'>spinner</i>
