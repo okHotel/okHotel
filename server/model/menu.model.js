@@ -4,7 +4,8 @@ const Reservation = {
     roomNumber:Number,
     type: String,
     dish: String,
-    quantity: Number
+    quantity: Number,
+    variations: []
 }
 
 const Note = {

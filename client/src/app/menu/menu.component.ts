@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {MenuService} from '../service/menu/menu.service';
 import { DatePipe } from '@angular/common';
 import {CustomerService} from '../service/customer/customer.service';
-import {Meal, Reservation} from './reservation';
+import {Meal, Reservation, Variation} from './reservation';
 import {Menu} from './menu';
 import {Note} from './Note';
 
@@ -51,8 +51,14 @@ export class MenuComponent implements OnInit {
         this.menu.saveMenu().subscribe();
     }
 
-    addVariations() {
-        this.menu.showVariations = true;
+    addVariations(dish: string, type: Meal) {
+
+      if ( this.menu.menu.reservations.filter(r => r.dish === dish && r.type === type).length === 0 ) {
+        this.setReservation(type, dish, 0);
+      }
+
+      this.menu.savedRes = this.menu.menu.reservations.filter(r => r.dish === dish && r.type === type).pop();
+      this.menu.showVariations = true;
     }
 
     setReservation(selectedType: Meal, selectedDish: string, selectedQuantity: number) {
@@ -70,7 +76,8 @@ export class MenuComponent implements OnInit {
                 roomNumber: this.room,
                 type: selectedType.toString(),
                 quantity: selectedQuantity,
-                dish: selectedDish
+                dish: selectedDish,
+                variations: []
             };
             this.menu.menu.reservations.push(reservation);
         }

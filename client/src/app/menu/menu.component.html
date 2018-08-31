@@ -17,7 +17,6 @@
         <th scope="col">Dish</th>
         <th scope="col">Whole Portion</th>
         <th scope="col">Half Portion</th>
-        <th scope="col">Variation</th>
       </tr>
 
       <mat-error *ngIf="checkReservation(l, hl)">{{getErrorMessage()}}</mat-error>
@@ -32,7 +31,10 @@
                 {{n}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field><br>
+          <button mat-button type="button" (click)="addVariations(dish, l)">
+            <mat-icon aria-label="addVariation">add</mat-icon>Variation
+          </button>
         </td>
 
         <td>
@@ -42,10 +44,10 @@
                 {{n}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
-        </td>
-        <td>
-          <button type="button" (click)="addVariations()">+</button>
+          </mat-form-field><br>
+          <button mat-button type="button" (click)="addVariations(dish, hl)">
+            <mat-icon aria-label="addVariation">add</mat-icon>Variation
+          </button>
         </td>
       </tr>
     </table>
@@ -63,7 +65,6 @@
         <th scope="col">Dish</th>
         <th scope="col">Whole Portion</th>
         <th scope="col">Half Portion</th>
-        <th scope="col">Variation</th>
       </tr>
 
       <mat-error *ngIf="checkReservation(d, hd)">{{getErrorMessage()}}</mat-error>
@@ -77,7 +78,10 @@
                 {{n}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field><br>
+          <button mat-button type="button" (click)="addVariations(dish, d)">
+            <mat-icon aria-label="addVariation">add</mat-icon>Variation
+          </button>
 
         </td>
         <td>
@@ -87,12 +91,12 @@
                 {{n}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field><br>
+          <button mat-button type="button" (click)="addVariations(dish, hd)">
+            <mat-icon aria-label="addVariation">add</mat-icon>Variation
+          </button>
         </td>
 
-        <td>
-          <button type="button" (click)="addVariations()">+</button>
-        </td>
       </tr>
 
     </table>
