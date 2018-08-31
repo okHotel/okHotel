@@ -21,6 +21,13 @@
           <input type="date" matInput placeholder="Select menu date" [(ngModel)]="date" name="date"
                  (keyup)="setDateMenu($event)">
         </mat-form-field>
+
+        <mat-form-field color="accent">
+          <mat-select id="roomNumber" name="roomNumber" [(ngModel)]="roomNumber" placeholder="Room number" >
+            <mat-option *ngFor="let number of roomsNumber" [value]=number.roomNumber required> {{number.roomNumber}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+
       </div>
 
       <mat-table #table [dataSource]="lunchDataSource">

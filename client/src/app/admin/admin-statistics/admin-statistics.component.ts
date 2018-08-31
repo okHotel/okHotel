@@ -5,6 +5,7 @@ import {MenuService} from '../../service/menu/menu.service';
 import {Meal} from '../../menu/reservation';
 import {Location} from '@angular/common';
 import {VariationService} from '../../service/variation/variation.service';
+import {BookingService} from '../../service/booking/booking.service';
 
 @Component({
   selector: 'app-admin-statistics',
@@ -22,13 +23,21 @@ export class AdminStatisticsComponent implements OnInit {
   displayedVariationsColumns = ['dish', 'intollerance', 'allergy'];
   lunchDataSource = [];
   dinnerDataSource = [];
-  variationsDataSource = []
+  variationsDataSource = [];
+  roomsNumber: number[] = [];
+  roomNumber: number;
 
   constructor(private router: Router, public menu: MenuService,
-              private variationService: VariationService, private location: Location) { }
+              private variationService: VariationService,
+              private location: Location,
+              private bookingService: BookingService) { }
 
   ngOnInit() {
     this.variationService.getVariations().subscribe(v => this.variationsDataSource = v);
+    this.bookingService.getRoomsNumber().subscribe(n => {
+      this.roomsNumber = n;
+      console.log(this.roomsNumber);
+    });
   }
 
   goBack(){
@@ -69,9 +78,10 @@ export class AdminStatisticsComponent implements OnInit {
 
   getTotalQuantitiesFor(dish: string, type: Meal): number {
     let quantity: number = 0;
-    this.menu.menu.reservations
+    const reservations = this.menu.menu.reservations
       .filter(m => dish === m.dish)
       .filter(t => type === t.type)
+      .filter( r => this.roomNumber === r.roomNumber)
       .forEach(m => quantity = quantity + m.quantity);
 
     return quantity;
