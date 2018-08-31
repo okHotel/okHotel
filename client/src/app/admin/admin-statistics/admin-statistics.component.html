@@ -1,8 +1,8 @@
-<div class="w3-row">
+<div class="w3-row" id="backgroundDiv">
 
   <div class="w3-col s0 m1 l2">&nbsp;</div>
 
-  <div class="container mat-elevation-z8 w3-col s12 m10 l8">
+  <div class="container mat-elevation-z8 w3-col s12 m10 l8 centered">
 
       <button class="btn-group-btn-group-sm" mat-button (click)="onPrint()">
         Print <i class='material-icons'>print</i>
@@ -48,20 +48,6 @@
           <mat-cell *matCellDef="let row">
             <span class="mobile-label">Half Lunch:</span>
             {{getTotalQuantitiesFor(row, meal.HALF_LUNCH)}}</mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="intollerance">
-          <mat-header-cell *matHeaderCellDef>Intollerances</mat-header-cell>
-          <mat-cell *matCellDef="let row">
-            <span class="mobile-label">Intollerances:</span>
-            {{getTotalQuantitiesFor(row, meal.INTOLLERANCE)}}</mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="allergy">
-          <mat-header-cell *matHeaderCellDef>Allergy</mat-header-cell>
-          <mat-cell *matCellDef="let row">
-            <span class="mobile-label">Allergy:</span>
-            {{getTotalQuantitiesFor(row, meal.ALLERGY)}}</mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -115,7 +101,35 @@
 
       </mat-table>
 
-      <button class="btn-group-btn-group-sm" mat-button (click)="goBack()">Back</button>
+    <mat-table #table [dataSource]="variationsDataSource">
+      <ng-container matColumnDef="dish">
+        <mat-header-cell *matHeaderCellDef>Variations</mat-header-cell>
+        <mat-cell *matCellDef="let variation" >
+          <span class="mobile-label">Variations:</span>
+          {{variation.type}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="intollerance">
+        <mat-header-cell *matHeaderCellDef>Intollerances</mat-header-cell>
+        <mat-cell *matCellDef="let variation">
+          <span class="mobile-label">Intollerances:</span>
+          {{getTotalQuantitiesFor(variation.type, meal.INTOLLERANCE)}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="allergy">
+        <mat-header-cell *matHeaderCellDef>Allergy</mat-header-cell>
+        <mat-cell *matCellDef="let variation">
+          <span class="mobile-label">Allergy:</span>
+          {{getTotalQuantitiesFor(variation.type, meal.ALLERGY)}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedVariationsColumns"></mat-header-row>
+
+      <mat-row *matRowDef="let variation; columns: displayedVariationsColumns;"></mat-row>
+    </mat-table>
+
+
+    <button class="btn-group-btn-group-sm" mat-button (click)="goBack()">Back</button>
     </div>
 
   <div class="w3-col s0 m1 l2">&nbsp;</div>

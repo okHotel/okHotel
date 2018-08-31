@@ -4,6 +4,7 @@ import {Menu} from '../../menu/menu';
 import {MenuService} from '../../service/menu/menu.service';
 import {Meal} from '../../menu/reservation';
 import {Location} from '@angular/common';
+import {VariationService} from '../../service/variation/variation.service';
 
 @Component({
   selector: 'app-admin-statistics',
@@ -17,14 +18,17 @@ export class AdminStatisticsComponent implements OnInit {
   isLoadedDate = false;
   error: string;
   meal = Meal;
-  displayedColumns = ['dish', 'wholePortion', 'halfPortion', 'intollerance', 'allergy'];
+  displayedColumns = ['dish', 'wholePortion', 'halfPortion'];
+  displayedVariationsColumns = ['dish', 'intollerance', 'allergy'];
   lunchDataSource = [];
   dinnerDataSource = [];
+  variationsDataSource = []
 
-  constructor(private router: Router, public menu: MenuService, private location: Location) { }
+  constructor(private router: Router, public menu: MenuService,
+              private variationService: VariationService, private location: Location) { }
 
   ngOnInit() {
-
+    this.variationService.getVariations().subscribe(v => this.variationsDataSource = v);
   }
 
   goBack(){
