@@ -3,80 +3,81 @@ import {Menu} from '../../menu/menu';
 import {MenuService} from '../../service/menu/menu.service';
 import {Router} from '@angular/router';
 @Component({
-    selector: 'app-make-menu-view',
-    templateUrl: './make-menu-view.component.html',
-    styleUrls: ['./make-menu-view.component.scss']
+  selector: 'app-make-menu-view',
+  templateUrl: './make-menu-view.component.html',
+  styleUrls: ['./make-menu-view.component.scss']
 })
 export class MakeMenuViewComponent implements OnInit {
 
-    date: Date = new Date();
-    isDateWrong: boolean = false;
-    isLoadedDate: boolean = false;
+  date: Date = new Date();
+  isDateWrong = false;
+  isLoadedDate = false;
 
-    constructor(
-      public menu: MenuService,
-      private router: Router) { }
+  constructor(
+    public menu: MenuService,
+    private router: Router) { }
 
-    ngOnInit() {
+  ngOnInit() {
+  }
+
+  setDateMenu(event: any) {
+    console.log(event.target.value);
+    console.log(this.date);
+
+    this.menu.setDate(this.date);
+    this.serachDateMenu();
+  }
+
+  serachDateMenu() {
+    return this.menu.getDateMenu()
+      .subscribe(
+        data => {
+
+          console.log('DB OK');
+
+          this.menu.setMenu(data);
+          this.isLoadedDate = true;
+        },
+
+        error => {
+          console.log('DB error');
+          this.isLoadedDate = false;
+          this.menu.setMenu(new Menu());
+          this.menu.setDate(this.date);
+        });
+
+
+  }
+
+  saveMenu() {
+    if (this.checkDate()) {
+      this.menu.saveMenu().subscribe( data =>{ console.log('Saved menu '+ data)});
     }
 
-    setDateMenu(event: any){
-        console.log(event.target.value);
-        console.log(this.date);
-       // this.date = new Date(event.target.value);
+    this.router.navigateByUrl('/admin-profile');
 
-        this.menu.setDate(this.date);
-      //  if(this.date <= new Date()){
-        this.serachDateMenu();
-        //}
+  }
+
+  deleteMenu() {
+    if (this.checkDate()) {
+      this.menu.deleteMenu().subscribe( data => { console.log('Deleted menu '+ data)});
     }
+    this.menu.setMenu(new Menu());
+    this.menu.setDate(this.date);
+  }
 
-    serachDateMenu() {
-        return this.menu.getDateMenu()
-            .subscribe(
-                data => {
+  goBack() {
+    this.router.navigateByUrl('admin-profile');
+  }
 
-                    console.log("DB OK");
-
-                   this.menu.setMenu(data);
-                    this.isLoadedDate = true;
-                },
-
-                error => {
-                    console.log("DB error");
-                    this.isLoadedDate = false;
-                    this.menu.setMenu(new Menu());
-                    this.menu.setDate(this.date);
-                });
-
-
-    }
-
-    saveMenu(){
-        if(this.checkDate()){
-           this.menu.saveMenu().subscribe( data =>{ console.log("Saved menu "+ data)});
-        }
-
-        this.router.navigateByUrl('/admin-profile');
-
-    }
-
-    deleteMenu(){
-        if(this.checkDate()){
-            this.menu.deleteMenu().subscribe( data => { console.log("Deleted menu "+ data)});
-        }
-        this.menu.setMenu(new Menu());
-        this.menu.setDate(this.date);
-    }
-
-    checkDate(){
+  checkDate() {
+    return true;
+    //TODO filter some date that you don't want to use i.e. past dates
+    /*if( this.isLoadedDate || this.date >= new Date()){
         return true;
-        //TODO filter some date that you don't want to use i.e. past dates
-        /*if( this.isLoadedDate || this.date >= new Date()){
-            return true;
-        }else {
-            this.isDateWrong = true;
-            return false;
-        }*/
-    }
+    }else {
+        this.isDateWrong = true;
+        return false;
+    }*/
+  }
 }
