@@ -57,6 +57,7 @@ export class MenuComponent implements OnInit {
 
     saveReservations() {
         this.menu.saveMenu().subscribe();
+        this.router.navigateByUrl('');
     }
 
     addVariations(dish: string, type: Meal) {
