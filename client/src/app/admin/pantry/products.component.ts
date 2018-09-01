@@ -38,6 +38,7 @@ export class ProductsComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild('filter') filter: ElementRef;
     barcode;
+    isCameraEnabled = false;
 
     constructor(public httpClient: HttpClient,
                 public router: Router,
@@ -94,6 +95,10 @@ export class ProductsComponent implements OnInit {
                 this.loadData();
             }
         });
+    }
+
+    changeCameraState() {
+      this.isCameraEnabled = !this.isCameraEnabled;
     }
 
     public refreshTable() {
