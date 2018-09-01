@@ -108,14 +108,22 @@
 
         <div class="form">
           <mat-form-field color="accent">
-            <input matInput #input id='otherNeeds' name="need" [(ngModel)]="need" placeholder="Wheelchair, baby, disabled, animals, .."/>
+
+            <mat-list>
+              <mat-list-item *ngFor="let need of customerNeeds">
+                <button mat-button type="button" (click)="removeNeed(need)"><i class="material-icons">clear</i></button>
+                {{need}}
+              </mat-list-item>
+            </mat-list>
+            <input matInput #input id='otherNeeds' name="need" [(ngModel)]="need"
+                   placeholder="Other needs (p.e. disability types, number of children and/or pets, if present)"/>
           </mat-form-field>
           <button mat-button type="button" (click)="addNeed(need)"><i class="material-icons">add</i></button>
         </div>
-         <div class="btn-group btn-group-sm">
-            <button mat-button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
-            <button mat-button type="button" class="btn btn-dark" (click)="addCustomer()" [disabled]="!addCustomerForm.form.valid">Save</button>
-          </div>
+        <div class="btn-group btn-group-sm">
+          <button mat-button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+          <button mat-button type="button" class="btn btn-dark" (click)="addCustomer()" [disabled]="!addCustomerForm.form.valid">Add</button>
+        </div>
       </form>
     </div>
 
