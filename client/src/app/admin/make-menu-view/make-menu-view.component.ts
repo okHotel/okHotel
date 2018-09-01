@@ -1,6 +1,7 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
 import {Menu} from '../../menu/menu';
 import {MenuService} from '../../service/menu/menu.service';
+import {Router} from '@angular/router';
 @Component({
     selector: 'app-make-menu-view',
     templateUrl: './make-menu-view.component.html',
@@ -12,7 +13,9 @@ export class MakeMenuViewComponent implements OnInit {
     isDateWrong: boolean = false;
     isLoadedDate: boolean = false;
 
-    constructor(public menu: MenuService) { }
+    constructor(
+      public menu: MenuService,
+      private router: Router) { }
 
     ngOnInit() {
     }
@@ -53,6 +56,9 @@ export class MakeMenuViewComponent implements OnInit {
         if(this.checkDate()){
            this.menu.saveMenu().subscribe( data =>{ console.log("Saved menu "+ data)});
         }
+
+        this.router.navigateByUrl('/admin-profile');
+
     }
 
     deleteMenu(){
