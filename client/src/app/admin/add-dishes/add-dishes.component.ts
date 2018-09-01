@@ -15,7 +15,8 @@ export class AddDishesComponent implements OnInit {
     @ViewChild('inputDinner') elDinner: ElementRef;
 
     dish = '';
-
+  commonLunchDishes: Array<string> = ['Tomato spaghetti', 'Pesto spaghetti', 'Carbonara spaghetti' ];
+  commonDinnerDishes: Array<string> = ['Omelet', 'Meat', 'Ham' ];
     constructor(public menu: MenuService) {}
 
     ngOnInit() {
