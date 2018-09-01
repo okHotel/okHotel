@@ -9,10 +9,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import {PantryService} from "../../service/pantry/pantry.service";
 import {ProductDataSource} from "./product.dataSource";
-import {EditProductComponent} from "./edit-product/edit-product.component";
 import {DeleteProductComponent} from "./delete-product/delete-product.component";
-import {AddProductComponent} from "./add-product/add-product.component";
-import {Product} from "./product";
 import {BarcodeDecoderService} from "../../service/pantry/barcode-scanner/barcode-decoder.service";
 import {BarcodeValidatorService} from "../../service/pantry/barcode-scanner/barcode-validator.service";
 import {Subject} from "rxjs";
@@ -127,7 +124,7 @@ export class ProductsComponent implements OnInit {
                     return;
                 }
                 this.dataSource.filter = this.filter.nativeElement.value;
-            });
+            }, err => this.errorService.error = err);
     }
 
     ngAfterContentInit() {

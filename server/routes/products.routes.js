@@ -6,6 +6,7 @@
 const express = require('express');
 const app = express.Router();
 const product = require('../controller/products.controller.js');
+const authController = require('../controller/authentication.controller');
 
 /**
  * INSERIMENTO
@@ -14,7 +15,7 @@ const product = require('../controller/products.controller.js');
  * e creo un nuovo record in db
  */
 
-app.post('/', product.insertProduct);
+app.post('/', authController.requireAuthBy(['admin']), product.insertProduct);
 
 /**
  * UPDATE
@@ -28,12 +29,12 @@ app.post('/', product.insertProduct);
  * se la ricerca lato client (per codice) va a buon fine,
  * ricevo dal client il codice e la quantità con cui aggiornare il prodotto in db
  */
-app.put('/', product.updateProduct);
+app.put('/', authController.requireAuthBy(['admin']), product.updateProduct);
 
-app.get('/', product.findAll);
+app.get('/', authController.requireAuthBy(['admin']), product.findAll);
 
-app.get('/:productId', product.findProduct);
+app.get('/:productId', authController.requireAuthBy(['admin']), product.findProduct);
 
-app.delete('/:productId', product.delete);
+app.delete('/:productId', authController.requireAuthBy(['admin']), product.delete);
 
 module.exports = app;
