@@ -86,7 +86,7 @@ exports.delete = (req, res) => {
 
     let token = authHeader.split(" ")[1];
     let payload = jwt.verify(token, jwtConfig.jwtSecretKey);
-    if (req.params.customerId !== payload._id || payload.role !== 'admin') {
+    if (req.params.customerId !== payload._id && payload.role !== 'admin') {
         return res.status(401).send({message: 'You are not authorized'});
     }
 
