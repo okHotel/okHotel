@@ -8,22 +8,40 @@ import {connectableObservableDescriptor} from 'rxjs/internal/observable/Connecta
     templateUrl: './add-dishes.component.html',
     styleUrls: ['./add-dishes.component.scss']
 })
+
+
 export class AddDishesComponent implements OnInit {
+    @ViewChild('inputLunch') elLunch: ElementRef;
+    @ViewChild('inputDinner') elDinner: ElementRef;
 
-    dish = "";
-
+    dish = '';
+  commonLunchDishes: Array<string> = ['Tomato spaghetti', 'Pesto spaghetti', 'Carbonara spaghetti' ];
+  commonDinnerDishes: Array<string> = ['Omelet', 'Meat', 'Ham' ];
     constructor(public menu: MenuService) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+    }
 
-    composeDish(event: any){this.dish = event.target.value;}
+    composeDish(event: any) {
+      this.dish = event.target.value;
+    }
 
-    addLunchDish(){this.menu.addLunchDish(this.dish);}
+    addLunchDish() {
+      this.menu.addLunchDish(this.dish);
+      this.elLunch.nativeElement.value = '';
+    }
 
-    deleteLunchDish(dish: string){this.menu.deleteLunchDish(dish);}
+    deleteLunchDish(dish: string) {
+      this.menu.deleteLunchDish(dish);
+    }
 
-    addDinnerDish(){this.menu.addDinnerDish(this.dish);}
+    addDinnerDish() {
+      this.menu.addDinnerDish(this.dish);
+      this.elDinner.nativeElement.value = '';
+    }
 
-    deleteDinnerDish(dish: string){this.menu.deleteDinnerDish(dish);}
+    deleteDinnerDish(dish: string) {
+      this.menu.deleteDinnerDish(dish);
+    }
 
 }

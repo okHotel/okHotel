@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Menu} from '../../menu/menu';
 import {Reservation} from '../../menu/reservation';
+import {AuthService} from '../auth/auth.service';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -28,8 +29,10 @@ export class MenuService {
     }
 
     getDateMenu(): Observable<Menu> {
-        const url = `${this.menuUrl}/${this.menu.date}`;
-        return this.http.get<Menu>(url);
+      let httpHeaders = AuthService.getHeaderWithAuthorization();
+
+      const url = `${this.menuUrl}/${this.menu.date}`;
+        return this.http.get<Menu>(url, {headers: httpHeaders});
     }
 
     setMenu(menu1: Menu) {
@@ -45,6 +48,7 @@ export class MenuService {
     deleteDinnerDish(dish: string){this.menu.dinner_dishes = this.menu.dinner_dishes.filter(x => x != dish);}
 
     saveMenu(): Observable<any> {
+      let httpHeaders = AuthService.getHeaderWithAuthorization();
 
         console.log(this.menu);
         let url = "";
@@ -54,12 +58,14 @@ export class MenuService {
         } else {
              url = `${this.menuUrl}/update`;
         }
-        return this.http.put(url, this.menu, httpOptions);
+        return this.http.put(url, this.menu, {headers: httpHeaders});
     }
 
     deleteMenu() {
-        const url = `${this.menuUrl}/${this.menu.date}`;
-        return this.http.delete(url);
+      let httpHeaders = AuthService.getHeaderWithAuthorization();
+
+      const url = `${this.menuUrl}/${this.menu.date}`;
+        return this.http.delete(url, {headers: httpHeaders});
     }
 
 }

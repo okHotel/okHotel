@@ -14,7 +14,6 @@ const authenticationRoutes = require('./routes/authentication.routes');
 const menuRoutes = require('./routes/menu.routes');
 const planRoutes = require('./routes/plans.routes');
 const productRoutes = require('./routes/products.routes');
-const menuStatisticsRoutes = require('./routes/menu-statistic.routes');
 
 const variationRoutes = require('./routes/variation.routes');
 
@@ -43,7 +42,6 @@ app.use('/auth', authenticationRoutes);
 app.use('/menu', menuRoutes);
 app.use('/plan', planRoutes);
 app.use('/product', productRoutes);
-app.use('/menu-statistics', menuStatisticsRoutes);
 app.use('/variations', variationRoutes);
 
 

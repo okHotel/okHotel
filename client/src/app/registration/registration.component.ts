@@ -51,8 +51,6 @@ export class RegistrationComponent implements OnInit {
         data => {
 
           if (this.checkInputIsValid(data)) {
-
-            console.log('new customer added');
             this.customer.role = 'customer';
             this.save();
             this.registrationSuccessed = true;
@@ -66,9 +64,10 @@ export class RegistrationComponent implements OnInit {
           }
 
         }, error => {
-          console.log('DB error');
+          console.log(error.error.msg);
           this.registrationSuccessed = false;
           this.submitted = false;
+          this.message = error.error.msg;
         });
   }
 
@@ -88,9 +87,9 @@ export class RegistrationComponent implements OnInit {
 
   private save(): void {
     this.customer.otherNeeds = this.customerNeeds;
-    console.log(this.customer);
     this.authService.addCustomer(this.customer)
-      .subscribe(() => this.router.navigate(['/']));
+      .subscribe(() => this.router.navigateByUrl('/'));
+
   }
 
   private getRoomsNumber() {
@@ -100,7 +99,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   private checkInputIsValid(booking: Booking) {
-
     return this.checkPasswordSameAs(this.confirmPassword)
       && this.checkNameSameAs(booking.bookingName)
       && this.checkSurnameSameAs(booking.bookingSurname)

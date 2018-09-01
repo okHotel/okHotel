@@ -26,8 +26,10 @@
 
       <app-add-dishes></app-add-dishes>
 
-      <button mat-button (click)="saveMenu()">Done</button>
+      <div id="buttonsDiv">
       <button mat-button (click)="deleteMenu()">Delete</button>
+      <button mat-button (click)="saveMenu()">Done</button>
+      </div>
 
       <div [hidden]="!isDateWrong"
            class="alert alert-danger">

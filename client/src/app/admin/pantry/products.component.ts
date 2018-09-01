@@ -9,14 +9,12 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import {PantryService} from "../../service/pantry/pantry.service";
 import {ProductDataSource} from "./product.dataSource";
-import {EditProductComponent} from "./edit-product/edit-product.component";
 import {DeleteProductComponent} from "./delete-product/delete-product.component";
-import {AddProductComponent} from "./add-product/add-product.component";
-import {Product} from "./product";
 import {BarcodeDecoderService} from "../../service/pantry/barcode-scanner/barcode-decoder.service";
 import {BarcodeValidatorService} from "../../service/pantry/barcode-scanner/barcode-validator.service";
 import {Subject} from "rxjs";
 import {Router} from '@angular/router';
+import {ErrorService} from '../../service/error/error.service';
 
 @Component({
   selector: 'app-products',
@@ -33,7 +31,7 @@ export class ProductsComponent implements OnInit {
 
     lastResult: any;
     message: any;
-    error: any;
+    error: string;
     code$ = new Subject<any>();
     @ViewChild('interactive') interactive;
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -44,7 +42,7 @@ export class ProductsComponent implements OnInit {
     constructor(public httpClient: HttpClient,
                 public router: Router,
                 public dialog: MatDialog,
-                public dataService: PantryService,
+                public errorService: ErrorService,
                 private decoderService: BarcodeDecoderService,
                 private barcodeValidator: BarcodeValidatorService) {}
 
@@ -65,15 +63,11 @@ export class ProductsComponent implements OnInit {
                 this.filter.nativeElement.value = code.toString();
                 console.log(code)
             })
-            .catch((err) => this.error = `Something Wrong: ${err}`);
+            .catch((err) => this.errorService.error = `Something Wrong: ${err}`);
 
         this.barcodeValidator
             .doSearchbyCode(this.code$)
             .subscribe();
-    }
-
-    refresh() {
-        this.loadData();
     }
 
     addNew() {
@@ -130,7 +124,7 @@ export class ProductsComponent implements OnInit {
                     return;
                 }
                 this.dataSource.filter = this.filter.nativeElement.value;
-            });
+            }, err => this.errorService.error = err);
     }
 
     ngAfterContentInit() {

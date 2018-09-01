@@ -7,10 +7,17 @@ const Customer = require('../model/customer.model.js');
 exports.findAll = (req, res) => {
     Customer.find({})
         .then(customers => {
+            if(!customers) {
+                return res.status(404).json({
+                    message: "No customer was found"
+                })
+            }
+
             res.json(customers);
         }).catch(err => {
+            console.log(err);
         res.status(500).send({
-            msg: err.message
+            message: err.message
         });
     });
 };
@@ -31,18 +38,18 @@ exports.findOne = (req, res) => {
         .then(customer => {
             if(!customer) {
                 return res.status(404).json({
-                    msg: "Customer not found with id " + req.params.customerId
+                    message: "Customer not found with id " + req.params.customerId
                 });
             }
             res.json(customer);
         }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).json({
-                msg: "Customer not found with id " + req.params.customerId
+                message: "Customer not found with id " + req.params.customerId
             });
         }
         return res.status(500).json({
-            msg: "Error retrieving Customer with id " + req.params.customerId
+            message: "Error retrieving Customer with id " + req.params.customerId
         });
     });
 };
@@ -57,25 +64,25 @@ exports.update = (req, res) => {
     let payload = jwt.verify(token, jwtConfig.jwtSecretKey);
 
     if (req.body._id !== payload._id && payload.role !== 'admin') {
-        return res.status(401).send({msg: 'You are not authorized1'});
+        return res.status(401).send({message: 'You are not authorized'});
     }
 
     Customer.findByIdAndUpdate(req.body._id, req.body, {new: true})
         .then(customer => {
             if(!customer) {
                 return res.status(404).json({
-                    msg: "Customer not found with id " + req.body._id
+                    message: "Customer not found with id " + req.body._id
                 });
             }
             res.json(customer);
         }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).json({
-                msg: "Customer not found with id " + req.body._id
+                message: "Customer not found with id " + req.body._id
             });
         }
         return res.status(500).json({
-            msg: "Error updating customer with id " + req.body._id
+            message: "Error updating customer with id " + req.body._id
         });
     });
 };
@@ -86,7 +93,7 @@ exports.delete = (req, res) => {
 
     let token = authHeader.split(" ")[1];
     let payload = jwt.verify(token, jwtConfig.jwtSecretKey);
-    if (req.params.customerId !== payload._id || payload.role !== 'admin') {
+    if (req.params.customerId !== payload._id && payload.role !== 'admin') {
         return res.status(401).send({message: 'You are not authorized'});
     }
 
@@ -94,18 +101,18 @@ exports.delete = (req, res) => {
         .then(customer => {
             if(!customer) {
                 return res.status(404).json({
-                    msg: "Customer not found with id " + req.params.customerId
+                    message: "Customer not found with id " + req.params.customerId
                 });
             }
-            res.json({msg: "Customer deleted successfully!"});
+            res.json({message: "Customer deleted successfully!"});
         }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).json({
-                msg: "Customer not found with id " + req.params.customerId
+                message: "Customer not found with id " + req.params.customerId
             });
         }
         return res.status(500).json({
-            msg: "Could not delete customer with id " + req.params.customerId
+            message: "Could not delete customer with id " + req.params.customerId
         });
     });
 };

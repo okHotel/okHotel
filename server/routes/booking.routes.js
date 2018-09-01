@@ -14,9 +14,9 @@ app.get('/roomsNumber', booking.findRoomsNumber);
 app.get('/:bookingSurname/:bookingName', booking.findOne);
 
 // Update a booking with Id
-app.put('/', booking.update);
+app.put('/', authController.requireAuthBy(['admin']), booking.update);
 
 // Delete a booking with Id
-app.delete('/:bookingId', booking.delete);
+app.delete('/:bookingId', authController.requireAuthBy(['admin']), booking.delete);
 
 module.exports = app;

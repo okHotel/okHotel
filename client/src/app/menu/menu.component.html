@@ -1,17 +1,24 @@
-<div class="w3-row">
+<div class="w3-row" [hidden]="!errorService.error">
+  <div class="w3-col s0 m1 l2">&nbsp;</div>
+
+  <div class="w3-col s12 m10 l8" >
+    <app-error></app-error>
+  </div>
+
+  <div class="w3-col s0 m1 l2">&nbsp;</div>
+</div>
+
+<div class="w3-row" [hidden]="errorService.error">
   <div class="w3-col l12 m12 s12 w3-center">
     <p id="title">Please choose what you want to eat today</p>
   </div>
 </div>
 
-
-
-<div class="w3-row">
+<div class="w3-row" [hidden]="errorService.error">
 
   <div class="w3-col l12 m12 s12 w3-center">
 
     <table summary="The courses you can select for lunch">
-
       <caption>Lunch</caption>
       <tr>
         <th scope="col">Dish</th>
@@ -56,7 +63,7 @@
 </div>
 
 
-<div class="w3-row">
+<div class="w3-row" [hidden]="errorService.error">
 
   <div class="w3-col l12 m12 s12 w3-center">
     <table summary="The courses you can select for dinner" >
@@ -103,7 +110,7 @@
   </div>
 </div>
 
-<div class="w3-row">
+<div class="w3-row" [hidden]="errorService.error">
 
   <div class="w3-col l3 m3 s3 w3-center">&nbsp;</div>
 
@@ -118,7 +125,7 @@
 
 </div>
 
-<div class="w3-row">
+<div class="w3-row" [hidden]="errorService.error">
 
   <div class="w3-col l4 m4 s4 w3-left">&nbsp;</div>
 
@@ -130,7 +137,7 @@
 
 </div>
 
-<div class="w3-row">
+<div class="w3-row" [hidden]="errorService.error">
   <div class="w3-col l4 m6 s4 w3-left">&nbsp;</div>
   <div class="w3-col l8 m6 s8 w3-center" id="save">
     <button  mat-button  [disabled]="checkSave()"  (click)="saveReservations()">Save</button>

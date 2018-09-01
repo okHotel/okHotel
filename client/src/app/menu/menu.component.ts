@@ -6,6 +6,7 @@ import {CustomerService} from '../service/customer/customer.service';
 import {Meal, Reservation, Variation} from './reservation';
 import {Menu} from './menu';
 import {Note} from './Note';
+import {ErrorService} from '../service/error/error.service';
 
 @Component({
     selector: 'app-menu',
@@ -21,10 +22,15 @@ export class MenuComponent implements OnInit {
     people: number[] = [];
     room: number;
 
-    constructor(private router: Router, public menu: MenuService, private datepipe: DatePipe, private customerService: CustomerService) {
+    constructor(private router: Router,
+                public menu: MenuService,
+                private datepipe: DatePipe,
+                private customerService: CustomerService,
+                public errorService: ErrorService) {
     }
 
     ngOnInit() {
+        this.menu.menu.otherNotes = [];
 
         const latest_date: string = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
         this.menu.setDate(new Date(latest_date));
@@ -34,8 +40,10 @@ export class MenuComponent implements OnInit {
                 this.menu.setMenu(data);
                 console.log('Menu loaded');
             },
-            error => {
-                console.log(error);
+            err => {
+                console.log(err.error.message);
+                this.errorService.error = err.error.message;
+                console.log(this.errorService.error)
             }
         );
 

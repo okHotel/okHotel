@@ -19,7 +19,7 @@
                 </button>{{variation}}</p>
             </div>
             <input id="variation" type="text" class="form-control" placeholder="Variation"
-                   required name="variation" [(ngModel)]="variation.type" >
+                   required name="variation" [(ngModel)]="variation.type" (keyup.enter)="addVariation(variation.type)" >
             <button mat-button #button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)">
                 <i class="material-icons">add</i>
             </button>

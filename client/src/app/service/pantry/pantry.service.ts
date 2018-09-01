@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {Product} from "../../admin/pantry/product";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable, ObservableInput} from "rxjs";
-import {Customer} from "../../customer/customer";
+import {Observable} from "rxjs";
+import {AuthService} from '../auth/auth.service';
 
 @Injectable()
 export class PantryService {
@@ -30,32 +30,45 @@ export class PantryService {
 
     /** CRUD METHODS */
     getProducts(): void {
-        this.httpClient.get<Product[]>(this.pantryUrl).subscribe(data => {
+      let httpHeaders = AuthService.getHeaderWithAuthorization();
+
+
+      this.httpClient.get<Product[]>(this.pantryUrl,  {headers: httpHeaders}).subscribe(data => {
                 this.dataChange.next(data);
             },
             (error: HttpErrorResponse) => {
-                console.log (error.name + ' ' + error.message);
+                console.log(error);
             });
     }
 
     getProduct(id: string): Observable<Product> {
       const url = this.pantryUrl + '/' + id;
-      return this.httpClient.get<Product>(url);
+      let httpHeaders = AuthService.getHeaderWithAuthorization();
+
+      return this.httpClient.get<Product>(url, {headers: httpHeaders});
     }
 
-    addProduct(product: Product): void {
-       this.httpClient.post(this.pantryUrl, product).subscribe();
+    addProduct(product: Product): Observable<any> {
+      let httpHeaders = AuthService.getHeaderWithAuthorization();
+
+      return this.httpClient.post(this.pantryUrl, product, {headers: httpHeaders});
      }
 
     updateProduct(product: Product) {
-      this.httpClient.put(this.pantryUrl, product, this.httpOption).subscribe();
+      let httpHeaders = AuthService.getHeaderWithAuthorization();
+
+      this.httpClient.put(this.pantryUrl, product, {headers: httpHeaders}).subscribe();
     }
 
     deleteProduct(id: string): void {
-      this.httpClient.delete(this.pantryUrl + '/' + id).subscribe();
+      let httpHeaders = AuthService.getHeaderWithAuthorization();
+
+      this.httpClient.delete(this.pantryUrl + '/' + id, {headers: httpHeaders}).subscribe();
     }
 
     updateQuantityTo(value: number, product: Product) {
+      let httpHeaders = AuthService.getHeaderWithAuthorization();
+
       product.quantity = value;
       this.updateProduct(product);
     }

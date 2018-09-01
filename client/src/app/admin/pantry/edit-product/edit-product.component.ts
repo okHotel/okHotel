@@ -4,6 +4,7 @@ import {PantryService} from "../../../service/pantry/pantry.service";
 import {Product, Unit} from "../product";
 import {ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common';
+import {ErrorService} from '../../../service/error/error.service';
 
 @Component({
     selector: 'app-edit-product',
@@ -14,7 +15,8 @@ export class EditProductComponent {
 
     constructor(public pantryService: PantryService,
                 private route: ActivatedRoute,
-                private location: Location) { }
+                private location: Location,
+                public errorService: ErrorService) { }
 
     formControl = new FormControl('', [Validators.required]);
     product: Product = new Product();
@@ -30,7 +32,8 @@ export class EditProductComponent {
           this.product = product;
           console.log(this.product);
         }, err => {
-          this.error = err.error.message;
+          console.log(err);
+          this.errorService.error = err.error.message;
         });
     }
 
