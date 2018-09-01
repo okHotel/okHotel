@@ -86,14 +86,12 @@ export class MenuComponent implements OnInit {
     checkReservation(type1: Meal, type2: Meal) {
         let total = 0;
 
-        this.menu.menu.reservations.forEach(e => {
-            if (e.roomNumber === this.room &&  e.type === type1 || e.type === type2) {
-                total += e.quantity;
-            }
-        });
+        this.menu.menu.reservations
+          .filter(r => r.roomNumber === this.room )
+          .filter(r => r.type === type1 || r.type === type2)
+          .forEach(e => total += e.quantity);
 
         const mul_factor = type1 === Meal.LUNCH ? 2 : 3;
-
         return total > (this.people.length - 1) * mul_factor;
     }
 
