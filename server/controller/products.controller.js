@@ -14,7 +14,7 @@ exports.findAll = (req, res) => {
             res.json(pantry);
         }).catch(err => {
         res.status(500).send({
-            msg: err.message
+            message: err.message
         });
     });
 };
@@ -25,18 +25,18 @@ exports.findProduct = (req, res) => {
         .then(product => {
             if(!product) {
                 return res.status(404).json({
-                    msg: "Product not found with id " + req.params.productId
+                    message: "Product not found with id " + req.params.productId
                 });
             }
             res.json(product);
         }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).json({
-                msg: "Product not found with id " + req.params.productId
+                message: "Product not found with id " + req.params.productId
             });
         }
         return res.status(500).json({
-            msg: "Error retrieving Product with id " + req.params.productId
+            message: "Error retrieving Product with id " + req.params.productId
         });
     });
 };
@@ -45,17 +45,16 @@ exports.findProduct = (req, res) => {
  * metodo per inserire un document nella collection Pantry
  */
 exports.insertProduct = (req, res) => {
-    console.log('inserting')
     const product = new Product(req.body);
     product.save()
         .then(data => {
             res.status(201).json({
-                msg: 'product added successfully'
+                message: 'product added successfully'
             })
         }).catch(err => {
         console.log(err);
         res.status(500).json({
-            msg: err.message
+            message: err.message
         });
     });
 
@@ -67,10 +66,9 @@ exports.insertProduct = (req, res) => {
 exports.updateProduct = (req, res) => {
         Product.findByIdAndUpdate(req.body._id, req.body, {new: true})
             .then(product => {
-                console.log('Updating product')
                 if (!product) {
                     return res.status(404).json({
-                        msg: "Product not found with code1" + req.body.code
+                        message: "Product not found with code1" + req.body.code
                     });
                 }
 
@@ -78,11 +76,11 @@ exports.updateProduct = (req, res) => {
             }).catch(err => {
                 if (err.kind === 'ObjectId') {
                     return res.status(404).json({
-                        msg: "Product not found with code2 " + req.body.code
+                        message: "Product not found with code2 " + req.body.code
                     });
                 }
                 return res.status(500).json({
-                    msg: "Error updating product with code3 " + req.body.code
+                    message: "Error updating product with code3 " + req.body.code
                 });
             });
 };
@@ -93,18 +91,18 @@ exports.delete = (req, res) => {
         .then(product => {
             if(!product) {
                 return res.status(404).json({
-                    msg: "Product not found with id " + req.params.productId
+                    message: "Product not found with id " + req.params.productId
                 });
             }
-            res.json({msg: "Product deleted successfully!"});
+            res.json({message: "Product deleted successfully!"});
         }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).json({
-                msg: "Product not found with id " + req.params.productId
+                message: "Product not found with id " + req.params.productId
             });
         }
         return res.status(500).json({
-            msg: "Could not delete product with id " + req.params.productId
+            message: "Could not delete product with id " + req.params.productId
         });
     });
 };

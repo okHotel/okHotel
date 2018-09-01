@@ -38,13 +38,13 @@ exports.create = (req, res, next) => {
 
             if(err){
                 return res.json( {
-                    msg: err
+                    message: err
                 });
             }
             bcrypt.hash(req.body.password, salt, null, function(err, hash) {
                 if (err) {
                     return res.json( {
-                        msg: err
+                        message: err
                     });
                 }
                 const customer = new Customer(req.body);
@@ -62,7 +62,7 @@ exports.create = (req, res, next) => {
                     }).catch(err => {
                         console.log(err);
                         res.status(500).json({
-                            msg: err.message
+                            message: err.message
                         });
                     });
             });
@@ -75,7 +75,7 @@ exports.login = (req, res, next) => {
         .then(customer => {
             if(!customer) {
                 return res.status(404).json({
-                    msg: "Customer not found with username" + req.body.username
+                    message: "Customer not found with username" + req.body.username
                 });
             }
             bcrypt.compare(req.body.password, customer.password, function(err, isMatch){
@@ -118,11 +118,11 @@ exports.login = (req, res, next) => {
         }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).json({
-                msg: "Customer not found with username " + req.body.username
+                message: "Customer not found with username " + req.body.username
             });
         }
         return res.status(500).json({
-            msg: "Error retrieving Customer with username " + req.body.username
+            message: "Error retrieving Customer with username " + req.body.username
         });
     });
 };

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../customer';
 import { CustomerService } from '../../service/customer/customer.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common';
 import {AuthService} from '../../service/auth/auth.service';
+import {ErrorService} from '../../service/error/error.service';
 
 @Component({
     selector: 'app-customer-details',
@@ -23,7 +24,8 @@ export class CustomerDetailComponent implements OnInit {
     constructor(
         private customerService: CustomerService,
         private route: ActivatedRoute,
-        private location: Location
+        private location: Location,
+        private errorService: ErrorService
     ) {}
 
     ngOnInit(): void {
@@ -33,7 +35,8 @@ export class CustomerDetailComponent implements OnInit {
                     this.customer = customer;
                     this.customerNeeds = customer.otherNeeds;
                 }, err => {
-                    this.error = err.error.message;
+                    console.log(err)
+                    this.errorService.error = err.error.message;
                 });
         this.canUserEdit = AuthService.isUserAdmin();
     }

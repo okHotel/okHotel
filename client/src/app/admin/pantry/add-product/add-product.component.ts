@@ -4,6 +4,7 @@ import {PantryService} from '../../../service/pantry/pantry.service';
 import {Product, Unit} from '../product';
 import {ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common';
+import {ErrorService} from '../../../service/error/error.service';
 
 @Component({
     selector: 'app-add-product',
@@ -19,7 +20,8 @@ export class AddProductComponent implements OnInit {
 
     constructor(public pantryService: PantryService,
                 private route: ActivatedRoute,
-                private location: Location) {}
+                private location: Location,
+                public errorService: ErrorService) {}
 
     formControl = new FormControl('', [
         Validators.required
@@ -46,7 +48,12 @@ export class AddProductComponent implements OnInit {
     }
 
     public onSave(): void {
-        this.pantryService.addProduct(this.product);
+        this.pantryService.addProduct(this.product)
+          .subscribe(result => console.log(result), error => {
+            this.errorService.error = error.error.message;
+            console.log(error)
+          });
+        this.location.back();
     }
 
     isCodeInvalid(code) {

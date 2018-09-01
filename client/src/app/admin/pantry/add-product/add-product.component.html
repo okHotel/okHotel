@@ -3,9 +3,12 @@
   <div class="w3-col l2">&nbsp;</div>
 
   <div class="w3-col s12 m12 l8 mat-elevation-z8 container centered">
-    <h3 mat-dialog-title>Add new Product</h3>
 
-    <form class="mat-dialog-content" (ngSubmit)="submit()" #formControl="ngForm">
+    <app-error></app-error>
+
+    <h3>Add new Product</h3>
+
+    <form (ngSubmit)="submit()" #formControl="ngForm">
 
       <div class="form">
         <mat-form-field color="accent">
@@ -49,11 +52,8 @@
         </mat-form-field>
       </div>
 
-      <div mat-dialog-actions>
-
-        <button mat-button [type]="submit" [disabled]="!formControl.valid || isCodeInvalid(product.code)" [mat-dialog-close]="1" (click)="onSave()">Save</button>
+        <button mat-button [type]="submit" [disabled]="!formControl.valid || isCodeInvalid(product.code)" (click)="onSave()">Save</button>
         <button mat-button (click)="goBack()" tabindex="-1">Cancel</button>
-      </div>
     </form>
   </div>
   <div class="w3-col l2">&nbsp;</div>
