@@ -6,9 +6,7 @@
     <div [hidden]="submitted" class="container mat-elevation-z8" id="FormDiv">
       <h3>Add Customer</h3>
 
-      <div [hidden]="registrationSuccessed"  class="w3-panel danger w3-round-large">
-        {{message}}
-      </div>
+      <app-error></app-error>
 
       <form class="mat-dialog-content" #addCustomerForm="ngForm">
         <div class="form">

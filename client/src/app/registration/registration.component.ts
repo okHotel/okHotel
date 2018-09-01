@@ -7,6 +7,7 @@ import {Booking} from "../booking/booking";
 import {BookingService} from "../service/booking/booking.service";
 import {AuthService} from "../service/auth/auth.service";
 import {ActivatedRoute, Router} from '@angular/router';
+import {ErrorService} from '../service/error/error.service';
 
 @Component({
   selector: 'registration-customer',
@@ -22,18 +23,19 @@ export class RegistrationComponent implements OnInit {
   customerNeeds: string[] = [];
   need: string;
   registrationSuccessed = true;
-  message = 'Input not valid';
 
   constructor(
     private customerService: CustomerService,
     private authService: AuthService,
     private bookingService: BookingService,
     private location: Location,
-    private router: Router
+    private router: Router,
+    public error: ErrorService
   ) { }
 
   ngOnInit() {
     this.getRoomsNumber();
+    this.customerService.getCustomers();
   }
 
   newCustomer(): void {
@@ -49,25 +51,23 @@ export class RegistrationComponent implements OnInit {
       .subscribe(
 
         data => {
-
           if (this.checkInputIsValid(data)) {
             this.customer.role = 'customer';
             this.save();
             this.registrationSuccessed = true;
+            this.router.navigateByUrl('');
 
           } else {
-
-            //TODO reindirizza bene
-            console.log('Input error');
             this.registrationSuccessed = false;
             this.submitted = false;
+            this.error.error = 'Input not valid';
           }
 
         }, error => {
           console.log(error.error.msg);
           this.registrationSuccessed = false;
           this.submitted = false;
-          this.message = error.error.msg;
+          this.error.error  = error.error.msg;
         });
   }
 
@@ -103,26 +103,42 @@ export class RegistrationComponent implements OnInit {
       && this.checkNameSameAs(booking.bookingName)
       && this.checkSurnameSameAs(booking.bookingSurname)
       && this.checkRoomNumberSameAs(booking.roomNumber)
-      && this.checkNumberOfPeopleSameAs(booking.numberOfPeople);
+      && this.checkNumberOfPeopleSameAs(booking.numberOfPeople)
+      && this.checkUsername();
   }
 
   private checkPasswordSameAs(password: string) {
+    console.log('b1');
     return this.customer.password === password;
   }
 
   private checkNameSameAs(name: string) {
+    console.log('b2');
     return this.customer.bookingName === name;
   }
 
   private checkSurnameSameAs(surname: string) {
+    console.log('b3');
     return this.customer.bookingSurname === surname;
   }
 
   private checkRoomNumberSameAs(roomNumber: number) {
+    console.log('b4');
     return this.customer.roomNumber === roomNumber;
   }
 
   private checkNumberOfPeopleSameAs(numberOfPeople: number) {
+    console.log('b5');
     return this.customer.numberOfPeople === numberOfPeople;
+  }
+
+  private checkUsername() {
+    this.customerService.dataChange.forEach( d => d.forEach( c => {
+      if (c.username === this.customer.username) {
+        return false;
+      }
+    }));
+
+    return true;
   }
 }
