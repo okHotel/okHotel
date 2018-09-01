@@ -6,7 +6,9 @@
     <div class="w3-col l6 m3 s4 w3-center">
 
         <div id="variationDiv" class="container mat-elevation-z8 centered">
+          <div id="labelDiv">
             <label for="variation" >Insert Variations</label>
+          </div>
             <div *ngFor="let variation of variations; let i = index" id="variationsAddedDiv">
                 <p><button mat-button #button id="delButton" (click)="deleteVariation(i)">
                     <i class="material-icons">clear</i>
