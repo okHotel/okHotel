@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import {Product} from "../../admin/pantry/product";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable, ObservableInput} from "rxjs";
-import {Customer} from "../../customer/customer";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class PantryService {

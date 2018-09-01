@@ -17,6 +17,7 @@ import {BarcodeDecoderService} from "../../service/pantry/barcode-scanner/barcod
 import {BarcodeValidatorService} from "../../service/pantry/barcode-scanner/barcode-validator.service";
 import {Subject} from "rxjs";
 import {Router} from '@angular/router';
+import {ErrorService} from '../../service/error/error.service';
 
 @Component({
   selector: 'app-products',
@@ -33,7 +34,7 @@ export class ProductsComponent implements OnInit {
 
     lastResult: any;
     message: any;
-    error: any;
+    error: string;
     code$ = new Subject<any>();
     @ViewChild('interactive') interactive;
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -44,7 +45,7 @@ export class ProductsComponent implements OnInit {
     constructor(public httpClient: HttpClient,
                 public router: Router,
                 public dialog: MatDialog,
-                public dataService: PantryService,
+                public errorService: ErrorService,
                 private decoderService: BarcodeDecoderService,
                 private barcodeValidator: BarcodeValidatorService) {}
 
@@ -65,15 +66,11 @@ export class ProductsComponent implements OnInit {
                 this.filter.nativeElement.value = code.toString();
                 console.log(code)
             })
-            .catch((err) => this.error = `Something Wrong: ${err}`);
+            .catch((err) => this.errorService.error = `Something Wrong: ${err}`);
 
         this.barcodeValidator
             .doSearchbyCode(this.code$)
             .subscribe();
-    }
-
-    refresh() {
-        this.loadData();
     }
 
     addNew() {

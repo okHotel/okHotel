@@ -49,6 +49,8 @@ import { DeleteProductComponent } from './admin/pantry/delete-product/delete-pro
 import { ProductsComponent } from './admin/pantry/products.component';
 import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
 import { MenuStatisticsComponent } from './menu/menu-statistics/menu-statistics.component';
+import { ErrorComponent } from './error/error.component';
+import {ErrorService} from './service/error/error.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
@@ -97,6 +99,7 @@ const appRoutes: Routes = [
         ProductsComponent,
         DeleteCustomerComponent,
         MenuStatisticsComponent,
+        ErrorComponent,
     ],
     imports: [
         BrowserModule,
@@ -130,7 +133,7 @@ const appRoutes: Routes = [
     ],
     exports: [CommonModule, MatToolbarModule, MatInputModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule,
         NoopAnimationsModule, MatSortModule],
-    providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService,
+    providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService, ErrorService,
         BarcodeValidatorService, PantryService, DatePipe],
     bootstrap: [AppComponent]
 

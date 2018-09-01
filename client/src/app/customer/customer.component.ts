@@ -22,7 +22,6 @@ export class CustomerComponent implements OnInit {
     displayedColumns = ['bookingName', 'bookingSurname', 'actions'];
     dataSource: CustomerDataSource | null;
     message: string;
-    index: number;
     id: string;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -67,6 +66,8 @@ export class CustomerComponent implements OnInit {
                     return;
                 }
                 this.dataSource.filter = this.filter.nativeElement.value;
+            }, err => {
+              this.error = err.error
             });
     }
 }

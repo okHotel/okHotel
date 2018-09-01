@@ -3,9 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Customer } from '../../customer/customer';
 import {AuthService} from "../auth/auth.service";
-import {BehaviorSubject} from "../../../../node_modules/rxjs/BehaviorSubject";
-import {Product} from "../../admin/pantry/product";
-import {HttpErrorResponse} from "../../../../node_modules/@angular/common/http";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
@@ -29,7 +28,7 @@ export class CustomerService {
     get data(): Customer[] {
         return this.dataChange.value;
     }
-
+    
     getCustomers(): void {
         let httpHeaders = AuthService.getHeaderWithAuthorization();
 
@@ -37,7 +36,6 @@ export class CustomerService {
                 this.dataChange.next(data);
             },
             (error: HttpErrorResponse) => {
-                console.log (error.name + ' ' + error.message);
                 this.dataChange.error(error)
             });
     }
