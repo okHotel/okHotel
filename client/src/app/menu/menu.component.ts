@@ -66,7 +66,30 @@ export class MenuComponent implements OnInit {
       }
 
       this.menu.savedRes = this.menu.menu.reservations.filter(r => r.dish === dish && r.type === type).pop();
-      this.menu.showVariations = true;
+
+      switch (type) {
+        case this.l: {
+          this.menu.showLunchVariations = true;
+          break;
+        }
+        case this.hl: {
+          this.menu.showLunchVariations = true;
+          break;
+        }
+        case this.d: {
+          this.menu.showDinnerVariations = true;
+          break;
+        }
+        case this.hd: {
+          this.menu.showDinnerVariations = true;
+          break;
+        }
+        default: {
+          //statements;
+          break;
+        }
+      }
+
     }
 
     setReservation(selectedType: Meal, selectedDish: string, selectedQuantity: number) {

@@ -40,7 +40,8 @@ export class MenuVariationsComponent implements OnInit {
     }
 
     goToMenu() {
-        this.menu.showVariations = false;
+        this.menu.showLunchVariations = false;
+        this.menu.showDinnerVariations = false;
     }
 
     setVariation(variationName: string, variationType: VariationType, selectedQuantity: number) {
