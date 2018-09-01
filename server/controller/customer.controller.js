@@ -64,7 +64,7 @@ exports.update = (req, res) => {
     let payload = jwt.verify(token, jwtConfig.jwtSecretKey);
 
     if (req.body._id !== payload._id && payload.role !== 'admin') {
-        return res.status(401).send({message: 'You are not authorized1'});
+        return res.status(401).send({message: 'You are not authorized'});
     }
 
     Customer.findByIdAndUpdate(req.body._id, req.body, {new: true})

@@ -14,7 +14,7 @@ exports.create = (req, res) => {
         }).catch(err => {
         console.log(err);
         res.status(500).json({
-            msg: err.message
+            message: err.message
         });
     });
 };
@@ -27,7 +27,7 @@ exports.update =  (req, res) => {
         .then(menu => {
             if(!menu) {
                 return res.status(404).json({
-                    msg: "Menu not found with id " + req.body._id
+                    message: "Menu not found with id " + req.body._id
                 });
             }
             res.json(menu);
@@ -35,11 +35,11 @@ exports.update =  (req, res) => {
         }).catch(err => {
             if(err.kind === 'ObjectId') {
                 return res.status(404).json({
-                    msg: "Menu not found with id " + req.body._id
+                    message: "Menu not found with id " + req.body._id
                 });
             }
             return res.status(500).json({
-                msg: "Error updating menu with id " + req.body._id + err.toString()
+                message: "Error updating menu with id " + req.body._id + err.toString()
             });
     });
 }
@@ -52,7 +52,7 @@ exports.findAll = (req, res) => {
             res.json(menu);
         }).catch(err => {
         res.status(500).send({
-            msg: err.message
+            message: err.message
         });
     });
 };
@@ -66,7 +66,7 @@ exports.findOne = (req, res) => {
         .then(menu => {
             if(!menu) {
                 return res.status(404).json({
-                    msg: "Menu of " + date1 + "not found"
+                    message: "Menu of " + date1 + " not found"
                 });
             }
             res.json(menu);
@@ -75,11 +75,11 @@ exports.findOne = (req, res) => {
 
             if(err.kind === 'ObjectId') {
             return res.status(404).json({
-                msg: "Menu of " + date1 + "not found"
+                message: "Menu of " + date1 + " not found"
             });
         }
         return res.status(500).json({
-            msg: "Error retrieving Menu of " + date1
+            message: "Error retrieving Menu of " + date1
         });
     });
 };
@@ -94,18 +94,18 @@ exports.delete = (req, res) => {
     }).then(menu => {
         if(!menu) {
             return res.status(404).json({
-                msg: "Menu not found with date " + req.params.date
+                message: "Menu not found with date " + req.params.date
             });
         }
-        res.json({msg: "Menu deleted successfully!"});
+        res.json({message: "Menu deleted successfully!"});
     }).catch(err => {
         if (err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).json({
-                msg: "Menu not found with id " + req.params.date
+                message: "Menu not found with id " + req.params.date
             });
         }
         return res.status(500).json({
-            msg: "Could not delete menu with id " + req.params.date
+            message: "Could not delete menu with id " + req.params.date
         });
     });
 };

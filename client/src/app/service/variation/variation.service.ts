@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {Variation} from '../../admin/add-variation/variation';
 import {HttpClient} from '@angular/common/http';
+import {AuthService} from '../auth/auth.service';
 
 
 
@@ -22,17 +23,22 @@ export class VariationService {
      * passando url e header
      */
     getVariations(): Observable<Variation[]> {
-        return this.http.get<Variation[]>(this.variationsUrl);
+      let httpHeaders = AuthService.getHeaderWithAuthorization();
+
+      return this.http.get<Variation[]>(this.variationsUrl, {headers: httpHeaders});
     }
 
     addVariation(variation: Variation): Observable<any> {
+      let httpHeaders = AuthService.getHeaderWithAuthorization();
 
-        return this.http.put<Variation[]>(this.variationsUrl, variation);
+      return this.http.put<Variation[]>(this.variationsUrl, variation, {headers: httpHeaders});
     }
 
     deleteVariation(id: String) {
-        const url = `${this.variationsUrl}/${id}`;
-        return this.http.delete(url);
+      let httpHeaders = AuthService.getHeaderWithAuthorization();
+
+      const url = `${this.variationsUrl}/${id}`;
+        return this.http.delete(url, {headers: httpHeaders});
     }
 
 
