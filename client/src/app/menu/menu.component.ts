@@ -140,7 +140,7 @@ export class MenuComponent implements OnInit {
             if (r.roomNumber === this.room && r.type === type && r.dish === dish) {
                 res = r.quantity;
             }
-        })
+        });
         return res;
     }
 
@@ -161,11 +161,10 @@ export class MenuComponent implements OnInit {
             };
             this.menu.menu.otherNotes.push(note);
         }
-
     }
 
     getNote() {
-        let res = '';
+        let res = 'soup, salt-free, ...';
         this.menu.menu.otherNotes.forEach( n => {
             if (n.roomNumber === this.room) {
                 res = n.text;

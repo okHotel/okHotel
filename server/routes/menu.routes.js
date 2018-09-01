@@ -13,7 +13,7 @@ app.get('/', authController.requireAuthBy(['admin']), menu.findAll);
 app.put('/create', authController.requireAuthBy(['admin']), menu.create);
 
 //Update a Menu with Id
-app.put('/update', authController.requireAuthBy(['admin']), menu.update);
+app.put('/update', authController.requireAuthBy(['admin','customer']), menu.update);
 
 // Retrieve a single Menu by Id
 app.get('/:date', authController.requireAuthBy(['customer', 'admin']), menu.findOne);
