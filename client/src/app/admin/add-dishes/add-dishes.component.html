@@ -13,7 +13,7 @@
   <div class="w3-col l12 m12 s12 w3-center">
 
     <div class="dishDiv">
-      <div *ngFor="let dish of menu.menu.lunch_dishes" style="background-color: red" class="dish">
+      <div *ngFor="let dish of menu.menu.lunch_dishes" class="dish">
         <button mat-button (click)="deleteLunchDish(dish)"><i class="material-icons prefix">clear</i> </button> {{dish}}
       </div>
     </div>
