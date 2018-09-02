@@ -65,13 +65,20 @@
                 {{need}}
               </mat-list-item>
             </mat-list>
-            <input matInput #needInput id='otherNeeds' name="need" [(ngModel)]="need" />
+            <div class="w3-row">
+              <div class="w3-col l10 m10 s10 w3-left">
+                <input matInput #needInput id='otherNeeds' name="need" [(ngModel)]="need" />
+              </div>
+              <div class="w3-col l2 m2 s2 w3-right">
+                <button mat-button (click)="addNeedAndUpdate(need)" [disabled]="isInputInvalid(need)">
+                  <i class="material-icons">add</i>
+                </button>
+              </div>
+            </div>
           </mat-form-field>
         </div>
 
-        <button mat-button (click)="addNeedAndUpdate(need)" [disabled]="isInputInvalid(need)">
-          <i class="material-icons">add</i>
-        </button>
+
 
         <button class="btn-group-btn-group-sm" mat-button (click)="updateAndGoBack()" [disabled]="!detailCustomerForm.form.valid">Update</button>
         <button class="btn-group-btn-group-sm" mat-button (click)="goBack()">Back</button>
