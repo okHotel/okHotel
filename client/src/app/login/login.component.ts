@@ -3,6 +3,7 @@ import {CustomerService} from '../service/customer/customer.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../service/auth/auth.service';
+import {ErrorService} from '../service/error/error.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   destinationUrl = '';
 
   constructor(private customerService: CustomerService, private authService: AuthService,
-              private router: Router, private route: ActivatedRoute) { }
+              private router: Router, private route: ActivatedRoute, private error: ErrorService) { }
 
   ngOnInit() {
     this.route.queryParams
@@ -42,6 +43,7 @@ export class LoginComponent implements OnInit {
         // print login failed due to wrong username or password
         console.log('errore');
         console.log(err);
+        this.error.error = err.error.message;
       });
   }
 
