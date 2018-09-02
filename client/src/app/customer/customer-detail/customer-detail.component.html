@@ -57,19 +57,31 @@
         </div>
 
         <div class="form">
-          <mat-form-field color="accent">
-            Other needs:
-            <mat-list>
-              <mat-list-item *ngFor="let need of customer.otherNeeds">
-                <button mat-button (click)="deleteNeedAndUpdate(need)"><i class="material-icons prefix">clear</i> </button>
-                {{need}}
-              </mat-list-item>
-            </mat-list>
-
-            <input matInput #input id='otherNeeds' name="need" [(ngModel)]="need" />
-          </mat-form-field>
-          <button mat-button (click)="addNeedAndUpdate(need)"><i class="material-icons">add</i></button>
+          Other needs:
+          <mat-list>
+            <mat-list-item *ngFor="let need of customerNeeds">
+              <button mat-button type="button" (click)="deleteNeedAndUpdate(need)"><i class="material-icons">clear</i></button>
+              {{need}}
+            </mat-list-item>
+          </mat-list>
         </div>
+
+        <div class="w3-row">
+          <div class="w3-col l10 m10 s10 w3-center">
+            <div class="form">
+              <mat-form-field color="accent">
+                <input matInput #input id='otherNeeds' name="need" [(ngModel)]="need"
+                       placeholder="Other needs (p.e. disability types, number of children and/or pets, if present)"/>
+              </mat-form-field>
+
+            </div>
+          </div>
+          <div class="w3-col l2 m2 s2 w3-center">
+            <button mat-button type="button" (click)="addNeedAndUpdate(need)"><i class="material-icons">add</i></button>
+          </div>
+        </div>
+
+
         <button class="btn-group-btn-group-sm" mat-button (click)="goBack()">Back</button>
         <button class="btn-group-btn-group-sm" mat-button (click)="updateAndGoBack()" [disabled]="!detailCustomerForm.form.valid">Save</button>
         <!--
