@@ -70,8 +70,9 @@
           </mat-form-field>
           <button mat-button (click)="addNeedAndUpdate(need)"><i class="material-icons">add</i></button>
         </div>
-        <button class="btn-group-btn-group-sm" mat-button (click)="goBack()">Back</button>
+
         <button class="btn-group-btn-group-sm" mat-button (click)="updateAndGoBack()" [disabled]="!detailCustomerForm.form.valid">Update</button>
+        <button class="btn-group-btn-group-sm" mat-button (click)="goBack()">Back</button>
         <!--
                 <button class="btn-group-btn-group-sm" mat-button (click)="delete()">Delete</button>
         -->
