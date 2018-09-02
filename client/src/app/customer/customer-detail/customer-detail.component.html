@@ -57,7 +57,7 @@
         </div>
 
         <div class="form">
-          <mat-form-field color="accent">
+          <mat-form-field color="accent" (keyup.enter)="addNeedAndUpdate(need)">
             Other needs:
             <mat-list>
               <mat-list-item *ngFor="let need of customer.otherNeeds">
@@ -65,10 +65,11 @@
                 {{need}}
               </mat-list-item>
             </mat-list>
-
             <input matInput #needInput id='otherNeeds' name="need" [(ngModel)]="need" />
           </mat-form-field>
-          <button mat-button (click)="addNeedAndUpdate(need)"><i class="material-icons">add</i></button>
+          <button mat-button (click)="addNeedAndUpdate(need)" [disabled]="isInputInvalid(need)">
+            <i class="material-icons">add</i>
+          </button>
         </div>
 
         <button class="btn-group-btn-group-sm" mat-button (click)="updateAndGoBack()" [disabled]="!detailCustomerForm.form.valid">Update</button>

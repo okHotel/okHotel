@@ -58,8 +58,8 @@ export class CustomerDetailComponent implements OnInit {
         if (this.need.length > 0) {
             this.customerNeeds.push(this.need);
             this.update();
-            this.needInput.nativeElement.value = '';
         }
+      this.needInput.nativeElement.value = '';
     }
 
     deleteNeedAndUpdate(need: string) {
@@ -76,6 +76,10 @@ export class CustomerDetailComponent implements OnInit {
 
     goBack(): void {
         this.location.back();
+    }
+
+    isInputInvalid(need) {
+      return need === '';
     }
 
 }
