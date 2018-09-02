@@ -65,6 +65,10 @@
   display: none;
 }
 
+/deep/ .mat-tooltip {
+  font-size: 80%;
+}
+
 @media(max-width: 600px) {
 /*Custom header label that shows in each column, with a set width and bold font*/
 .add-product-small {
