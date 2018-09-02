@@ -56,6 +56,7 @@ export class CustomerDetailComponent implements OnInit {
     addNeedAndUpdate() {
         if (this.need.length > 0) {
             this.customerNeeds.push(this.need);
+            this.need = '';
             this.update();
         }
     }

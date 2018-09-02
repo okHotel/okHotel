@@ -77,6 +77,7 @@ export class RegistrationComponent implements OnInit {
 
   addNeed() {
     if (this.need.length > 0) {
+      this.need = '';
       this.customerNeeds.push(this.need);
     }
   }
