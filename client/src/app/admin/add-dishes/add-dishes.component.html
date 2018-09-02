@@ -28,7 +28,7 @@
 
     <div class="form" id="lunchinput">
       <mat-select id="commonLunchDishes" name="commonLunchDishes" placeholder="Common lunch dishes" [(ngModel)]="dish">
-        <mat-option *ngFor="let dish of commonLunchDishes" [value]=dish (click)="addLunchDish()" > {{dish}} </mat-option>
+        <mat-option *ngFor="let dish of commonDishes" [value]=dish (click)="addLunchDish()" > {{dish}} </mat-option>
       </mat-select>
 
       <mat-form-field color="accent" (keyup.enter)="addLunchDish()">
@@ -67,7 +67,7 @@
 
     <div class="form" id="dinnerinput">
       <mat-select id="commonDinnerDishes" name="commonDinnerDishes" placeholder="Common dinner dishes" [(ngModel)]="dish">
-        <mat-option *ngFor="let dish of commonDinnerDishes" [value]=dish (click)="addDinnerDish()" > {{dish}} </mat-option>
+        <mat-option *ngFor="let dish of commonDishes" [value]=dish (click)="addDinnerDish()" > {{dish}} </mat-option>
       </mat-select>
 
       <mat-form-field color="accent" (keyup.enter)="addDinnerDish()">
