@@ -53,7 +53,6 @@ export class MakeMenuViewComponent implements OnInit {
     if (this.checkDate()) {
       this.menu.saveMenu().subscribe( data =>{ console.log('Saved menu '+ data)});
     }
-
     this.router.navigateByUrl('/admin-profile');
 
   }

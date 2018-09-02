@@ -1,18 +1,14 @@
 
-
-<div class="w3-row">
-
-  <div class="w3-col l12 m12 s12 w3-center">
-    <label for="variation" >Insert Variations</label>
-  </div>
-
-</div>
+<div id="backgroundDiv">
 
 <div class="w3-row">
     <div class="w3-col l3 m6 s4 w3-left">&nbsp;</div>
     <div class="w3-col l6 m3 s4 w3-center">
-        <div id="variationDiv">
 
+        <div id="variationDiv" class="container mat-elevation-z8 centered">
+          <div id="labelDiv">
+            <label for="variation" >Insert Variations</label>
+          </div>
             <div *ngFor="let variation of variations; let i = index" id="variationsAddedDiv">
                 <p><button mat-button #button id="delButton" (click)="deleteVariation(i)">
                     <i class="material-icons">clear</i>
@@ -28,3 +24,4 @@
     <div class="w3-col l3 m3 s4 w3-right">&nbsp;</div>
 </div>
 
+</div>

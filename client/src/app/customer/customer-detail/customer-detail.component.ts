@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { Customer } from '../customer';
 import { CustomerService } from '../../service/customer/customer.service';
 import { ActivatedRoute} from '@angular/router';
@@ -13,6 +13,7 @@ import {ErrorService} from '../../service/error/error.service';
 })
 export class CustomerDetailComponent implements OnInit {
 
+    @ViewChild('needInput') needInput: ElementRef;
     customer = new Customer() ;
     submitted = false;
     message: string;
@@ -59,6 +60,7 @@ export class CustomerDetailComponent implements OnInit {
             this.need = '';
             this.update();
         }
+      this.needInput.nativeElement.value = '';
     }
 
     deleteNeedAndUpdate(need: string) {
@@ -75,6 +77,10 @@ export class CustomerDetailComponent implements OnInit {
 
     goBack(): void {
         this.location.back();
+    }
+
+    isInputInvalid(need) {
+      return need === '';
     }
 
 }

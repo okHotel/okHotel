@@ -69,8 +69,8 @@
         <div class="w3-row">
           <div class="w3-col l10 m10 s10 w3-center">
             <div class="form">
-              <mat-form-field color="accent">
-                <input matInput #input id='otherNeeds' name="need" [(ngModel)]="need"
+              <mat-form-field color="accent" (keyup.enter)="addNeedAndUpdate(need)">
+                <input matInput #needInput id='otherNeeds' name="need" [(ngModel)]="need"
                        placeholder="Other needs (p.e. disability types, number of children and/or pets, if present)"/>
               </mat-form-field>
 
