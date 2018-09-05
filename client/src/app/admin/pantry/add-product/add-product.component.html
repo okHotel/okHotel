@@ -12,7 +12,8 @@
 
       <div class="form">
         <mat-form-field color="accent">
-          <input [disabled]="isCodeReadOnly" matInput #input type="text" class="form-control" placeholder="Code" [(ngModel)]="product.code"
+          <label for="code">Code</label>
+          <input id="code" [disabled]="isCodeReadOnly" matInput #input type="text" class="form-control" placeholder="Code" [(ngModel)]="product.code"
                  name="code" pattern="[0-9]*">
           <mat-error >{{getErrorMessage()}}</mat-error>
         </mat-form-field>
@@ -21,7 +22,8 @@
       <!--Textarea for demo purposes-->
       <div class="form">
         <mat-form-field color="accent">
-          <input matInput #input class="form-control" placeholder="Name" [(ngModel)]="product.name" name="name" required >
+          <label for="name">Product name</label>
+          <input matInput id="name" #input class="form-control" placeholder="Name" [(ngModel)]="product.name" name="name" required >
           <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
       </div>
@@ -29,14 +31,18 @@
       <!--Contains mat-hint for characters count and has maxLengt set-->
       <div class="form">
         <mat-form-field color="accent">
-          <input matInput #inputstate class="form-control" placeholder="Category" [(ngModel)]="product.category" name="category" required >
+          <label for="category">Category</label>
+
+          <input matInput id="category" #inputstate class="form-control" placeholder="Category" [(ngModel)]="product.category" name="category" required >
           <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
       </div>
 
       <div class="form">
         <mat-form-field color="accent">
-          <input matInput type="text" placeholder="Quantity" [(ngModel)]="product.quantity" name="quantity" pattern="[0-9]*" required>
+          <label for="quantity">Quantity</label>
+
+          <input matInput id="quantity" type="text" placeholder="Quantity" [(ngModel)]="product.quantity" name="quantity" pattern="[0-9]*" required>
           <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
       </div>

@@ -5,8 +5,8 @@
   <div class="w3-col l4 m12 s12 w3-center centered container mat-elevation-z8">
 
     <button  mat-button *ngFor="let service of services" [disabled]="service.isEnabled == false" (click)="gotTo(service)">
-      <i [hidden]="!isLoading" class='material-icons'>spinner</i>
-      <span [hidden]="isLoading">{{service.name}} <i class='material-icons'>{{service.icon}}</i></span>
+      <span [hidden]="!isLoading" class='material-icons'>spinner</span>
+      <span [hidden]="isLoading">{{service.name}} <span class='material-icons'>{{service.icon}}</span></span>
     </button>
   </div>
 

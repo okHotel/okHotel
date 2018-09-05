@@ -13,14 +13,18 @@
 
           <div class="form-group" >
             <div class="input-field-col-s12">
-              <i id="material-icons-prefix-user" class="material-icons prefix">account_circle</i>
-              <input type="text" #UserName [(ngModel)]="username" name="UserName" placeholder="Username" required>
+              <label for="username">Username</label>
+
+              <span id="material-icons-prefix-user" class="material-icons prefix">account_circle</span>
+              <input type="text" id="username" #UserName [(ngModel)]="username" name="UserName" placeholder="Username" aria-label="username" required>
             </div>
           </div>
           <div class="form-group">
             <div class="input-field-col-s12">
-              <i id="material-icons-prefix-pass" class="material-icons prefix">vpn_key</i>
-              <input type="password" #Password [(ngModel)]="password" name="Password" placeholder="Password" required>
+              <label for="password">Password</label>
+
+              <span id="material-icons-prefix-pass" class="material-icons prefix">vpn_key</span>
+              <input type="password" id="password" #Password [(ngModel)]="password" name="Password" placeholder="Password" aria-label="username" required>
             </div>
           </div>
 

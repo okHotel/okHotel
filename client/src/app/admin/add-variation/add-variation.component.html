@@ -11,13 +11,14 @@
           </div>
             <div *ngFor="let variation of variations; let i = index" id="variationsAddedDiv">
                 <p><button mat-button #button id="delButton" (click)="deleteVariation(i)">
-                    <i class="material-icons">clear</i>
+                    <span class="material-icons">clear</span>
                 </button>{{variation}}</p>
             </div>
+            <label for="variation">Variation</label>
             <input id="variation" type="text" class="form-control" placeholder="Variation"
                    required name="variation" [(ngModel)]="variation.type" (keyup.enter)="addVariation(variation.type)" >
             <button mat-button #button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)">
-                <i class="material-icons">add</i>
+                <span class="material-icons">add</span>
             </button>
         </div>
     </div>

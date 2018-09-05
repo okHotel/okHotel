@@ -12,9 +12,8 @@
       <form #detailCustomerForm="ngForm" class="mat-dialog-content">
         <div class="form">
           <mat-form-field color="accent">
-            <!--
-                  <label for="bookingName">Booking name</label>
-            -->
+            <label for="bookingName">Booking name</label>
+
             <input [disabled]="!canUserEdit" type="text" class="form-control" id="bookingName" placeholder="Booking name"
                    required matInput #input
                    [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
@@ -27,9 +26,8 @@
 
         <div class="form">
           <mat-form-field color="accent">
-            <!--
-                  <label for="bookingSurname">Booking Surname</label>
-            -->
+            <label for="bookingSurname">Booking Surname</label>
+
             <input [disabled]="!canUserEdit" type="text" class="form-control" id="bookingSurname" placeholder="Booking surname"
                    required matInput #input
                    [(ngModel)]="customer.bookingSurname" name="bookingSurname" #bookingSurname="ngModel">
@@ -42,9 +40,8 @@
 
         <div class="form">
           <mat-form-field color="accent">
-            <!--
-                  <label for="numberOfPeople">People in the room</label>
-            -->
+            <label for="numberOfPeople">People in the room</label>
+
             <input [disabled]="!canUserEdit" type="text" class="form-control" id="numberOfPeople"
                    placeholder="Number of people in the room"
                    required matInput #input
@@ -61,7 +58,7 @@
           Other needs:
           <mat-list>
             <mat-list-item *ngFor="let need of customerNeeds">
-              <button mat-button type="button" (click)="deleteNeedAndUpdate(need)"><i class="material-icons">clear</i></button>
+              <button mat-button type="button" (click)="deleteNeedAndUpdate(need)"><span class="material-icons">clear</span></button>
               {{need}}
             </mat-list-item>
           </mat-list>
@@ -71,6 +68,8 @@
           <div class="w3-col l10 m10 s10 w3-center">
             <div class="form">
               <mat-form-field color="accent" (keyup.enter)="addNeedAndUpdate(need)">
+                <label for="otherNeeds">Other needs</label>
+
                 <input matInput #needInput id='otherNeeds' name="need" [(ngModel)]="need"
                        placeholder="Other needs (p.e. disability types, number of children and/or pets, if present)"/>
               </mat-form-field>
@@ -79,7 +78,7 @@
           </div>
           <div class="w3-col l2 m2 s2 w3-center">
             <button mat-button type="button" (click)="addNeedAndUpdate(need)" [disabled]="isInputInvalid(need)">
-              <i class="material-icons">add</i>
+              <span class="material-icons">add</span>
             </button>
           </div>
         </div>

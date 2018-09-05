@@ -42,6 +42,10 @@ body {
   font-family: 'myFont', serif !important;
 }
 
+label {
+  display: none;
+}
+
 /* /deep/ is a workaround to customize mat-tooltip style */
 /deep/ .mat-tooltip {
   font-size: 90%;

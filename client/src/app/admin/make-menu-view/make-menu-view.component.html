@@ -16,7 +16,8 @@
 
       <div class="form">
         <mat-form-field color="accent">
-          <input type="date" matInput placeholder="Select menu date" [(ngModel)]="date" name="date"
+          <label for="selectDate">select menu date</label>
+          <input type="date" id="selectDate" matInput placeholder="Select menu date" [(ngModel)]="date" name="date"
                  (keyup)="setDateMenu($event)">
         </mat-form-field>
       </div>

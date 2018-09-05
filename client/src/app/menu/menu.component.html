@@ -219,7 +219,8 @@
   <div class="w3-col l6 m6 s6 w3-center">
     <div id="notes">
       <p>Other notes</p><br>
-      <textarea (keypress)="setNotes($event)" placeholder={{getNote()}}></textarea><br><br>
+      <label for="otherNotes">Other notes</label>
+      <textarea (keypress)="setNotes($event)" id="otherNotes" placeholder={{getNote()}}></textarea><br><br>
     </div>
   </div>
 
