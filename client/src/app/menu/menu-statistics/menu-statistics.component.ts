@@ -7,7 +7,7 @@ import {Meal} from '../reservation';
 @Component({
   selector: 'app-menu-statistics',
   templateUrl: './menu-statistics.component.html',
-  styleUrls: ['./menu-statistics.component.css']
+  styleUrls: ['./menu-statistics.component.scss']
 })
 export class MenuStatisticsComponent implements OnInit {
 

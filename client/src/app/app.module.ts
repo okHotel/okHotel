@@ -1,5 +1,6 @@
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes} from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -121,7 +122,8 @@ const appRoutes: Routes = [
         MatToolbarModule,
         MatPaginatorModule,
         ReactiveFormsModule,
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes),
+        MDBBootstrapModule.forRoot()
     ],
 
     entryComponents: [
@@ -135,7 +137,7 @@ const appRoutes: Routes = [
         NoopAnimationsModule, MatSortModule],
     providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService, ErrorService,
         BarcodeValidatorService, PantryService, DatePipe],
-    bootstrap: [AppComponent]
-
+    bootstrap: [AppComponent],
+    schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule {}

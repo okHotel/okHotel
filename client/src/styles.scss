@@ -7,41 +7,6 @@
 
 /* You can add global styles to this file, and also import other style files */
 
-$main-color: #f3ede3;
-$div-color: white;
-$dot-selected-color: dimgrey;
-$button-hover: #cdc8be;
-$header-height: 18%;
-$footer-height: 18%;
-
-// Define a custom typography config that overrides the font-family as well as the
-// headlines and body-1 levels.
-
-$config: mat-typography-config();
-
-$custom-typography: mat-typography-config(
-  $font-family: 'myFont',
-  $headline: mat-typography-level(32px, 48px, 700),
-  $body-1: mat-typography-level(16px, 24px, 500)
-);
-
-@include mat-core($custom-typography);
-
-@font-face {
-  font-family: 'myFont';
-  src: url("/assets/font/pt_serif-web-italic-webfont.woff") format('opentype');
-}
-
-.container {
-  padding: 2%;
-  background-color: white;
-}
-
-body {
-  background-color: $main-color;
-  font-family: 'myFont', serif !important;
-}
-
 label {
   display: none;
 }
@@ -55,25 +20,6 @@ label {
   font-size: 105%;
 }
 
-@media(min-width: 600px) {
-
-  #backgroundDiv {
-//    position: fixed;
-    top: $header-height;
-    left: 0;
-
-    /* Preserve aspet ratio */
-    min-width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url("/assets/login/background.png");
-  }
-
-  .centered {
-    margin-top: 10%;
-    margin-bottom: 10%;
-  }
-}
 @media print {
 
   app-header, app-footer, button, .btn-group-btn-group-sm {
