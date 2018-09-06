@@ -37,7 +37,10 @@ export class AddVariationComponent implements OnInit {
     public addVariation(type: string) {
         this.variation.type = type;
         this.variationService.addVariation(this.variation)
-            .subscribe();
+            .subscribe(res => console.log(res), err => {
+              console.log('errore:');
+              console.log(err)
+            });
         location.reload();
     }
 

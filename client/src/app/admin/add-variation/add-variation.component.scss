@@ -9,6 +9,12 @@
   background-color: white;
 }
 
+h3 {
+  font-size: 200%;
+  font-family: myFont;
+}
+
+
 #variation, #variationsAddedDiv{
   width: 90%;
 }
@@ -18,7 +24,7 @@
 }
 
 #delButton{
-  floa: left;
+  float: left;
 }
 
 #saveButton{
@@ -27,8 +33,6 @@
 }
 
 label{
-
-
   font-size: 120%;
 }
 

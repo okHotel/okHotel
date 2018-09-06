@@ -1,28 +1,21 @@
 
-<div id="backgroundDiv">
-
-<div class="w3-row">
+<div class="w3-row" id="backgroundDiv">
     <div class="w3-col l3 m6 s4 w3-left">&nbsp;</div>
-    <div class="w3-col l6 m3 s4 w3-center">
 
-        <div id="variationDiv" class="container mat-elevation-z8 centered">
-          <div id="labelDiv">
-            <label for="variation" >Insert Variations</label>
-          </div>
+    <div class="w3-col l6 m3 s4 w3-center container mat-elevation-z8 centered">
+        <h3>Insert Variations</h3>
             <div *ngFor="let variation of variations; let i = index" id="variationsAddedDiv">
                 <p><button mat-button #button id="delButton" (click)="deleteVariation(i)">
-                    <span class="material-icons">clear</span>
+                    <i class="material-icons">clear</i>
                 </button>{{variation}}</p>
             </div>
-            <label for="variation">Variation</label>
-            <input id="variation" type="text" class="form-control" placeholder="Variation"
+          <label for="variation" >Insert Variations</label>
+
+          <input id="variation" type="text" class="form-control" placeholder="Variation"
                    required name="variation" [(ngModel)]="variation.type" (keyup.enter)="addVariation(variation.type)" >
             <button mat-button #button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)">
-                <span class="material-icons">add</span>
+                <i class="material-icons">add</i>
             </button>
-        </div>
     </div>
     <div class="w3-col l3 m3 s4 w3-right">&nbsp;</div>
-</div>
-
 </div>

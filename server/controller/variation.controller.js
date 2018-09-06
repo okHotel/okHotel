@@ -16,7 +16,15 @@ exports.addVariation = (req, res) => {
     console.log('contenuto dell input ' + req.body);
         const variation = new Variation(req.body);
 
-        variation.save();
+        variation.save()
+            .then(data => {
+                res.json(data);
+            }).catch(err => {
+            console.log(err);
+            res.status(500).json({
+                message: err.message
+            });
+        });
 
 };
 
