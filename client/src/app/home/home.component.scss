@@ -6,7 +6,6 @@
   margin-top: 3%;
   padding: 5%;
   background-color: white;
-
 }
 
 .blue-button {
@@ -69,7 +68,9 @@ header,
   overflow: hidden;
 }
 
-
+.leftDiv, .rightDiv, #floor0 {
+  text-align: center;
+}
 
 #restaurant, #lounge, #reception, #coatroom, #entrance{
   border: 1px solid black;
