@@ -9,10 +9,21 @@
 
 }
 
-.rating {
-  list-style-type: none;
-  padding: 0;
-  color: #ffa000;
+.blue-button {
+  background-color: $blue-color;
+}
+
+#titleDiv {
+  padding-left: 40%;
+  padding-right: 40%;
+}
+
+.carousel-caption {
+  color: black;
+}
+
+.carousel-item {
+  padding-bottom: 10%;
 }
 
 .rating li {
