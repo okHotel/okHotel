@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAQ,6BAAkB",
+"sources": ["profile.component.scss"],
 "names": [],
 "file": "profile.component.css"
 }

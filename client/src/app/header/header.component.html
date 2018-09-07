@@ -1,20 +1,3 @@
-<!--
-<div class="w3-row">
-  <div class="w3-col l5">&nbsp;</div>
-
-  <div class="w3-col l2 m12 s12 w3-center">
-    <a id="OkHotelLink" (click)="home()">OkHotel</a><br>
-  </div>
-
-  <div class="w3-col l5">&nbsp;</div>
-</div>
-
-      <div *ngIf="isLoggedIn()">
-          <app-profile></app-profile>
-      </div>
--->
-
-<!--Main Navigation-->
 <header>
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark lightBlue scrolling-navbar">
@@ -44,19 +27,9 @@
           </div>
         </li>
       </ul>
-      <ul class="navbar-nav nav-flex-icons">
-        <li class="nav-item">
-          <a class="nav-link">Profile <i class="fa fa-user"></i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Login <i class="fa fa-sign-in"></i></a>
-        </li>
-<!--
-        <li class="nav-item">
-          <a class="nav-link"><i class="fa fa-sign-out"></i></a>
-        </li>
--->
-      </ul>
+
+      <app-profile></app-profile>
+
     </div>
   </nav>
 
