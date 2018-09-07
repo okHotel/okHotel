@@ -11,7 +11,7 @@ import {ErrorService} from '../service/error/error.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  isLoginError: boolean = false;
+  isLoginError = false;
   isCustomerLoggedIn: boolean;
   username: string;
   password: string;
