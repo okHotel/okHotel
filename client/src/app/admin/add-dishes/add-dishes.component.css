@@ -9,7 +9,7 @@ Error: File to import not found or unreadable: ~@angular/material/theming.
 4: }
 5: 
 6: #lunchinput, #dinnerinput {
-7:   padding-left: 15%;
+7:   padding: 0 34% 0 34%;
 
 Backtrace:
 ../../../styles.scss:2
@@ -69,4 +69,4 @@ add-dishes.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../../styles.scss\A         from line 1 of add-dishes.component.scss\A \A 1: @import \"../../../styles.scss\";\A 2: div {\A 3:   padding: 1%;\A 4: }\A 5: \A 6: #lunchinput, #dinnerinput {\A 7:   padding-left: 15%;"; }
+  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../../styles.scss\A         from line 1 of add-dishes.component.scss\A \A 1: @import \"../../../styles.scss\";\A 2: div {\A 3:   padding: 1%;\A 4: }\A 5: \A 6: #lunchinput, #dinnerinput {\A 7:   padding: 0 34% 0 34%;"; }

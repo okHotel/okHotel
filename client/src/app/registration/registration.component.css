@@ -5,11 +5,11 @@ Error: File to import not found or unreadable: ~@angular/material/theming.
 
 1: @import "../../styles.scss";
 2: 
-3: 
-4: #FormDiv{
-5:   background-color: white;
-6: }
-7: 
+3: #FormDiv{
+4:   background-color: white;
+5: }
+6: 
+7: h3 {
 
 Backtrace:
 ../../styles.scss:2
@@ -69,4 +69,4 @@ registration.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of registration.component.scss\A \A 1: @import \"../../styles.scss\";\A 2: \A 3: \A 4: #FormDiv{\A 5:   background-color: white;\A 6: }\A 7: "; }
+  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of registration.component.scss\A \A 1: @import \"../../styles.scss\";\A 2: \A 3: #FormDiv{\A 4:   background-color: white;\A 5: }\A 6: \A 7: h3 {"; }
