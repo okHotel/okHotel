@@ -8,7 +8,7 @@ $blue-color: #046B99;
 }
 
 .container-fluid, .container {
-  margin-top:2%;
+  margin-top:10%;
   padding: 0;
 }
 
@@ -32,6 +32,12 @@ label {
   font-size: 105%;
 }
 
+button{
+  background-color: $blue-color;
+}
+
+
+
 @media print {
 
   app-header, app-footer, button, .btn-group-btn-group-sm {
@@ -42,6 +48,8 @@ label {
     box-shadow: none !important;
   }
 }
+
+
 
 
 
