@@ -82,16 +82,14 @@
           </div>
 
           <div class="btn-group btn-group-sm d-flex flex-row-reverse">
-          <button class="btn p-2 ml-4 mt-4" mat-button (click)="updateAndGoBack()"
-                  [disabled]="!detailCustomerForm.form.valid">Save
-          </button>
-          <button class="btn p-2 ml-4 mt-4" mat-button (click)="goBack()">Back</button>
+            <button  type="button" class="btn p-2 ml-4 mt-4" (click)="addCustomer()" aria-label="Save" (click)="updateAndGoBack()"
+                     [disabled]="!detailCustomerForm.form.valid">Save</button>
+            <button type="button" class="btn p-2 ml-4 mt-4" (click)="goBack()" aria-label="Back">Back</button>
+          </div>
 
           <!--
                   <button class="btn-group-btn-group-sm" mat-button (click)="delete()">Delete</button>
           -->
-          </div>
-
         </form>
 
       </div>
