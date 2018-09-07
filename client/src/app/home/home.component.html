@@ -1,75 +1,204 @@
-<div class="w3-row">
+<div class="view jarallax" data-jarallax='{"speed": 0.2}'
+     style="background-image: url('../../assets/images/casa-per-ferie-san-bassiano.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+  <div class="mask rgba-white-light">
+    <div class="container flex-center text-center">
+      <div class="row mt-5">
+        <div class="col-md-12 wow fadeIn mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="display-3 mb-2 wow fadeInDown" data-wow-delay="0.3s">Ok<a class="indigo-text font-weight-bold">Hotel</a>
+              </h1>
 
-  <div class="w3-col l12 m12 s12 w3-center">
-    <div class="slides" [hidden]="slidesBinding[0]">
-      <div class="text"><p>The Ground Floor</p></div>
-      <div id="floor0">
-        <div id="restaurant">
-          <p>
-          <a href="/restaurant">Restaurant</a>
-          </p>
-        </div>
-        <div id="lounge"><p>Lounge</p></div>
-        <div id="reception"><p>Reception</p></div>
-        <div id="coatroom"><p>Coatroom</p></div>
-        <div id="entrance"><p>Entrance</p></div>
-      </div>
-    </div>
-  </div>
+              <!--Rating-->
+              <ul class="rating mt-3">
+                <li>
+                  <i class="fa fa-star"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star"></i>
+                </li>
+              </ul>
 
-  <div class="w3-col l12 m12 s12 w3-center">
-    <div class="slides" [hidden]="slidesBinding[1]">
-      <div class="text"><p>The 1° Floor</p></div>
-      <div id="floor1">
-        <div class="leftDiv">
-          <div class="roomLeft"><p>Room 101</p></div>
-          <div class="roomLeft"><p>Room 102</p></div>
-          <div class="roomLeft"><p>Room 103</p></div>
-          <div class="roomLeft"><p>Room 104</p></div>
-        </div>
-        <div class="rightDiv">
-          <div class="roomRight"><p>Room 105</p></div>
-          <div class="roomRight"><p>Room 106</p></div>
-          <div class="roomRight"><p>Room 107</p></div>
-          <div class="roomRight"><p>Room 108</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
+              <h5 class="text-uppercase mb-3 mt-1 font-weight-bold wow fadeIn" data-wow-delay="0.4s">Feel like at home</h5>
 
-  <div class="w3-col l12 m12 s12 w3-center">
-    <div class="slides" [hidden]="slidesBinding[2]">
-      <div class="text"><p>The 2° Floor</p></div>
-      <div id="floor2">
-        <div class="leftDiv">
-          <div class="roomLeft"><p>Room 201</p></div>
-          <div class="roomLeft"><p>Room 202</p></div>
-          <div class="roomLeft"><p>Room 203</p></div>
-          <div class="roomLeft"><p>Room 204</p></div>
-        </div>
-        <div class="rightDiv">
-          <div class="roomRight"><p>Room 205</p></div>
-          <div class="roomRight"><p>Room 206</p></div>
-          <div class="roomRight"><p>Room 207</p></div>
-          <div class="roomRight"><p>Room 208</p></div>
+              <a class="btn btn-light-blue btn-lg wow fadeIn" href="/login" data-wow-delay="0.4s">Login</a>
+<!--
+              <a class="btn btn-indigo btn-lg wow fadeIn" data-wow-delay="0.4s">About me</a>
+-->
+
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
-
-  <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
-  <a class="next" (click)="plusSlides(1)">&#10095;</a>
-
-
-
 </div>
 
-<div class="w3-row">
-  <div class="w3-col l12 m12 s12 w3-center" id="buttonDiv">
-    <span class="dot" (click)="currentSlide(1)"></span>
-    <span class="dot" (click)="currentSlide(2)"></span>
-    <span class="dot" (click)="currentSlide(3)"></span>
+<div class="container">
+
+  <div class="card">
+    <div class="card-header">
+      Map
+    </div>
+    <div class="card-body">
+
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li  data-slide-to="0" class="active"></li>
+          <li  data-slide-to="1"></li>
+          <li  data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div id="floor0">
+              <div id="restaurant">
+                <p>
+                  <a href="/restaurant">Restaurant</a>
+                </p>
+              </div>
+              <div id="lounge"><p>Lounge</p></div>
+              <div id="reception"><p>Reception</p></div>
+              <div id="coatroom"><p>Coatroom</p></div>
+              <div id="entrance"><p>Entrance</p></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div id="floor1">
+              <div class="leftDiv">
+                <div class="roomLeft"><p>Room 101</p></div>
+                <div class="roomLeft"><p>Room 102</p></div>
+                <div class="roomLeft"><p>Room 103</p></div>
+                <div class="roomLeft"><p>Room 104</p></div>
+              </div>
+              <div class="rightDiv">
+                <div class="roomRight"><p>Room 105</p></div>
+                <div class="roomRight"><p>Room 106</p></div>
+                <div class="roomRight"><p>Room 107</p></div>
+                <div class="roomRight"><p>Room 108</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div id="floor2">
+              <div class="leftDiv">
+                <div class="roomLeft"><p>Room 201</p></div>
+                <div class="roomLeft"><p>Room 202</p></div>
+                <div class="roomLeft"><p>Room 203</p></div>
+                <div class="roomLeft"><p>Room 204</p></div>
+              </div>
+              <div class="rightDiv">
+                <div class="roomRight"><p>Room 205</p></div>
+                <div class="roomRight"><p>Room 206</p></div>
+                <div class="roomRight"><p>Room 207</p></div>
+                <div class="roomRight"><p>Room 208</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev"  role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next"  role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+    </div>
   </div>
 </div>
+
+<!--Second container-->
+<div class="container-fluid" style="background-color: #f4f4fa">
+  <div class="container py-4">
+
+    <!--Section: Facilities-->
+    <section id="facilities" class="section mt-3 mb-3 pb-3">
+
+      <h5 class="text-center dark-grey-text text-uppercase font-weight-bold spacing my-5 pt-2 pb-4 wow fadeIn" data-wow-delay="0.2s">
+        <strong>Facilities</strong>
+      </h5>
+
+      <!-- First row -->
+      <div class="row  wow fadeIn" data-wow-delay="0.4s">
+
+        <!-- First column -->
+        <div class="col-md-4 mb-4 text-center">
+
+          <!--Panel-->
+          <div class="card card-body rgba-white-light hoverable">
+            <i class="fa fa-cutlery fa-2x mb-4 mt-3 dark-grey-text" aria-hidden="true"></i>
+            <p class="font-weight-bold font-weight-bold dark-grey-text text-uppercase spacing">
+              <strong>restaurant</strong>
+            </p>
+            <p class="dark-grey-text font-small">Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente earu
+              proident. Ad vegan excepteur butcher vice lomo leggings occaecat.
+            </p>
+          </div>
+          <!--/.Panel-->
+
+        </div>
+        <!-- /First column -->
+
+        <!-- Second column -->
+        <div class="col-md-4 mb-4 text-center">
+
+          <!--Panel-->
+          <div class="card card-body rgba-white-light hoverable">
+            <i class="fa fa-wifi  fa-2x mb-4 mt-3 dark-grey-text" aria-hidden="true"></i>
+            <p class="font-weight-bold font-weight-bold dark-grey-text text-uppercase spacing">
+              <strong>free wi-fi</strong>
+            </p>
+            <p class="dark-grey-text font-small">Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente earu
+              proident. Ad vegan excepteur butcher vice lomo leggings occaecat.
+            </p>
+          </div>
+          <!--/.Panel-->
+
+        </div>
+        <!-- /.Second column -->
+
+        <!-- Third column -->
+        <div class="col-md-4 mb-4 text-center">
+
+          <!--Panel-->
+          <div class="card card-body rgba-white-light hoverable">
+            <i class="fa fa-life-ring fa-2x mb-4 mt-3 dark-grey-text" aria-hidden="true"></i>
+            <p class="font-weight-bold font-weight-bold dark-grey-text text-uppercase spacing">
+              <strong>Beach</strong>
+            </p>
+            <p class="dark-grey-text font-small">Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente earu
+              proident. Ad vegan excepteur butcher vice lomo leggings occaecat.
+            </p>
+          </div>
+          <!--/.Panel-->
+
+        </div>
+        <!-- /.Third column -->
+
+      </div>
+      <!-- /.First row -->
+
+    </section>
+    <!--/Section: Facilities-->
+
+  </div>
+</div>
+<!--Second container-->
+
 
 

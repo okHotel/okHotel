@@ -1,3 +1,4 @@
+<!--
 <div class="w3-row">
   <div class="w3-col l5">&nbsp;</div>
 
@@ -11,4 +12,53 @@
       <div *ngIf="isLoggedIn()">
           <app-profile></app-profile>
       </div>
+-->
 
+<!--Main Navigation-->
+<header>
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark lightBlue scrolling-navbar">
+    <a class="navbar-brand" href="/"><strong>OkHotel</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/restaurant">Choose Menu</a>
+        </li>
+        <li class="nav-item dropdown btn-group" dropdown>
+          <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            Services<span class="caret"></span></a>
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" href="/admin/services" mdbWavesEffect>Services</a>
+
+            <div class="divider dropdown-divider"></div>
+
+            <a class="dropdown-item waves-light" href="/admin/restaurant" mdbWavesEffect>Manage Restaurant</a>
+            <a class="dropdown-item waves-light" href="/customers" mdbWavesEffect>Customers</a>
+            <a class="dropdown-item waves-light" href="/pantry" mdbWavesEffect>Pantry</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav nav-flex-icons">
+        <li class="nav-item">
+          <a class="nav-link">Profile <i class="fa fa-user"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Login <i class="fa fa-sign-in"></i></a>
+        </li>
+<!--
+        <li class="nav-item">
+          <a class="nav-link"><i class="fa fa-sign-out"></i></a>
+        </li>
+-->
+      </ul>
+    </div>
+  </nav>
+
+</header>
+<!--Main Navigation-->
