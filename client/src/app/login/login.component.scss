@@ -20,14 +20,32 @@ input {
   padding: 1% !important;
 }
 
-.mx-auto > p {
+/*.mx-auto > p {
   margin-bottom: 5%;
-}
+}*/
 
 
+
+/* Bootstrap css
+-------------------------------------------------- */
 :root {
   --input-padding-x: .75rem;
   --input-padding-y: .75rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
 }
 
 .form-signin {
@@ -94,7 +112,6 @@ input {
   color: #777;
 }
 
-
 /* Fallback for Edge
 -------------------------------------------------- */
 @supports (-ms-ime-align: auto) {
@@ -116,3 +133,4 @@ input {
     color: #777;
   }
 }
+

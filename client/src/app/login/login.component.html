@@ -1,49 +1,53 @@
 <div id="backLogin">
 
+
   <div class="mask rgba-white-light">
 
     <div class="container flex-center text-center">
 
-          <div class="card">
+      <div class="card">
 
-            <div class="card-body" >
+        <div class="card-body" >
 
-              <form class="form-signin">
+          <form class="form-signin">
 
-                <div class="mx-auto" style="text-align: center">
-                  <img class="mx-auto d-block" src="../../assets/logo/logoOkHotel.png" alt="" >
-                  <p>Sing in, relax and use our services</p>
-                </div>
-
-                <div class="form-label-group">
-                  <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
-                  <label for="username">Username</label>
-                </div>
-
-                <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                  <label for="inputPassword">Password</label>
-                </div>
-
-                <div class="checkbox mb-3">
-                  <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                  </label>
-                </div>
-
-                <div class="form-label-group">
-                  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                </div>
-
-                <div class="form-label-group">
-                  <button class="btn btn-lg btn-primary btn-block" type="submit">Registration</button>
-                </div>
-
-                <p class="mt-5 mb-3 text-muted text-center">Applications and Web Services project</p>
-              </form>
-
+            <img class="mx-auto d-block" src="../../assets/logo/logoOkHotel.png" alt="" >
+            <div class="form-label-group mx-auto" style="text-align: center">
+              <p>Sing in, relax and use our services</p>
             </div>
-          </div>
+
+
+            <app-error></app-error>
+
+            <div class="md-form">
+              <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
+              <label for="username">Username</label>
+            </div>
+
+            <div class="md-form">
+              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+              <label for="inputPassword">Password</label>
+            </div>
+
+            <div class="form-label-group d-flex flex-row">
+              <div class="checkbox p-2">
+                <input type="checkbox" value="remember-me"> Remember me
+              </div>
+            </div>
+
+            <div class="form-label-group">
+              <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Sign in</button>
+            </div>
+
+            <div class="form-label-group">
+              <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="registration()">Registration</button>
+            </div>
+
+            <p class="mt-5 mb-3 text-muted text-center">Applications and Web Services project</p>
+          </form>
+
+        </div>
+      </div>
 
     </div>
   </div>
