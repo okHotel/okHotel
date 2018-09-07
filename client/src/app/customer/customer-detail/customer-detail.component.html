@@ -1,114 +1,108 @@
-<div class="w3-row" id="backgroundDiv">
+<div class="container">
 
-  <div class="w3-col s0 m1 l2">&nbsp;</div>
+  <div class="card">
+    <div class="card-header">
+      {{customer.bookingSurname}} {{customer.bookingName}}
+    </div>
+    <div class="card-body">
 
-  <div class="w3-col s12 m10 l8 mat-elevation-z8 container centered" >
+      <app-error></app-error>
 
-    <app-error></app-error>
+      <div [hidden]="submitted || error">
 
-    <div [hidden]="submitted || error">
-      <h3 mat-dialog-title>{{customer.bookingSurname}} {{customer.bookingName}}</h3>
+        <form #detailCustomerForm="ngForm">
+          <div class="md-form">
+            <mdb-form-field color="accent">
 
-      <form #detailCustomerForm="ngForm" class="mat-dialog-content">
-        <div class="form">
-          <mat-form-field color="accent">
-            <label for="bookingName">Booking name</label>
+              <label for="bookingName">Booking name</label>
 
-            <input [disabled]="!canUserEdit" type="text" class="form-control" id="bookingName" placeholder="Booking name"
-                   required matInput #input
-                   [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
-            <div [hidden]="bookingName.valid || bookingName.pristine"
-                 class="alert alert-danger">
-              Booking Name is required
-            </div>
-          </mat-form-field>
-        </div>
+              <input [disabled]="!canUserEdit" type="text" class="form-control" id="bookingName"
+                     placeholder="Booking name"
+                     required
+                     [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
+              <div [hidden]="bookingName.valid || bookingName.pristine"
+                   class="alert alert-danger">
+                Booking Name is required
+              </div>
 
-        <div class="form">
-          <mat-form-field color="accent">
-            <label for="bookingSurname">Booking Surname</label>
-
-            <input [disabled]="!canUserEdit" type="text" class="form-control" id="bookingSurname" placeholder="Booking surname"
-                   required matInput #input
-                   [(ngModel)]="customer.bookingSurname" name="bookingSurname" #bookingSurname="ngModel">
-            <div [hidden]="bookingSurname.valid || bookingSurname.pristine"
-                 class="alert alert-danger">
-              Booking Surname is required
-            </div>
-          </mat-form-field>
-        </div>
-
-        <div class="form">
-          <mat-form-field color="accent">
-            <label for="numberOfPeople">People in the room</label>
-
-            <input [disabled]="!canUserEdit" type="text" class="form-control" id="numberOfPeople"
-                   placeholder="Number of people in the room"
-                   required matInput #input
-                   [(ngModel)]="customer.numberOfPeople" name="numberOfPeople" #numberOfPeople="ngModel">
-            <div [hidden]="numberOfPeople.valid || numberOfPeople.pristine"
-                 class="alert alert-danger">
-              Number of people is required
-            </div>
-          </mat-form-field>
-        </div>
-
-        <div class="form">
-
-          Other needs:
-          <mat-list>
-            <mat-list-item *ngFor="let need of customerNeeds">
-              <button mat-button type="button" (click)="deleteNeedAndUpdate(need)"><span class="material-icons">clear</span></button>
-              {{need}}
-            </mat-list-item>
-          </mat-list>
-        </div>
-
-        <div class="w3-row">
-          <div class="w3-col l10 m10 s10 w3-center">
-            <div class="form">
-              <mat-form-field color="accent" (keyup.enter)="addNeedAndUpdate(need)">
-                <label for="otherNeeds">Other needs</label>
-
-                <input matInput #needInput id='otherNeeds' name="need" [(ngModel)]="need"
-                       placeholder="Other needs (p.e. disability types, number of children and/or pets, if present)"/>
-              </mat-form-field>
-
-            </div>
+            </mdb-form-field>
           </div>
-          <div class="w3-col l2 m2 s2 w3-center">
-            <button mat-button type="button" (click)="addNeedAndUpdate(need)" [disabled]="isInputInvalid(need)">
+
+          <div class="md-form">
+            <md-form-field color="accent">
+              <label for="bookingSurname">Booking Surname</label>
+
+              <input [disabled]="!canUserEdit" type="text" class="form-control" id="bookingSurname"
+                     placeholder="Booking surname"
+                     required
+                     [(ngModel)]="customer.bookingSurname" name="bookingSurname" #bookingSurname="ngModel">
+              <div [hidden]="bookingSurname.valid || bookingSurname.pristine"
+                   class="alert alert-danger">
+                Booking Surname is required
+              </div>
+            </md-form-field>
+          </div>
+
+          <div class="md-form">
+            <mdb-form-field color="accent">
+              <label for="numberOfPeople">People in the room</label>
+
+              <input [disabled]="!canUserEdit" type="text" class="form-control" id="numberOfPeople"
+                     placeholder="Number of people in the room"
+                     required
+                     [(ngModel)]="customer.numberOfPeople" name="numberOfPeople" #numberOfPeople="ngModel">
+              <div [hidden]="numberOfPeople.valid || numberOfPeople.pristine"
+                   class="alert alert-danger">
+                Number of people is required
+              </div>
+            </mdb-form-field>
+          </div>
+
+            <div>
+            Other needs:
+            <mat-list>
+              <mat-list-item *ngFor="let need of customerNeeds">
+                <button mat-button type="button" (click)="deleteNeedAndUpdate(need)"><span
+                  class="material-icons">clear</span></button>
+                {{need}}
+              </mat-list-item>
+            </mat-list>
+          </div>
+
+          <div class="md-form d-flex">
+            <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight"  (keyup.enter)="addNeedAndUpdate(need)">
+              <label for="otherNeeds">Other needs</label>
+
+              <input #input type="text" id='otherNeeds' name="need" class="form-control" [(ngModel)]="need"
+                     placeholder="Other needs (p.e. disability types, number of children and/or pets, if present)"/>
+            </mdb-form-field>
+            <button mat-button type="button" class="p-2 bd-highlight" (click)="addNeedAndUpdate(need)" [disabled]="isInputInvalid(need)">
               <span class="material-icons">add</span>
             </button>
           </div>
-        </div>
 
+          <div class="btn-group btn-group-sm d-flex flex-row-reverse">
+          <button class="btn p-2 ml-4 mt-4" mat-button (click)="updateAndGoBack()"
+                  [disabled]="!detailCustomerForm.form.valid">Save
+          </button>
+          <button class="btn p-2 ml-4 mt-4" mat-button (click)="goBack()">Back</button>
 
-        <button class="btn-group-btn-group-sm" mat-button (click)="goBack()">Back</button>
-        <button class="btn-group-btn-group-sm" mat-button (click)="updateAndGoBack()" [disabled]="!detailCustomerForm.form.valid">Save</button>
-        <!--
-                <button class="btn-group-btn-group-sm" mat-button (click)="delete()">Delete</button>
-        -->
+          <!--
+                  <button class="btn-group-btn-group-sm" mat-button (click)="delete()">Delete</button>
+          -->
+          </div>
 
-      </form>
+        </form>
 
+      </div>
     </div>
-  </div>
-  <!--
-  <div [hidden]="!submitted">
-    <p>{{message}}</p>
-    <div class="btn-group btn-group-sm">
-      <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+    <!--
+    <div [hidden]="!submitted">
+      <p>{{message}}</p>
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+      </div>
     </div>
+    -->
   </div>
-  -->
-  <div class="w3-col s0 m1 l8">
-    <div [hidden]="!error"
-         class="alert alert-danger">
-      {{error}}
-    </div>
-  </div>
-
-  <div class="w3-col s2 m2 l2">&nbsp;</div>
-
 </div>
