@@ -1,49 +1,53 @@
-<div class="w3-row"  id="backgroundDiv">
+<div id="backLogin">
 
-  <app-error></app-error>
+  <div class="mask rgba-white-light">
 
-  <div [hidden]="isCustomerLoggedIn" id="loginDiv" >
-    <form #loginForm="ngForm" class="col-s12-white">
+    <div class="container flex-center text-center">
 
-      <div class="w3-row">
+          <div class="card">
 
-        <div class="w3-col l4 m1 s0 w3-center">&nbsp;</div>
+            <div class="card-body" >
 
-        <div class="w3-col l4 m10 s12 w3-center centered" id="formDiv">
+              <form class="form-signin">
 
-          <div class="form-group" >
-            <div class="input-field-col-s12">
-              <label for="username">Username</label>
+                <div class="mx-auto" style="text-align: center">
+                  <img class="mx-auto d-block" src="../../assets/logo/logoOkHotel.png" alt="" >
+                  <p>Sing in, relax and use our services</p>
+                </div>
 
-              <span id="material-icons-prefix-user" class="material-icons prefix">account_circle</span>
-              <input type="text" id="username" #UserName [(ngModel)]="username" name="UserName" placeholder="Username" aria-label="username" required>
+                <div class="form-label-group">
+                  <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
+                  <label for="username">Username</label>
+                </div>
+
+                <div class="form-label-group">
+                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <label for="inputPassword">Password</label>
+                </div>
+
+                <div class="checkbox mb-3">
+                  <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                  </label>
+                </div>
+
+                <div class="form-label-group">
+                  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                </div>
+
+                <div class="form-label-group">
+                  <button class="btn btn-lg btn-primary btn-block" type="submit">Registration</button>
+                </div>
+
+                <p class="mt-5 mb-3 text-muted text-center">Applications and Web Services project</p>
+              </form>
+
             </div>
           </div>
-          <div class="form-group">
-            <div class="input-field-col-s12">
-              <label for="password">Password</label>
 
-              <span id="material-icons-prefix-pass" class="material-icons prefix">vpn_key</span>
-              <input type="password" id="password" #Password [(ngModel)]="password" name="Password" placeholder="Password" aria-label="username" required>
-            </div>
-          </div>
-
-          <div class="form-group" >
-            <div class="input-field-col-s12" id="buttDiv">
-              <button mat-button [disabled]="!loginForm.valid" class="btn-large btn-submit" id="loginButton" type="submit" (click)="login()">Login</button>
-              <br>
-              <button mat-button [disabled]="loginForm.valid" class="btn-large btn-submit" id="registrationButton" type="button" (click)="navigateToRegistration()">Registration</button>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="w3-col l4 m1 s0 w3-center">&nbsp;</div>
-
-      </div>
-    </form>
+    </div>
   </div>
-
 </div>
+
 
 
