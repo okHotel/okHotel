@@ -12,13 +12,15 @@
         <div *ngIf="!menu.showLunchVariations" [hidden]="errorService.error">
           <div class="card inner-card">
             <div class="card-body">
-              <table summary="The courses you can select for lunch">
+              <table class="table" summary="The courses you can select for lunch">
                 <caption>Lunch</caption>
-                <tr>
-                  <th scope="col">Dish</th>
-                  <th scope="col">Whole Portion</th>
-                  <th scope="col">Half Portion</th>
-                </tr>
+                <thead>
+                  <tr>
+                    <th scope="col">Dish</th>
+                    <th scope="col">Whole Portion</th>
+                    <th scope="col">Half Portion</th>
+                  </tr>
+                </thead>
 
                 <mat-error *ngIf="checkReservation(l, hl)">{{getErrorMessage()}}</mat-error>
 
@@ -63,13 +65,15 @@
         </div>
 
         <div *ngIf="menu.showLunchVariations" [hidden]="errorService.error">
-              <table summary="The courses you can select for lunch">
+              <table class="table" summary="The courses you can select for lunch">
                 <caption>Lunch</caption>
-                <tr>
-                  <th scope="col">Dish</th>
-                  <th scope="col">Whole Portion</th>
-                  <th scope="col">Half Portion</th>
-                </tr>
+                <thead>
+                  <tr>
+                    <th scope="col">Dish</th>
+                    <th scope="col">Whole Portion</th>
+                    <th scope="col">Half Portion</th>
+                  </tr>
+                </thead>
 
                 <mat-error *ngIf="checkReservation(l, hl)">{{getErrorMessage()}}</mat-error>
 
@@ -117,7 +121,7 @@
               <div class="card inner-card">
 
                 <div class="card-body">
-                  <table summary="The courses you can select for dinner">
+                  <table class="table" summary="The courses you can select for dinner">
                     <caption>Dinner</caption>
                     <tr>
                       <th scope="col">Dish</th>
@@ -172,7 +176,7 @@
 
             <div *ngIf="menu.showDinnerVariations" [hidden]="errorService.error">
 
-              <table summary="The courses you can select for dinner">
+              <table class="table" summary="The courses you can select for dinner">
                 <caption>Dinner</caption>
                 <tr>
                   <th scope="col">Dish</th>
@@ -213,6 +217,7 @@
                       </button>
                     </div>
                   </td>
+
                 </tr>
 
               </table>
@@ -223,27 +228,13 @@
 
             <div class="card" [hidden]="errorService.error">
               <div class="card-body">
-<!--
+
               <div id="notes">
                 <p>Other notes</p>
                 <label for="otherNotes">Other notes</label>
                 <textarea (keypress)="setNotes($event)" id="otherNotes" placeholder={{getNote()}}></textarea>
               </div>
--->
-
-                <div class="md-form d-flex">
-                  <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight" (keypress)="setNotes($event)">
-                    <label for="otherNotes">Other notes</label>
-
-                    <input #input type="text" id='otherNotes' name="note" class="form-control" [(ngModel)]="need"
-                           placeholder="Other needs (p.e. disability types, number of children and/or pets, if present)"/>
-                  </mdb-form-field>
-                  <button mat-button type="button" class="p-2 bd-highlight" [disabled]="isInputInvalid(need)">
-                    <span class="material-icons">add</span>
-                  </button>
-                </div>
-
-              </div>
+            </div>
 
             </div>
 
