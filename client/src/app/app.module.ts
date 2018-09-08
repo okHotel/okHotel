@@ -13,7 +13,6 @@ import { HomeComponent } from './home/home.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminStatisticsComponent } from './admin/admin-statistics/admin-statistics.component';
-import {AdminProfileComponent} from './admin/admin-profile/admin-profile.component';
 import { MakeMenuViewComponent } from './admin/make-menu-view/make-menu-view.component';
 import { AddDishesComponent } from './admin/add-dishes/add-dishes.component';
 import { AddVariationComponent } from './admin/add-variation/add-variation.component';
@@ -57,7 +56,6 @@ const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
     { path: 'login', component: LoginComponent},
     { path: 'restaurant', component: MenuComponent, canActivate: [AuthService]},
-    { path: 'admin/services', component: AdminProfileComponent, canActivate: [AuthService]},
     { path: 'make-menu', component: MakeMenuViewComponent, canActivate: [AuthService]},
     { path: 'make-variation', component: AddVariationComponent, canActivate: [AuthService]},
     { path: 'pantry', component: ProductsComponent, canActivate: [AuthService]},
@@ -86,7 +84,6 @@ const appRoutes: Routes = [
         CustomerComponent,
         RegistrationComponent,
         ProfileComponent,
-        AdminProfileComponent,
         MakeMenuViewComponent,
         ProductsComponent,
         AddProductComponent,
