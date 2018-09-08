@@ -1,20 +1,14 @@
-<div class="w3-row" id="backgroundDiv">
+<div class="container">
 
-  <div class="w3-col s0 m1 l2">&nbsp;</div>
+  <div class="card">
+    <div class="card-header">
+      Restaurant Statistics
+    </div>
+    <div class="card-body">
 
-  <div class="container mat-elevation-z8 w3-col s12 m10 l8 centered">
-
-      <button class="btn-group-btn-group-sm" mat-button (click)="onPrint()">
-        Print <i class='material-icons'>print</i>
-      </button>
-
-      <button class="btn-group-btn-group-sm" mat-button (click)="goToMakeMenu()">
-        New Menu <i class='material-icons'>add_circle</i>
-      </button>
-
-      <button class="btn-group-btn-group-sm" mat-button (click)="goToMakeVariation()">
-        New Variation <i class='material-icons'>autorenew</i>
-      </button>
+        <button  type="button" class="btn px-3 px-2 ml-4 mt-4" (click)="onPrint()" aria-label="Print">Print</button>
+        <button  type="button" class="btn px-3 px-2 ml-4 mt-4" (click)="goToMakeMenu()" aria-label="New Menu">New Menu</button>
+        <button  type="button" class="btn px-3 px-2 ml-4 mt-4" (click)="onPrint()" aria-label="New Variation">New Variation</button>
 
       <div class="form">
         <mat-form-field color="accent">
@@ -157,7 +151,9 @@
 
     </mat-table>
 
-    <button class="btn-group-btn-group-sm" mat-button (click)="goBack()">Back</button>
+      <div class="btn-group btn-group-sm d-flex flex-row-reverse">
+        <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="goBack()" aria-label="Back">Back</button>
+      </div>
   </div>
 
   <div class="w3-col s0 m1 l2">&nbsp;</div>
