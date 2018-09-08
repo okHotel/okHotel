@@ -16,10 +16,8 @@
           <form class="mat-dialog-content" #addCustomerForm="ngForm">
 
             <div class="md-form">
-              <mat-form-field color="accent">
                 <label for="selectDate">select menu date</label>
-                <input type="date" id="selectDate" matInput [(ngModel)]="date" name="date" (keyup)="setDateMenu($event)">
-              </mat-form-field>
+                <input type="date" id="selectDate"  [(ngModel)]="date" name="date" (keyup)="setDateMenu($event)">
             </div>
           </form>
         </div>
