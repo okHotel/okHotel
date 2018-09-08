@@ -17,8 +17,12 @@ $blue-color: #046B99;
   text-align: center;
 }
 
-// You can add global styles to this file, and also import other style files
+html,
+body{
+  height: 100%;
+}
 
+// You can add global styles to this file, and also import other style files
 label {
   display: none;
 }
@@ -37,9 +41,4 @@ button{
   app-header, app-footer, button, .btn-group-btn-group-sm {
     display: none;
   }
-}
-
-html,
-body{
-  height: 100%;
 }
