@@ -15,17 +15,18 @@ export class AddDishesComponent implements OnInit {
     @ViewChild('inputDinner') elDinner: ElementRef;
 
     dish = '';
-  commonDishes: Array<string> = ['Pasta in bianco', 'Pasta al pomodoro', 'Affettati misti', 'Formaggi misti' ];
+    commonDishes: Array<string> = ['Pasta in bianco', 'Pasta al pomodoro', 'Affettati misti', 'Formaggi misti' ];
+
     constructor(public menu: MenuService) {}
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     composeDish(event: any) {
       this.dish = event.target.value;
     }
 
     addLunchDish() {
+      console.log("a");
       this.menu.addLunchDish(this.dish);
       this.elLunch.nativeElement.value = '';
     }
