@@ -4,6 +4,12 @@ Error: File to import not found or unreadable: ~@angular/material/theming.
         from line 1 of add-dishes.component.scss
 
 1: @import "../../../styles.scss";
+2: 
+3: .dishForm{
+4:   padding: 2%;
+5: }
+6: 
+7: button {
 
 Backtrace:
 ../../../styles.scss:2
@@ -63,4 +69,4 @@ add-dishes.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../../styles.scss\A         from line 1 of add-dishes.component.scss\A \A 1: @import \"../../../styles.scss\";"; }
+  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../../styles.scss\A         from line 1 of add-dishes.component.scss\A \A 1: @import \"../../../styles.scss\";\A 2: \A 3: .dishForm{\A 4:   padding: 2%;\A 5: }\A 6: \A 7: button {"; }

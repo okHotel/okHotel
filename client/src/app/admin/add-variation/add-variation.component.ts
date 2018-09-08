@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {VariationService} from '../../service/variation/variation.service';
 import {Variation} from './variation';
 import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'app-add-variation',
@@ -14,7 +15,9 @@ export class AddVariationComponent implements OnInit {
     variation = new Variation();
     map: Map<number, String> = new Map<number, String>();
 
-    constructor(private router: Router, private variationService: VariationService) {
+    constructor(private router: Router,
+                private variationService: VariationService,
+                private location: Location) {
 
     }
 
@@ -56,6 +59,14 @@ export class AddVariationComponent implements OnInit {
         location.reload();
     }
 
+    public goBack(){
+      this.location.back();
+    }
+
+
+  public goToStatics(){
+      this.router.navigateByUrl('admin/restaurant');
+  }
     /*public getErrorMessage() {
     }*/
 }

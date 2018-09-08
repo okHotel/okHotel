@@ -5,7 +5,7 @@
       Pantry
     </div>
 
-    <div class="card-body">
+    <div class="card-body text-center">
       <app-error></app-error>
       <button class="add-product-small" mat-icon-button color="primary" (click)="addNew()">
         <mat-icon aria-label="Add">add</mat-icon>
@@ -95,10 +95,14 @@
                      [pageSizeOptions]="[5, 10, 25, 100]">
       </mat-paginator>
 
-      <button class="btn px-5 px-3 ml-4 mt-4 mx-auto d-block" (click)="changeCameraState()" [hidden]="isCameraEnabled">Search or add your product by scanning its barcode</button>
-      <button class="btn px-5 px-3 ml-4 mt-4 mx-auto d-block" (click)="changeCameraState()" [hidden]="!isCameraEnabled">Close camera</button>
+      <button class="btn px-5 px-3 ml-4 mt-4 mx-auto d-block" (click)="!changeCameraState()" *ngIf="!isCameraEnabled">Search or add your products by scanning their barcodes</button>
+      <button class="btn px-5 px-3 ml-4 mt-4 mx-auto d-block" (click)="changeCameraState()" *ngIf="isCameraEnabled">Close camera</button>
 
-      <div id="interactive" class="viewport w3-center" #interactive [hidden]="!isCameraEnabled"></div>
+
+      <div id="cameraDiv">
+        <div id="interactive" class="viewport" [hidden]="!isCameraEnabled"></div>
+      </div>
+
 
     </div>
   </div>

@@ -1,80 +1,63 @@
-<!--
-<input matInput type="text" (keyup)="composeDish($event)"/><br>
--->
+<div class="container">
+  <div class="card text-center dishForm">
 
-<div class="w3-row">
-
-  <div class="w3-col l12 m12 s12 w3-center">
     <h3>Lunch</h3>
-  </div>
-</div>
 
-<div class="w3-row">
-  <div class="w3-col l12 m12 s12 w3-center">
+    <ul class="list-group list-group-flush text-left">
+      <li class="list-group-item" *ngFor="let dish of menu.menu.lunch_dishes">
+        <button type="button" class="btn btn-sm btn-link" (click)="deleteLunchDish(dish)">
+          <i class="fa fa-times" aria-label="delete dish"></i> </button>
+        {{dish}}
+      </li>
+    </ul>
 
-    <div class="dishDiv">
-      <div *ngFor="let dish of menu.menu.lunch_dishes" class="dish">
-        <button mat-button (click)="deleteLunchDish(dish)"><span class="material-icons prefix">clear</span> </button> {{dish}}
+    <div class="md-form">
+      <mdb-form-field color="accent">
+        <mat-select id="commonLunchDishes" name="commonLunchDishes" placeholder="Common lunch dishes" [(ngModel)]="dish">
+          <mat-option *ngFor="let dish of commonDishes" [value]=dish (click)="addLunchDish()" > {{dish}} </mat-option>
+        </mat-select>
+      </mdb-form-field>
+    </div>
+
+    <div class="input-group mb-3">
+      <label for="LunchDish">Dish</label>
+      <input class="form-control" id="LunchDish" #inputLunch type="text" name="dish" (keyup)="composeDish($event)" placeholder="Dish" aria-label="Dish name" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button type="button" class="btn btn-flat btn-lg" (click)="addLunchDish()"><i class="fa fa-plus" aria-hidden="true"></i></button>
       </div>
     </div>
 
   </div>
 </div>
 
+<div class="container">
+  <div class="card text-center dishForm">
 
-<div class="w3-row">
-  <div class="w3-col l12 m12 s12 w3-center">
-
-
-    <div class="form" id="lunchinput">
-      <mat-select id="commonLunchDishes" name="commonLunchDishes" placeholder="Common lunch dishes" [(ngModel)]="dish">
-        <mat-option *ngFor="let dish of commonDishes" [value]=dish (click)="addLunchDish()" > {{dish}} </mat-option>
-      </mat-select>
-
-      <mat-form-field color="accent" (keyup.enter)="addLunchDish()">
-        <label for="dish">Dish</label>
-        <input matInput id="dish" #inputLunch type="text" name="dish" (keyup)="composeDish($event)" placeholder="Dish" />
-      </mat-form-field>
-
-      <button mat-button type="button" (click)="addLunchDish()"><span class="material-icons">add</span></button>
-    </div>
-
-
-  </div>
-</div>
-
-<div class="w3-row">
-
-  <div class="w3-col l12 m12 s12 w3-center">
     <h3>Dinner</h3>
-  </div>
-</div>
 
-<div class="w3-row">
-  <div class="w3-col l12 m12 s12 w3-center">
-    <div class="dishDiv">
-      <div *ngFor="let dish of menu.menu.dinner_dishes" class="dish">
-        <button mat-button (click)="deleteDinnerDish(dish)"><span class="material-icons prefix">clear</span> </button> {{dish}}
+    <ul class="list-group list-group-flush text-left">
+      <li class="list-group-item" *ngFor="let dish of menu.menu.dinner_dishes">
+        <button type="button" class="btn btn-sm btn-link" (click)="deleteDinnerDish(dish)">
+          <i class="fa fa-times" aria-label="delete dish"></i> </button>
+        {{dish}}
+      </li>
+    </ul>
+
+    <div class="md-form">
+      <mdb-form-field color="accent">
+        <mat-select id="commonDinnerDishes" name="commonDinnerDishes" placeholder="Common dinner dishes" [(ngModel)]="dish">
+          <mat-option *ngFor="let dish of commonDishes" [value]=dish (click)="addDinnerDish()" > {{dish}} </mat-option>
+        </mat-select>
+      </mdb-form-field>
+    </div>
+
+    <div class="input-group mb-3">
+      <label for="DinnerDish">Dish</label>
+      <input class="form-control" id="DinnerDish" #inputLunch type="text" name="dish" (keyup)="composeDish($event)" placeholder="Dish" aria-label="Dish name" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button type="button" class="btn btn-flat btn-lg" (click)="addDinnerDish()"><i class="fa fa-plus" aria-hidden="true"></i></button>
       </div>
     </div>
-  </div>
-</div>
 
-
-<div class="w3-row">
-  <div class="w3-col l12 m12 s12 w3-center">
-
-    <div class="form" id="dinnerinput">
-      <mat-select id="commonDinnerDishes" name="commonDinnerDishes" placeholder="Common dinner dishes" [(ngModel)]="dish">
-        <mat-option *ngFor="let dish of commonDishes" [value]=dish (click)="addDinnerDish()" > {{dish}} </mat-option>
-      </mat-select>
-
-      <mat-form-field color="accent" (keyup.enter)="addDinnerDish()">
-        <label for="dinnerDish">Dish</label>
-        <input matInput #inputDinner id="dinnerDish" name="dish" (keyup)="composeDish($event)" placeholder="Dish" />
-      </mat-form-field>
-
-      <button mat-button type="button" (click)="addDinnerDish()"><span class="material-icons">add</span></button>
-    </div>
   </div>
 </div>
