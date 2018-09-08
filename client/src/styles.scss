@@ -34,15 +34,12 @@ button{
 }
 
 @media print {
-
   app-header, app-footer, button, .btn-group-btn-group-sm {
     display: none;
   }
-
- div {
-    box-shadow: none !important;
-  }
 }
 
-
-
+html,
+body{
+  height: 100%;
+}

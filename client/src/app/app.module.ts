@@ -100,7 +100,7 @@ const appRoutes: Routes = [
         ProductsComponent,
         DeleteCustomerComponent,
         MenuStatisticsComponent,
-        ErrorComponent,
+        ErrorComponent
     ],
     imports: [
         BrowserModule,
