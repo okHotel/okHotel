@@ -10,7 +10,6 @@ $container-color: #f4f4fa;
 
 .container {
   margin-top:7%;
-  padding: 0;
 }
 
 .card-header {
@@ -43,6 +42,19 @@ label {
 
 button{
   background-color: $blue-color;
+}
+
+
+.customerBackground{
+  background: url('/assets/images/customer.jpg') no-repeat center center ;
+}
+
+.restaurantBackground{
+  background: url('/assets/images/restaurant.jpg') no-repeat center center ;
+}
+
+.pantryBackground{
+  background: url('/assets/images/pantry.jpg') no-repeat center center;
 }
 
 @media print {
