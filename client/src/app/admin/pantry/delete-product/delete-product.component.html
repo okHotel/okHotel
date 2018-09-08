@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 mat-dialog-title>You are updating quantity to 0, Are you sure?</h3>
+  <h3 mat-dialog-title>You are updating quantity to 0, are you sure?</h3>
   <div mat-dialog-content>
     <p>Code: {{data.code}}</p>
 
@@ -11,11 +11,13 @@
 
     <p>Unit: {{data.unit}}</p>
 
-    <mat-checkbox [(ngModel)]="isDeleteSelected" [checked]="isDeleteSelected">Also remove from db</mat-checkbox>
+    <mat-checkbox [(ngModel)]="isDeleteSelected" [checked]="isDeleteSelected">Delete definitively</mat-checkbox>
   </div>
 
-  <div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="1" (click)="confirmDelete()">Delete</button>
-    <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+
+  <div class="btn-group btn-group-sm d-flex flex-row-reverse">
+    <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="confirmDelete()" [mat-dialog-close]="1" >Delete</button>
+    <button  type="button" class="btn px-5 px-3 ml-4 mt-4" (click)="onNoClick()" aria-label="Back" tabindex="-1" >Back</button>
   </div>
+
 </div>

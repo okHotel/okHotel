@@ -9,11 +9,7 @@ $container-color: #f4f4fa;
 }
 
 .container {
-  margin-top: 2%;
-}
-
-.container .card {
-  margin-top:10%;
+  margin-top:7%;
   padding: 0;
 }
 
@@ -22,6 +18,12 @@ $container-color: #f4f4fa;
   text-align: center;
   background-color: $blue-color;
   color: white;
+}
+
+
+.clear{
+  background-color: white;
+  border: none;
 }
 
 html,
@@ -48,3 +50,5 @@ button{
     display: none;
   }
 }
+
+

@@ -42,29 +42,30 @@ export class AddVariationComponent implements OnInit {
         this.variationService.addVariation(this.variation)
             .subscribe(res => console.log(res), err => {
               console.log('errore:');
-              console.log(err)
+              console.log(err);
             });
-        location.reload();
+        this.variations.push(type);
     }
 
     public isInputInValid(type: string) {
         return type.length === 0 || !type.match('^[a-zA-Z]+$');
     }
 
-    public deleteVariation(i: number) {
+    public deleteVariation(variation: string, i: number) {
         const id = this.map.get(i);
 
         this.variationService.deleteVariation(id)
             .subscribe();
-        location.reload();
+
+      this.variations = this.variations.filter(x => x !== variation);
     }
 
-    public goBack(){
+    public goBack() {
       this.location.back();
     }
 
 
-  public goToStatics(){
+  public goToStatics() {
       this.router.navigateByUrl('admin/restaurant');
   }
     /*public getErrorMessage() {

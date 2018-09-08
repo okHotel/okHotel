@@ -67,7 +67,7 @@ export class MakeMenuViewComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigateByUrl('admin-profile');
+    this.router.navigateByUrl('/');
   }
 
   checkDate() {
