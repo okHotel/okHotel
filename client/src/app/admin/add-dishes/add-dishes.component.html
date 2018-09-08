@@ -13,11 +13,12 @@
 
     <div class="md-form">
       <mdb-form-field color="accent">
-        <mat-select id="commonLunchDishes" name="commonLunchDishes" placeholder="Common lunch dishes" [(ngModel)]="dish">
+        <mat-select id="commonLunchDishes" name="commonLunchDishes" placeholder="Common Lunch dishes" [(ngModel)]="dish">
           <mat-option *ngFor="let dish of commonDishes" [value]=dish (click)="addLunchDish()" > {{dish}} </mat-option>
         </mat-select>
       </mdb-form-field>
     </div>
+
 
     <div class="input-group mb-3">
       <label for="LunchDish">Dish</label>

@@ -7,6 +7,7 @@
 
     <div class="card-body">
 
+
       <div class="container">
         <div class="card text-center dishForm">
 
@@ -15,15 +16,8 @@
           <form class="mat-dialog-content" #addCustomerForm="ngForm">
 
             <div class="md-form">
-              <mat-form-field color="accent">
                 <label for="selectDate">select menu date</label>
-                <input type="date" class="form-control" id="selectDate" #input [(ngModel)]="date" name="date" (keyup)="setDateMenu($event)">
-              </mat-form-field>
-
-              <input #input type="date" class="form-control" id="selectDate" placeholder="Customer's booking name"
-                     required
-                     [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
-
+                <input type="date" id="selectDate"  [(ngModel)]="date" name="date" (keyup)="setDateMenu($event)">
             </div>
           </form>
         </div>
