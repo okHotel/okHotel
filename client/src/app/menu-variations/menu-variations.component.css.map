@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EA6CE",
+"sources": ["../../styles.scss"],
 "names": [],
 "file": "menu-variations.component.css"
 }

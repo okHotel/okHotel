@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,UAAW;EACP,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,SAAS,EAAE,KAAK;;AAQpB,KAAM;EACF,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,GAAG;;AAGpB,eAAgB;EACZ,SAAS,EAAE,IAAI;EACf,SAAS,EAAE,CAAC",
-"sources": ["registration.component.scss"],
+"mappings": "AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EA6CE;AC3CF,sBAAsB;EAEpB,KAAK,EAAE,IAAI",
+"sources": ["../../styles.scss","registration.component.scss"],
 "names": [],
 "file": "registration.component.css"
 }

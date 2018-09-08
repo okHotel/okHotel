@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAQ,gCAAqB;AAC7B,GAAI;EACF,WAAW,EAAE,MAAM",
-"sources": ["make-menu-view.component.scss"],
+"mappings": "AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EA6CE;AC3CF,EAAG;EACD,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,MAAM;EACnB,MAAM,EAAE,EAAE;;AAIZ,WAAW;EAET,WAAW,EAAE,EAAE",
+"sources": ["../../../styles.scss","make-menu-view.component.scss"],
 "names": [],
 "file": "make-menu-view.component.css"
 }

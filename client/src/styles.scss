@@ -1,7 +1,8 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~@angular/material/theming';
 
-$blue-color: #046B99;
+$blue-color: #034768;
+$container-color: #f4f4fa;
 
 ::ng-deep .mat-tooltip {
   font-size: 50px;
@@ -15,15 +16,21 @@ $blue-color: #046B99;
 .card-header {
   font-size: 150%;
   text-align: center;
+  background-color: $blue-color;
+  color: white;
 }
 
-/* You can add global styles to this file, and also import other style files */
+html,
+body{
+  height: 100%;
+}
 
+// You can add global styles to this file, and also import other style files
 label {
   display: none;
 }
 
-/* /deep/ is a workaround to customize mat-tooltip style */
+// /deep/ is a workaround to customize mat-tooltip style
 /deep/ .mat-tooltip {
   font-size: 90%;
 }
@@ -33,22 +40,7 @@ button{
 }
 
 @media print {
-
   app-header, app-footer, button, .btn-group-btn-group-sm {
     display: none;
   }
-
- div {
-    box-shadow: none !important;
-  }
 }
-
-
-
-
-
-
-
-
-
-

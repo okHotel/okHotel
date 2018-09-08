@@ -1,3 +1,33 @@
+#homeHeader,
+#intro{
+  height: 100%;
+}
+
+#intro {
+  background: url("../../assets/images/casa-per-ferie-san-bassiano.jpg")no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.top-nav-collapse {
+  background-color: #24355C;
+}
+
+@media (max-width: 768px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #24355C;
+  }
+}
+@media (min-width: 800px) and (max-width: 850px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #24355C;
+  }
+}
+
+
+//-------------------home css
 @import "../../styles.scss";
 
 * {box-sizing:border-box}
@@ -13,9 +43,10 @@
 }
 
 #titleDiv {
-  padding-left: 40%;
-  padding-right: 40%;
+  width: 50%;
+  background-color: white;
 }
+
 
 .carousel-caption {
   color: black;
@@ -27,20 +58,6 @@
 
 .rating li {
   display: inline;
-}
-
-html,
-body,
-header,
-.jarallax {
-  height: 75vh;
-}
-
-html,
-body,
-header,
-.intro-2 {
-  height: 750px;
 }
 
 .carousel-control-prev-icon {
@@ -122,13 +139,11 @@ header,
   }
 }
 
-
 @media (min-width : 375px) and (max-width : 414px){
 
 }
 
 @media (min-width : 1112px) and (max-width : 1920px) {
-
 
   #floor0{
     width: 50%;
@@ -143,8 +158,18 @@ header,
   }
 }
 
+main{
+  margin-top: 0 !important;
+}
 
+homeHeader{
+  margin-bottom: 0;
+}
 
+.home{
+  background-color: $container-color;
+}
 
-
-
+.fa{
+  color: $blue-color;
+}
