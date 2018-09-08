@@ -18,7 +18,7 @@
               <mat-option *ngFor="let number of roomsNumber" [value]=number required> {{number}} </mat-option>
             </mat-select>
             <div [hidden]="roomNumber.valid || roomNumber.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               Room number is required
             </div>
           </mdb-form-field>
@@ -31,7 +31,7 @@
                    required
                    [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
             <div [hidden]="bookingName.valid || bookingName.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               Booking Name is required
             </div>
           </mdb-form-field>
@@ -44,7 +44,7 @@
                    required
                    [(ngModel)]="customer.bookingSurname" name="bookingSurname" #bookingSurname="ngModel">
             <div [hidden]="bookingSurname.valid || bookingSurname.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               Booking Surname is required
             </div>
           </mdb-form-field>
@@ -57,7 +57,7 @@
             <input #input type="text" class="form-control" id="username" placeholder="Customer's username"
                    required [(ngModel)]="customer.username" name="username" #username="ngModel">
             <div [hidden]="username.valid || username.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               The customer username is required
             </div>
           </mdb-form-field>
@@ -71,7 +71,7 @@
                    required
                    [(ngModel)]="customer.password" name="password" #password="ngModel">
             <div [hidden]="password.valid || password.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               The password is required
             </div>
           </mdb-form-field>
@@ -85,7 +85,7 @@
                    required
                    [(ngModel)]="confirmPassword" name="checkPassword" #checkPassword="ngModel">
             <div [hidden]="checkPassword.valid || checkPassword.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               The confirmation password is required
             </div>
           </mdb-form-field>
@@ -101,7 +101,7 @@
                    required
                    [(ngModel)]="customer.numberOfPeople" name="numberOfPeople" #numberOfPeople="ngModel">
             <div [hidden]="numberOfPeople.valid || numberOfPeople.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               The number of people in the room is required
             </div>
           </mdb-form-field>
