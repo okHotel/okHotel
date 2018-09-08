@@ -17,13 +17,13 @@ $blue-color: #046B99;
   text-align: center;
 }
 
-/* You can add global styles to this file, and also import other style files */
+// You can add global styles to this file, and also import other style files
 
 label {
   display: none;
 }
 
-/* /deep/ is a workaround to customize mat-tooltip style */
+// /deep/ is a workaround to customize mat-tooltip style
 /deep/ .mat-tooltip {
   font-size: 90%;
 }
@@ -43,13 +43,6 @@ button{
     box-shadow: none !important;
   }
 }
-
-
-
-
-
-
-
 
 
 
