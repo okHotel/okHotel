@@ -9,7 +9,17 @@
       <app-error></app-error>
       <form class="mat-dialog-content" #addCustomerForm="ngForm">
 
-        <div *ngIf="!menu.showLunchVariations" [hidden]="errorService.error">
+        <div class="btn-group btn-group-sm d-flex justify-content-center">
+          <button type="button" class="btn px-5 py-3 mb-2" aria-label="Choose Dinenr" (click)="changeLunchCardState()" *ngIf="lunchCardState">
+            Close Lunch
+          </button>
+
+          <button type="button" class="btn px-5 py-3 mb-2" aria-label="Choose Dinenr" (click)="!changeLunchCardState()" *ngIf="!lunchCardState">
+            Click to choose Lunch
+          </button>
+        </div>
+
+        <div *ngIf="!menu.showLunchVariations && lunchCardState" [hidden]="errorService.error">
           <div class="card my-3">
             <div class="card-body">
               <table class="table" summary="The courses you can select for lunch">
@@ -23,6 +33,7 @@
                 </thead>
 
                 <mat-error *ngIf="checkReservation(l, hl)">{{getErrorMessage()}}</mat-error>
+
 
                 <tr *ngFor="let dish of menu.menu.lunch_dishes">
                   <td scope="row">{{dish}}</td>
@@ -117,7 +128,18 @@
           </div>
         </div>
 
-        <div *ngIf="!menu.showDinnerVariations" [hidden]="errorService.error">
+        <div class="btn-group btn-group-sm d-flex justify-content-center">
+          <button type="button" class="btn px-5 py-3 mb-2 mt-2" aria-label="Choose Dinenr" (click)="!changeDinnerCardState()" *ngIf="!dinnerCardState" onclick="changeDinnerCardState()">
+            Click to choose Dinner
+          </button>
+
+          <button type="button" class="btn px-5 py-3 mb-2 mt-2" aria-label="Choose Dinenr" (click)="changeDinnerCardState()" *ngIf="dinnerCardState" onclick="changeDinnerCardState()">
+            Close Dinner
+          </button>
+
+        </div>
+
+        <div *ngIf="!menu.showDinnerVariations && dinnerCardState" [hidden]="errorService.error">
 
           <div class="card my-3">
 

@@ -4,7 +4,6 @@ import {MenuService} from '../service/menu/menu.service';
 import { DatePipe } from '@angular/common';
 import {CustomerService} from '../service/customer/customer.service';
 import {Meal, Reservation, Variation} from './reservation';
-import {Menu} from './menu';
 import {Note} from './Note';
 import {ErrorService} from '../service/error/error.service';
 
@@ -22,6 +21,8 @@ export class MenuComponent implements OnInit {
   people: number[] = [];
   room: number;
   notes: string[];
+  dinnerCardState: boolean = false;
+  lunchCardState: boolean = true;
 
   constructor(private router: Router,
               public menu: MenuService,
@@ -162,7 +163,6 @@ export class MenuComponent implements OnInit {
         text: event.target.value
       };
       this.menu.menu.otherNotes.push(note);
-
     }
   }
 
@@ -174,5 +174,13 @@ export class MenuComponent implements OnInit {
       }
     });
     return res;
+  }
+
+  changeDinnerCardState() {
+    this.dinnerCardState = !this.dinnerCardState;
+  }
+
+  changeLunchCardState() {
+    this.lunchCardState = !this.lunchCardState;
   }
 }
