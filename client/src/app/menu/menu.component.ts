@@ -24,13 +24,20 @@ export class MenuComponent implements OnInit {
   lunchCardState: boolean = true;
   note: string;
   @ViewChild('inputNote') inputNote: ElementRef;
-  @ViewChild('variation') variation: ElementRef;
+  @ViewChild('mySidenav') variation: ElementRef;
 
   constructor(private router: Router,
               public menu: MenuService,
               private datepipe: DatePipe,
               private customerService: CustomerService,
               public errorService: ErrorService) {
+  }
+
+  get myStyle() {
+    return {
+      'width': (this.menu.showLunchVariations || this.menu.showDinnerVariations) ? '40%' : '0px',
+      'transition': '0.5s'
+    };
   }
 
   ngOnInit() {
@@ -66,7 +73,7 @@ export class MenuComponent implements OnInit {
 
   addVariations(dish: string, type: Meal) {
 
-    if ( this.menu.menu.reservations.filter(r => r.dish === dish && r.type === type).length === 0 ) {
+    if (this.menu.menu.reservations.filter(r => r.dish === dish && r.type === type).length === 0) {
       this.setReservation(type, dish, 0);
     }
 
@@ -94,7 +101,6 @@ export class MenuComponent implements OnInit {
         break;
       }
     }
-    this.variation.nativeElement.style.width = '40%';
   }
 
   setReservation(selectedType: Meal, selectedDish: string, selectedQuantity: number) {
@@ -123,7 +129,7 @@ export class MenuComponent implements OnInit {
     let total = 0;
 
     this.menu.menu.reservations
-      .filter(r => r.roomNumber === this.room )
+      .filter(r => r.roomNumber === this.room)
       .filter(r => r.type === type1 || r.type === type2)
       .forEach(e => total += e.quantity);
 
@@ -171,7 +177,7 @@ export class MenuComponent implements OnInit {
 
   getNote() {
     let res = '';
-    this.menu.menu.otherNotes.forEach( n => {
+    this.menu.menu.otherNotes.forEach(n => {
       if (n.roomNumber === this.room) {
         res = n.text;
       }
@@ -186,4 +192,5 @@ export class MenuComponent implements OnInit {
   changeLunchCardState() {
     this.lunchCardState = !this.lunchCardState;
   }
+
 }

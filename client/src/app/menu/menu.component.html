@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="card mat-elevation-z8 mx-auto d-block">
     <div class="card-header ">
       Choose Menu
@@ -75,13 +74,12 @@
           </div>
         </div>
 
-
         <div class="btn-group btn-group-sm d-flex justify-content-center">
           <button type="button" class="btn px-5 py-3 mb-2 mt-2" aria-label="Choose Dinenr" (click)="!changeDinnerCardState()" *ngIf="!dinnerCardState" onclick="changeDinnerCardState()">
             Click to choose Dinner
           </button>
 
-          <button type="button" class="btn px-5 py-3 mb-2 mt-2" aria-label="Choose Dinenr" (click)="changeDinnerCardState()" *ngIf="dinnerCardState" onclick="changeDinnerCardState()">
+          <button type="button" class="btn px-5 py-3 mb-2 mt-2" aria-label="Choose Dinner" (click)="changeDinnerCardState()" *ngIf="dinnerCardState" onclick="changeDinnerCardState()">
             Close Dinner
           </button>
 
@@ -147,7 +145,7 @@
 
         <div class="card my-3" [hidden]="errorService.error">
 
-          <app-menu-variations #variation></app-menu-variations>
+          <app-menu-variations #mySidenav [ngStyle]="myStyle" id="mySidenav"></app-menu-variations>
 
         </div>
 
@@ -165,7 +163,7 @@
                 <label for="notes">Other notes</label>
                 <input class="form-control" #inputNote type="text" id='notes' name="notes"
                        [(ngModel)]="note" placeholder='Insert your note'
-                (keyup.enter)="addNote()" />
+                       (keyup.enter)="addNote()" />
               </mdb-form-field>
 
               <button mat-button type="button" (click)="addNote()" aria-label="Add"><span
@@ -186,3 +184,5 @@
     </div>
   </div>
 </div>
+
+
