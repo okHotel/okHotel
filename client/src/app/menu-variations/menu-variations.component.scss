@@ -2,9 +2,9 @@
 
 .sidenav {
   height: 100%;
-  width: 0;
+  width: inherit;
   background-color: $container-color;
-  padding: 5%;
+  padding: inherit;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -14,7 +14,7 @@
 }
 
 .sidenav > *{
-  transition: 0.5s;
+  transition: 1s;
 }
 
 caption {

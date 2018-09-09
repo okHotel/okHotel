@@ -20,11 +20,10 @@ export class MenuComponent implements OnInit {
   hd = Meal.HALF_DINNER;
   people: number[] = [];
   room: number;
-  dinnerCardState: boolean = false;
-  lunchCardState: boolean = true;
+  dinnerCardState = false;
+  lunchCardState = true;
   note: string;
   @ViewChild('inputNote') inputNote: ElementRef;
-  @ViewChild('mySidenav') variation: ElementRef;
 
   constructor(private router: Router,
               public menu: MenuService,
@@ -35,7 +34,8 @@ export class MenuComponent implements OnInit {
 
   get myStyle() {
     return {
-      'width': (this.menu.showLunchVariations || this.menu.showDinnerVariations) ? '40%' : '0px',
+      'width': (this.menu.showLunchVariations || this.menu.showDinnerVariations) ? '40%' : '0',
+      'padding': (this.menu.showLunchVariations || this.menu.showDinnerVariations) ? '5%' : '0',
       'transition': '0.5s'
     };
   }

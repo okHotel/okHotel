@@ -7,9 +7,9 @@ Error: File to import not found or unreadable: ~@angular/material/theming.
 2: 
 3: .sidenav {
 4:   height: 100%;
-5:   width: 0;
+5:   width: inherit;
 6:   background-color: $container-color;
-7:   padding: 5%;
+7:   padding: inherit;
 
 Backtrace:
 ../../styles.scss:2
@@ -69,4 +69,4 @@ menu-variations.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of menu-variations.component.scss\A \A 1: @import '../../styles.scss';\A 2: \A 3: .sidenav {\A 4:   height: 100%;\A 5:   width: 0;\A 6:   background-color: $container-color;\A 7:   padding: 5%;"; }
+  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of menu-variations.component.scss\A \A 1: @import '../../styles.scss';\A 2: \A 3: .sidenav {\A 4:   height: 100%;\A 5:   width: inherit;\A 6:   background-color: $container-color;\A 7:   padding: inherit;"; }
