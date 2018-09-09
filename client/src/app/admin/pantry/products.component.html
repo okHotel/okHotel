@@ -1,6 +1,6 @@
 <div class="container" >
 
-  <div class="card mat-elevation-z8" [hidden]="error">
+  <div class="card" [hidden]="error">
     <div class="card-header ">
       Pantry
     </div>
@@ -11,11 +11,13 @@
         <mat-icon aria-label="Add">add</mat-icon>
       </button>
 
-      <div class="form">
-        <mat-form-field floatPlaceholder="never" color="accent">
+      <div class="md-form">
+        <mdb-form-field floatPlaceholder="never" color="accent">
           <label for="search">Search</label>
-          <input matInput id="search" #filter placeholder="Search..">
-        </mat-form-field>
+
+          <input #input type="text" class="form-control" id="Search"
+                 placeholder="Search" #filter>
+        </mdb-form-field>
       </div>
 
       <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">

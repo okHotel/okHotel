@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container" >
 
-  <div class="card">
+  <div class="card" >
     <div class="card-header">
       {{customer.bookingSurname}} {{customer.bookingName}}
     </div>
-    <div class="card-body">
+    <div class="card-body" >
 
       <app-error></app-error>
 
@@ -58,7 +58,7 @@
             </mdb-form-field>
           </div>
 
-            <div>
+          <div>
             Other needs:
             <mat-list>
               <mat-list-item *ngFor="let need of customerNeeds">
@@ -70,19 +70,19 @@
           </div>
 
           <div class="md-form d-flex">
-            <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight"  (keyup.enter)="addNeedAndUpdate(need)">
+            <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight"  (keyup.enter)="addNeedAndUpdate()">
               <label for="otherNeeds">Other needs</label>
 
               <input #input type="text" id='otherNeeds' name="need" class="form-control" [(ngModel)]="need"
                      placeholder="Other needs (p.e. disability types, number of children and/or pets, if present)"/>
             </mdb-form-field>
-            <button mat-button type="button" class="p-2 bd-highlight" (click)="addNeedAndUpdate(need)" [disabled]="isInputInvalid(need)">
+            <button mat-button type="button" class="p-2 bd-highlight" (click)="addNeedAndUpdate()" [disabled]="isInputInvalid(need)">
               <span class="material-icons">add</span>
             </button>
           </div>
 
           <div class="btn-group btn-group-sm d-flex flex-row-reverse">
-            <button  type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="addCustomer()" aria-label="Save" (click)="updateAndGoBack()"
+            <button  type="button" class="btn px-5 py-3 ml-4 mt-4" aria-label="Save" (click)="updateAndGoBack()"
                      [disabled]="!detailCustomerForm.form.valid">Save</button>
             <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="goBack()" aria-label="Back">Back</button>
           </div>
@@ -104,3 +104,4 @@
     -->
   </div>
 </div>
+
