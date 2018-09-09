@@ -240,25 +240,24 @@
             </div>
 
 
-            <div class="md-form d-flex">
-              <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight"  (keyup.enter)="setNotes($event)">
+            <mat-list>
+              <mat-list-item>
+                {{getNote()}}
+              </mat-list-item>
+            </mat-list>
+
+            <div class="md-form d-flex bd-highlight ">
+              <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight">
                 <label for="notes">Other notes</label>
-
-                <input #input type="text" id='notes' name="notes" class="form-control"
-                       placeholder={{getNote()}} />
+                <input class="form-control" #inputNote type="text" id='notes' name="notes"
+                       [(ngModel)]="note" placeholder='Insert your note'
+                (keyup.enter)="addNote()" />
               </mdb-form-field>
-              <button mat-button type="button" class="p-2 bd-highlight" (click)="setNotes($event)">
-                <span class="material-icons">add</span>
-              </button>
+
+              <button mat-button type="button" (click)="addNote()" aria-label="Add"><span
+                class="material-icons p-2 bd-highlight">add</span></button>
             </div>
 
-<!--
-            <div id="notes">
-              <p>Other notes</p>
-              <label for="otherNotes">Other notes</label>
-              <textarea (keypress)="setNotes($event)" id="otherNotes" placeholder={{getNote()}}></textarea>
-            </div>
--->
           </div>
 
         </div>
