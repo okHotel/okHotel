@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {MenuService} from '../service/menu/menu.service';
 import { DatePipe } from '@angular/common';
@@ -23,6 +23,8 @@ export class MenuComponent implements OnInit {
   notes: string[];
   dinnerCardState: boolean = false;
   lunchCardState: boolean = true;
+  note: string;
+  @ViewChild('inputNote') inputNote: ElementRef;
 
   constructor(private router: Router,
               public menu: MenuService,
@@ -147,23 +149,24 @@ export class MenuComponent implements OnInit {
     return res;
   }
 
-  setNotes(event: any) {
+  addNote() {
     let newNote = true;
 
     this.menu.menu.otherNotes.forEach(n => {
       if (n.roomNumber === this.room) {
         newNote = false;
-        n.text = event.target.value;
+        n.text = this.note;
       }
     });
 
     if (newNote) {
       const note: Note = {
         roomNumber: this.room,
-        text: event.target.value
+        text: this.note
       };
       this.menu.menu.otherNotes.push(note);
     }
+    this.inputNote.nativeElement.value = '';
   }
 
   getNote() {

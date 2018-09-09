@@ -115,7 +115,7 @@
         <div class="md-form d-flex bd-highlight">
           <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight">
             <label for="otherNeeds">Other needs</label>
-            <input #input type="text" id='otherNeeds' name="need" [(ngModel)]="need"
+            <input #input type="text" id='otherNeeds' name="need" [(ngModel)]="need" (keyup.enter)="addNeed()"
                    placeholder="Other needs (p.e. disability types, number of children and/or pets, if present)"
                  />
           </mdb-form-field>

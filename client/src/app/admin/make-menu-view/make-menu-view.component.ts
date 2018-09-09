@@ -45,9 +45,6 @@ export class MakeMenuViewComponent implements OnInit {
           this.menu.setMenu(new Menu());
           this.menu.setDate(this.date);
         });
-
-
-
   }
 
   saveMenu() {

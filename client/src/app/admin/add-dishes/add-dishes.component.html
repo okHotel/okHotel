@@ -22,7 +22,8 @@
 
     <div class="input-group mb-3">
       <label for="LunchDish">Dish</label>
-      <input class="form-control" id="LunchDish" #inputLunch type="text" name="dish" (keyup)="composeDish($event)" placeholder="Dish" aria-label="Dish name" aria-describedby="basic-addon2">
+      <input class="form-control" id="LunchDish" #inputLunch type="text" name="dish" (keyup)="composeDish($event)"
+             placeholder="Dish" aria-label="Dish name" aria-describedby="basic-addon2" (keyup.enter)="addLunchDish()">
       <div class="input-group-append">
         <button type="button" class="btn btn-flat btn-lg" (click)="addLunchDish()"><i class="fa fa-plus" aria-hidden="true"></i></button>
       </div>
@@ -54,7 +55,8 @@
 
     <div class="input-group mb-3">
       <label for="DinnerDish">Dish</label>
-      <input class="form-control" id="DinnerDish" #inputLunch type="text" name="dish" (keyup)="composeDish($event)" placeholder="Dish" aria-label="Dish name" aria-describedby="basic-addon2">
+      <input class="form-control" id="DinnerDish" #inputLunch type="text" name="dish" (keyup)="composeDish($event)"
+             placeholder="Dish" aria-label="Dish name" aria-describedby="basic-addon2" (keyup.enter)="addDinnerDish()">
       <div class="input-group-append">
         <button type="button" class="btn btn-flat btn-lg" (click)="addDinnerDish()"><i class="fa fa-plus" aria-hidden="true"></i></button>
       </div>
