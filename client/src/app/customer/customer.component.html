@@ -7,11 +7,13 @@
     <div class="card-body">
 
 
-      <div class="form">
-        <mat-form-field floatPlaceholder="never" color="accent">
+      <div class="md-form">
+        <mdb-form-field floatPlaceholder="never" color="accent">
           <label for="search">Search</label>
-          <input matInput id="search" #filter placeholder="Search..">
-        </mat-form-field>
+          <input #input type="text" class="form-control" id="Search"
+                 placeholder="Search" #filter>
+
+        </mdb-form-field>
       </div>
 
       <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">

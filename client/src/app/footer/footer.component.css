@@ -1,39 +1,31 @@
 /*
-Error: Invalid CSS after "  margin-top: 2%": expected "{", was ";"
-        on line 13 of ../../styles.scss
+Error: File to import not found or unreadable: ~@angular/material/theming.
+        on line 2 of ../../styles.scss
         from line 1 of footer.component.scss
 
-8:   font-size: 50px;
-9: }
-10: 
-11: .container {
-12: <<<<<<< HEAD
-13:   margin-top: 2%;
-14: }
-15: 
-16: .container .card {
-17:   margin-top:10%;
-18: =======
+1: @import "../../styles.scss";
+2: 
+3: #footerDiv {
+4:   background-color: $blue-color;
+5: }
 
 Backtrace:
-../../styles.scss:13
+../../styles.scss:2
 footer.component.scss:1
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:1278:in `expected'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:1208:in `expected'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:1203:in `tok!'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:677:in `block'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:747:in `declaration_or_ruleset'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:697:in `block_child'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:686:in `block_contents'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:678:in `block'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:670:in `ruleset'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:696:in `block_child'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:689:in `block_contents'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:137:in `stylesheet'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:41:in `parse'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/engine.rb:414:in `_to_tree'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/engine.rb:321:in `to_tree'
-/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:327:in `block in visit_import'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/import_node.rb:67:in `rescue in import'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/import_node.rb:45:in `import'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/import_node.rb:28:in `imported_file'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/import_node.rb:37:in `css_import?'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:314:in `visit_import'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:135:in `with_frame'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:162:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:329:in `block (2 levels) in visit_import'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:329:in `map'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:329:in `block in visit_import'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:88:in `block in with_import'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:135:in `with_frame'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:88:in `with_import'
@@ -75,4 +67,4 @@ footer.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"  margin-top: 2%\": expected \"{\", was \";\"\A         on line 13 of ../../styles.scss\A         from line 1 of footer.component.scss\A \A 8:   font-size: 50px;\A 9: }\A 10: \A 11: .container {\A 12: <<<<<<< HEAD\A 13:   margin-top: 2%;\A 14: }\A 15: \A 16: .container .card {\A 17:   margin-top:10%;\A 18: ======="; }
+  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of footer.component.scss\A \A 1: @import \"../../styles.scss\";\A 2: \A 3: #footerDiv {\A 4:   background-color: $blue-color;\A 5: }"; }

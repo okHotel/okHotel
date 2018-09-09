@@ -10,17 +10,21 @@
         <button  type="button" class="btn px-3 px-2 ml-4 mt-4" (click)="goToMakeMenu()" aria-label="New Menu">New Menu</button>
         <button  type="button" class="btn px-3 px-2 ml-4 mt-4" (click)="goToMakeVariation()" aria-label="New Variation">New Variation</button>
 
-      <div class="form">
-        <mat-form-field color="accent">
-          <input type="date" matInput placeholder="Select menu date" [(ngModel)]="date" name="date"
-                 (keyup)="setDateMenu($event)">
-        </mat-form-field>
+      <div class="md-form">
+        <mdb-form-field floatPlaceholder="never" color="accent">
+          <div class="d-flex">
+            <label for="date">Select menu date</label>
+            <input #input type="date" id="date" placeholder="Select menu date" [(ngModel)]="date" name="date"
+                   (keyup)="setDateMenu($event)" class="p-2">
+          </div>
 
-        <mat-form-field color="accent">
-          <mat-select id="roomNumber" name="roomNumber" [(ngModel)]="roomNumber" placeholder="Room number" >
-            <mat-option *ngFor="let number of roomsNumber" [value]=number.roomNumber required> {{number.roomNumber}} </mat-option>
-          </mat-select>
-        </mat-form-field>
+          <div class="d-flex">
+            <mat-select id="roomNumber" name="roomNumber" [(ngModel)]="roomNumber" placeholder="Room number" >
+              <mat-option *ngFor="let number of roomsNumber" [value]=number.roomNumber required> {{number.roomNumber}} </mat-option>
+            </mat-select>
+          </div>
+
+        </mdb-form-field>
 
       </div>
 
@@ -124,8 +128,7 @@
           </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="dis
-        playedColumns"></mat-header-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
       </mat-table>

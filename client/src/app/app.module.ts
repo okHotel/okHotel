@@ -48,7 +48,6 @@ import { EditProductComponent } from './admin/pantry/edit-product/edit-product.c
 import { DeleteProductComponent } from './admin/pantry/delete-product/delete-product.component';
 import { ProductsComponent } from './admin/pantry/products.component';
 import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
-import { MenuStatisticsComponent } from './menu/menu-statistics/menu-statistics.component';
 import { ErrorComponent } from './error/error.component';
 import {ErrorService} from './service/error/error.service';
 
@@ -63,7 +62,6 @@ const appRoutes: Routes = [
     { path: 'pantry/add-product/:code', component: AddProductComponent, canActivate: [AuthService]},
     { path: 'pantry/edit-product/:id', component: EditProductComponent, canActivate: [AuthService]},
     { path: 'admin/restaurant', component: AdminStatisticsComponent, canActivate: [AuthService]},
-    { path: 'menu/statistics/:date',  component: MenuStatisticsComponent, canActivate: [AuthService]},
     { path: 'customers', component: CustomerComponent, canActivate: [AuthService] },
     { path: 'registration', component: RegistrationComponent },
     { path: 'customers/:id', component: CustomerDetailComponent, canActivate: [AuthService] },
@@ -96,7 +94,6 @@ const appRoutes: Routes = [
         DeleteProductComponent,
         ProductsComponent,
         DeleteCustomerComponent,
-        MenuStatisticsComponent,
         ErrorComponent
     ],
     imports: [

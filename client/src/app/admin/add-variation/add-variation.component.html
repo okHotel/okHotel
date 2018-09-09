@@ -13,12 +13,13 @@
           <i class="material-icons">clear</i>
         </button>{{variation}}</p>
       </div>
-      <label for="variation" >Insert Variations</label>
 
-
+      <form #addVariationForm="ngForm">
       <div class="md-form d-flex bd-highlight">
         <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight">
-        <input id="variation" type="text" class="form-control" placeholder="Variation"
+          <label for="variation" >Insert Variations</label>
+
+          <input id="variation" type="text" class="form-control" placeholder="Variation"
                required name="variation" [(ngModel)]="variation.type" (keyup.enter)="addVariation(variation.type)" >
         </mdb-form-field>
         <button mat-button #button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)">
@@ -27,10 +28,10 @@
       </div>
 
       <div class="btn-group btn-group-sm d-flex flex-row-reverse">
-        <button  type="button" class="btn px-5 px-3 ml-4 mt-4" (click)="goToStatics()" aria-label="Save" [disabled]="!addCustomerForm.form.valid">Save</button>
+        <button  type="button" class="btn px-5 px-3 ml-4 mt-4" (click)="goToStatics()" aria-label="Save" [disabled]="!addVariationForm.form.valid">Save</button>
         <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="goBack()" aria-label="Back">Back</button>
       </div>
-
+      </form>
 
     </div>
 
