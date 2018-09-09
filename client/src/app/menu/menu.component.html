@@ -230,11 +230,35 @@
         <div class="card" [hidden]="errorService.error">
           <div class="card-body">
 
+            <div>
+              Other notes:
+              <mat-list>
+                <mat-list-item *ngFor="let singleNote of getNote()">
+                  {{singleNote}}
+                </mat-list-item>
+              </mat-list>
+            </div>
+
+
+            <div class="md-form d-flex">
+              <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight"  (keyup.enter)="setNotes($event)">
+                <label for="notes">Other notes</label>
+
+                <input #input type="text" id='notes' name="notes" class="form-control"
+                       placeholder={{getNote()}} />
+              </mdb-form-field>
+              <button mat-button type="button" class="p-2 bd-highlight" (click)="setNotes($event)">
+                <span class="material-icons">add</span>
+              </button>
+            </div>
+
+<!--
             <div id="notes">
               <p>Other notes</p>
               <label for="otherNotes">Other notes</label>
               <textarea (keypress)="setNotes($event)" id="otherNotes" placeholder={{getNote()}}></textarea>
             </div>
+-->
           </div>
 
         </div>

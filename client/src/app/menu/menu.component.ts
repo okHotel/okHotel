@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit {
   hd = Meal.HALF_DINNER;
   people: number[] = [];
   room: number;
+  notes: string[];
 
   constructor(private router: Router,
               public menu: MenuService,
@@ -161,6 +162,7 @@ export class MenuComponent implements OnInit {
         text: event.target.value
       };
       this.menu.menu.otherNotes.push(note);
+
     }
   }
 
