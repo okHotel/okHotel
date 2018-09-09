@@ -27,7 +27,14 @@ export class CustomerDetailComponent implements OnInit {
         private route: ActivatedRoute,
         private location: Location,
         private errorService: ErrorService
-    ) {}
+    ) {
+
+      document.body.style.backgroundImage = "url('../../assets/images/customer.jpg')";
+      document.body.style.backgroundRepeat = "repeat";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center center";
+
+    }
 
     ngOnInit(): void {
         const id = this.route.snapshot.paramMap.get('id');

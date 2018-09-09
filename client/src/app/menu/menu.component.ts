@@ -30,6 +30,11 @@ export class MenuComponent implements OnInit {
               private datepipe: DatePipe,
               private customerService: CustomerService,
               public errorService: ErrorService) {
+    document.body.style.backgroundImage = "url('../../assets/images/restaurant.jpg')";
+    document.body.style.backgroundRepeat = "repeat";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center center";
+
   }
 
   get myStyle() {

@@ -18,7 +18,13 @@ export class LoginComponent implements OnInit {
   destinationUrl = '';
 
   constructor(private customerService: CustomerService, private authService: AuthService,
-              private router: Router, private route: ActivatedRoute, private error: ErrorService) { }
+              private router: Router, private route: ActivatedRoute, private error: ErrorService) {
+    document.body.style.backgroundImage = "url('../../assets/images/casa-per-ferie-san-bassiano.jpg')";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center center";
+
+  }
 
   ngOnInit() {
     this.route.queryParams

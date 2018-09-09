@@ -16,7 +16,14 @@ export class EditProductComponent {
     constructor(public pantryService: PantryService,
                 private route: ActivatedRoute,
                 private location: Location,
-                public errorService: ErrorService) { }
+                public errorService: ErrorService) {
+
+      document.body.style.backgroundImage = "url('../../assets/images/pantry.jpg')";
+      document.body.style.backgroundRepeat = "repeat";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center center";
+
+    }
 
     formControl = new FormControl('', [Validators.required]);
     product: Product = new Product();

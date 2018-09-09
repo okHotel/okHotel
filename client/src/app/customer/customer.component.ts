@@ -28,7 +28,15 @@ export class CustomerComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild('filter') filter: ElementRef;
 
-    constructor(private dialog: MatDialog, private router: Router, private http: HttpClient, public customerService: CustomerService) {}
+    constructor(private dialog: MatDialog, private router: Router, private http: HttpClient, public customerService: CustomerService) {
+
+      document.body.style.backgroundImage = "url('../../assets/images/customer.jpg')";
+      document.body.style.backgroundRepeat = "repeat";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center center";
+
+
+    }
 
     ngOnInit(): void {
         this.loadData();

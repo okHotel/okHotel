@@ -45,7 +45,14 @@ export class ProductsComponent implements OnInit {
                 public dialog: MatDialog,
                 public errorService: ErrorService,
                 private decoderService: BarcodeDecoderService,
-                private barcodeValidator: BarcodeValidatorService) {}
+                private barcodeValidator: BarcodeValidatorService) {
+
+      document.body.style.backgroundImage = "url('../../assets/images/pantry.jpg')";
+      document.body.style.backgroundRepeat = "repeat";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center center";
+
+    }
 
     ngOnInit() {
         this.loadData();

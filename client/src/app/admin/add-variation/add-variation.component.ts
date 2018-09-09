@@ -19,6 +19,11 @@ export class AddVariationComponent implements OnInit {
                 private variationService: VariationService,
                 private location: Location) {
 
+      document.body.style.backgroundImage = "url('../../assets/images/restaurant.jpg')";
+      document.body.style.backgroundRepeat = "repeat";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center center";
+
     }
 
     ngOnInit() {

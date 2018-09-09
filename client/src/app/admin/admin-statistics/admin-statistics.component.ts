@@ -33,7 +33,14 @@ export class AdminStatisticsComponent implements OnInit {
   constructor(private router: Router, public menu: MenuService,
               private variationService: VariationService,
               private location: Location,
-              private bookingService: BookingService) { }
+              private bookingService: BookingService) {
+
+    document.body.style.backgroundImage = "url('../../assets/images/restaurant.jpg')";
+    document.body.style.backgroundRepeat = "repeat";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center center";
+
+  }
 
   ngOnInit() {
     this.bookingService.getRoomsNumber().subscribe(n => {

@@ -31,7 +31,13 @@ export class RegistrationComponent implements OnInit {
     private location: Location,
     private router: Router,
     public error: ErrorService
-  ) { }
+  ) {
+
+    document.body.style.backgroundImage = "url('../../assets/images/casa-per-ferie-san-bassiano.jpg')";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center center";
+  }
 
   ngOnInit() {
     this.getRoomsNumber();

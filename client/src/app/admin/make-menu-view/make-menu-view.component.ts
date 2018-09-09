@@ -15,7 +15,14 @@ export class MakeMenuViewComponent implements OnInit {
 
   constructor(
     public menu: MenuService,
-    private router: Router) { }
+    private router: Router) {
+
+    document.body.style.backgroundImage = "url('../../../assets/images/restaurant.jpg')";
+    document.body.style.backgroundRepeat = "repeat";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center center";
+
+  }
 
   ngOnInit() {
   }
