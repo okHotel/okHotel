@@ -19,7 +19,7 @@
           </button>
         </div>
 
-        <div *ngIf="!menu.showLunchVariations && lunchCardState" [hidden]="errorService.error">
+        <div *ngIf="lunchCardState" [hidden]="errorService.error">
           <div class="card my-3">
             <div class="card-body">
               <table class="table" summary="The courses you can select for lunch">
@@ -75,58 +75,6 @@
           </div>
         </div>
 
-        <div class="card my-3" *ngIf="menu.showLunchVariations" [hidden]="errorService.error">
-          <div class="card-body">
-            <table class="table" summary="The courses you can select for lunch">
-              <caption>Lunch</caption>
-              <thead>
-              <tr>
-                <th scope="col">Dish</th>
-                <th scope="col">Whole Portion</th>
-                <th scope="col">Half Portion</th>
-              </tr>
-              </thead>
-
-              <mat-error *ngIf="checkReservation(l, hl)">{{getErrorMessage()}}</mat-error>
-
-              <tr *ngFor="let dish of menu.menu.lunch_dishes">
-                <td scope="row">{{dish}}</td>
-                <td>
-
-                  <mdb-form-field color="accent">
-                    <mat-select placeholder={{getRes(l,dish)}}>
-                      <mat-option *ngFor="let n of people" value=n (click)="setReservation(l, dish, n)">
-                        {{n}}
-                      </mat-option>
-                    </mat-select>
-                  </mdb-form-field>
-                  <div class="btn-group btn-group-sm d-flex">
-                    <button type="button" class="fa fa-plus btn px-3 px-1 ml-4 mt-4" (click)="addVariations(dish, l)"
-                            aria-label="Add Variation">Add Variation
-                    </button>
-                  </div>
-                </td>
-
-                <td>
-                  <mdb-form-field color="accent">
-                    <mat-select placeholder={{getRes(hl,dish)}}>
-                      <mat-option *ngFor="let n of people" value=n (click)="setReservation(hl, dish, n)">
-                        {{n}}
-                      </mat-option>
-                    </mat-select>
-                  </mdb-form-field>
-                  <div class="btn-group btn-group-sm d-flex">
-                    <button type="button" class="fa fa-plus btn px-3 px-1 ml-4 mt-4" (click)="addVariations(dish, hl)"
-                            aria-label="Add Variation">Add Variation
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </table>
-
-            <app-menu-variations></app-menu-variations>
-          </div>
-        </div>
 
         <div class="btn-group btn-group-sm d-flex justify-content-center">
           <button type="button" class="btn px-5 py-3 mb-2 mt-2" aria-label="Choose Dinenr" (click)="!changeDinnerCardState()" *ngIf="!dinnerCardState" onclick="changeDinnerCardState()">
@@ -139,7 +87,7 @@
 
         </div>
 
-        <div *ngIf="!menu.showDinnerVariations && dinnerCardState" [hidden]="errorService.error">
+        <div *ngIf="dinnerCardState" [hidden]="errorService.error">
 
           <div class="card my-3">
 
@@ -197,76 +145,20 @@
           </div>
         </div>
 
-        <div class="card my-3" *ngIf="menu.showDinnerVariations" [hidden]="errorService.error">
-          <div class="card-body">
-            <table class="table" summary="The courses you can select for dinner">
-              <caption>Dinner</caption>
-              <tr>
-                <th scope="col">Dish</th>
-                <th scope="col">Whole Portion</th>
-                <th scope="col">Half Portion</th>
-              </tr>
+        <div class="card my-3" [hidden]="errorService.error">
 
-              <mat-error *ngIf="checkReservation(d, hd)">{{getErrorMessage()}}</mat-error>
+          <app-menu-variations #variation></app-menu-variations>
 
-              <tr *ngFor="let dish of menu.menu.dinner_dishes">
-                <td scope="row">{{dish}}</td>
-                <td>
-                  <mat-form-field color="accent">
-                    <mat-select placeholder={{getRes(d,dish)}}>
-                      <mat-option *ngFor="let n of people" value=n (click)="setReservation(d, dish, n)">
-                        {{n}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                  <div class="btn-group btn-group-sm d-flex">
-                    <button type="button" class="fa fa-plus btn px-3 px-1 ml-4 mt-4" (click)="addVariations(dish, d)"
-                            aria-label="Add Variation">Add Variation
-                    </button>
-                  </div>
-
-                </td>
-                <td>
-                  <mat-form-field color="accent">
-                    <mat-select placeholder={{getRes(hd,dish)}}>
-                      <mat-option *ngFor="let n of people" value=n (click)="setReservation(hd, dish, n)">
-                        {{n}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                  <div class="btn-group btn-group-sm d-flex">
-                    <button type="button" class="fa fa-plus btn px-3 px-1 ml-4 mt-4" (click)="addVariations(dish, hd)"
-                            aria-label="Add Variation">Add Variation
-                    </button>
-                  </div>
-                </td>
-
-              </tr>
-
-            </table>
-
-            <app-menu-variations></app-menu-variations>
-          </div>
         </div>
 
         <div class="card" [hidden]="errorService.error">
           <div class="card-body">
 
             <div>
-              Other notes:
-              <mat-list>
-                <mat-list-item *ngFor="let singleNote of getNote()">
-                  {{singleNote}}
-                </mat-list-item>
-              </mat-list>
+              Other notes:<br>
+              <p>{{getNote()}}</p>
             </div>
 
-
-            <mat-list>
-              <mat-list-item>
-                {{getNote()}}
-              </mat-list-item>
-            </mat-list>
 
             <div class="md-form d-flex bd-highlight ">
               <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight">

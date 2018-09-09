@@ -1,1 +1,28 @@
 @import '../../styles.scss';
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  background-color: $container-color;
+  padding: 5%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 1s;
+}
+
+
+.sidenav > *{
+  transition: 1s;
+}
+
+caption {
+  caption-side: top;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

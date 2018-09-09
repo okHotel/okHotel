@@ -21,6 +21,7 @@ $container-color: #f4f4fa;
 
 
 .clear{
+  color: black;
   background-color: white;
   border: none;
 }
@@ -56,6 +57,9 @@ button{
 .pantryBackground{
   background: url('/assets/images/pantry.jpg') no-repeat center center;
 }
+
+
+
 
 @media print {
   app-header, app-footer, button, .btn-group-btn-group-sm {

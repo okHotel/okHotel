@@ -10,7 +10,6 @@ export class ErrorService {
   constructor() { }
 
   get error(): string {
-    console.log('MESSAGE ' + this.message)
     return this.message;
   }
 

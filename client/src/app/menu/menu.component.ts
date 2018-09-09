@@ -20,11 +20,11 @@ export class MenuComponent implements OnInit {
   hd = Meal.HALF_DINNER;
   people: number[] = [];
   room: number;
-  notes: string[];
   dinnerCardState: boolean = false;
   lunchCardState: boolean = true;
   note: string;
   @ViewChild('inputNote') inputNote: ElementRef;
+  @ViewChild('variation') variation: ElementRef;
 
   constructor(private router: Router,
               public menu: MenuService,
@@ -94,7 +94,7 @@ export class MenuComponent implements OnInit {
         break;
       }
     }
-
+    this.variation.nativeElement.style.width = '40%';
   }
 
   setReservation(selectedType: Meal, selectedDish: string, selectedQuantity: number) {
@@ -170,7 +170,7 @@ export class MenuComponent implements OnInit {
   }
 
   getNote() {
-    let res = 'soup, salt-free, ...';
+    let res = '';
     this.menu.menu.otherNotes.forEach( n => {
       if (n.roomNumber === this.room) {
         res = n.text;
