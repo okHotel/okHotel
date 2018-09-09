@@ -143,12 +143,6 @@
           </div>
         </div>
 
-        <div class="card my-3" [hidden]="errorService.error">
-
-          <app-menu-variations [ngStyle]="myStyle" id="mySidenav"></app-menu-variations>
-
-        </div>
-
         <div class="card" [hidden]="errorService.error">
           <div class="card-body">
 
@@ -182,7 +176,9 @@
       </form>
 
     </div>
+
   </div>
 </div>
 
+<app-menu-variations [ngStyle]="myStyle" id="mySidenav"></app-menu-variations>
 
