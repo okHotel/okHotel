@@ -36,8 +36,8 @@
 
                 <tr *ngFor="let dish of menu.menu.lunch_dishes">
                   <td scope="row">{{dish}}</td>
-                  <td>
 
+                  <td>
                     <mdb-form-field color="accent">
                       <mat-select placeholder={{getRes(l,dish)}}>
                         <mat-option *ngFor="let n of people" value=n (click)="setReservation(l, dish, n)">
@@ -46,12 +46,9 @@
                       </mat-select>
                     </mdb-form-field>
 
-                    <div class="btn-group btn-group-sm d-flex">
-                      <button type="button" class="fa fa-plus btn px-3 px-1 ml-4 mt-4" (click)="addVariations(dish, l)"
-                              aria-label="Add Variation">Add Variation
-                      </button>
-                    </div>
-
+                    <button type="button" class="btn px-2 py-2 mb-2" aria-label="Add Variation"  (click)="addVariations(dish, l)">
+                      <i class="fa fa-plus"></i> Add Variation
+                    </button>
                   </td>
 
                   <td>
@@ -62,12 +59,12 @@
                         </mat-option>
                       </mat-select>
                     </mdb-form-field>
-                    <div class="btn-group btn-group-sm d-flex">
-                      <button type="button" class="fa fa-plus btn px-3 px-1 ml-4 mt-4" (click)="addVariations(dish, hl)"
-                              aria-label="Add Variation">Add Variation
-                      </button>
-                    </div>
+
+                    <button type="button" class="btn px-2 py-2 mb-2" aria-label="Add Variation"  (click)="addVariations(dish, hl)">
+                      <i class="fa fa-plus"></i> Add Variation
+                    </button>
                   </td>
+
                 </tr>
               </table>
             </div>
@@ -102,6 +99,7 @@
 
                 <tr *ngFor="let dish of menu.menu.dinner_dishes">
                   <td scope="row">{{dish}}</td>
+
                   <td>
                     <mdb-form-field color="accent">
                       <mat-select placeholder={{getRes(d,dish)}}>
@@ -111,16 +109,12 @@
                       </mat-select>
                     </mdb-form-field>
 
-                    <div class="btn-group btn-group-sm d-flex">
-                      <button type="button" class="fa fa-plus btn px-3 px-1 ml-4 mt-4"
-                              (click)="addVariations(dish, hd)"
-                              aria-label="Add Variation">Add Variation
-                      </button>
-                    </div>
-
+                    <button type="button" class="btn px-2 py-2 mb-2" aria-label="Add Variation"  (click)="addVariations(dish, d)">
+                      <i class="fa fa-plus"></i> Add Variation
+                    </button>
                   </td>
-                  <td>
 
+                  <td>
                     <mdb-form-field color="accent">
                       <mat-select placeholder={{getRes(hd,dish)}}>
                         <mat-option *ngFor="let n of people" value=n (click)="setReservation(hd, dish, n)">
@@ -129,14 +123,11 @@
                       </mat-select>
                     </mdb-form-field>
 
-                    <div class="btn-group btn-group-sm d-flex">
-                      <button type="button" class="fa fa-plus btn px-3 px-1 ml-4 mt-4"
-                              (click)="addVariations(dish, hd)"
-                              aria-label="Add Variation">Add Variation
-                      </button>
-                    </div>
-
+                    <button type="button" class="btn px-2 py-2 mb-2" aria-label="Add Variation"  (click)="addVariations(dish, hd)">
+                      <i class="fa fa-plus"></i> Add Variation
+                    </button>
                   </td>
+                  
                 </tr>
               </table>
             </div>
