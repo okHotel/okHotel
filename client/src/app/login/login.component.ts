@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
           console.log(localStorage);
 
-          this.router.navigate([this.destinationUrl]);
+          this.router.navigateByUrl("/");
         }},
       (err: HttpErrorResponse) => {
         this.isLoginError = true;
