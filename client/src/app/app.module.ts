@@ -67,7 +67,7 @@ const appRoutes: Routes = [
     { path: 'registration', component: RegistrationComponent },
     { path: 'customers/:id', component: CustomerDetailComponent, canActivate: [AuthService] },
     { path: 'profile', component: ProfileComponent },
-    { path: 'accessibility', component:     AccessibilitySettingComponent}
+    { path: 'accessibility', component: AccessibilitySettingComponent}
 ];
 
 @NgModule({

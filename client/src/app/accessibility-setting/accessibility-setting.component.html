@@ -1,62 +1,100 @@
 <div class="container">
 
-  <div class="card mat-elevation-z8" >
+  <div class="card mat-elevation-z8">
     <div class="card-header">
-      Accessibility settings
+      Text and keyboard
     </div>
 
     <div class="card-body">
       <app-error></app-error>
-      <form class="mat-dialog-content" >
+      <form class="mat-dialog-content">
 
-        <div class="md-form">
-
-
-
+        <div class="mb-5">
           <mdb-form-field color="accent">
             <label for="textSize">Text size</label>
             <input #input type="range" class="custom-range" id="textSize"
-                  name="textSize">
+                   name="textSize">
           </mdb-form-field>
+        </div>
+        <div class="mb-5">
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label px-3 pt-0">Form input border</legend>
+              <div class="col-sm-10">
 
-          <mdb-form-field color="accent">
-            <h3>Form input border</h3>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2"
+                         checked>
+                  <label class="form-check-label" for="gridRadios2">
 
-            <div class="custom-control custom-radio">
-              <input style="background-color: red" type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+                    <div class="md-form">
+                      <input #input type="text" class="form-control" id="inputWithoutBorder"
+                             placeholder="Input without border"
+                             name="inputWithoutBorder">
+                    </div>
+
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                  <label class="form-check-label" for="gridRadios1">
+                    <input #input type="text" class="form-control border border-primary " id="inputWithBorder"
+                           placeholder="Input with border" name="inputWithBorder">
+                  </label>
+                </div>
+              </div>
             </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
-            </div>
+          </fieldset>
+        </div>
 
-          </mdb-form-field>
-
-
-          <!--<mdb-form-field color="accent">
-            <label for="formInputBorder">Form input border</label>
-            <input #input type="text" class="form-control" id="formInputBorder"
-                   required
-                   [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
-
-          </mdb-form-field>
-
-
-          <mdb-form-field color="accent">
-            <label for="formInputBorder">Form input border</label>
-            <input #input type="text" class="form-control" id="formInputBorder"
-                   required
-                   [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
-
-          </mdb-form-field>-->
-
-
-
+        <div class="mb-5">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+            <label class="custom-control-label" for="defaultUnchecked">Keyboard visual focus</label>
+          </div>
         </div>
       </form>
     </div>
+  </div>
 
+  <div class="card mt-5 mat-elevation-z8">
+    <div class="card-header">
+      Themes and background
+    </div>
+
+    <div class="card-body">
+      <app-error></app-error>
+      <form class="mat-dialog-content">
+
+        <div class="mb-5">
+          <mdb-form-field color="accent">
+            <label for="textSize">Color contrast</label>
+            <input #input type="range" class="custom-range" id="colorContrast"
+                   name="colorContrast">
+          </mdb-form-field>
+        </div>
+
+        <div class="mb-5">
+          <fieldset class="form-group">
+            <!--
+                          <legend class="col-form-label px-3 pt-0">Background images</legend>
+            -->
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="backgroundImages">
+              <label class="custom-control-label" for="backgroundImages">Background images</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="mb-5">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+            <label class="custom-control-label" for="defaultUnchecked">Keyboard visual focus</label>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 

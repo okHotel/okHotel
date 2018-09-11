@@ -79,7 +79,7 @@
           <mdb-form-field color="accent">
             <label for="confirmPassword">Confirm password</label>
 
-            <input style=": none" #input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password"
+            <input #input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password"
                    required
                    [(ngModel)]="confirmPassword" name="checkPassword" #checkPassword="ngModel">
             <div [hidden]="checkPassword.valid || checkPassword.pristine"
