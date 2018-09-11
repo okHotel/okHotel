@@ -1,0 +1,62 @@
+<div class="container">
+
+  <div class="card mat-elevation-z8" >
+    <div class="card-header">
+      Accessibility settings
+    </div>
+
+    <div class="card-body">
+      <app-error></app-error>
+      <form class="mat-dialog-content" >
+
+        <div class="md-form">
+
+
+
+          <mdb-form-field color="accent">
+            <label for="textSize">Text size</label>
+            <input #input type="range" class="custom-range" id="textSize"
+                  name="textSize">
+          </mdb-form-field>
+
+          <mdb-form-field color="accent">
+            <h3>Form input border</h3>
+
+            <div class="custom-control custom-radio">
+              <input style="background-color: red" type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+            </div>
+
+          </mdb-form-field>
+
+
+          <!--<mdb-form-field color="accent">
+            <label for="formInputBorder">Form input border</label>
+            <input #input type="text" class="form-control" id="formInputBorder"
+                   required
+                   [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
+
+          </mdb-form-field>
+
+
+          <mdb-form-field color="accent">
+            <label for="formInputBorder">Form input border</label>
+            <input #input type="text" class="form-control" id="formInputBorder"
+                   required
+                   [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
+
+          </mdb-form-field>-->
+
+
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+

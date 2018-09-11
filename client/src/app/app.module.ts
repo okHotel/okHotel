@@ -50,6 +50,7 @@ import { ProductsComponent } from './admin/pantry/products.component';
 import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
 import { ErrorComponent } from './error/error.component';
 import {ErrorService} from './service/error/error.service';
+import { AccessibilitySettingComponent } from './accessibility-setting/accessibility-setting.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
@@ -65,7 +66,8 @@ const appRoutes: Routes = [
     { path: 'customers', component: CustomerComponent, canActivate: [AuthService] },
     { path: 'registration', component: RegistrationComponent },
     { path: 'customers/:id', component: CustomerDetailComponent, canActivate: [AuthService] },
-    { path: 'profile', component: ProfileComponent }
+    { path: 'profile', component: ProfileComponent },
+    { path: 'accessibility', component:     AccessibilitySettingComponent}
 ];
 
 @NgModule({
@@ -94,7 +96,8 @@ const appRoutes: Routes = [
         DeleteProductComponent,
         ProductsComponent,
         DeleteCustomerComponent,
-        ErrorComponent
+        ErrorComponent,
+        AccessibilitySettingComponent
     ],
     imports: [
         BrowserModule,
