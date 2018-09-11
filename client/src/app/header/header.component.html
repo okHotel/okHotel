@@ -1,27 +1,28 @@
 <header>
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark lightBlue scrolling-navbar">
-<!--
-    <strong class="navbar-brand" >OkHotel</strong>
--->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!--
+        <strong class="navbar-brand" >OkHotel</strong>
+    -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="isLoggedIn()">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+      <ul class="navbar-nav mr-auto" >
+        <li class="nav-item active" *ngIf="isLoggedIn()">
           <a class="nav-link" href="/">
             <i class="fa fa-home" aria-label="restaurantService"></i>
             Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isLoggedIn()">
           <a class="nav-link" href="/restaurant">
             <i class="fa fa-cutlery" aria-label="chooseMenu"></i>
-              Choose Menu</a>
+            Choose Menu</a>
         </li>
 
 
-        <li class="nav-item dropdown btn-group" dropdown>
+        <li class="nav-item dropdown btn-group" dropdown *ngIf="isLoggedIn()">
           <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
             <i class="fa fa-th-large" aria-label="services"></i>
             Services<span class="caret"></span></a>
@@ -33,23 +34,28 @@
             <a class="dropdown-item waves-light" href="/admin/restaurant" mdbWavesEffect>
               <i class="fa fa-cutlery" aria-label="restaurantService"></i>
               Restaurant
-             </a>
+            </a>
 
             <a class="dropdown-item waves-light" href="/customers" mdbWavesEffect>
               <i class="fa fa-users" aria-label="customerService"></i>
               Customers
-              </a>
+            </a>
 
             <a class="dropdown-item waves-light" href="/pantry" mdbWavesEffect>
               <i class="fa fa-list" aria-label="pantryService"></i>Pantry
-              </a>
+            </a>
           </div>
         </li>
       </ul>
 
-      <app-profile></app-profile>
+      <a class="nav-link accessibility" href="/accessibility">
+        <i class="fa fa-cog" aria-label="Accessibility"></i>
+        Accessibility</a>
+
+      <app-profile *ngIf="isLoggedIn()"></app-profile>
 
     </div>
+
   </nav>
 
 </header>
