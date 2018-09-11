@@ -9,13 +9,15 @@
       <app-error></app-error>
       <form class="mat-dialog-content">
 
+
         <div class="mb-5">
           <mdb-form-field color="accent">
-            <label for="textSize">Text size</label>
-            <input #input type="range" class="custom-range" id="textSize"
-                   name="textSize">
+                <label for="textSize" >Text size</label>
+                <input #input type="range" class="custom-range rangeInput" id="textSize"
+                       name="textSize">
           </mdb-form-field>
         </div>
+
         <div class="mb-5">
           <fieldset class="form-group">
             <div class="row">
@@ -70,7 +72,7 @@
         <div class="mb-5">
           <mdb-form-field color="accent">
             <label for="textSize">Color contrast</label>
-            <input #input type="range" class="custom-range" id="colorContrast"
+            <input #input type="range" class="custom-range rangeInput" id="colorContrast"
                    name="colorContrast">
           </mdb-form-field>
         </div>
@@ -85,13 +87,6 @@
               <label class="custom-control-label" for="backgroundImages">Background images</label>
             </div>
           </fieldset>
-        </div>
-
-        <div class="mb-5">
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="KeyboardVisualFocus">
-            <label class="custom-control-label" for="defaultUnchecked">Keyboard visual focus</label>
-          </div>
         </div>
 
         Color theme
