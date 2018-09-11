@@ -11,10 +11,19 @@ import {AuthService} from '../service/auth/auth.service';
 
 export class HeaderComponent implements OnInit {
 
+  static isAccessibilitySidebarOpen: boolean = false;
 
   constructor(private router: Router, public authService: AuthService) {}
 
   ngOnInit() {}
+
+  get myStyle() {
+    return {
+      'width': HeaderComponent.isAccessibilitySidebarOpen ? '40%' : '0',
+      'padding': HeaderComponent.isAccessibilitySidebarOpen ? '5%' : '0',
+      'transition': '0.5s'
+    };
+  }
 
   home() {
       this.router.navigateByUrl('');
@@ -33,4 +42,9 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
+  openAccessibilitySidebar() {
+    HeaderComponent.isAccessibilitySidebarOpen = true;
+    console.log('After open')
+    console.log(HeaderComponent.isAccessibilitySidebarOpen)
+  }
 }

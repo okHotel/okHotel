@@ -4,6 +4,7 @@
     <!--
         <strong class="navbar-brand" >OkHotel</strong>
     -->
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -48,9 +49,9 @@
         </li>
       </ul>
 
-      <a class="nav-link accessibility" href="/accessibility">
+      <span class="nav-link accessibility" (click)="openAccessibilitySidebar()">
         <i class="fa fa-cog" aria-label="Accessibility"></i>
-        Accessibility</a>
+        Accessibility</span>
 
       <app-profile *ngIf="isLoggedIn()"></app-profile>
 
@@ -60,3 +61,5 @@
 
 </header>
 <!--Main Navigation-->
+
+<app-accessibility-setting [ngStyle]="myStyle"></app-accessibility-setting>

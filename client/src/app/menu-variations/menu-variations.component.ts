@@ -14,7 +14,6 @@ import {Meal, Reservation, VariationType} from '../menu/reservation';
 
 export class MenuVariationsComponent implements OnInit {
 
-
   public showSide = false;
   public variations = [];
   public people = [];

@@ -1,14 +1,16 @@
-<div class="container">
+<div class="card mat-elevation-z20 mx-auto d-block sidenav">
 
-  <div class="card mat-elevation-z8">
-    <div class="card-header">
-      Text and keyboard
-    </div>
+  <div class="card-body">
 
-    <div class="card-body">
-      <app-error></app-error>
-      <form class="mat-dialog-content">
+    <div  id="mySidenav">
 
+      <button type="button" class="closebtn btn btn-sm mt-3" (click)="closeSidebar()">
+        <i class="fa fa-times fa-2x" aria-label="close sidebar"></i> </button>
+
+      <div id="container">
+
+
+        <h1>Text and keyboard</h1>
 
         <div class="mb-5">
           <mdb-form-field color="accent">
@@ -19,7 +21,6 @@
         </div>
 
         <div class="mb-5">
-          <fieldset class="form-group">
             <div class="row">
               <legend class="col-form-label px-3 pt-0">Form input border</legend>
               <div class="col-sm-10">
@@ -47,7 +48,7 @@
                 </div>
               </div>
             </div>
-          </fieldset>
+
         </div>
 
         <div class="mb-5">
@@ -56,18 +57,10 @@
             <label class="custom-control-label" for="defaultUnchecked">Keyboard visual focus</label>
           </div>
         </div>
-      </form>
-    </div>
+
   </div>
 
-  <div class="card mt-5 mat-elevation-z8">
-    <div class="card-header">
-      Themes and background
-    </div>
-
-    <div class="card-body">
-      <app-error></app-error>
-      <form class="mat-dialog-content">
+      <h1>Themes and background</h1>
 
         <div class="mb-5">
           <mdb-form-field color="accent">
@@ -103,8 +96,8 @@
 
         </div>
 
-      </form>
-    </div>
   </div>
 </div>
+
+    </div>
 
