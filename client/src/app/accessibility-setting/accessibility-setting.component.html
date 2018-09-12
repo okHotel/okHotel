@@ -10,44 +10,44 @@
       <div id="container">
 
 
-        <h1 class="mb-5">Text and keyboard</h1>
+        <h4 class="mb-5">Text and keyboard</h4>
 
         <div class="mb-5">
           <mdb-form-field color="accent">
-                <label for="textSize" >Text size</label>
-                <input #input type="range" class="custom-range rangeInput ml-4 mt-1" id="textSize"
-                       name="textSize">
+            <label for="textSize" >Text size</label>
+            <input #input type="range" class="custom-range rangeInput mt-3" id="textSize"
+                   name="textSize">
           </mdb-form-field>
         </div>
 
         <div class="mb-5">
-            <div class="row">
-              <legend class="col-form-label px-3 pt-0">Form input border</legend>
-              <div class="col-sm-10">
+          <div class="row">
+            <legend class="col-form-label px-3 pt-0">Form input border</legend>
+            <div class="col-sm-10">
 
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2"
-                         checked>
-                  <label class="form-check-label" for="gridRadios2">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2"
+                       checked>
+                <label class="form-check-label" for="gridRadios2">
 
-                    <div class="md-form">
-                      <input #input type="text" class="form-control" id="inputWithoutBorder"
-                             placeholder="Input without border"
-                             name="inputWithoutBorder">
-                    </div>
+                  <div class="md-form">
+                    <input #input type="text" class="form-control" id="inputWithoutBorder"
+                           placeholder="Input without border"
+                           name="inputWithoutBorder">
+                  </div>
 
-                  </label>
-                </div>
+                </label>
+              </div>
 
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
-                  <label class="form-check-label" for="gridRadios1">
-                    <input #input type="text" class="form-control border border-primary " id="inputWithBorder"
-                           placeholder="Input with border" name="inputWithBorder">
-                  </label>
-                </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                <label class="form-check-label" for="gridRadios1">
+                  <input #input type="text" class="form-control border border-primary " id="inputWithBorder"
+                         placeholder="Input with border" name="inputWithBorder">
+                </label>
               </div>
             </div>
+          </div>
 
         </div>
 
@@ -58,45 +58,45 @@
           </div>
         </div>
 
-  </div>
+      </div>
 
-      <h1 class="mb-5">Themes and background</h1>
+      <h4 class="mb-5">Themes and background</h4>
 
-        <div class="mb-5">
-          <mdb-form-field color="accent">
-            <label for="textSize">Color contrast</label>
-            <input #input type="range" class="custom-range rangeInput ml-4 mt-1" id="colorContrast"
-                   name="colorContrast">
-          </mdb-form-field>
-        </div>
+      Color theme
+      <div class="btn-group">
+        <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-black-theme">Aa</button>
+        <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-default-theme">Aa</button>
+        <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-medium-theme">Aa</button>
+        <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-bright-theme">Aa</button>
+        <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-light-theme">Aa</button>
+        <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-white-theme">Aa</button>
+      </div>
 
-        <div class="mb-5">
-          <fieldset class="form-group">
-            <!--
-                          <legend class="col-form-label px-3 pt-0">Background images</legend>
-            -->
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="backgroundImages">
-              <label class="custom-control-label" for="backgroundImages">Background images</label>
-            </div>
-          </fieldset>
-        </div>
 
-        Color theme
-        <br>
+      <div class="mt-5 mb-5">
+        <mdb-form-field color="accent">
+          <label for="textSize">Color contrast</label>
+          <input #input type="range" class="custom-range rangeInput mt-3" id="colorContrast"
+                 name="colorContrast">
+        </mdb-form-field>
+      </div>
 
-        <div class="btn-group">
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-5 btn-black-theme">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3 mr-4 mt-5 btn-default-theme">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-5 btn-medium-theme">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-5 btn-bright-theme">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-5 btn-light-theme">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-5 btn-white-theme">Aa</button>
+      <div class="mb-5">
+        <fieldset class="form-group">
+          <!--
+                        <legend class="col-form-label px-3 pt-0">Background images</legend>
+          -->
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="backgroundImages">
+            <label class="custom-control-label" for="backgroundImages">Background images</label>
+          </div>
+        </fieldset>
+      </div>
 
-        </div>
 
-  </div>
-</div>
 
     </div>
+  </div>
+
+</div>
 
