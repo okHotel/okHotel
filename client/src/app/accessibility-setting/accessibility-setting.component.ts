@@ -21,15 +21,16 @@ export class AccessibilitySettingComponent implements OnInit {
   }
 
   setLargeFont() {
-    this.themingService.large = true;
     this.themingService.small = false;
     this.themingService.medium = false;
+    this.themingService.large = true;
     localStorage.setItem('fontSize', 'large');
+    console.log(localStorage)
   }
 
   setMediumFont() {
-    this.themingService.medium = true;
     this.themingService.small = false;
+    this.themingService.medium = true;
     this.themingService.large = false;
     localStorage.setItem('fontSize', 'medium');
   }
