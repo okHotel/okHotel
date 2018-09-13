@@ -19,13 +19,4 @@ export class AccessibilitySettingComponent implements OnInit {
     HeaderComponent.isAccessibilitySidebarOpen = false;
     console.log(HeaderComponent.isAccessibilitySidebarOpen);
   }
-
-  increaseFontSize() {
-    this.themingService.big = true;
-  }
-
-  circle(divElement) {
-    divElement
-    console.log(divElement.style);
-  }
 }

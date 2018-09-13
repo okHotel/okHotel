@@ -13,24 +13,17 @@
 
         Text size
         <div class="mb-3">
-          <mdb-form-field color="accent">
-
-          </mdb-form-field>
-
-
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn blue-radio active mr-4 mt-2">
-              <input type="radio" name="options" id="option1" autocomplete="off" checked> Small
+              <input type="radio" name="options" id="smallFont" autocomplete="off" checked> Small
             </label>
             <label class="btn blue-radio mr-4 mt-2">
-              <input type="radio" name="options" id="option2" autocomplete="off"> Medium
+              <input type="radio" name="options" id="mediumFont" autocomplete="off"> Medium
             </label>
             <label class="btn blue-radio mr-4 mt-2">
-              <input type="radio" name="options" id="option3" autocomplete="off"> Large
+              <input type="radio" name="options" id="largeFont" autocomplete="off"> Large
             </label>
           </div>
-
-
         </div>
 
         <div class="mb-3">
@@ -86,12 +79,19 @@
       </div>
 
 
-      <div class="mt-3 mb-3">
-        <mdb-form-field color="accent">
-          <label for="colorContrast">Color contrast</label>
-          <input #input type="range" class="custom-range rangeInput mt-3" id="colorContrast"
-                 name="colorContrast">
-        </mdb-form-field>
+      Color contrast
+      <div class="mb-3">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn blue-radio active mr-4 mt-2">
+            <input type="radio" name="options" id="lowContrast" autocomplete="off" checked> Low
+          </label>
+          <label class="btn blue-radio mr-4 mt-2">
+            <input type="radio" name="options" id="mediumContrast" autocomplete="off"> Medium
+          </label>
+          <label class="btn blue-radio mr-4 mt-2">
+            <input type="radio" name="options" id="highContrast" autocomplete="off"> High
+          </label>
+        </div>
       </div>
 
       <div class="mb-3">
