@@ -8,7 +8,6 @@ label {
   font-size: 150%;
 }
 
-
 button{
   text-transform: capitalize;
   font-size: 90%;
@@ -36,9 +35,11 @@ button{
   transition: 1s;
 }
 
+/*
 caption {
   caption-side: top;
 }
+*/
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}

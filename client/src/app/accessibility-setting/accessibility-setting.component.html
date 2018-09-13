@@ -1,14 +1,12 @@
-<div class="card mat-elevation-z20 mx-auto d-block sidenav">
+<div class="card mat-elevation-z20 mx-auto d-block sidenav" >
 
   <div class="card-body">
 
-    <div  id="mySidenav">
+    <div id="mySidenav" [ngStyle]="myStyle">
 
-      <button type="button" class="closebtn btn btn-sm mt-3" (click)="closeSidebar()">
+      <button type="button" class="btn btn-sm mt-3" (click)="increaseFontSize()">
         <i class="fa fa-times fa-2x" aria-label="close sidebar"></i> </button>
-
       <div id="container">
-
 
         <h4 class="mb-5">Text and keyboard</h4>
 
