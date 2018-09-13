@@ -3,6 +3,7 @@ import {VariationService} from '../../service/variation/variation.service';
 import {Variation} from './variation';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {ThemingService} from '../../service/theming/theming.service';
 
 @Component({
     selector: 'app-add-variation',
@@ -17,7 +18,8 @@ export class AddVariationComponent implements OnInit {
 
     constructor(private router: Router,
                 private variationService: VariationService,
-                private location: Location) {
+                private location: Location,
+                public themingService: ThemingService) {
 
       document.body.style.backgroundImage = "url('../../assets/images/restaurant.jpg')";
       document.body.style.backgroundRepeat = "repeat";
@@ -40,6 +42,8 @@ export class AddVariationComponent implements OnInit {
 
         console.log(this.variations);
         this.variation.type = '';
+
+      this.themingService.checkAndChangeInputBorders();
     }
 
     public addVariation(type: string) {

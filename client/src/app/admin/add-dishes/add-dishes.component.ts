@@ -1,6 +1,7 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {MenuService} from '../../service/menu/menu.service';
 import {connectableObservableDescriptor} from 'rxjs/internal/observable/ConnectableObservable';
+import {ThemingService} from '../../service/theming/theming.service';
 
 
 @Component({
@@ -17,9 +18,12 @@ export class AddDishesComponent implements OnInit {
     dish = '';
     commonDishes: Array<string> = ['Pasta in bianco', 'Pasta al pomodoro', 'Affettati misti', 'Formaggi misti' ];
 
-    constructor(public menu: MenuService) {}
+    constructor(public menu: MenuService, public themingService: ThemingService) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+
+      this.themingService.checkAndChangeInputBorders();
+    }
 
     composeDish(event: any) {
       this.dish = event.target.value;

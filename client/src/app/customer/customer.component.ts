@@ -37,14 +37,13 @@ export class CustomerComponent implements OnInit {
       document.body.style.backgroundRepeat = "repeat";
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center center";
-
-
     }
 
     ngOnInit(): void {
         this.loadData();
 
 
+/*
       if (localStorage.getItem('fontSize') == 'large') {
         this.themingService.large = localStorage.getItem('fontSize') == 'large';
       } else if (localStorage.getItem('fontSize') == 'medium') {
@@ -52,6 +51,9 @@ export class CustomerComponent implements OnInit {
       } else if (localStorage.getItem('fontSize') == 'small') {
         this.themingService.large = localStorage.getItem('fontSize') == 'small';
       }
+*/
+
+      this.themingService.checkAndChangeInputBorders();
 
       console.log(localStorage.getItem('fontSize'));
     }

@@ -49,6 +49,7 @@ export class AdminStatisticsComponent implements OnInit {
       this.roomsNumber = n;
     });
 
+/*
     if (localStorage.getItem('fontSize') == 'large') {
       this.themingService.large = localStorage.getItem('fontSize') == 'large';
     } else if (localStorage.getItem('fontSize') == 'medium') {
@@ -57,7 +58,8 @@ export class AdminStatisticsComponent implements OnInit {
       this.themingService.small = localStorage.getItem('fontSize') == 'small';
     }
 
-    console.log(localStorage.getItem('fontSize'));
+*/
+    this.themingService.checkAndChangeInputBorders();
   }
 
   goBack(){

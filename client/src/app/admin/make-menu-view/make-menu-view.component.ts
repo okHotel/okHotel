@@ -2,6 +2,7 @@ import {Component, OnChanges, OnInit} from '@angular/core';
 import {Menu} from '../../menu/menu';
 import {MenuService} from '../../service/menu/menu.service';
 import {Router} from '@angular/router';
+import {ThemingService} from '../../service/theming/theming.service';
 @Component({
   selector: 'app-make-menu-view',
   templateUrl: './make-menu-view.component.html',
@@ -15,7 +16,8 @@ export class MakeMenuViewComponent implements OnInit {
 
   constructor(
     public menu: MenuService,
-    private router: Router) {
+    private router: Router,
+    public themingService: ThemingService) {
 
     document.body.style.backgroundImage = "url('../../../assets/images/restaurant.jpg')";
     document.body.style.backgroundRepeat = "repeat";
@@ -25,6 +27,7 @@ export class MakeMenuViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.themingService.checkAndChangeInputBorders();
   }
 
   setDateMenu(event: any) {

@@ -14,9 +14,6 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    const formInput = document.getElementsByClassName('md-form')[0];
-
-
     if (localStorage.getItem('fontSize') === 'large') {
       this.themingService.large = localStorage.getItem('fontSize') === 'large';
     } else if (localStorage.getItem('fontSize') === 'medium') {
@@ -24,15 +21,6 @@ export class AppComponent {
     } else if (localStorage.getItem('fontSize') === 'small') {
       this.themingService.small = localStorage.getItem('fontSize') === 'small';
     }
-
-    /*if (localStorage.getItem('isBorderOnChecked') === 'true') {
-      this.themingService.isBorderOnChecked = true;
-      formInput.classList.remove('md-form');
-    } else {
-      this.themingService.isBorderOnChecked = false;
-      formInput.classList.add('md-form');
-    }*/
-
   }
 
 }

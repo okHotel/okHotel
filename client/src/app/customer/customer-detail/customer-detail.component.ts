@@ -5,6 +5,7 @@ import { ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common';
 import {AuthService} from '../../service/auth/auth.service';
 import {ErrorService} from '../../service/error/error.service';
+import {ThemingService} from '../../service/theming/theming.service';
 
 @Component({
     selector: 'app-customer-details',
@@ -26,7 +27,8 @@ export class CustomerDetailComponent implements OnInit {
         private customerService: CustomerService,
         private route: ActivatedRoute,
         private location: Location,
-        private errorService: ErrorService
+        private errorService: ErrorService,
+        public themingService: ThemingService
     ) {
 
       document.body.style.backgroundImage = "url('../../assets/images/customer.jpg')";
@@ -47,6 +49,8 @@ export class CustomerDetailComponent implements OnInit {
                     this.errorService.error = err.error.message;
                 });
         this.canUserEdit = AuthService.isUserAdmin();
+
+        this.themingService.checkAndChangeInputBorders();
     }
 
     update(): void {

@@ -4,6 +4,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../service/auth/auth.service';
 import {ErrorService} from '../service/error/error.service';
+import {ThemingService} from '../service/theming/theming.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   big = false;
 
   constructor(private customerService: CustomerService, private authService: AuthService,
-              private router: Router, private route: ActivatedRoute, private error: ErrorService) {
+              private router: Router, private route: ActivatedRoute, private error: ErrorService,
+              public themingService: ThemingService) {
     document.body.style.backgroundImage = "url('../../assets/images/casa-per-ferie-san-bassiano.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
@@ -32,6 +34,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams
       .subscribe(params => this.destinationUrl = params['destinationUrl'] || '/');
+
+    this.themingService.checkAndChangeInputBorders();
   }
 
   login() {

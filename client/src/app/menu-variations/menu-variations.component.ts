@@ -4,6 +4,7 @@ import {MenuService} from '../service/menu/menu.service';
 import {VariationService} from '../service/variation/variation.service';
 import {CustomerService} from '../service/customer/customer.service';
 import {Meal, Reservation, VariationType} from '../menu/reservation';
+import {ThemingService} from '../service/theming/theming.service';
 
 @Component({
   selector: 'app-menu-variations',
@@ -22,7 +23,9 @@ export class MenuVariationsComponent implements OnInit {
   public intollerance = VariationType.INTOLLERANCE;
   public allergy = VariationType.ALLERGY;
 
-  constructor(private router: Router, private customerService: CustomerService, private menu: MenuService, private variationService: VariationService) {}
+  constructor(private router: Router, private customerService: CustomerService, private menu: MenuService,
+              private variationService: VariationService,
+              public themingService: ThemingService) {}
 
   ngOnInit() {
     this.variationService.getVariations()
@@ -38,6 +41,8 @@ export class MenuVariationsComponent implements OnInit {
       }
       this.room = data.roomNumber;
     });
+
+    this.themingService.checkAndChangeInputBorders();
   }
 
   goToMenu() {

@@ -8,6 +8,7 @@ import {BookingService} from "../service/booking/booking.service";
 import {AuthService} from "../service/auth/auth.service";
 import {ActivatedRoute, Router} from '@angular/router';
 import {ErrorService} from '../service/error/error.service';
+import {ThemingService} from '../service/theming/theming.service';
 
 @Component({
   selector: 'registration-customer',
@@ -30,7 +31,8 @@ export class RegistrationComponent implements OnInit {
     private bookingService: BookingService,
     private location: Location,
     private router: Router,
-    public error: ErrorService
+    public error: ErrorService,
+    public themingService: ThemingService
   ) {
 
     document.body.style.backgroundImage = "url('../../assets/images/casa-per-ferie-san-bassiano.jpg')";
@@ -42,6 +44,8 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
     this.getRoomsNumber();
     this.customerService.getCustomers();
+
+    this.themingService.checkAndChangeInputBorders();
   }
 
   newCustomer(): void {

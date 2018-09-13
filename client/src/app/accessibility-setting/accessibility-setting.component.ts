@@ -9,7 +9,6 @@ import {ThemingService} from '../service/theming/theming.service';
 })
 export class AccessibilitySettingComponent implements OnInit {
 
-
   constructor(public themingService: ThemingService) { }
 
   ngOnInit() {
@@ -44,21 +43,12 @@ export class AccessibilitySettingComponent implements OnInit {
   }
 
   changeInputBorder() {
-    const formInput = document.querySelectorAll('.md-form');
-
     this.themingService.isBorderOnChecked = !this.themingService.isBorderOnChecked;
+    localStorage.setItem('isBorderOnChecked', '' + this.themingService.isBorderOnChecked);
 
+    this.themingService.checkAndChangeInputBorders();
 
-    for (let i = 0; i < formInput.length; i++) {
-      formInput.item(i).classList.remove('md-form');
-    }
-
-
-    //formInputclassList.entries( x => x.remove('md-form'));
-
-
-
-    // localStorage.setItem('isBorderOnChecked', (String)(this.themingService.isBorderOnChecked));
+    console.log(localStorage)
 
   }
 

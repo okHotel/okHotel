@@ -5,6 +5,7 @@ import {Product, Unit} from "../product";
 import {ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common';
 import {ErrorService} from '../../../service/error/error.service';
+import {ThemingService} from '../../../service/theming/theming.service';
 
 @Component({
     selector: 'app-edit-product',
@@ -16,7 +17,8 @@ export class EditProductComponent {
     constructor(public pantryService: PantryService,
                 private route: ActivatedRoute,
                 private location: Location,
-                public errorService: ErrorService) {
+                public errorService: ErrorService,
+                public themingService: ThemingService) {
 
       document.body.style.backgroundImage = "url('../../assets/images/pantry.jpg')";
       document.body.style.backgroundRepeat = "repeat";
@@ -42,6 +44,8 @@ export class EditProductComponent {
           console.log(err);
           this.errorService.error = err.error.message;
         });
+
+      this.themingService.checkAndChangeInputBorders();
     }
 
     getErrorMessage() {

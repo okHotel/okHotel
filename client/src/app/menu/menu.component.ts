@@ -6,6 +6,7 @@ import {CustomerService} from '../service/customer/customer.service';
 import {Meal, Reservation, Variation} from './reservation';
 import {Note} from './Note';
 import {ErrorService} from '../service/error/error.service';
+import {ThemingService} from '../service/theming/theming.service';
 
 @Component({
   selector: 'app-menu',
@@ -29,7 +30,8 @@ export class MenuComponent implements OnInit {
               public menu: MenuService,
               private datepipe: DatePipe,
               private customerService: CustomerService,
-              public errorService: ErrorService) {
+              public errorService: ErrorService,
+              public themingService: ThemingService) {
     document.body.style.backgroundImage = "url('../../assets/images/restaurant.jpg')";
     document.body.style.backgroundRepeat = "repeat";
     document.body.style.backgroundSize = "cover";
@@ -69,6 +71,8 @@ export class MenuComponent implements OnInit {
       }
       this.room = data.roomNumber;
     });
+
+    this.themingService.checkAndChangeInputBorders();
   }
 
   saveReservations() {

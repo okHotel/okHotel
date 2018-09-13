@@ -79,6 +79,7 @@ export class ProductsComponent implements OnInit {
             .doSearchbyCode(this.code$)
             .subscribe();
 
+/*
         if (localStorage.getItem('fontSize') == 'large') {
           this.themingService.large = localStorage.getItem('fontSize') == 'large';
         } else if (localStorage.getItem('fontSize') == 'medium') {
@@ -86,9 +87,9 @@ export class ProductsComponent implements OnInit {
         } else if (localStorage.getItem('fontSize') == 'small') {
           this.themingService.large = localStorage.getItem('fontSize') == 'small';
         }
+*/
 
-        console.log(localStorage.getItem('fontSize'));
-
+        this.themingService.checkAndChangeInputBorders();
     }
 
     addNew() {
