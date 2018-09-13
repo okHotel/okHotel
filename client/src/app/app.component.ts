@@ -14,6 +14,9 @@ export class AppComponent {
   }
 
   ngOnInit() {
+
+    console.log(localStorage);
+
     if (localStorage.getItem('fontSize') === 'large') {
       this.themingService.large = localStorage.getItem('fontSize') === 'large';
     } else if (localStorage.getItem('fontSize') === 'medium') {
@@ -21,6 +24,8 @@ export class AppComponent {
     } else if (localStorage.getItem('fontSize') === 'small') {
       this.themingService.small = localStorage.getItem('fontSize') === 'small';
     }
+
+    this.themingService.backgroundCheckValue = localStorage.getItem('useBackground') === 'true';
   }
 
 }

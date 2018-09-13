@@ -25,10 +25,12 @@ export class AddProductComponent implements OnInit {
                 public errorService: ErrorService,
                 public themingService: ThemingService) {
 
-      document.body.style.backgroundImage = "url('../../assets/images/pantry.jpg')";
-      document.body.style.backgroundRepeat = "repeat";
-      document.body.style.backgroundSize = "cover";
-      document.body.style.backgroundPosition = "center center";
+      if (this.themingService.isUseBackgroundOn()) {
+        document.body.style.backgroundImage = "url('../../assets/images/pantry.jpg')";
+        document.body.style.backgroundRepeat = "repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+      }
     }
 
     formControl = new FormControl('', [

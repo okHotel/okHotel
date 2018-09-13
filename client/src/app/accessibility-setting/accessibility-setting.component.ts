@@ -49,7 +49,11 @@ export class AccessibilitySettingComponent implements OnInit {
     this.themingService.checkAndChangeInputBorders();
 
     console.log(localStorage)
-
   }
 
+  changeBackgroundImagesCheckValue() {
+    this.themingService.backgroundCheckValue = !this.themingService.backgroundCheckValue;
+    localStorage.setItem('useBackground', ''+this.themingService.backgroundCheckValue);
+    console.log(localStorage)
+  }
 }

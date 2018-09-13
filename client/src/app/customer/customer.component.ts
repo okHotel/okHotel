@@ -33,10 +33,12 @@ export class CustomerComponent implements OnInit {
                 public customerService: CustomerService,
                 public themingService: ThemingService) {
 
-      document.body.style.backgroundImage = "url('../../assets/images/customer.jpg')";
-      document.body.style.backgroundRepeat = "repeat";
-      document.body.style.backgroundSize = "cover";
-      document.body.style.backgroundPosition = "center center";
+      if (this.themingService.isUseBackgroundOn()) {
+        document.body.style.backgroundImage = "url('../../assets/images/customer.jpg')";
+        document.body.style.backgroundRepeat = "repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+      }
     }
 
     ngOnInit(): void {

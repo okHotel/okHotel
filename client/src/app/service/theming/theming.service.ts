@@ -10,6 +10,8 @@ export class ThemingService {
   medium = false;
   small = false;
 
+  backgroundCheckValue: boolean = true;
+
   /*INPUT*/
   isBorderOnChecked = false;
 
@@ -58,8 +60,11 @@ export class ThemingService {
         formInput.item(i).classList.add('md-form');
         formInput.item(i).classList.remove('border-input');
       }
-
     }
   }
 
+  isUseBackgroundOn(): boolean {
+    console.log(this.backgroundCheckValue || localStorage.getItem('useBackground') === 'true');
+    return this.backgroundCheckValue || localStorage.getItem('useBackground') === 'true';
+  }
 }

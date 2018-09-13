@@ -1,11 +1,11 @@
-<div class="card mat-elevation-z20 mx-auto d-block sidenav" >
+<div class="card mat-elevation-z20 mx-auto d-block sidenav">
 
   <div class="card-body">
 
     <div id="mySidenav">
 
       <button type="button" class="closebtn btn btn-sm mt-3 mb-4" (click)="closeSidebar()">
-        <i class="fa fa-times fa-2x" aria-label="close sidebar"></i> </button>
+        <i class="fa fa-times fa-2x" aria-label="close sidebar"></i></button>
 
       <div id="container">
 
@@ -15,7 +15,8 @@
         <div class="mb-3">
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn blue-radio active mr-4 mt-2">
-              <input type="radio" name="options" id="smallFont" autocomplete="off" (focus)="setSmallFont()" checked> Small
+              <input type="radio" name="options" id="smallFont" autocomplete="off" (focus)="setSmallFont()" checked>
+              Small
             </label>
             <label class="btn blue-radio mr-4 mt-2">
               <input type="radio" name="options" id="mediumFont" autocomplete="off" (focus)="setMediumFont()"> Medium
@@ -47,10 +48,11 @@
 
               <!--INPUT WITH BORDER-->
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" (click)="changeInputBorder()">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
+                       (click)="changeInputBorder()">
                 <label class="form-check-label" for="gridRadios1">
                   <input #input type="text" class="form-control border border-primary " id="inputWithBorder"
-                         placeholder="Input with border" name="inputWithBorder" >
+                         placeholder="Input with border" name="inputWithBorder">
                 </label>
               </div>
 
@@ -79,8 +81,7 @@
         <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-light-theme">Aa</button>
         <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-white-theme">Aa</button>
       </div>
-
-
+      
       Color contrast
       <div class="mb-3">
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -96,16 +97,15 @@
         </div>
       </div>
 
-      <div class="mb-3">
-        <fieldset class="form-group">
-          <!--
-                        <legend class="col-form-label px-3 pt-0">Background images</legend>
-          -->
+      <div class="mb-3 mt-5">
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="backgroundImages">
-            <label class="custom-control-label" for="backgroundImages">Background images</label>
+            <input type="checkbox" class="custom-control-input" id="backgroundImages"
+                   [checked]="themingService.backgroundCheckValue"
+                   (click)="changeBackgroundImagesCheckValue()">
+            <label class="custom-control-label" for="backgroundImages">Enable background images</label>
           </div>
-        </fieldset>
+
+        Refresh the page to get changes
       </div>
 
     </div>
