@@ -11,7 +11,7 @@ export class ThemingService {
   small = false;
 
   /*INPUT*/
-  isBorderOn = false;
+  isBorderOnChecked = false;
 
   fontSize;
   input;
@@ -34,9 +34,9 @@ export class ThemingService {
   }
 
 
-  setBorder(): void {
+  /*setBorder(): void {
     const formInput = document.getElementsByClassName('md-form')[0];
     formInput.classList.remove('md-form');
-  }
+  }*/
 
 }
