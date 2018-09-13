@@ -4,20 +4,28 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ThemingService {
-  fontSize: number = 80; // default value = 80 %
-  big = false;
+
+  large = false;
+  medium = false;
+  small = false;
+
+  fontSize;
 
   constructor() { }
 
-  increaseFontSizeBy(offset: number) {
-    this.fontSize = this.fontSize * offset;
-  }
-
   get myStyle(): any {
+
+    if (this.large) {
+      this.fontSize = '150%';
+    } else if (this.medium) {
+      this.fontSize = '125%';
+    } else if (this.small) {
+      this.fontSize = '100%';
+    }
+
     return {
-      'font-size': this.big ? '26px' : '14px'
+      'font-size': this.fontSize
     };
   }
-
 
 }

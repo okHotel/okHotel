@@ -25,7 +25,7 @@ import {CustomerDetailComponent} from './customer/customer-detail/customer-detai
 import {BookingService} from './service/booking/booking.service';
 import {AuthService} from './service/auth/auth.service';
 import { DatePipe } from '@angular/common';
-import {MatFormFieldModule, MatSelectModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material';
 import {BarcodeDecoderService} from './service/pantry/barcode-scanner/barcode-decoder.service';
 import {
   MatCardModule,
@@ -51,7 +51,6 @@ import { DeleteCustomerComponent } from './customer/delete-customer/delete-custo
 import { ErrorComponent } from './error/error.component';
 import {ErrorService} from './service/error/error.service';
 import { AccessibilitySettingComponent } from './accessibility-setting/accessibility-setting.component';
-import { ProvaComponent } from './prova/prova.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
@@ -98,8 +97,7 @@ const appRoutes: Routes = [
         ProductsComponent,
         DeleteCustomerComponent,
         ErrorComponent,
-        AccessibilitySettingComponent,
-        ProvaComponent
+        AccessibilitySettingComponent
     ],
     imports: [
         BrowserModule,

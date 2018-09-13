@@ -13,15 +13,16 @@
 
         Text size
         <div class="mb-3">
+
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn blue-radio active mr-4 mt-2">
-              <input type="radio" name="options" id="smallFont" autocomplete="off" checked> Small
+              <input type="radio" name="options" id="smallFont" autocomplete="off" (click)="setSmallFont()" checked> Small
             </label>
             <label class="btn blue-radio mr-4 mt-2">
-              <input type="radio" name="options" id="mediumFont" autocomplete="off"> Medium
+              <input type="radio" name="options" id="mediumFont" autocomplete="off" (click)="setMediumFont()"> Medium
             </label>
             <label class="btn blue-radio mr-4 mt-2">
-              <input type="radio" name="options" id="largeFont" autocomplete="off"> Large
+              <input type="radio" name="options" id="largeFont" autocomplete="off" (click)="setLargeFont()"> Large
             </label>
           </div>
         </div>

@@ -15,6 +15,7 @@ import {BarcodeValidatorService} from "../../service/pantry/barcode-scanner/barc
 import {Subject} from "rxjs";
 import {Router} from '@angular/router';
 import {ErrorService} from '../../service/error/error.service';
+import {ThemingService} from '../../service/theming/theming.service';
 
 @Component({
   selector: 'app-products',
@@ -45,7 +46,8 @@ export class ProductsComponent implements OnInit {
                 public dialog: MatDialog,
                 public errorService: ErrorService,
                 private decoderService: BarcodeDecoderService,
-                private barcodeValidator: BarcodeValidatorService) {
+                private barcodeValidator: BarcodeValidatorService,
+                public themingService: ThemingService) {
 
       document.body.style.backgroundImage = "url('../../assets/images/pantry.jpg')";
       document.body.style.backgroundRepeat = "repeat";
@@ -76,6 +78,17 @@ export class ProductsComponent implements OnInit {
         this.barcodeValidator
             .doSearchbyCode(this.code$)
             .subscribe();
+
+        if (localStorage.getItem('fontSize') == 'large') {
+          this.themingService.large = localStorage.getItem('fontSize') == 'large';
+        } else if (localStorage.getItem('fontSize') == 'medium') {
+          this.themingService.large = localStorage.getItem('fontSize') == 'medium';
+        } else if (localStorage.getItem('fontSize') == 'small') {
+          this.themingService.large = localStorage.getItem('fontSize') == 'small';
+        }
+
+        console.log(localStorage.getItem('fontSize'));
+
     }
 
     addNew() {

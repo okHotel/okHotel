@@ -7,6 +7,7 @@ import {CustomerDataSource} from "./customer.dataSource";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {DeleteCustomerComponent} from "./delete-customer/delete-customer.component";
+import {ThemingService} from '../service/theming/theming.service';
 
 @Component({
     selector: 'app-customer',
@@ -28,7 +29,9 @@ export class CustomerComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild('filter') filter: ElementRef;
 
-    constructor(private dialog: MatDialog, private router: Router, private http: HttpClient, public customerService: CustomerService) {
+    constructor(private dialog: MatDialog, private router: Router, private http: HttpClient,
+                public customerService: CustomerService,
+                public themingService: ThemingService) {
 
       document.body.style.backgroundImage = "url('../../assets/images/customer.jpg')";
       document.body.style.backgroundRepeat = "repeat";
@@ -40,6 +43,17 @@ export class CustomerComponent implements OnInit {
 
     ngOnInit(): void {
         this.loadData();
+
+
+      if (localStorage.getItem('fontSize') == 'large') {
+        this.themingService.large = localStorage.getItem('fontSize') == 'large';
+      } else if (localStorage.getItem('fontSize') == 'medium') {
+        this.themingService.large = localStorage.getItem('fontSize') == 'medium';
+      } else if (localStorage.getItem('fontSize') == 'small') {
+        this.themingService.large = localStorage.getItem('fontSize') == 'small';
+      }
+
+      console.log(localStorage.getItem('fontSize'));
     }
 
     getDetails(id: string) {

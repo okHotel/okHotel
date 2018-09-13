@@ -8,6 +8,7 @@ import {VariationService} from '../../service/variation/variation.service';
 import {BookingService} from '../../service/booking/booking.service';
 import {Note} from '../../menu/Note';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import {ThemingService} from '../../service/theming/theming.service';
 
 @Component({
   selector: 'app-admin-statistics',
@@ -33,7 +34,8 @@ export class AdminStatisticsComponent implements OnInit {
   constructor(private router: Router, public menu: MenuService,
               private variationService: VariationService,
               private location: Location,
-              private bookingService: BookingService) {
+              private bookingService: BookingService,
+              public themingService: ThemingService) {
 
     document.body.style.backgroundImage = "url('../../assets/images/restaurant.jpg')";
     document.body.style.backgroundRepeat = "repeat";
@@ -46,6 +48,16 @@ export class AdminStatisticsComponent implements OnInit {
     this.bookingService.getRoomsNumber().subscribe(n => {
       this.roomsNumber = n;
     });
+
+    if (localStorage.getItem('fontSize') == 'large') {
+      this.themingService.large = localStorage.getItem('fontSize') == 'large';
+    } else if (localStorage.getItem('fontSize') == 'medium') {
+      this.themingService.medium = localStorage.getItem('fontSize') == 'medium';
+    } else if (localStorage.getItem('fontSize') == 'small') {
+      this.themingService.small = localStorage.getItem('fontSize') == 'small';
+    }
+
+    console.log(localStorage.getItem('fontSize'));
   }
 
   goBack(){
