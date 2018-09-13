@@ -25,7 +25,7 @@ export class AccessibilitySettingComponent implements OnInit {
     this.themingService.medium = false;
     this.themingService.large = true;
     localStorage.setItem('fontSize', 'large');
-    console.log(localStorage)
+    console.log(localStorage);
   }
 
   setMediumFont() {
@@ -40,6 +40,12 @@ export class AccessibilitySettingComponent implements OnInit {
     this.themingService.medium = false;
     this.themingService.large = false;
     localStorage.setItem('fontSize', 'small');
+  }
+
+  changeInputBorder() {
+    this.themingService.isBorderOn = !this.themingService.isBorderOn;
+    localStorage.setItem('isBorderOn', (String)(this.themingService.isBorderOn));
+
   }
 
 }
