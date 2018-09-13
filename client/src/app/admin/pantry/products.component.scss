@@ -9,12 +9,6 @@
     flex: 1 1 auto;
 }
 
-h3 {
-  font-size: 200%;
-  font-family: myFont;
-  margin: 5%
-}
-
 /* Filter */
 .form {
     min-height: 56px;
@@ -22,13 +16,12 @@ h3 {
     display: flex;
     align-items: center;
     padding: 8px 24px 0;
-    font-size: 20px;
     justify-content: space-between;
     border-bottom: 1px solid transparent;
 }
 
 .mat-form-field {
-    font-size: 14px;
+
     flex-grow: 1;
     margin-top: 8px;
 }
@@ -38,7 +31,6 @@ h3 {
     display: flex;
     justify-content: center;
     padding: 14px;
-    font-size: 14px;
     font-style: italic;
 }
 

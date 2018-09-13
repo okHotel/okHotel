@@ -13,7 +13,6 @@ $white-background-color: white;
 $black-font-color: black;
 $white-font-color: white;
 
-
 ::ng-deep .mat-tooltip {
   font-size: 50px;
 }
@@ -23,7 +22,7 @@ $white-font-color: white;
 }
 
 .card-header {
-  font-size: 150%;
+/*  font-size: 150%;*/
   text-align: center;
   background-color: $default-background-color;
   color: white;
@@ -51,7 +50,7 @@ label {
   font-size: 90%;
 }
 
-button{
+button {
   background-color: $default-background-color;
 }
 
