@@ -40,5 +40,4 @@ export class AccessibilitySettingComponent implements OnInit {
     this.themingService.large = false;
     localStorage.setItem('fontSize', 'small');
   }
-
 }

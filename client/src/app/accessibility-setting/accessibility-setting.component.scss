@@ -35,6 +35,14 @@ button{
   transition: 1s;
 }
 
+
+.blue-radio{
+  background-color: $default-background-color;
+}
+
+.active{
+  background-color: lighten($default-background-color,10%)
+}
 /*
 caption {
   caption-side: top;

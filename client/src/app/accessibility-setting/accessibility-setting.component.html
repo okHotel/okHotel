@@ -14,10 +14,27 @@
         Text size
         <div class="mb-3">
           <mdb-form-field color="accent">
+
             <button type="button" class="btn btn-sm" (click)="setSmallFont()">Small</button>
             <button type="button" class="btn btn-sm" (click)="setMediumFont()">Medium</button>
             <button type="button" class="btn btn-sm" (click)="setLargeFont()">Large</button>
+
           </mdb-form-field>
+
+
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn blue-radio active mr-4 mt-2">
+              <input type="radio" name="options" id="option1" autocomplete="off" checked> Small
+            </label>
+            <label class="btn blue-radio mr-4 mt-2">
+              <input type="radio" name="options" id="option2" autocomplete="off"> Medium
+            </label>
+            <label class="btn blue-radio mr-4 mt-2">
+              <input type="radio" name="options" id="option3" autocomplete="off"> Large
+            </label>
+          </div>
+
+
         </div>
 
         <div class="mb-3">
