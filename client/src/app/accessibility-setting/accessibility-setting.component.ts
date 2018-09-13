@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HeaderComponent} from '../header/header.component';
 import {ThemingService} from '../service/theming/theming.service';
 
@@ -10,7 +10,6 @@ import {ThemingService} from '../service/theming/theming.service';
 export class AccessibilitySettingComponent implements OnInit {
 
   constructor(public themingService: ThemingService) { }
-
 
   ngOnInit() {
   }
@@ -24,5 +23,4 @@ export class AccessibilitySettingComponent implements OnInit {
   increaseFontSize() {
     this.themingService.big = true;
   }
-
 }

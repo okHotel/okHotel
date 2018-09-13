@@ -2,23 +2,25 @@
 
   <div class="card-body">
 
-    <div id="mySidenav" [ngStyle]="myStyle">
+    <div id="mySidenav">
 
-      <button type="button" class="btn btn-sm mt-3" (click)="increaseFontSize()">
+      <button type="button" class="closebtn btn btn-sm mt-3 mb-4" (click)="closeSidebar()">
         <i class="fa fa-times fa-2x" aria-label="close sidebar"></i> </button>
+
       <div id="container">
 
-        <h4 class="mb-5">Text and keyboard</h4>
+        <h4 class="mb-3">Text and keyboard</h4>
 
-        <div class="mb-5">
+        Text size
+        <div class="mb-3">
           <mdb-form-field color="accent">
-            <label for="textSize" >Text size</label>
-            <input #input type="range" class="custom-range rangeInput mt-3" id="textSize"
-                   name="textSize">
+            <button type="button" class="btn btn-sm">Small</button>
+            <button type="button" class="btn btn-sm">Medium</button>
+            <button type="button" class="btn btn-sm" (click)="increaseFontSize()">Large</button>
           </mdb-form-field>
         </div>
 
-        <div class="mb-5">
+        <div class="mb-3">
           <div class="row">
             <legend class="col-form-label px-3 pt-0">Form input border</legend>
             <div class="col-sm-10">
@@ -58,7 +60,7 @@
 
       </div>
 
-      <h4 class="mb-5">Themes and background</h4>
+      <h4 class="mb-3">Themes and background</h4>
 
       Color theme
       <div class="btn-group">
@@ -71,15 +73,15 @@
       </div>
 
 
-      <div class="mt-5 mb-5">
+      <div class="mt-3 mb-3">
         <mdb-form-field color="accent">
-          <label for="textSize">Color contrast</label>
+          <label for="colorContrast">Color contrast</label>
           <input #input type="range" class="custom-range rangeInput mt-3" id="colorContrast"
                  name="colorContrast">
         </mdb-form-field>
       </div>
 
-      <div class="mb-5">
+      <div class="mb-3">
         <fieldset class="form-group">
           <!--
                         <legend class="col-form-label px-3 pt-0">Background images</legend>
@@ -90,8 +92,6 @@
           </div>
         </fieldset>
       </div>
-
-
 
     </div>
   </div>

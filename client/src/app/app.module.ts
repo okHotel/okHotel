@@ -51,6 +51,7 @@ import { DeleteCustomerComponent } from './customer/delete-customer/delete-custo
 import { ErrorComponent } from './error/error.component';
 import {ErrorService} from './service/error/error.service';
 import { AccessibilitySettingComponent } from './accessibility-setting/accessibility-setting.component';
+import { ProvaComponent } from './prova/prova.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
@@ -97,7 +98,8 @@ const appRoutes: Routes = [
         ProductsComponent,
         DeleteCustomerComponent,
         ErrorComponent,
-        AccessibilitySettingComponent
+        AccessibilitySettingComponent,
+        ProvaComponent
     ],
     imports: [
         BrowserModule,
