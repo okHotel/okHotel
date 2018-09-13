@@ -17,6 +17,9 @@ export class LoginComponent implements OnInit {
   password: string;
   destinationUrl = '';
 
+
+  big = false;
+
   constructor(private customerService: CustomerService, private authService: AuthService,
               private router: Router, private route: ActivatedRoute, private error: ErrorService) {
     document.body.style.backgroundImage = "url('../../assets/images/casa-per-ferie-san-bassiano.jpg')";
@@ -56,4 +59,5 @@ export class LoginComponent implements OnInit {
   registration() {
     this.router.navigate(['/registration']);
   }
+
 }

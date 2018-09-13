@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HeaderComponent} from '../header/header.component';
 
 @Component({
@@ -7,6 +7,11 @@ import {HeaderComponent} from '../header/header.component';
   styleUrls: ['./accessibility-setting.component.scss']
 })
 export class AccessibilitySettingComponent implements OnInit {
+
+
+
+  big = false;
+
 
   constructor() { }
 
@@ -18,5 +23,6 @@ export class AccessibilitySettingComponent implements OnInit {
     HeaderComponent.isAccessibilitySidebarOpen = false;
     console.log(HeaderComponent.isAccessibilitySidebarOpen);
   }
+
 
 }
