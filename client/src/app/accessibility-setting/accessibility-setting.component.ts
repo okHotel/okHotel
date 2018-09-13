@@ -23,4 +23,9 @@ export class AccessibilitySettingComponent implements OnInit {
   increaseFontSize() {
     this.themingService.big = true;
   }
+
+  circle(divElement) {
+    divElement
+    console.log(divElement.style);
+  }
 }
