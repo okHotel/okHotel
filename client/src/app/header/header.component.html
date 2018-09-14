@@ -28,7 +28,7 @@
             <i class="fa fa-th-large" aria-label="services"></i>
             Services<span class="caret"></span></a>
 
-          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <ul *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
 
             <div class="divider dropdown-divider"></div>
 
@@ -45,13 +45,13 @@
             <a class="dropdown-item waves-light" href="/pantry" mdbWavesEffect>
               <i class="fa fa-list" aria-label="pantryService"></i>Pantry
             </a>
-          </div>
+          </ul>
         </li>
-      </ul>
+       </ul>
 
-      <span class="nav-link accessibility" (click)="openAccessibilitySidebar()">
+      <a class="nav-link accessibility text-white" (click)="openAccessibilitySidebar()">
         <i class="fa fa-cog" aria-label="Accessibility"></i>
-        Accessibility</span>
+        Accessibility</a>
 
       <app-profile *ngIf="isLoggedIn()"></app-profile>
 
@@ -62,4 +62,4 @@
 </header>
 <!--Main Navigation-->
 
-<app-accessibility-setting [ngStyle]="myStyle"></app-accessibility-setting>
+<app-accessibility-setting [ngStyle]="myStyle" ></app-accessibility-setting>

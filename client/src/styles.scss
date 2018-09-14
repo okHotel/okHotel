@@ -105,10 +105,14 @@ button {
 }
 
 
+.nav-link:focus, a:focus {
+  border:1px solid $light-background-color;
+  box-shadow: 0 0 10px #719ECE;
+}
+
 @media print {
   app-header, app-footer, button, .btn-group-btn-group-sm {
     display: none;
   }
 }
-
 
