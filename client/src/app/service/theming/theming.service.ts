@@ -71,11 +71,13 @@ export class ThemingService {
     let text;
     let placeholder;
     let select;
+    let cellHeader;
 
     if (localStorage.getItem('isContrastChecked') === 'true') {
       text = document.querySelectorAll('.contrast');
       placeholder = document.querySelectorAll('.form-control');
       select = document.querySelectorAll('.mat-select-placeholder');
+      cellHeader = document.querySelectorAll('mat-header-cell');
 
       this.isContrastChecked = true;
 
@@ -93,14 +95,13 @@ export class ThemingService {
         select.item(i).classList.add('mat-select-black-placeholder');
       }
 
-    } else {
-      text = document.querySelectorAll('a');
-
-      this.isContrastChecked = false;
+     for (let i = 0; i < select.length; i++) {
+        select.item(i).classList.remove('mat-select-placeholder');
+        select.item(i).classList.add('mat-select-black-placeholder');
+      }
 
       for (let i = 0; i < text.length; i++) {
-        text.item(i).classList.remove('text-dark');
-        text.item(i).classList.add('dark-grey-text');
+        cellHeader.item(i).classList.add('mat-header-cell-black');
       }
     }
   }
