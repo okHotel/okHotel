@@ -48,6 +48,7 @@ export class EditProductComponent {
         });
 
       this.themingService.checkAndChangeInputBorders();
+      this.themingService.checkAndChangeTextContrast();
     }
 
     getErrorMessage() {

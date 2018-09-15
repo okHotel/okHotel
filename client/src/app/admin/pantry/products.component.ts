@@ -81,17 +81,8 @@ export class ProductsComponent implements OnInit {
             .doSearchbyCode(this.code$)
             .subscribe();
 
-/*
-        if (localStorage.getItem('fontSize') == 'large') {
-          this.themingService.large = localStorage.getItem('fontSize') == 'large';
-        } else if (localStorage.getItem('fontSize') == 'medium') {
-          this.themingService.large = localStorage.getItem('fontSize') == 'medium';
-        } else if (localStorage.getItem('fontSize') == 'small') {
-          this.themingService.large = localStorage.getItem('fontSize') == 'small';
-        }
-*/
-
         this.themingService.checkAndChangeInputBorders();
+        this.themingService.checkAndChangeTextContrast();
     }
 
     addNew() {

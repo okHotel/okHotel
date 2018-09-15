@@ -23,6 +23,7 @@ export class AddDishesComponent implements OnInit {
     ngOnInit() {
 
       this.themingService.checkAndChangeInputBorders();
+      this.themingService.checkAndChangeTextContrast();
     }
 
     composeDish(event: any) {

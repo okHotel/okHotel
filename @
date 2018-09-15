@@ -1,0 +1,26 @@
+Merge branch 'feature/accessibility' of github.com:okHotel/okHotel into feature/accessibility
+
+# Conflicts:
+#	client/src/app/service/theming/theming.service.ts
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch feature/accessibility
+# Your branch and 'origin/feature/accessibility' have diverged,
+# and have 1 and 1 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   client/src/app/customer/customer.component.css.map
+#	modified:   client/src/app/customer/customer.component.scss
+#	modified:   client/src/app/service/theming/theming.service.ts
+#	modified:   client/src/styles.scss
+#

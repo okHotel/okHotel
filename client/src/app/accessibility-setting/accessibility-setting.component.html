@@ -85,7 +85,7 @@
 
         <div class="mb-3 mt-5">
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="colorContrast" (click)="changeTextContrast()">
+            <input type="checkbox" class="custom-control-input" id="colorContrast" (click)="changeTextContrast()" [checked]="themingService.isContrastChecked">
             <label class="custom-control-label" for="colorContrast">Enable high text contrast</label>
           </div>
           </div>

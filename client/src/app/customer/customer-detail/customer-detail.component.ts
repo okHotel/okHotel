@@ -53,6 +53,7 @@ export class CustomerDetailComponent implements OnInit {
         this.canUserEdit = AuthService.isUserAdmin();
 
         this.themingService.checkAndChangeInputBorders();
+        this.themingService.checkAndChangeTextContrast();
     }
 
     update(): void {

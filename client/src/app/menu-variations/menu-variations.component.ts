@@ -43,6 +43,7 @@ export class MenuVariationsComponent implements OnInit {
     });
 
     this.themingService.checkAndChangeInputBorders();
+    this.themingService.checkAndChangeTextContrast();
   }
 
   goToMenu() {

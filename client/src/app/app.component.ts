@@ -30,6 +30,7 @@ export class AppComponent {
     } else {
       this.themingService.backgroundCheckValue = true;
     }
+
   }
 
 }

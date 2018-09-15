@@ -74,7 +74,7 @@ export class ThemingService {
     let cellHeader;
     let selectBorder;
 
-    if (localStorage.getItem('isContrastChecked') === 'true') {
+    if (this.isContrastChecked || localStorage.getItem('isContrastChecked') === 'true') {
       text = document.querySelectorAll('.contrast');
       placeholder = document.querySelectorAll('.form-control');
       select = document.querySelectorAll('.mat-select-placeholder');
@@ -109,9 +109,6 @@ export class ThemingService {
       for (let i = 0; i < selectBorder.length; i++) {
         selectBorder.item(i).classList.add('mat-select-black');
       }
-
-    } else {
-
 
     }
   }
