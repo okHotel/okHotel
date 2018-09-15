@@ -42,9 +42,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
-  openAccessibilitySidebar() {
-    HeaderComponent.isAccessibilitySidebarOpen = true;
-    console.log('After open')
-    console.log(HeaderComponent.isAccessibilitySidebarOpen)
+  changeAccessibilitySidebarStatus() {
+    HeaderComponent.isAccessibilitySidebarOpen = !HeaderComponent.isAccessibilitySidebarOpen;
   }
 }

@@ -65,7 +65,6 @@ export class ThemingService {
     return this.backgroundCheckValue || localStorage.getItem('useBackground') === 'true';
   }
 
-
   checkAndChangeTextContrast() {
     console.log('into checkAndChangeTextContrast');
 
@@ -80,9 +79,7 @@ export class ThemingService {
       select = document.querySelectorAll('.mat-select-placeholder');
       cellHeader = document.querySelectorAll('mat-header-cell');
 
-
       this.isContrastChecked = true;
-
 
       for (let i = 0; i < text.length; i++) {
         text.item(i).classList.remove('dark-grey-text');
@@ -93,13 +90,12 @@ export class ThemingService {
         placeholder.item(i).classList.add('black-placeholder');
       }
 
-
       for (let i = 0; i < select.length; i++) {
         select.item(i).classList.remove('mat-select-placeholder');
         select.item(i).classList.add('mat-select-black-placeholder');
       }
 
-      for (let i = 0; i < select.length; i++) {
+     for (let i = 0; i < select.length; i++) {
         select.item(i).classList.remove('mat-select-placeholder');
         select.item(i).classList.add('mat-select-black-placeholder');
       }
@@ -107,7 +103,6 @@ export class ThemingService {
       for (let i = 0; i < text.length; i++) {
         cellHeader.item(i).classList.add('mat-header-cell-black');
       }
-
 
     } else {
 

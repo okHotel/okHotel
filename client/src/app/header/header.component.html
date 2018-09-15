@@ -49,9 +49,9 @@
         </li>
        </ul>
 
-      <a class="nav-link accessibility text-white" (click)="openAccessibilitySidebar()">
-        <i class="fa fa-cog" aria-label="Accessibility"></i>
-        Accessibility</a>
+      <a class="nav-link accessibility text-white" (click)="changeAccessibilitySidebarStatus()">
+        Accessibility <i class="fa fa-cog" aria-label="Accessibility"></i>
+        </a>
 
       <app-profile *ngIf="isLoggedIn()"></app-profile>
 
