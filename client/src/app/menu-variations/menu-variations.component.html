@@ -5,14 +5,14 @@
     <div  id="mySidenav">
 
       <button type="button" class="closebtn btn btn-sm mb-2" (click)="goToMenu()">
-        <i class="fa fa-times fa-2x" aria-label="delete dish"></i> </button>
+        <i class="fa fa-times fa-2x" aria-label="delete dish"></i><p class="hidden">Close</p> </button>
 
       <div id="container">
 
         <table summary="The variations you can select for lunch">
           <caption class="text-center">Please choose what variations you need</caption>
           <tr>
-            <th scope="col"></th>
+            <th scope="col">Dish</th>
             <th scope="col">Intolerance</th>
             <th scope="col">Allergy</th>
           </tr>
@@ -20,7 +20,7 @@
           <tr *ngFor="let v of variations">
             <td scope="row">{{v}}</td>
             <td>
-              <mat-form-field color="accent" >
+              <mat-form-field color="form-control accent" >
                 <mat-select placeholder="{{getVariations(intollerance, v)}}" >
                   <mat-option *ngFor="let n of people" value=n (click)="setVariation(v, intollerance, n)">
                     {{n}}
@@ -30,7 +30,7 @@
             </td>
 
             <td>
-              <mat-form-field color="accent" >
+              <mat-form-field color="form-control  accent" >
                 <mat-select placeholder="{{getVariations(allergy, v)}}">
                   <mat-option *ngFor="let n of people" value=n (click)="setVariation(v, allergy, n)">
                     {{n}}

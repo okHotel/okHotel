@@ -123,6 +123,30 @@ button {
   box-shadow: 0 0 10px #719ECE;
 }
 
+.contrast::placeholder, .black-placeholder, .black-placeholder::placeholder{
+    color: black;
+    opacity: 1; /* Firefox */
+}
+
+mat-select {
+  border : 1px solid lightgrey;
+  padding: 1.5%;
+}
+
+::ng-deep.mat-select-black-placeholder{
+  color: black;
+}
+
+.mat-header-cell-black{
+  color: black;
+}
+
+.mat-select-black{
+  border: 1px solid black;
+}
+
+
+
 @media print {
   app-header, app-footer, button, .btn-group-btn-group-sm {
     display: none;

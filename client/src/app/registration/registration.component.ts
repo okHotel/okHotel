@@ -48,6 +48,7 @@ export class RegistrationComponent implements OnInit {
     this.customerService.getCustomers();
 
     this.themingService.checkAndChangeInputBorders();
+    this.themingService.checkAndChangeTextContrast();
   }
 
   newCustomer(): void {

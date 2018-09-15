@@ -18,9 +18,6 @@ export class LoginComponent implements OnInit {
   password: string;
   destinationUrl = '';
 
-
-  big = false;
-
   constructor(private customerService: CustomerService, private authService: AuthService,
               private router: Router, private route: ActivatedRoute, private error: MessageService,
               public themingService: ThemingService) {
@@ -38,6 +35,7 @@ export class LoginComponent implements OnInit {
       .subscribe(params => this.destinationUrl = params['destinationUrl'] || '/');
 
     this.themingService.checkAndChangeInputBorders();
+    this.themingService.checkAndChangeTextContrast();
   }
 
   login() {

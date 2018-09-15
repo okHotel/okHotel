@@ -29,6 +29,7 @@ export class MakeMenuViewComponent implements OnInit {
 
   ngOnInit() {
     this.themingService.checkAndChangeInputBorders();
+    this.themingService.checkAndChangeTextContrast();
   }
 
   setDateMenu(event: any) {

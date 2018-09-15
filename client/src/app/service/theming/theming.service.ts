@@ -5,18 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class ThemingService {
 
-  /*FONT*/
+  fontSize;
   large = false;
   medium = false;
   small = false;
 
-  backgroundCheckValue: boolean = true;
-
-  /*INPUT*/
+  backgroundCheckValue = true;
   isBorderOnChecked = false;
-
-  fontSize;
-  input;
+  isContrastChecked = false;
 
   constructor() { }
 
@@ -67,5 +63,53 @@ export class ThemingService {
     console.log('background');
     console.log(this.backgroundCheckValue);
     return this.backgroundCheckValue || localStorage.getItem('useBackground') === 'true';
+  }
+
+  checkAndChangeTextContrast() {
+    console.log('into checkAndChangeTextContrast');
+
+    let text;
+    let placeholder;
+    let select;
+    let cellHeader;
+    let selectBorder;
+
+    if (this.isContrastChecked || localStorage.getItem('isContrastChecked') === 'true') {
+      text = document.querySelectorAll('.contrast');
+      placeholder = document.querySelectorAll('.form-control');
+      select = document.querySelectorAll('.mat-select-placeholder');
+      cellHeader = document.querySelectorAll('mat-header-cell');
+      selectBorder = document.querySelectorAll('mat-select');
+
+      this.isContrastChecked = true;
+
+      for (let i = 0; i < text.length; i++) {
+        text.item(i).classList.remove('dark-grey-text');
+        text.item(i).classList.add('text-dark');
+      }
+
+      for (let i = 0; i < placeholder.length; i++) {
+        placeholder.item(i).classList.add('black-placeholder');
+      }
+
+      for (let i = 0; i < select.length; i++) {
+        select.item(i).classList.remove('mat-select-placeholder');
+        select.item(i).classList.add('mat-select-black-placeholder');
+      }
+
+     for (let i = 0; i < select.length; i++) {
+        select.item(i).classList.remove('mat-select-placeholder');
+        select.item(i).classList.add('mat-select-black-placeholder');
+      }
+
+      for (let i = 0; i < cellHeader.length; i++) {
+        cellHeader.item(i).classList.add('mat-header-cell-black');
+      }
+
+      for (let i = 0; i < selectBorder.length; i++) {
+        selectBorder.item(i).classList.add('mat-select-black');
+      }
+
+    }
   }
 }

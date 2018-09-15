@@ -42,22 +42,9 @@ export class CustomerComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.loadData();
-
-
-/*
-      if (localStorage.getItem('fontSize') == 'large') {
-        this.themingService.large = localStorage.getItem('fontSize') == 'large';
-      } else if (localStorage.getItem('fontSize') == 'medium') {
-        this.themingService.large = localStorage.getItem('fontSize') == 'medium';
-      } else if (localStorage.getItem('fontSize') == 'small') {
-        this.themingService.large = localStorage.getItem('fontSize') == 'small';
-      }
-*/
-
+      this.loadData();
       this.themingService.checkAndChangeInputBorders();
-
-      console.log(localStorage.getItem('fontSize'));
+      this.themingService.checkAndChangeTextContrast();
     }
 
     getDetails(id: string) {

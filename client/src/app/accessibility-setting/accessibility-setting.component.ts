@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HeaderComponent} from '../header/header.component';
 import {ThemingService} from '../service/theming/theming.service';
+import {el} from '../../../node_modules/@angular/platform-browser/testing/src/browser_util';
 
 @Component({
   selector: 'app-accessibility-setting',
@@ -45,18 +46,31 @@ export class AccessibilitySettingComponent implements OnInit {
   changeInputBorder() {
     this.themingService.isBorderOnChecked = !this.themingService.isBorderOnChecked;
     localStorage.setItem('isBorderOnChecked', '' + this.themingService.isBorderOnChecked);
-
     this.themingService.checkAndChangeInputBorders();
 
-    console.log(localStorage)
+    console.log(localStorage);
   }
 
   changeBackgroundImagesCheckValue() {
     this.themingService.backgroundCheckValue = !this.themingService.backgroundCheckValue;
     localStorage.setItem('useBackground', ''+this.themingService.backgroundCheckValue);
+    location.reload();
+    console.log(localStorage);
+  }
+
+  changeTextContrast() {
+    this.themingService.isContrastChecked = !this.themingService.isContrastChecked;
+    localStorage.setItem('isContrastChecked', '' + this.themingService.isContrastChecked);
+
+    if (this.themingService.isContrastChecked) {
+      this.themingService.checkAndChangeTextContrast();
+    } else {
+      location.reload();
+    }
+
     console.log(localStorage)
 
-    location.reload()
+
   }
 
   resetSettings() {
@@ -70,6 +84,7 @@ export class AccessibilitySettingComponent implements OnInit {
       localStorage.setItem('token', token);
     }
 
-    location.reload()
+    location.reload();
+
   }
 }

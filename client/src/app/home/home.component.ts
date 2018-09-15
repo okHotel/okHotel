@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PlanService} from '../service/plans/plan.service';
+import {ThemingService} from '../service/theming/theming.service';
 
 @Component({
     selector: 'app-home',
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit{
     slideIndex = 1;
     slidesBinding = [false, true, true];
 
-    constructor(private planService: PlanService){}
+    constructor(private planService: PlanService,
+                public themingService: ThemingService){}
 
 
     //per ogni record nel db,
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit{
         console.log(this.floor);
         //this.showSlides(this.slideIndex);
 
+      this.themingService.checkAndChangeTextContrast();
     }
 
 

@@ -75,6 +75,7 @@ export class MenuComponent implements OnInit {
     });
 
     this.themingService.checkAndChangeInputBorders();
+    this.themingService.checkAndChangeTextContrast();
   }
 
   saveReservations() {
