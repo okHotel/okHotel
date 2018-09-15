@@ -21,15 +21,15 @@
             <div class="col">
             <label for="date">Select menu date</label>
             <input #input type="date" id="date" placeholder="Select menu date" [(ngModel)]="date" name="date"
-                   (keyup)="setDateMenu($event)" class="form-control">
+                   (keyup)="setDateMenu($event)" class="form-control" >
             </div>
 
             <div class="col">
 
-            <mat-select id="roomNumber" name="roomNumber" [(ngModel)]="roomNumber" placeholder="Room number">
+            <!--<mat-select id="roomNumber" name="roomNumber" [(ngModel)]="roomNumber" placeholder="Room number">
               <mat-option *ngFor="let number of roomsNumber" [value]=number.roomNumber required> {{number.roomNumber}}
               </mat-option>
-            </mat-select>
+            </mat-select>-->
 
             </div>
           </div>
@@ -44,16 +44,16 @@
                 The actual rendered columns are set as a property on the row definition" -->
 
           <!-- ID Column -->
-          <ng-container matColumnDef="dish">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle">Lunch</mat-header-cell>
-            <mat-cell *matCellDef="let row">
-              <span class="mobile-label">Lunch:</span>
+          <ng-container matColumnDef="dish" class="text-dark">
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast" >Lunch</mat-header-cell>
+            <mat-cell *matCellDef="let row" >
+              <span class="mobile-label" >Lunch:</span>
               {{row}}
             </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="wholePortion">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle">Whole Lunch</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Whole Lunch</mat-header-cell>
             <mat-cell *matCellDef="let row">
               <span class="mobile-label">Whole Lunch:</span>
               <mat-list>
@@ -73,7 +73,7 @@
           </ng-container>
 
           <ng-container matColumnDef="halfPortion">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle">Half Lunch</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Half Lunch</mat-header-cell>
             <mat-cell *matCellDef="let row">
               <span class="mobile-label">Half Lunch:</span>
               <mat-list>
@@ -103,7 +103,7 @@
 
           <!-- ID Column -->
           <ng-container matColumnDef="dish">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle">Dinner</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Dinner</mat-header-cell>
             <mat-cell *matCellDef="let row">
               <span class="mobile-label">Dinner:</span>
               {{row}}
@@ -111,7 +111,7 @@
           </ng-container>
 
           <ng-container matColumnDef="wholePortion">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle">Whole Dinner</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Whole Dinner</mat-header-cell>
             <mat-cell *matCellDef="let row">
               <span class="mobile-label">Whole Lunch:</span>
               <mat-list>
@@ -127,9 +127,9 @@
           </ng-container>
 
           <ng-container matColumnDef="halfPortion">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle">Half Dinner</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Half Dinner</mat-header-cell>
             <mat-cell *matCellDef="let row">
-              <span class="mobile-label">Half Dinner:</span>
+              <span class="mobile-label" class="contrast">Half Dinner:</span>
               <mat-list>
                 <mat-list-item>{{getTotalQuantitiesFor(row, meal.HALF_DINNER)}}</mat-list-item>
                 <mat-list-item
@@ -152,17 +152,17 @@
     <div class="card my-3">
       <mat-table [dataSource]="otherNotesDataSource">
         <ng-container matColumnDef="roomNumber">
-          <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle">Room number</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Room number</mat-header-cell>
           <mat-cell *matCellDef="let note" [ngStyle]="themingService.myStyle">
-            <span class="mobile-label">Room Number:</span>
+            <span class="mobile-label" class="contrast">Room Number:</span>
             {{note.roomNumber}}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="text">
-          <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle">Note</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Note</mat-header-cell>
           <mat-cell *matCellDef="let note">
-            <span class="mobile-label">Note:</span>
+            <span class="mobile-label" class="contrast">Note:</span>
             {{note.text}}
           </mat-cell>
         </ng-container>
@@ -177,5 +177,6 @@
     <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="goBack()" aria-label="Back">Back</button>
   </div>
 
+</div>
 </div>
 </div>

@@ -45,15 +45,20 @@ export class AccessibilitySettingComponent implements OnInit {
   changeInputBorder() {
     this.themingService.isBorderOnChecked = !this.themingService.isBorderOnChecked;
     localStorage.setItem('isBorderOnChecked', '' + this.themingService.isBorderOnChecked);
-
     this.themingService.checkAndChangeInputBorders();
 
-    console.log(localStorage)
+    console.log(localStorage);
   }
 
   changeBackgroundImagesCheckValue() {
     this.themingService.backgroundCheckValue = !this.themingService.backgroundCheckValue;
     localStorage.setItem('useBackground', ''+this.themingService.backgroundCheckValue);
-    console.log(localStorage)
+    console.log(localStorage);
+  }
+
+  changeTextContrast() {
+    this.themingService.isContrastChecked = !this.themingService.isContrastChecked;
+    localStorage.setItem('isContrastChecked', '' + this.themingService.isContrastChecked);
+    this.themingService.checkAndChangeTextContrast();
   }
 }

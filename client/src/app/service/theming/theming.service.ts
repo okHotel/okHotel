@@ -5,18 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class ThemingService {
 
-  /*FONT*/
+  fontSize;
   large = false;
   medium = false;
   small = false;
 
-  backgroundCheckValue: boolean = true;
-
-  /*INPUT*/
+  backgroundCheckValue = true;
   isBorderOnChecked = false;
-
-  fontSize;
-  input;
+  isContrastChecked = false;
 
   constructor() { }
 
@@ -66,5 +62,47 @@ export class ThemingService {
   isUseBackgroundOn(): boolean {
     console.log(this.backgroundCheckValue || localStorage.getItem('useBackground') === 'true');
     return this.backgroundCheckValue || localStorage.getItem('useBackground') === 'true';
+  }
+
+
+  checkAndChangeTextContrast() {
+    console.log('into checkAndChangeTextContrast');
+
+    let text;
+    let placeholder;
+
+    if (localStorage.getItem('isContrastChecked') === 'true') {
+      text = document.querySelectorAll('.contrast');
+      placeholder = document.querySelectorAll('.form-control');
+
+      this.isContrastChecked = true;
+
+
+      for (let i = 0; i < text.length; i++) {
+        text.item(i).classList.remove('dark-grey-text');
+        text.item(i).classList.add('text-dark');
+      }
+
+      for (let i = 0; i < placeholder.length; i++) {
+        placeholder.item(i).classList.add('black-placeholder');
+
+      }
+
+
+
+
+
+
+
+    } else {
+      text = document.querySelectorAll('a');
+
+      this.isContrastChecked = false;
+
+      for (let i = 0; i < text.length; i++) {
+        text.item(i).classList.remove('text-dark');
+        text.item(i).classList.add('dark-grey-text');
+      }
+    }
   }
 }

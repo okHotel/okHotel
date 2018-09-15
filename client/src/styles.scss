@@ -110,6 +110,13 @@ button {
   box-shadow: 0 0 10px #719ECE;
 }
 
+.black-placeholder::placeholder, .black-placeholder{
+    color: black;
+    opacity: 1; /* Firefox */
+}
+
+
+
 @media print {
   app-header, app-footer, button, .btn-group-btn-group-sm {
     display: none;
