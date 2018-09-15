@@ -24,6 +24,8 @@ export class MenuComponent implements OnInit {
   dinnerCardState = false;
   lunchCardState = true;
   note: string;
+  isReservationNotValid: boolean = true;
+
   @ViewChild('inputNote') inputNote: ElementRef;
 
   constructor(private router: Router,
@@ -133,8 +135,13 @@ export class MenuComponent implements OnInit {
         dish: selectedDish,
         variations: []
       };
+
+      this.checkReservation(this.l, this.hl);
+      this.checkReservation(this.d, this.hd);
+
       this.menu.menu.reservations.push(reservation);
     }
+
   }
 
   checkReservation(type1: Meal, type2: Meal) {
@@ -146,6 +153,17 @@ export class MenuComponent implements OnInit {
       .forEach(e => total += e.quantity);
 
     const mul_factor = type1 === Meal.LUNCH ? 2 : 3;
+
+    this.isReservationNotValid = total > (this.people.length - 1) * mul_factor;
+
+    if (this.isReservationNotValid) {
+      this.messageService.error = this.getErrorMessage();
+      this.messageService.success = '';
+    } else {
+      this.messageService.error = '';
+      this.messageService.success = '';
+    }
+
     return total > (this.people.length - 1) * mul_factor;
   }
 

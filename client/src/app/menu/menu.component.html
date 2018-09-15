@@ -8,7 +8,8 @@
 
     <div class="card-body">
 
-      <app-message></app-message>
+      <app-message *ngIf="checkReservation(l, hl) || checkReservation(d, hd) ||
+                          messageService.success || messageService.error"></app-message>
 
       <form class="mat-dialog-content" #addCustomerForm="ngForm">
 
@@ -22,7 +23,7 @@
           </button>
         </div>
 
-        <div *ngIf="lunchCardState" [hidden]="messageService.error">
+        <div *ngIf="lunchCardState">
           <div class="card my-3">
             <div class="card-body">
               <table class="table" summary="The courses you can select for lunch">
@@ -37,8 +38,10 @@
                 </tr>
                 </thead>
 
+<!--
                 <mat-error *ngIf="checkReservation(l, hl)">{{getErrorMessage()}}</mat-error>
 
+-->
 
                 <tr *ngFor="let dish of menu.menu.lunch_dishes">
                   <td scope="row">{{dish}}</td>
@@ -88,7 +91,7 @@
 
         </div>
 
-        <div *ngIf="dinnerCardState" [hidden]="messageService.error">
+        <div *ngIf="dinnerCardState">
 
           <div class="card my-3">
 
@@ -101,7 +104,9 @@
                   <th scope="col">Half Portion</th>
                 </tr>
 
+<!--
                 <mat-error *ngIf="checkReservation(d, hd)">{{getErrorMessage()}}</mat-error>
+-->
 
                 <tr *ngFor="let dish of menu.menu.dinner_dishes">
                   <td scope="row">{{dish}}</td>
@@ -167,7 +172,8 @@
 
         <div class="btn-group btn-group-sm d-flex flex-row-reverse">
           <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="saveReservations()" aria-label="Save"
-                  [disabled]="!addCustomerForm.form.valid || checkSave()">Save
+                  [disabled]="!addCustomerForm.form.valid || checkReservation(l, hl)
+                  || checkReservation(d, hd) || checkSave()">Save
           </button>
         </div>
       </form>
