@@ -3,6 +3,7 @@ import {Menu} from '../../menu/menu';
 import {MenuService} from '../../service/menu/menu.service';
 import {Router} from '@angular/router';
 import {ThemingService} from '../../service/theming/theming.service';
+import {MessageService} from '../../service/message/message.service';
 @Component({
   selector: 'app-make-menu-view',
   templateUrl: './make-menu-view.component.html',
@@ -17,7 +18,8 @@ export class MakeMenuViewComponent implements OnInit {
   constructor(
     public menu: MenuService,
     private router: Router,
-    public themingService: ThemingService) {
+    public themingService: ThemingService,
+    public messageService: MessageService) {
 
     if (this.themingService.isUseBackgroundOn()) {
       document.body.style.backgroundImage = "url('../../../assets/images/restaurant.jpg')";
@@ -61,22 +63,35 @@ export class MakeMenuViewComponent implements OnInit {
 
   saveMenu() {
     if (this.checkDate()) {
-      this.menu.saveMenu().subscribe( data =>{ console.log('Saved menu '+ data)});
+      this.menu.saveMenu().subscribe( data =>{
+        console.log('Saved menu '+ data);
+        this.messageService.success = 'Menu successfully added';
+      });
       this.router.navigateByUrl('/admin-profile');
     }
+
+    this.goToRestaurant();
 
   }
 
   deleteMenu() {
     if (this.checkDate()) {
-      this.menu.deleteMenu().subscribe( data => { console.log('Deleted menu '+ data)});
+      this.menu.deleteMenu().subscribe( data => {
+        console.log('Deleted menu '+ data)});
+      this.messageService.success = 'Menu successfully deleted';
     }
     this.menu.setMenu(new Menu());
     this.menu.setDate(this.date);
+
+    this.goToRestaurant();
   }
 
   goBack() {
     this.router.navigateByUrl('/');
+  }
+
+  goToRestaurant() {
+    this.router.navigateByUrl('/admin/restaurant');
   }
 
   checkDate() {

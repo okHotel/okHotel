@@ -38,11 +38,6 @@
                 </tr>
                 </thead>
 
-<!--
-                <mat-error *ngIf="checkReservation(l, hl)">{{getErrorMessage()}}</mat-error>
-
--->
-
                 <tr *ngFor="let dish of menu.menu.lunch_dishes">
                   <td scope="row">{{dish}}</td>
 
@@ -104,9 +99,8 @@
                   <th scope="col">Half Portion</th>
                 </tr>
 
-<!--
-                <mat-error *ngIf="checkReservation(d, hd)">{{getErrorMessage()}}</mat-error>
--->
+                <app-message *ngIf="checkReservation(l, hl) || checkReservation(d, hd) ||
+                          messageService.success || messageService.error"></app-message>
 
                 <tr *ngFor="let dish of menu.menu.dinner_dishes">
                   <td scope="row">{{dish}}</td>
