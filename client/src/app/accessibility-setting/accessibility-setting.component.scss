@@ -18,6 +18,14 @@ button{
   width: 90%;
 }
 
+.card, .card-header {
+  background: none;
+}
+
+.card-header {
+  color: $default-background-color;
+}
+
 .sidenav {
   height: 100%;
   width: inherit;

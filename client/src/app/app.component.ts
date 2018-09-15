@@ -25,7 +25,11 @@ export class AppComponent {
       this.themingService.small = localStorage.getItem('fontSize') === 'small';
     }
 
-    this.themingService.backgroundCheckValue = localStorage.getItem('useBackground') === 'true';
+    if (localStorage.getItem('useBackground')) {
+      this.themingService.backgroundCheckValue = localStorage.getItem('useBackground') === 'true';
+    } else {
+      this.themingService.backgroundCheckValue = true;
+    }
   }
 
 }

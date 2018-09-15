@@ -7,6 +7,8 @@
       Insert Variations
     </div>
 
+    <h1 class="hidden">Add variation</h1>
+
     <div class="card-body">
       <div *ngFor="let variation of variations; let i = index" id="variationsAddedDiv">
         <p><button mat-button #button id="delButton" (click)="deleteVariation(variation, i)">

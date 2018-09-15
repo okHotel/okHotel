@@ -8,6 +8,8 @@ Error: File to import not found or unreadable: ~@angular/material/theming.
 3: #footerDiv {
 4:   background-color: $default-background-color;
 5: }
+6: 
+7: h2 {
 
 Backtrace:
 ../../styles.scss:2
@@ -67,4 +69,4 @@ footer.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of footer.component.scss\A \A 1: @import \"../../styles.scss\";\A 2: \A 3: #footerDiv {\A 4:   background-color: $default-background-color;\A 5: }"; }
+  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of footer.component.scss\A \A 1: @import \"../../styles.scss\";\A 2: \A 3: #footerDiv {\A 4:   background-color: $default-background-color;\A 5: }\A 6: \A 7: h2 {"; }

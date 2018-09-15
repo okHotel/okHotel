@@ -53,6 +53,7 @@ export class AccessibilitySettingComponent implements OnInit {
   changeBackgroundImagesCheckValue() {
     this.themingService.backgroundCheckValue = !this.themingService.backgroundCheckValue;
     localStorage.setItem('useBackground', ''+this.themingService.backgroundCheckValue);
+
     console.log(localStorage);
   }
 
@@ -60,5 +61,24 @@ export class AccessibilitySettingComponent implements OnInit {
     this.themingService.isContrastChecked = !this.themingService.isContrastChecked;
     localStorage.setItem('isContrastChecked', '' + this.themingService.isContrastChecked);
     this.themingService.checkAndChangeTextContrast();
+
+    console.log(localStorage)
+
+    location.reload()
+  }
+
+  resetSettings() {
+    let token: string;
+    if (localStorage.getItem('token')) {
+      token = localStorage.getItem('token');
+    }
+    localStorage.clear()
+
+    if (token) {
+      localStorage.setItem('token', token);
+    }
+
+    location.reload();
+
   }
 }

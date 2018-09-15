@@ -11,10 +11,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent" >
       <ul class="navbar-nav mr-auto" >
-        <li class="nav-item active" *ngIf="isLoggedIn()">
+        <li class="nav-item" *ngIf="isLoggedIn()">
           <a class="nav-link" href="/">
             <i class="fa fa-home" aria-label="restaurantService"></i>
-            Home <span class="sr-only">(current)</span></a>
+            Home</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn()">
           <a class="nav-link" href="/restaurant">

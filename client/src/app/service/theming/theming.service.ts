@@ -60,7 +60,8 @@ export class ThemingService {
   }
 
   isUseBackgroundOn(): boolean {
-    console.log(this.backgroundCheckValue || localStorage.getItem('useBackground') === 'true');
+    console.log('background');
+    console.log(this.backgroundCheckValue);
     return this.backgroundCheckValue || localStorage.getItem('useBackground') === 'true';
   }
 
