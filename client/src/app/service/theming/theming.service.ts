@@ -72,12 +72,14 @@ export class ThemingService {
     let placeholder;
     let select;
     let cellHeader;
+    let selectBorder;
 
     if (localStorage.getItem('isContrastChecked') === 'true') {
       text = document.querySelectorAll('.contrast');
       placeholder = document.querySelectorAll('.form-control');
       select = document.querySelectorAll('.mat-select-placeholder');
       cellHeader = document.querySelectorAll('mat-header-cell');
+      selectBorder = document.querySelectorAll('mat-select');
 
       this.isContrastChecked = true;
 
@@ -100,8 +102,12 @@ export class ThemingService {
         select.item(i).classList.add('mat-select-black-placeholder');
       }
 
-      for (let i = 0; i < text.length; i++) {
+      for (let i = 0; i < cellHeader.length; i++) {
         cellHeader.item(i).classList.add('mat-header-cell-black');
+      }
+
+      for (let i = 0; i < selectBorder.length; i++) {
+        selectBorder.item(i).classList.add('mat-select-black');
       }
 
     } else {
