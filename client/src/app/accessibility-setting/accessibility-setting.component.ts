@@ -53,7 +53,7 @@ export class AccessibilitySettingComponent implements OnInit {
   changeBackgroundImagesCheckValue() {
     this.themingService.backgroundCheckValue = !this.themingService.backgroundCheckValue;
     localStorage.setItem('useBackground', ''+this.themingService.backgroundCheckValue);
-
+    location.reload();
     console.log(localStorage);
   }
 
@@ -64,7 +64,7 @@ export class AccessibilitySettingComponent implements OnInit {
 
     console.log(localStorage)
 
-    location.reload()
+
   }
 
   resetSettings() {

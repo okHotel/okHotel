@@ -129,6 +129,11 @@ button {
 }
 
 
+mat-select {
+  border : 1px solid lightgrey;
+  padding: 1.5%;
+}
+
 
 @media print {
   app-header, app-footer, button, .btn-group-btn-group-sm {
