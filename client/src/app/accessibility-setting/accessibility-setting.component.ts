@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HeaderComponent} from '../header/header.component';
 import {ThemingService} from '../service/theming/theming.service';
+import {el} from '../../../node_modules/@angular/platform-browser/testing/src/browser_util';
 
 @Component({
   selector: 'app-accessibility-setting',
@@ -60,7 +61,12 @@ export class AccessibilitySettingComponent implements OnInit {
   changeTextContrast() {
     this.themingService.isContrastChecked = !this.themingService.isContrastChecked;
     localStorage.setItem('isContrastChecked', '' + this.themingService.isContrastChecked);
-    this.themingService.checkAndChangeTextContrast();
+
+    if (this.themingService.isContrastChecked) {
+      this.themingService.checkAndChangeTextContrast();
+    } else {
+      location.reload();
+    }
 
     console.log(localStorage)
 
