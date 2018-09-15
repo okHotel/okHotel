@@ -5,6 +5,8 @@
       Pantry
     </div>
 
+    <h1 class="hidden">Restaurant Statistics</h1>
+
     <div class="card-body text-center" >
       <app-error></app-error>
       <button class="add-product-small" mat-icon-button color="primary" (click)="addNew()">
@@ -15,7 +17,7 @@
         <mdb-form-field floatPlaceholder="never" color="accent">
           <label for="search">Search</label>
 
-          <input #input type="text" class="form-control" id="Search"
+          <input #input type="text" class="form-control" id="search"
                  placeholder="Search" #filter>
         </mdb-form-field>
       </div>
