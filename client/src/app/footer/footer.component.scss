@@ -3,3 +3,13 @@
 #footerDiv {
   background-color: $blue-color;
 }
+
+
+@media (max-width: 375px) {
+  
+
+  h6{
+    margin-bottom: 5% !important ;
+  }
+
+}
