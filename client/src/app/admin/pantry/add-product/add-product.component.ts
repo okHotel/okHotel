@@ -22,7 +22,7 @@ export class AddProductComponent implements OnInit {
     constructor(public pantryService: PantryService,
                 private route: ActivatedRoute,
                 private location: Location,
-                public errorService: MessageService,
+                public messageService: MessageService,
                 public themingService: ThemingService) {
 
       if (this.themingService.isUseBackgroundOn()) {
@@ -62,10 +62,14 @@ export class AddProductComponent implements OnInit {
 
     public onSave(): void {
         this.pantryService.addProduct(this.product)
-          .subscribe(result => console.log(result), error => {
-            this.errorService.error = error.error.message;
-            console.log(error)
-          });
+          .subscribe(result => {
+            this.messageService.success = this.product.name + ' successfully added';
+            this.messageService.error = '';
+            }, error => {
+              this.messageService.error = error.error.message;
+              this.messageService.success = '';
+              console.log(error)
+            });
         this.location.back();
     }
 

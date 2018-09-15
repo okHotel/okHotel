@@ -31,7 +31,7 @@ export class RegistrationComponent implements OnInit {
     private bookingService: BookingService,
     private location: Location,
     private router: Router,
-    public error: MessageService,
+    public messageService: MessageService,
     public themingService: ThemingService
   ) {
 
@@ -68,20 +68,22 @@ export class RegistrationComponent implements OnInit {
             this.customer.role = 'customer';
             this.save();
             this.registrationSuccessed = true;
+            this.messageService.success = "Customer successfully added";
+            this.messageService.error = '';
             this.router.navigateByUrl('');
 
           } else {
             this.registrationSuccessed = false;
             this.submitted = false;
-            this.error.error = 'Input not valid';
+            this.messageService.error = 'Input not valid';
           }
-
         }, error => {
           console.log(error.error.msg);
           this.registrationSuccessed = false;
           this.submitted = false;
-          this.error.error  = error.error.msg;
+          this.messageService.error  = error.error.msg;
         });
+
   }
 
   goBack(): void {

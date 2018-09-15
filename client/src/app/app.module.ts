@@ -48,7 +48,7 @@ import { EditProductComponent } from './admin/pantry/edit-product/edit-product.c
 import { DeleteProductComponent } from './admin/pantry/delete-product/delete-product.component';
 import { ProductsComponent } from './admin/pantry/products.component';
 import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
-import { MessageComponent } from './error/message.component';
+import { MessageComponent } from './message/message.component';
 import {MessageService} from './service/message/message.service';
 import { AccessibilitySettingComponent } from './accessibility-setting/accessibility-setting.component';
 

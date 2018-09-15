@@ -30,7 +30,7 @@ export class MenuComponent implements OnInit {
               public menu: MenuService,
               private datepipe: DatePipe,
               private customerService: CustomerService,
-              public errorService: MessageService,
+              public messageService: MessageService,
               public themingService: ThemingService) {
     if (this.themingService.isUseBackgroundOn()) {
       document.body.style.backgroundImage = "url('../../assets/images/restaurant.jpg')";
@@ -62,8 +62,8 @@ export class MenuComponent implements OnInit {
       },
       err => {
         console.log(err.error.message);
-        this.errorService.error = err.error.message;
-        console.log(this.errorService.error)
+        this.messageService.error = err.error.message;
+        console.log(this.messageService.error)
       }
     );
 
@@ -75,11 +75,11 @@ export class MenuComponent implements OnInit {
     });
 
     this.themingService.checkAndChangeInputBorders();
-    this.themingService.checkAndChangeTextContrast();
   }
 
   saveReservations() {
     this.menu.saveMenu().subscribe();
+    this.messageService.success = "Menu successfully saved";
     this.router.navigateByUrl('');
   }
 

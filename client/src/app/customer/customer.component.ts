@@ -8,6 +8,7 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {DeleteCustomerComponent} from "./delete-customer/delete-customer.component";
 import {ThemingService} from '../service/theming/theming.service';
+import {MessageService} from '../service/message/message.service';
 
 @Component({
     selector: 'app-customer',
@@ -31,7 +32,8 @@ export class CustomerComponent implements OnInit {
 
     constructor(private dialog: MatDialog, private router: Router, private http: HttpClient,
                 public customerService: CustomerService,
-                public themingService: ThemingService) {
+                public themingService: ThemingService,
+                public messageService: MessageService) {
 
       if (this.themingService.isUseBackgroundOn()) {
         document.body.style.backgroundImage = "url('../../assets/images/customer.jpg')";

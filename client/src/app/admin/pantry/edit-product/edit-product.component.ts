@@ -17,7 +17,7 @@ export class EditProductComponent {
     constructor(public pantryService: PantryService,
                 private route: ActivatedRoute,
                 private location: Location,
-                public errorService: MessageService,
+                public messageService: MessageService,
                 public themingService: ThemingService) {
 
       if (this.themingService.isUseBackgroundOn()) {
@@ -44,7 +44,8 @@ export class EditProductComponent {
           console.log(this.product);
         }, err => {
           console.log(err);
-          this.errorService.error = err.error.message;
+          this.messageService.error = err.error.message;
+          this.messageService.success = '';
         });
 
       this.themingService.checkAndChangeInputBorders();
@@ -55,12 +56,10 @@ export class EditProductComponent {
         return this.formControl.hasError('required') ? 'Required field' : '';
     }
 
-    submit() {
-
-    }
-
     saveAndGoBack(): void {
         this.pantryService.updateProduct(this.product);
+        this.messageService.success = this.product.name + ' successfully updated';
+        this.messageService.error = '';
         this.goBack();
     }
 

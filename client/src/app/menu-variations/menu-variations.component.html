@@ -20,9 +20,9 @@
           <tr *ngFor="let v of variations">
             <td scope="row">{{v}}</td>
             <td>
-              <mat-form-field color="form-control accent" >
+              <mat-form-field class="form-control accent" >
                 <mat-select placeholder="{{getVariations(intollerance, v)}}" >
-                  <mat-option *ngFor="let n of people" value=n (click)="setVariation(v, intollerance, n)">
+                  <mat-option *ngFor="let n of people" [value]=n (click)="setVariation(v, intollerance, n)">
                     {{n}}
                   </mat-option>
                 </mat-select>
@@ -30,9 +30,9 @@
             </td>
 
             <td>
-              <mat-form-field color="form-control  accent" >
+              <mat-form-field class="form-control accent" >
                 <mat-select placeholder="{{getVariations(allergy, v)}}">
-                  <mat-option *ngFor="let n of people" value=n (click)="setVariation(v, allergy, n)">
+                  <mat-option *ngFor="let n of people" [value]=n (click)="setVariation(v, allergy, n)">
                     {{n}}
                   </mat-option>
                 </mat-select>

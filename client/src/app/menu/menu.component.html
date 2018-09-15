@@ -7,7 +7,9 @@
     <h1 class="hidden">Choose menu</h1>
 
     <div class="card-body">
+
       <app-message></app-message>
+
       <form class="mat-dialog-content" #addCustomerForm="ngForm">
 
         <div class="btn-group btn-group-sm d-flex justify-content-center">
@@ -164,8 +166,8 @@
         </div>
 
         <div class="btn-group btn-group-sm d-flex flex-row-reverse">
-          <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="checkSave()" aria-label="Save"
-                  [disabled]="!addCustomerForm.form.valid">Save
+          <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="saveReservations()" aria-label="Save"
+                  [disabled]="!addCustomerForm.form.valid || checkSave()">Save
           </button>
         </div>
       </form>

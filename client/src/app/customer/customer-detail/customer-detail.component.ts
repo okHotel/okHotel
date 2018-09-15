@@ -27,7 +27,7 @@ export class CustomerDetailComponent implements OnInit {
         private customerService: CustomerService,
         private route: ActivatedRoute,
         private location: Location,
-        private errorService: MessageService,
+        private messageService: MessageService,
         public themingService: ThemingService
     ) {
 
@@ -48,7 +48,7 @@ export class CustomerDetailComponent implements OnInit {
                     this.customerNeeds = customer.otherNeeds;
                 }, err => {
                     console.log(err)
-                    this.errorService.error = err.error.message;
+                    this.messageService.error = err.error.message;
                 });
         this.canUserEdit = AuthService.isUserAdmin();
 
@@ -59,6 +59,7 @@ export class CustomerDetailComponent implements OnInit {
     update(): void {
 //        this.submitted = true;
         this.customer.otherNeeds = this.customerNeeds;
+        this.messageService.success = this.customer.bookingName + " " + this.customer.bookingSurname + " successfully updated";
         this.customerService.updateCustomer(this.customer)
             .subscribe();
     }
