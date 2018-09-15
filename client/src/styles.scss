@@ -123,15 +123,18 @@ button {
   box-shadow: 0 0 10px #719ECE;
 }
 
-.black-placeholder::placeholder, .black-placeholder{
+.contrast::placeholder, .black-placeholder{
     color: black;
     opacity: 1; /* Firefox */
 }
 
-
 mat-select {
   border : 1px solid lightgrey;
   padding: 1.5%;
+}
+
+::ng-deep.mat-select-black-placeholder{
+  color: black;
 }
 
 

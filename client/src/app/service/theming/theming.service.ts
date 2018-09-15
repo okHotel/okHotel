@@ -71,10 +71,13 @@ export class ThemingService {
 
     let text;
     let placeholder;
+    let select;
 
     if (localStorage.getItem('isContrastChecked') === 'true') {
       text = document.querySelectorAll('.contrast');
       placeholder = document.querySelectorAll('.form-control');
+      select = document.querySelectorAll('.mat-select-placeholder');
+
 
       this.isContrastChecked = true;
 
@@ -86,9 +89,13 @@ export class ThemingService {
 
       for (let i = 0; i < placeholder.length; i++) {
         placeholder.item(i).classList.add('black-placeholder');
-
       }
 
+
+      for (let i = 0; i < select.length; i++) {
+        select.item(i).classList.remove('mat-select-placeholder');
+        select.item(i).classList.add('mat-select-black-placeholder');
+      }
 
 
 
