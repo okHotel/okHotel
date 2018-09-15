@@ -4,7 +4,7 @@ import {PantryService} from '../../../service/pantry/pantry.service';
 import {Product, Unit} from '../product';
 import {ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common';
-import {ErrorService} from '../../../service/error/error.service';
+import {MessageService} from '../../../service/message/message.service';
 import {ThemingService} from '../../../service/theming/theming.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class AddProductComponent implements OnInit {
     constructor(public pantryService: PantryService,
                 private route: ActivatedRoute,
                 private location: Location,
-                public errorService: ErrorService,
+                public errorService: MessageService,
                 public themingService: ThemingService) {
 
       if (this.themingService.isUseBackgroundOn()) {

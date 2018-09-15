@@ -4,7 +4,7 @@ import { CustomerService } from '../../service/customer/customer.service';
 import { ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common';
 import {AuthService} from '../../service/auth/auth.service';
-import {ErrorService} from '../../service/error/error.service';
+import {MessageService} from '../../service/message/message.service';
 import {ThemingService} from '../../service/theming/theming.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class CustomerDetailComponent implements OnInit {
         private customerService: CustomerService,
         private route: ActivatedRoute,
         private location: Location,
-        private errorService: ErrorService,
+        private errorService: MessageService,
         public themingService: ThemingService
     ) {
 

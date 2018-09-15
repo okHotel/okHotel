@@ -92,7 +92,7 @@ export class AdminStatisticsComponent implements OnInit {
         },
 
         error => {
-          console.log('DB error');
+          console.log('DB message');
           this.isLoadedDate = false;
           this.menu.setMenu(new Menu());
           this.menu.setDate(this.date);

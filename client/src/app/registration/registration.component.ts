@@ -7,7 +7,7 @@ import {Booking} from "../booking/booking";
 import {BookingService} from "../service/booking/booking.service";
 import {AuthService} from "../service/auth/auth.service";
 import {ActivatedRoute, Router} from '@angular/router';
-import {ErrorService} from '../service/error/error.service';
+import {MessageService} from '../service/message/message.service';
 import {ThemingService} from '../service/theming/theming.service';
 
 @Component({
@@ -31,7 +31,7 @@ export class RegistrationComponent implements OnInit {
     private bookingService: BookingService,
     private location: Location,
     private router: Router,
-    public error: ErrorService,
+    public error: MessageService,
     public themingService: ThemingService
   ) {
 

@@ -7,7 +7,7 @@
     <h1 class="hidden">Choose menu</h1>
 
     <div class="card-body">
-      <app-error></app-error>
+      <app-message></app-message>
       <form class="mat-dialog-content" #addCustomerForm="ngForm">
 
         <div class="btn-group btn-group-sm d-flex justify-content-center">
@@ -20,7 +20,7 @@
           </button>
         </div>
 
-        <div *ngIf="lunchCardState" [hidden]="errorService.error">
+        <div *ngIf="lunchCardState" [hidden]="messageService.error">
           <div class="card my-3">
             <div class="card-body">
               <table class="table" summary="The courses you can select for lunch">
@@ -84,7 +84,7 @@
 
         </div>
 
-        <div *ngIf="dinnerCardState" [hidden]="errorService.error">
+        <div *ngIf="dinnerCardState" [hidden]="messageService.error">
 
           <div class="card my-3">
 
@@ -136,7 +136,7 @@
           </div>
         </div>
 
-        <div class="card" [hidden]="errorService.error">
+        <div class="card" [hidden]="messageService.error">
           <div class="card-body">
 
             <div>

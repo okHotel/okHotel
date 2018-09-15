@@ -3,7 +3,7 @@ import {CustomerService} from '../service/customer/customer.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../service/auth/auth.service';
-import {ErrorService} from '../service/error/error.service';
+import {MessageService} from '../service/message/message.service';
 import {ThemingService} from '../service/theming/theming.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   big = false;
 
   constructor(private customerService: CustomerService, private authService: AuthService,
-              private router: Router, private route: ActivatedRoute, private error: ErrorService,
+              private router: Router, private route: ActivatedRoute, private error: MessageService,
               public themingService: ThemingService) {
     if (this.themingService.isUseBackgroundOn()) {
       document.body.style.backgroundImage = "url('../../assets/images/casa-per-ferie-san-bassiano.jpg')";

@@ -48,8 +48,8 @@ import { EditProductComponent } from './admin/pantry/edit-product/edit-product.c
 import { DeleteProductComponent } from './admin/pantry/delete-product/delete-product.component';
 import { ProductsComponent } from './admin/pantry/products.component';
 import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
-import { ErrorComponent } from './error/error.component';
-import {ErrorService} from './service/error/error.service';
+import { MessageComponent } from './error/message.component';
+import {MessageService} from './service/message/message.service';
 import { AccessibilitySettingComponent } from './accessibility-setting/accessibility-setting.component';
 
 const appRoutes: Routes = [
@@ -96,7 +96,7 @@ const appRoutes: Routes = [
         DeleteProductComponent,
         ProductsComponent,
         DeleteCustomerComponent,
-        ErrorComponent,
+        MessageComponent,
         AccessibilitySettingComponent
     ],
     imports: [
@@ -132,7 +132,7 @@ const appRoutes: Routes = [
     ],
     exports: [CommonModule, MatToolbarModule, MatInputModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule,
         NoopAnimationsModule, MatSortModule],
-    providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService, ErrorService,
+    providers: [CustomerService, BookingService, AuthService, BarcodeDecoderService, MessageService,
         BarcodeValidatorService, PantryService, DatePipe],
     bootstrap: [AppComponent],
     schemas: [ NO_ERRORS_SCHEMA ]

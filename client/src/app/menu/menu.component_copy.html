@@ -1,20 +1,20 @@
-<div class="w3-row" [hidden]="!errorService.error">
+<div class="w3-row" [hidden]="!messageService.error">
   <div class="w3-col s0 m1 l2">&nbsp;</div>
 
   <div class="w3-col s12 m10 l8" >
-    <app-error></app-error>
+    <app-message></app-message>
   </div>
 
   <div class="w3-col s0 m1 l2">&nbsp;</div>
 </div>
 
-<div class="w3-row" [hidden]="errorService.error">
+<div class="w3-row" [hidden]="messageService.error">
   <div class="w3-col l12 m12 s12 w3-center">
     <p id="title">Please choose what you want to eat today</p>
   </div>
 </div>
 
-<div *ngIf="!menu.showLunchVariations" class="w3-row" [hidden]="errorService.error">
+<div *ngIf="!menu.showLunchVariations" class="w3-row" [hidden]="messageService.error">
   <div class="w3-col l12 m12 s12 w3-center">
 
     <table summary="The courses you can select for lunch">
@@ -61,7 +61,7 @@
   </div>
 </div>
 
-<div *ngIf="menu.showLunchVariations" class="w3-row" [hidden]="errorService.error">
+<div *ngIf="menu.showLunchVariations" class="w3-row" [hidden]="messageService.error">
 
   <div class="w3-col l7 m0 s0 w3-center">
 
@@ -114,7 +114,7 @@
 
 </div>
 
-<div *ngIf="!menu.showDinnerVariations" class="w3-row" [hidden]="errorService.error">
+<div *ngIf="!menu.showDinnerVariations" class="w3-row" [hidden]="messageService.error">
 
   <div class="w3-col l12 m12 s12 w3-center">
     <table summary="The courses you can select for dinner" >
@@ -161,7 +161,7 @@
   </div>
 </div>
 
-<div *ngIf="menu.showDinnerVariations" class="w3-row" [hidden]="errorService.error">
+<div *ngIf="menu.showDinnerVariations" class="w3-row" [hidden]="messageService.error">
 
   <div class="w3-col l7 m0 s0 w3-center">
     <table summary="The courses you can select for dinner" >
@@ -212,7 +212,7 @@
   <div class="w3-col l1 m1 s1 w3-center">&nbsp;</div>
 </div>
 
-<div class="w3-row" [hidden]="errorService.error">
+<div class="w3-row" [hidden]="messageService.error">
 
   <div class="w3-col l3 m3 s3 w3-center">&nbsp;</div>
 
@@ -228,7 +228,7 @@
 
 </div>
 
-<div class="w3-row" [hidden]="errorService.error">
+<div class="w3-row" [hidden]="messageService.error">
   <div class="w3-col l4 m6 s4 w3-left">&nbsp;</div>
   <div class="w3-col l8 m6 s8 w3-center" id="save">
     <button  mat-button  [disabled]="checkSave()"  (click)="saveReservations()">Save</button>

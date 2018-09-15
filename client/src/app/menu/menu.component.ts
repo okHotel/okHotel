@@ -5,7 +5,7 @@ import { DatePipe } from '@angular/common';
 import {CustomerService} from '../service/customer/customer.service';
 import {Meal, Reservation, Variation} from './reservation';
 import {Note} from './Note';
-import {ErrorService} from '../service/error/error.service';
+import {MessageService} from '../service/message/message.service';
 import {ThemingService} from '../service/theming/theming.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class MenuComponent implements OnInit {
               public menu: MenuService,
               private datepipe: DatePipe,
               private customerService: CustomerService,
-              public errorService: ErrorService,
+              public errorService: MessageService,
               public themingService: ThemingService) {
     if (this.themingService.isUseBackgroundOn()) {
       document.body.style.backgroundImage = "url('../../assets/images/restaurant.jpg')";
