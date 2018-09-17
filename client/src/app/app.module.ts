@@ -51,6 +51,7 @@ import { DeleteCustomerComponent } from './customer/delete-customer/delete-custo
 import { MessageComponent } from './message/message.component';
 import {MessageService} from './service/message/message.service';
 import { AccessibilitySettingComponent } from './accessibility-setting/accessibility-setting.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthService]},
@@ -120,7 +121,8 @@ const appRoutes: Routes = [
         MatPaginatorModule,
         ReactiveFormsModule,
         RouterModule.forRoot(appRoutes),
-        MDBBootstrapModule.forRoot()
+        MDBBootstrapModule.forRoot(),
+        ColorPickerModule
     ],
 
     entryComponents: [

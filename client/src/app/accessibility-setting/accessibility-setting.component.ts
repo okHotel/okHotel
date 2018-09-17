@@ -10,9 +10,20 @@ import {el} from '../../../node_modules/@angular/platform-browser/testing/src/br
 })
 export class AccessibilitySettingComponent implements OnInit {
 
+  background_color = '#034768';
+  font_color = '#ffffff';
+
   constructor(public themingService: ThemingService) { }
 
   ngOnInit() {
+  }
+
+  setBackgroundColor(color) {
+    console.log(color);
+  }
+
+  setFontColor(color) {
+    console.log(color);
   }
 
   closeSidebar() {
