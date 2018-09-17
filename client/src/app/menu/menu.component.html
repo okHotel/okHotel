@@ -8,7 +8,9 @@
 
     <div class="card-body">
 
-      <form class="mat-dialog-content" #addCustomerForm="ngForm">
+      <app-message *ngIf="messageService.success || messageService.error"></app-message>
+
+      <form class="mat-dialog-content" #addCustomerForm="ngForm" *ngIf="!messageService.error">
 
         <div class="btn-group btn-group-sm d-flex justify-content-center">
           <button type="button" class="btn px-5 py-3 mb-2" aria-label="Choose Dinenr" (click)="changeLunchCardState()" *ngIf="lunchCardState">
@@ -23,8 +25,12 @@
         <div *ngIf="lunchCardState">
           <div class="card my-3">
             <div class="card-body">
-              <table class="table" summary="The courses you can select for lunch">
 
+              <div  class="alert alert-danger" role="alert" *ngIf="isReservationNotValid">
+                {{reservationError}}
+              </div>
+
+              <table class="table" summary="The courses you can select for lunch">
                 <caption class="contrast">Lunch</caption>
 
                 <thead>
@@ -88,16 +94,19 @@
           <div class="card my-3">
 
             <div class="card-body">
+
+              <div  class="alert alert-danger" role="alert" *ngIf="isReservationNotValid">
+                {{reservationError}}
+              </div>
+
               <table class="table" summary="The courses you can select for dinner">
                 <caption class="contrast">Dinner</caption>
+
                 <tr>
                   <th scope="col">Dish</th>
                   <th scope="col">Whole Portion</th>
                   <th scope="col">Half Portion</th>
                 </tr>
-
-                <app-message *ngIf="checkReservation(l, hl) || checkReservation(d, hd) ||
-                          messageService.success || messageService.error"></app-message>
 
                 <tr *ngFor="let dish of menu.menu.dinner_dishes">
                   <td scope="row">{{dish}}</td>
@@ -163,8 +172,7 @@
 
         <div class="btn-group btn-group-sm d-flex flex-row-reverse">
           <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="saveReservations()" aria-label="Save"
-                  [disabled]="!addCustomerForm.form.valid || checkReservation(l, hl)
-                  || checkReservation(d, hd) || checkSave()">Save
+                  [disabled]="!addCustomerForm.form.valid || isReservationNotValid || checkSave()">Save
           </button>
         </div>
       </form>

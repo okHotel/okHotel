@@ -24,7 +24,8 @@ export class MenuComponent implements OnInit {
   dinnerCardState = false;
   lunchCardState = true;
   note: string;
-  isReservationNotValid: boolean = true;
+  isReservationNotValid: boolean = false;
+  reservationError: string;
 
   @ViewChild('inputNote') inputNote: ElementRef;
 
@@ -136,11 +137,13 @@ export class MenuComponent implements OnInit {
         variations: []
       };
 
-      this.checkReservation(this.l, this.hl);
-      this.checkReservation(this.d, this.hd);
-
       this.menu.menu.reservations.push(reservation);
     }
+
+    this.checkReservation(this.l, this.hl);
+/*
+    this.checkReservation(this.d, this.hd);
+*/
 
   }
 
@@ -156,15 +159,16 @@ export class MenuComponent implements OnInit {
 
     this.isReservationNotValid = total > (this.people.length - 1) * mul_factor;
 
+    console.log('isReservationNotValid');
+    console.log(total);
+
     if (this.isReservationNotValid) {
-      this.messageService.error = this.getErrorMessage();
-      this.messageService.success = '';
+      this.reservationError = this.getErrorMessage();
     } else {
-      this.messageService.error = '';
-      this.messageService.success = '';
+      this.reservationError = '';
     }
 
-    return total > (this.people.length - 1) * mul_factor;
+    return this.isReservationNotValid;
   }
 
   checkSave() {
