@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   get myStyle() {
     return {
       'width': HeaderComponent.isAccessibilitySidebarOpen ? '40%' : '0',
-      'padding': HeaderComponent.isAccessibilitySidebarOpen ? '5%' : '0',
+      'padding-top': HeaderComponent.isAccessibilitySidebarOpen ? '5%' : '0',
       'transition': '0.5s'
     };
   }
