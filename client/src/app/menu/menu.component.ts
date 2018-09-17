@@ -1,9 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {MenuService} from '../service/menu/menu.service';
-import { DatePipe } from '@angular/common';
+import {DatePipe} from '@angular/common';
 import {CustomerService} from '../service/customer/customer.service';
-import {Meal, Reservation, Variation} from './reservation';
+import {Meal, Reservation} from './reservation';
 import {Note} from './Note';
 import {MessageService} from '../service/message/message.service';
 import {ThemingService} from '../service/theming/theming.service';
@@ -53,6 +53,9 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('isReservationNotValid');
+    console.log(this.isReservationNotValid);
+
     this.menu.menu.otherNotes = [];
 
     const latest_date: string = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
@@ -61,12 +64,9 @@ export class MenuComponent implements OnInit {
     this.menu.getDateMenu().subscribe(
       data => {
         this.menu.setMenu(data);
-        console.log('Menu loaded');
       },
       err => {
-        console.log(err.error.message);
         this.messageService.error = err.error.message;
-        console.log(this.messageService.error)
       }
     );
 
@@ -140,15 +140,19 @@ export class MenuComponent implements OnInit {
       this.menu.menu.reservations.push(reservation);
     }
 
-    this.checkReservation(this.l, this.hl);
-/*
-    this.checkReservation(this.d, this.hd);
-*/
+    if (selectedType == Meal.LUNCH || selectedType == Meal.HALF_LUNCH) {
+      this.checkReservation(this.l, this.hl);
+    } else if (selectedType == Meal.DINNER || selectedType == Meal.HALF_DINNER) {
+      this.checkReservation(this.d, this.hd);
+    }
 
   }
 
   checkReservation(type1: Meal, type2: Meal) {
     let total = 0;
+
+    console.log('isReservationNotValid1');
+    console.log(this.isReservationNotValid);
 
     this.menu.menu.reservations
       .filter(r => r.roomNumber === this.room)
@@ -159,20 +163,23 @@ export class MenuComponent implements OnInit {
 
     this.isReservationNotValid = total > (this.people.length - 1) * mul_factor;
 
-    console.log('isReservationNotValid');
-    console.log(total);
-
     if (this.isReservationNotValid) {
       this.reservationError = this.getErrorMessage();
     } else {
       this.reservationError = '';
     }
 
+    console.log('isReservationNotValid2');
+    console.log(this.isReservationNotValid);
+
     return this.isReservationNotValid;
   }
 
   checkSave() {
+/*
     return this.checkReservation(Meal.LUNCH, Meal.HALF_LUNCH) || this.checkReservation(Meal.DINNER, Meal.HALF_DINNER);
+*/
+    return !this.isReservationNotValid;
   }
 
   getErrorMessage() {
