@@ -30,7 +30,13 @@
               </div>
 
               <table class="table" summary="The courses you can select for lunch">
-                <caption class="contrast">Lunch</caption>
+
+                <caption class="contrast">
+                  <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Choose max 2 dishes for each person">
+                    Lunch
+                    <i class="fa fa-info-circle"></i>
+                  </span>
+                </caption>
 
                 <thead>
                 <tr>
@@ -85,7 +91,6 @@
           <button type="button" class="btn px-5 py-3 mb-2 mt-2" aria-label="Choose Dinner" (click)="changeDinnerCardState()" *ngIf="dinnerCardState" onclick="changeDinnerCardState()">
             Close Dinner
           </button>
-
         </div>
 
         <div *ngIf="dinnerCardState">
@@ -98,7 +103,20 @@
               </div>
 
               <table class="table" summary="The courses you can select for dinner">
-                <caption class="contrast">Dinner</caption>
+                <caption class="contrast">
+                  <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Choose max 3 dishes for each person">
+                    Dinner
+                    <i class="fa fa-info-circle"></i>
+                  </span>
+                </caption>
+
+                <!--
+
+                  <caption class="contrast">
+                    Dinner - <small>Choose max 3 dishes for each person</small>
+                  </caption>
+
+                -->
 
                 <tr>
                   <th scope="col">Dish</th>

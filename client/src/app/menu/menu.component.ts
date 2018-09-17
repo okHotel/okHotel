@@ -41,7 +41,7 @@ export class MenuComponent implements OnInit {
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center center";
     }
-
+    
   }
 
   get myStyle() {
@@ -183,7 +183,10 @@ export class MenuComponent implements OnInit {
   }
 
   getErrorMessage() {
+/*
     return 'Number of dishes booked too high';
+*/
+    return 'Choose max 2 dishes for each person for lunch and 3 for dinner';
   }
 
   getRes(type: Meal, dish: string) {
