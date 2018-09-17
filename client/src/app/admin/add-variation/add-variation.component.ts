@@ -55,6 +55,7 @@ export class AddVariationComponent implements OnInit {
               console.log(err);
             });
         this.variations.push(type);
+        this.variation.type = '';
     }
 
     public isInputInValid(type: string) {

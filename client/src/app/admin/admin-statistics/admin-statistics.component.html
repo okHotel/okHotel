@@ -133,7 +133,7 @@
           <ng-container matColumnDef="halfPortion">
             <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Half Dinner</mat-header-cell>
             <mat-cell *matCellDef="let row">
-              <span class="mobile-label" class="contrast">Half Dinner:</span>
+              <span class="mobile-label contrast">Half Dinner:</span>
               <mat-list>
                 <mat-list-item>{{getTotalQuantitiesFor(row, meal.HALF_DINNER)}}</mat-list-item>
                 <mat-list-item
