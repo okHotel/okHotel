@@ -19,10 +19,10 @@
 
             <div class="col col-lg-3">
               <div class="form-group">
-                <input  id="backgroundColor" type="text" class="form-control"  [(colorPicker)]="background_color"
+                <input  id="backgroundColor" type="text" class="form-control"  [(colorPicker)]="themingService.backgroundColor"
                         [cpPresetColors]="['#000000', '#034768', '#046B99', '#00cfff', '#b3efff', '#ffffff']"
                         [cpPosition]="'left'"
-                        [style.background]="background_color"
+                        [style.background]="themingService.backgroundColor"
                         [style.color]="'white'"
                         [cpAlphaChannel]="'always'"
                         [cpOutputFormat]="'hex'"
@@ -36,14 +36,14 @@
 
             <div class="col col-lg-3">
               <div class="form-group">
-                <input  id="fontColor" type="text" class="form-control"  [(colorPicker)]="font_color"
+                <input  id="fontColor" type="text" class="form-control"  [(colorPicker)]="themingService.fontColor"
                         [cpPresetColors]="['#000000', '#ffffff', '#ffff00']"
                         [cpPosition]="'left'"
-                        [style.background]="font_color"
+                        [style.background]="themingService.fontColor"
                         [style.color]="'black'"
                         [cpAlphaChannel]="'always'"
                         [cpOutputFormat]="'hex'"
-                        [value]="font_color">
+                        [value]="font_color" >
               </div>
             </div>
           </div>

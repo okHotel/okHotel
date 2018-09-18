@@ -18,24 +18,24 @@ $theme: mat-light-theme($primary, $accent, $warn);
   
   @include angular-material-theme($dark-theme);
 
-  .card-header {
+  .custom-theme {
     background-color: mat-color($dark-primary);
+    color: black;
   }
-
 }
 
 .default-theme {
-  $dark-primary: mat-palette($mat-yellow);
-  $dark-accent: mat-palette($mat-amber, A400, A100, A700);
-  $dark-warn: mat-palette($mat-red);
-  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+  $default-primary: mat-palette($mat-indigo);
+  $default-accent: mat-palette($mat-amber, A400, A100, A700);
+  $default-warn: mat-palette($mat-red);
+  $default-theme: mat-dark-theme($default-primary, $default-accent, $default-warn);
 
-  @include angular-material-theme($dark-theme);
+  @include angular-material-theme($default-theme);
 
-  .card-header {
-    background-color: mat-color($dark-primary);
+  .custom-theme {
+    background-color: mat-color($default-primary);
+    color: white;
   }
-
 }
 
 .light-theme {
@@ -47,8 +47,9 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   @include angular-material-theme($light-theme);
 
-  .card-header {
+  .custom-theme {
     background-color: mat-color($light-primary);
+    color: black;
   }
 
 }

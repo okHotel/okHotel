@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {OverlayContainer} from '@angular/cdk/overlay';
+import {Theme} from '../../custom-theme/theme';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,11 @@ export class ThemingService {
   isBorderOnChecked = false;
   isContrastChecked = false;
 
+  backgroundColor = '#034768';
+  choosenBackgroundColor;
+  fontColor = '#ffffff';
+  choosenFontColor;
+
   constructor(public overlayContainer: OverlayContainer) { }
 
   get myStyle(): any {
@@ -31,7 +37,9 @@ export class ThemingService {
     }
 
     return {
-      'font-size': this.fontSize
+      'font-size': this.fontSize,
+      'background-color': this.backgroundColor,
+      'color': this.fontColor
     };
   }
 
@@ -113,17 +121,22 @@ export class ThemingService {
       for (let i = 0; i < selectBorder.length; i++) {
         selectBorder.item(i).classList.add('mat-select-black');
       }
-
     }
   }
 
-  onThemeChange() {
-    this.isDefaultTheme = !this.isDefaultTheme;
+  onThemeChange(theme: Theme) {
 
     this.themeClass = this.isDefaultTheme ? 'light-theme' : 'dark-theme';
 
-
     console.log(this.isDefaultTheme);
     console.log(this.themeClass);
+  }
+
+  changeCustomThemeColor() {
+    const customTheme = document.querySelectorAll('.default-theme');
+    for (let i = 0; i < customTheme.length; i++) {
+      customTheme.item(i).classList.add(this.myStyle);
+    }
+
   }
 }

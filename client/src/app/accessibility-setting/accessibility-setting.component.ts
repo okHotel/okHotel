@@ -69,6 +69,10 @@ export class AccessibilitySettingComponent implements OnInit {
     console.log(localStorage);
   }
 
+  changeCustomThemeColor() {
+    this.themingService.changeCustomThemeColor();
+  }
+
   changeTextContrast() {
     this.themingService.isContrastChecked = !this.themingService.isContrastChecked;
     localStorage.setItem('isContrastChecked', '' + this.themingService.isContrastChecked);
