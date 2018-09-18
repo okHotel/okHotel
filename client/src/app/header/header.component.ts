@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../service/auth/auth.service';
+import {MessageService} from '../service/message/message.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,10 @@ export class HeaderComponent implements OnInit {
 
   static isAccessibilitySidebarOpen: boolean = false;
 
-  constructor(private router: Router, public authService: AuthService) {}
+  constructor(
+    private router: Router,
+    public authService: AuthService,
+    public messageService: MessageService) {}
 
   ngOnInit() {}
 
@@ -44,5 +48,9 @@ export class HeaderComponent implements OnInit {
 
   changeAccessibilitySidebarStatus() {
     HeaderComponent.isAccessibilitySidebarOpen = !HeaderComponent.isAccessibilitySidebarOpen;
+  }
+
+  resetSuccess() {
+    this.messageService.success = '';
   }
 }

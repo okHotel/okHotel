@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ThemingService} from './service/theming/theming.service';
+import {AlertsService} from './service/alerts/alerts.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,12 @@ import {ThemingService} from './service/theming/theming.service';
 })
 export class AppComponent {
   title = 'app';
+  @ViewChild('header') header: ElementRef;
 
-  constructor(public themingService: ThemingService) {
+  constructor(
+    public themingService: ThemingService,
+    public alertService: AlertsService
+  ) {
 
   }
 
@@ -32,6 +37,7 @@ export class AppComponent {
     }
 
   }
+
 
 }
 

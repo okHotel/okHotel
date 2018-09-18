@@ -16,6 +16,7 @@ import {Subject} from "rxjs";
 import {Router} from '@angular/router';
 import {MessageService} from '../../service/message/message.service';
 import {ThemingService} from '../../service/theming/theming.service';
+import {AlertsService} from '../../service/alerts/alerts.service';
 
 @Component({
   selector: 'app-products',
@@ -23,6 +24,8 @@ import {ThemingService} from '../../service/theming/theming.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+
+    @ViewChild('redDiv') redDiv: ElementRef;
 
     displayedColumns = ['code', 'name', 'category', 'quantity', 'unit', 'actions'];
     productService: PantryService | null;
@@ -47,7 +50,8 @@ export class ProductsComponent implements OnInit {
                 public errorService: MessageService,
                 private decoderService: BarcodeDecoderService,
                 private barcodeValidator: BarcodeValidatorService,
-                public themingService: ThemingService) {
+                public themingService: ThemingService,
+                public messageService: MessageService) {
 
       if (this.themingService.isUseBackgroundOn()) {
         document.body.style.backgroundImage = "url('../../assets/images/pantry.jpg')";
@@ -144,6 +148,11 @@ export class ProductsComponent implements OnInit {
                 }
                 this.dataSource.filter = this.filter.nativeElement.value;
             }, err => this.errorService.error = err);
+    }
+
+
+    resetSuccess() {
+      this.messageService.success = '';
     }
 
     ngAfterContentInit() {
