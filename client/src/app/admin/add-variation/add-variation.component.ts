@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {VariationService} from '../../service/variation/variation.service';
 import {Variation} from './variation';
 import {Router} from '@angular/router';
+import {Location} from '@angular/common';
+import {ThemingService} from '../../service/theming/theming.service';
 
 @Component({
     selector: 'app-add-variation',
@@ -14,8 +16,16 @@ export class AddVariationComponent implements OnInit {
     variation = new Variation();
     map: Map<number, String> = new Map<number, String>();
 
-    constructor(private router: Router, private variationService: VariationService) {
-
+    constructor(private router: Router,
+                private variationService: VariationService,
+                private location: Location,
+                public themingService: ThemingService) {
+      if (this.themingService.isUseBackgroundOn()) {
+        document.body.style.backgroundImage = "url('../../assets/images/restaurant.jpg')";
+        document.body.style.backgroundRepeat = "repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+      }
     }
 
     ngOnInit() {
@@ -32,6 +42,9 @@ export class AddVariationComponent implements OnInit {
 
         console.log(this.variations);
         this.variation.type = '';
+
+      this.themingService.checkAndChangeInputBorders();
+      this.themingService.checkAndChangeTextContrast();
     }
 
     public addVariation(type: string) {
@@ -39,23 +52,33 @@ export class AddVariationComponent implements OnInit {
         this.variationService.addVariation(this.variation)
             .subscribe(res => console.log(res), err => {
               console.log('errore:');
-              console.log(err)
+              console.log(err);
             });
-        location.reload();
+        this.variations.push(type);
+        this.variation.type = '';
     }
 
     public isInputInValid(type: string) {
         return type.length === 0 || !type.match('^[a-zA-Z]+$');
     }
 
-    public deleteVariation(i: number) {
+    public deleteVariation(variation: string, i: number) {
         const id = this.map.get(i);
 
         this.variationService.deleteVariation(id)
             .subscribe();
-        location.reload();
+
+      this.variations = this.variations.filter(x => x !== variation);
     }
 
+    public goBack() {
+      this.location.back();
+    }
+
+
+  public goToStatics() {
+      this.router.navigateByUrl('admin/restaurant');
+  }
     /*public getErrorMessage() {
     }*/
 }

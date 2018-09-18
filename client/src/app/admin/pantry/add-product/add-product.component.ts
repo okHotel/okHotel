@@ -4,7 +4,8 @@ import {PantryService} from '../../../service/pantry/pantry.service';
 import {Product, Unit} from '../product';
 import {ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common';
-import {ErrorService} from '../../../service/error/error.service';
+import {MessageService} from '../../../service/message/message.service';
+import {ThemingService} from '../../../service/theming/theming.service';
 
 @Component({
     selector: 'app-add-product',
@@ -21,7 +22,16 @@ export class AddProductComponent implements OnInit {
     constructor(public pantryService: PantryService,
                 private route: ActivatedRoute,
                 private location: Location,
-                public errorService: ErrorService) {}
+                public messageService: MessageService,
+                public themingService: ThemingService) {
+
+      if (this.themingService.isUseBackgroundOn()) {
+        document.body.style.backgroundImage = "url('../../assets/images/pantry.jpg')";
+        document.body.style.backgroundRepeat = "repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+      }
+    }
 
     formControl = new FormControl('', [
         Validators.required
@@ -37,6 +47,9 @@ export class AddProductComponent implements OnInit {
       } else {
           this.product.code = '';
       }
+
+      this.themingService.checkAndChangeInputBorders();
+      this.themingService.checkAndChangeTextContrast();
     }
 
     getErrorMessage() {
@@ -49,10 +62,14 @@ export class AddProductComponent implements OnInit {
 
     public onSave(): void {
         this.pantryService.addProduct(this.product)
-          .subscribe(result => console.log(result), error => {
-            this.errorService.error = error.error.message;
-            console.log(error)
-          });
+          .subscribe(result => {
+            this.messageService.success = this.product.name + ' successfully added';
+            this.messageService.error = '';
+            }, error => {
+              this.messageService.error = error.error.message;
+              this.messageService.success = '';
+              console.log(error)
+            });
         this.location.back();
     }
 

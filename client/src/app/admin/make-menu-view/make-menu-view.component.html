@@ -1,36 +1,37 @@
-<div class="w3-row" id="backgroundDiv">
+<div class="container">
 
-  <div class="w3-col l3 m0 s0 w3-center">&nbsp;</div>
+  <div class="card mat-elevation-z8 text-center">
+    <div class="card-header">
+      New Menu
+    </div>
 
-  <div class="w3-col l6 m12 s12 w3-center centered">
+    <h1 class="hidden">New Menu</h1>
 
-    <div class="container mat-elevation-z8" [hidden]="error">
+    <div class="card-body">
 
-      <h3>New menu</h3>
+      <app-message></app-message>
 
-      <!--
-      <span> Select menu date
-      <input type="date" [(ngModel)]="date" (keyup)="setDateMenu($event)"/>
-      </span><br>
-      -->
+      <div class="container">
+        <div class="card text-center dishForm">
 
-      <div class="form">
-        <mat-form-field color="accent">
-          <label for="selectDate">select menu date</label>
-          <input type="date" id="selectDate" matInput placeholder="Select menu date" [(ngModel)]="date" name="date"
-                 (keyup)="setDateMenu($event)">
-        </mat-form-field>
+          <h2>Select menu date</h2>
+
+          <form class="mat-dialog-content" #addCustomerForm="ngForm">
+
+            <div class="md-form">
+                <label for="selectDate">select menu date</label>
+                <input type="date" id="selectDate" [(ngModel)]="date" name="date" (keyup)="setDateMenu($event)">
+            </div>
+          </form>
+        </div>
       </div>
-
-      <!--<button>Fill in the fields with a saved menu</button><br>
-      <button>Save</button><br>-->
 
       <app-add-dishes></app-add-dishes>
 
       <div id="buttonsDiv">
-        <button mat-button (click)="goBack()">Back</button>
-        <button mat-button (click)="deleteMenu()">Delete</button>
-        <button mat-button (click)="saveMenu()">Save</button>
+        <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="goBack()" aria-label="Back">Back</button>
+        <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="deleteMenu()" aria-label="Delete">Delete</button>
+        <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="saveMenu()" aria-label="Save">Save</button>
       </div>
 
       <div [hidden]="!isDateWrong"
@@ -40,7 +41,4 @@
 
     </div>
   </div>
-
-  <div class="w3-col l3 m0 s0 w3-center">&nbsp;</div>
-
 </div>

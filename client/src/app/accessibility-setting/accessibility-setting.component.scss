@@ -1,0 +1,67 @@
+@import '../../styles.scss';
+
+label {
+  display: initial;
+}
+
+legend {
+  font-size: 90%;
+}
+
+.container {
+  font-size: 150%;
+}
+
+button{
+  text-transform: capitalize;
+  font-size: 90%;
+  font-weight: bold;
+}
+
+.rangeInput{
+  width: 90%;
+}
+
+.card, .card-header {
+  background: none;
+}
+
+.card-header {
+  color: $default-background-color;
+}
+
+.sidenav {
+  height: 100%;
+  width: inherit;
+  background-color: $container-color;
+  padding: inherit;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.sidenav > *{
+  transition: 1s;
+}
+
+
+.blue-radio{
+  background-color: $default-background-color;
+}
+
+.active{
+  background-color: lighten($default-background-color,10%)
+}
+/*
+caption {
+  caption-side: top;
+}
+*/
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

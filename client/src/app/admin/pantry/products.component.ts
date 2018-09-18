@@ -14,7 +14,8 @@ import {BarcodeDecoderService} from "../../service/pantry/barcode-scanner/barcod
 import {BarcodeValidatorService} from "../../service/pantry/barcode-scanner/barcode-validator.service";
 import {Subject} from "rxjs";
 import {Router} from '@angular/router';
-import {ErrorService} from '../../service/error/error.service';
+import {MessageService} from '../../service/message/message.service';
+import {ThemingService} from '../../service/theming/theming.service';
 
 @Component({
   selector: 'app-products',
@@ -43,9 +44,19 @@ export class ProductsComponent implements OnInit {
     constructor(public httpClient: HttpClient,
                 public router: Router,
                 public dialog: MatDialog,
-                public errorService: ErrorService,
+                public errorService: MessageService,
                 private decoderService: BarcodeDecoderService,
-                private barcodeValidator: BarcodeValidatorService) {}
+                private barcodeValidator: BarcodeValidatorService,
+                public themingService: ThemingService) {
+
+      if (this.themingService.isUseBackgroundOn()) {
+        document.body.style.backgroundImage = "url('../../assets/images/pantry.jpg')";
+        document.body.style.backgroundRepeat = "repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+      }
+
+    }
 
     ngOnInit() {
         this.loadData();
@@ -69,6 +80,9 @@ export class ProductsComponent implements OnInit {
         this.barcodeValidator
             .doSearchbyCode(this.code$)
             .subscribe();
+
+        this.themingService.checkAndChangeInputBorders();
+        this.themingService.checkAndChangeTextContrast();
     }
 
     addNew() {

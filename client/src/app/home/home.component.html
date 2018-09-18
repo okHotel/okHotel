@@ -1,75 +1,238 @@
-<div class="w3-row">
+<!--Main Navigation-->
+<div id="homeHeader">
 
-  <div class="w3-col l12 m12 s12 w3-center">
-    <div class="slides" [hidden]="slidesBinding[0]">
-      <div class="text"><p>The Ground Floor</p></div>
-      <div id="floor0">
-        <div id="restaurant">
-          <p>
-          <a href="/restaurant">Restaurant</a>
-          </p>
+  <!--Navbar-->
+  <!--/.Navbar-->
+
+  <!--Mask-->
+  <div id="intro" class="view">
+
+
+      <div class="container-fluid d-flex align-items-center justify-content-center h-100">
+
+        <div class="row d-flex justify-content-center text-center">
+
+          <div class="col-md-10">
+
+            <app-message></app-message>
+
+            <!-- Heading -->
+            <div class="card-body mx-auto d-block " id="titleDiv">
+
+              <img class="mx-auto d-block" src="../../assets/logo/logoOkHotel.png" alt="okHotel" aria-label="okHotel"/>
+            </div>
+
+            <!-- Divider -->
+            <hr class="hr-light">
+
+            <!-- Description -->
+
+            <h1 class="white-text my-4">Welcome to our application. Start to use our best service and enjoy yourself</h1>
+
+
+          </div>
+
         </div>
-        <div id="lounge"><p>Lounge</p></div>
-        <div id="reception"><p>Reception</p></div>
-        <div id="coatroom"><p>Coatroom</p></div>
-        <div id="entrance"><p>Entrance</p></div>
+
       </div>
+
     </div>
-  </div>
-
-  <div class="w3-col l12 m12 s12 w3-center">
-    <div class="slides" [hidden]="slidesBinding[1]">
-      <div class="text"><p>The 1° Floor</p></div>
-      <div id="floor1">
-        <div class="leftDiv">
-          <div class="roomLeft"><p>Room 101</p></div>
-          <div class="roomLeft"><p>Room 102</p></div>
-          <div class="roomLeft"><p>Room 103</p></div>
-          <div class="roomLeft"><p>Room 104</p></div>
-        </div>
-        <div class="rightDiv">
-          <div class="roomRight"><p>Room 105</p></div>
-          <div class="roomRight"><p>Room 106</p></div>
-          <div class="roomRight"><p>Room 107</p></div>
-          <div class="roomRight"><p>Room 108</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-col l12 m12 s12 w3-center">
-    <div class="slides" [hidden]="slidesBinding[2]">
-      <div class="text"><p>The 2° Floor</p></div>
-      <div id="floor2">
-        <div class="leftDiv">
-          <div class="roomLeft"><p>Room 201</p></div>
-          <div class="roomLeft"><p>Room 202</p></div>
-          <div class="roomLeft"><p>Room 203</p></div>
-          <div class="roomLeft"><p>Room 204</p></div>
-        </div>
-        <div class="rightDiv">
-          <div class="roomRight"><p>Room 205</p></div>
-          <div class="roomRight"><p>Room 206</p></div>
-          <div class="roomRight"><p>Room 207</p></div>
-          <div class="roomRight"><p>Room 208</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
-  <a class="next" (click)="plusSlides(1)">&#10095;</a>
-
-
+  
+  <!--/.Mask-->
 
 </div>
+<!--Main Navigation-->
 
-<div class="w3-row">
-  <div class="w3-col l12 m12 s12 w3-center" id="buttonDiv">
-    <span class="dot" (click)="currentSlide(1)"></span>
-    <span class="dot" (click)="currentSlide(2)"></span>
-    <span class="dot" (click)="currentSlide(3)"></span>
+<!--Main layout-->
+<main class="mt-5">
+
+
+  <!--Second container-->
+  <div class="container-fluid home mat-elevation-z8" >
+    <div class="container py-4">
+
+      <div class="container">
+
+        <div class="card">
+          <div class="card-header">
+            Hotel plan
+          </div>
+          <div class="card-body">
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+<!--
+                  <img class="d-block w-100" src=".../800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+-->
+
+                  <div id="floor0">
+
+                    <div id="restaurant">
+                      <p>
+                        <a href="/restaurant">Restaurant</a>
+                      </p>
+                    </div>
+                    <div id="lounge"><p>Lounge</p></div>
+                    <div id="reception"><p>Reception</p></div>
+                    <div id="coatroom"><p>Coatroom</p></div>
+                    <div id="entrance"><p>Entrance</p></div>
+                  </div>
+
+
+                  <div class="carousel-caption d-none d-md-block">
+                    <h2>The Ground Floor</h2>
+                  </div>
+
+                </div>
+                <div class="carousel-item">
+<!--
+                  <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+-->
+
+                  <div id="floor1">
+                    <div class="leftDiv">
+                      <div class="roomLeft"><p>Room 101</p></div>
+                      <div class="roomLeft"><p>Room 102</p></div>
+                      <div class="roomLeft"><p>Room 103</p></div>
+                      <div class="roomLeft"><p>Room 104</p></div>
+                    </div>
+                    <div class="rightDiv">
+                      <div class="roomRight"><p>Room 105</p></div>
+                      <div class="roomRight"><p>Room 106</p></div>
+                      <div class="roomRight"><p>Room 107</p></div>
+                      <div class="roomRight"><p>Room 108</p></div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-caption d-none d-md-block">
+                    <h2>The 1st Floor</h2>
+                  </div>
+
+                </div>
+                <div class="carousel-item">
+<!--
+                  <img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+-->
+
+                  <div id="floor2" >
+                    <div class="leftDiv">
+                      <div class="roomLeft"><p>Room 201</p></div>
+                      <div class="roomLeft"><p>Room 202</p></div>
+                      <div class="roomLeft"><p>Room 203</p></div>
+                      <div class="roomLeft"><p>Room 204</p></div>
+                    </div>
+                    <div class="rightDiv">
+                      <div class="roomRight"><p>Room 205</p></div>
+                      <div class="roomRight"><p>Room 206</p></div>
+                      <div class="roomRight"><p>Room 207</p></div>
+                      <div class="roomRight"><p>Room 208</p></div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-caption d-none d-md-block">
+                    <h2>The 2nd Floor</h2>
+                  </div>
+
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
 
+  <div class="container-fluid home mat-elevation-z8">
+    <div class="container py-4" >
 
+      <!--Section: Facilities-->
+      <section id="facilities" class="section mt-3 mb-3 pb-3">
+
+        <h2 class="text-center dark-grey-text text-uppercase font-weight-bold spacing my-5 pt-2 pb-4 wow fadeIn" data-wow-delay="0.2s">
+          <strong>Facilities</strong>
+        </h2>
+
+        <!-- First row -->
+        <div class="row  wow fadeIn" data-wow-delay="0.4s">
+
+          <!-- First column -->
+          <div class="col-md-4 mb-4 text-center">
+
+            <!--Panel-->
+            <div class="card card-body rgba-white-light hoverable">
+              <i class="fa fa-cutlery fa-4x mb-4 mt-3" aria-hidden="true"></i>
+              <p class="font-weight-bold font-weight-bold dark-grey-text text-uppercase spacing">
+                <strong>restaurant</strong>
+              </p>
+              <p class="dark-grey-text font-small">In Romagna, hospitality also means good food. Hotel San Bassiano serves a rich buffet breakfast.
+                You can dine at a partner hotel's restaurant specialising in regional cuisine and set 150 m away.
+                Bellaria is a great choice for travellers interested in fine dining, restaurants and food.
+              </p>
+            </div>
+            <!--/.Panel-->
+
+          </div>
+          <!-- /First column -->
+
+          <!-- Second column -->
+          <div class="col-md-4 mb-4 text-center">
+
+            <!--Panel-->
+            <div class="card card-body rgba-white-light hoverable">
+              <i class="fa fa-wifi  fa-4x mb-4 mt-3 dark-blue-text" aria-hidden="true"></i>
+              <p class="font-weight-bold font-weight-bold dark-grey-text text-uppercase spacing">
+                <strong>free wi-fi</strong>
+              </p>
+              <p class="dark-grey-text font-small">	Free WiFi.
+                Guests consistently rate the WiFi as excellent.
+              </p>
+            </div>
+            <!--/.Panel-->
+
+          </div>
+          <!-- /.Second column -->
+
+          <!-- Third column -->
+          <div class="col-md-4 mb-4 text-center">
+
+            <!--Panel-->
+            <div class="card card-body rgba-white-light hoverable">
+              <i class="fa fa-life-ring fa-4x mb-4 mt-3 dark-blue-text" aria-hidden="true"></i>
+              <p class="font-weight-bold font-weight-bold dark-grey-text text-uppercase spacing">
+                <strong>Beach</strong>
+              </p>
+              <p class="dark-grey-text font-small">This property is 6 minutes walk from the beach.
+                Hotel San Bassiano in Bellaria is the right choice for your stay in Rimini, all year round.
+                It offers a sun terrace with seasonal swimming pool.
+              </p>
+            </div>
+            <!--/.Panel-->
+
+          </div>
+          <!-- /.Third column -->
+
+        </div>
+        <!-- /.First row -->
+
+      </section>
+      <!--/Section: Facilities-->
+
+    </div>
+  </div>
+</main>

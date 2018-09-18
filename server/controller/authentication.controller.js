@@ -87,7 +87,7 @@ exports.login = (req, res, next) => {
                 }
 
                 if (!isMatch) {
-                    res.status(401).send({message: 'Invalid email or password.'});
+                    res.status(401).send({message: 'Invalid username or password.'});
                     return;
                 }
 
@@ -136,7 +136,7 @@ exports.requireAuthBy = function(roles){
         let authHeader = req.headers["authorization"];
 
         if (!authHeader) {
-            return res.status(401).send({message: 'You are not authorized1'});
+            return res.status(401).send({message: 'You are not authorized'});
         }
 
         token = authHeader.split(" ")[1];
@@ -151,7 +151,7 @@ exports.requireAuthBy = function(roles){
                 };
                 next();
             } else {
-                res.status(401).send({message: 'You are not authorized2'});
+                res.status(401).send({message: 'You are not authorized'});
             }
         } catch (e) {
             if (e.name === 'TokenExpiredError') {

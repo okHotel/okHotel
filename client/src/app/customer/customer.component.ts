@@ -7,6 +7,8 @@ import {CustomerDataSource} from "./customer.dataSource";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {DeleteCustomerComponent} from "./delete-customer/delete-customer.component";
+import {ThemingService} from '../service/theming/theming.service';
+import {MessageService} from '../service/message/message.service';
 
 @Component({
     selector: 'app-customer',
@@ -28,10 +30,23 @@ export class CustomerComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild('filter') filter: ElementRef;
 
-    constructor(private dialog: MatDialog, private router: Router, private http: HttpClient, public customerService: CustomerService) {}
+    constructor(private dialog: MatDialog, private router: Router, private http: HttpClient,
+                public customerService: CustomerService,
+                public themingService: ThemingService,
+                public messageService: MessageService) {
+
+      if (this.themingService.isUseBackgroundOn()) {
+        document.body.style.backgroundImage = "url('../../assets/images/customer.jpg')";
+        document.body.style.backgroundRepeat = "repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+      }
+    }
 
     ngOnInit(): void {
-        this.loadData();
+      this.loadData();
+      this.themingService.checkAndChangeInputBorders();
+      this.themingService.checkAndChangeTextContrast();
     }
 
     getDetails(id: string) {

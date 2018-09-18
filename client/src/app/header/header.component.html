@@ -1,13 +1,65 @@
-<div class="w3-row">
-  <div class="w3-col l5">&nbsp;</div>
+<header>
 
-  <div class="w3-col l2 m12 s12 w3-center">
-    <a id="OkHotelLink" (click)="home()">OkHotel</a><br>
-  </div>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark lightBlue scrolling-navbar">
+    <!--
+        <strong class="navbar-brand" >OkHotel</strong>
+    -->
 
-  <div class="w3-col l5">&nbsp;</div>
-</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+      <ul class="navbar-nav mr-auto" >
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" href="/">
+            <i class="fa fa-home" aria-label="restaurantService"></i>
+            Home</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" href="/restaurant">
+            <i class="fa fa-cutlery" aria-label="chooseMenu"></i>
+            Choose Menu</a>
+        </li>
 
-      <div *ngIf="isLoggedIn()">
-          <app-profile></app-profile>
-      </div>
+
+        <li class="nav-item dropdown btn-group" dropdown *ngIf="isLoggedIn()">
+          <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <i class="fa fa-th-large" aria-label="services"></i>
+            Services<span class="caret"></span></a>
+
+          <ul *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+
+            <div class="divider dropdown-divider"></div>
+
+            <a class="dropdown-item waves-light" href="/admin/restaurant" mdbWavesEffect>
+              <i class="fa fa-cutlery" aria-label="restaurantService"></i>
+              Restaurant
+            </a>
+
+            <a class="dropdown-item waves-light" href="/customers" mdbWavesEffect>
+              <i class="fa fa-users" aria-label="customerService"></i>
+              Customers
+            </a>
+
+            <a class="dropdown-item waves-light" href="/pantry" mdbWavesEffect>
+              <i class="fa fa-list" aria-label="pantryService"></i>Pantry
+            </a>
+          </ul>
+        </li>
+       </ul>
+
+      <a class="nav-link accessibility text-white" (click)="changeAccessibilitySidebarStatus()">
+        Accessibility <i class="fa fa-cog" aria-label="Accessibility"></i>
+        </a>
+
+      <app-profile *ngIf="isLoggedIn()"></app-profile>
+
+    </div>
+
+  </nav>
+
+</header>
+<!--Main Navigation-->
+
+<app-accessibility-setting [ngStyle]="myStyle" ></app-accessibility-setting>

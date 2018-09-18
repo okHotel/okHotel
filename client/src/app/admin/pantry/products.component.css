@@ -14,12 +14,10 @@
   display: flex;
   align-items: center;
   padding: 8px 24px 0;
-  font-size: 20px;
   justify-content: space-between;
   border-bottom: 1px solid transparent; }
 
 .mat-form-field {
-  font-size: 14px;
   flex-grow: 1;
   margin-top: 8px; }
 
@@ -28,7 +26,6 @@
   display: flex;
   justify-content: center;
   padding: 14px;
-  font-size: 14px;
   font-style: italic; }
 
 .mat-cell:nth-child(1),
@@ -54,30 +51,27 @@
 .add-product-small {
   display: none; }
 
+canvas z-index2147483647
 /deep/ .mat-tooltip {
   font-size: 80%; }
-
 @media (max-width: 600px) {
-  /*Custom header label that shows in each column, with a set width and bold font*/
-  .add-product-small {
-    display: flex; }
-
-  .mobile-label {
-    width: 80px;
-    display: inline-block;
-    font-weight: bold; }
-
-  /*Remove the header row altogether*/
-  .mat-header-row {
-    display: none; }
-
-  /* The row cells should display as a column, justified left, with a bit of extra padding*/
-  .mat-row {
-    flex-direction: column;
-    align-items: start;
-    padding: 8px 24px; }
-
-  mat-cell:first-child, mat-footer-cell:first-child, mat-header-cell:first-child {
-    padding-left: 0; } }
+  canvas {
+    /*Custom header label that shows in each column, with a set width and bold font*/
+    /*Remove the header row altogether*/
+    /* The row cells should display as a column, justified left, with a bit of extra padding*/ }
+    canvas .add-product-small {
+      display: flex; }
+    canvas .mobile-label {
+      width: 80px;
+      display: inline-block;
+      font-weight: bold; }
+    canvas .mat-header-row {
+      display: none; }
+    canvas .mat-row {
+      flex-direction: column;
+      align-items: start;
+      padding: 8px 24px; }
+    canvas mat-cell:first-child, canvas mat-footer-cell:first-child, canvas mat-header-cell:first-child {
+      padding-left: 0; } }
 
 /*# sourceMappingURL=products.component.css.map */

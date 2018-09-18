@@ -8,6 +8,7 @@ import {VariationService} from '../../service/variation/variation.service';
 import {BookingService} from '../../service/booking/booking.service';
 import {Note} from '../../menu/Note';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import {ThemingService} from '../../service/theming/theming.service';
 
 @Component({
   selector: 'app-admin-statistics',
@@ -33,12 +34,24 @@ export class AdminStatisticsComponent implements OnInit {
   constructor(private router: Router, public menu: MenuService,
               private variationService: VariationService,
               private location: Location,
-              private bookingService: BookingService) { }
+              private bookingService: BookingService,
+              public themingService: ThemingService) {
+
+    if (this.themingService.isUseBackgroundOn()) {
+      document.body.style.backgroundImage = "url('../../assets/images/restaurant.jpg')";
+      document.body.style.backgroundRepeat = "repeat";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center center";
+    }
+  }
 
   ngOnInit() {
     this.bookingService.getRoomsNumber().subscribe(n => {
       this.roomsNumber = n;
     });
+
+    this.themingService.checkAndChangeInputBorders();
+    this.themingService.checkAndChangeTextContrast();
   }
 
   goBack(){
@@ -70,7 +83,7 @@ export class AdminStatisticsComponent implements OnInit {
         },
 
         error => {
-          console.log('DB error');
+          console.log('DB message');
           this.isLoadedDate = false;
           this.menu.setMenu(new Menu());
           this.menu.setDate(this.date);

@@ -1,112 +1,115 @@
-<div class="w3-row" id="backgroundDiv">
+<div class="container" >
 
-  <div class="w3-col l3">&nbsp;</div>
-
-  <div class="w3-col l6 m12 s12 w3-center centered">
-
-    <div class="container mat-elevation-z8" [hidden]="error">
-
-    <h3>Pantry</h3>
-
-    <app-error></app-error>
-
-
-    <button class="add-product-small" mat-icon-button color="primary" (click)="addNew()">
-      <mat-icon aria-label="Add">add</mat-icon>
-    </button>
-
-    <div class="form">
-
-    <mat-form-field floatPlaceholder="never" color="accent">
-      <label for="search">Search</label>
-      <input matInput id="search" #filter placeholder="Search..">
-    </mat-form-field>
-  </div>
-
-  <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- ID Column -->
-    <ng-container matColumnDef="code">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
-      <mat-cell *matCellDef="let row" >
-        <span class="mobile-label">Code:</span>
-        {{row.code}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <span class="mobile-label">Name:</span>
-        {{row.name}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="category">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <span class="mobile-label">Category:</span>
-        {{row.category}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="quantity">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <span class="mobile-label">Quantity:</span>
-        {{row.quantity}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="unit">
-      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <span class="mobile-label">Unit:</span>
-        {{row.unit}}</mat-cell>
-    </ng-container>
-
-    <!-- actions -->
-    <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef>
-        <button mat-icon-button color="primary" (click)="addNew()">
-          <mat-icon aria-label="Add">add</mat-icon>
-        </button>
-      </mat-header-cell>
-
-      <mat-cell *matCellDef="let row; let i=index;">
-        <button mat-icon-button color=$dot-selected-color (click)="startEdit(row._id)">
-          <mat-icon aria-label="Edit">edit</mat-icon>
-        </button>
-
-        <button mat-icon-button color=$dot-selected-color (click)="deleteItem(i, row._id, row.code,
-                                                        row.name, row.category, row.quantity, row.unit)">
-            <mat-icon aria-label="Delete">delete</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-
-
-    <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
-      No results
+  <div class="card" [hidden]="error">
+    <div class="card-header ">
+      Pantry
     </div>
 
-    <mat-paginator #paginator
-                   [length]="dataSource.filteredData.length"
-                   [pageIndex]="0"
-                   [pageSize]="5"
-                   [pageSizeOptions]="[5, 10, 25, 100]">
-    </mat-paginator>
+    <h1 class="hidden">Restaurant Statistics</h1>
 
-    <button class="btn-group-btn-group-sm" mat-button (click)="changeCameraState()" [hidden]="isCameraEnabled">Search or add your product by scanning its barcode</button>
-    <button class="btn-group-btn-group-sm" mat-button (click)="changeCameraState()" [hidden]="!isCameraEnabled">Close camera</button>
+    <div class="card-body text-center" >
 
-    <div id="interactive" class="viewport w3-center" #interactive [hidden]="!isCameraEnabled"></div>
+      <app-message></app-message>
 
+      <button class="add-product-small" mat-icon-button color="primary" (click)="addNew()">
+        <mat-icon aria-label="Add">add</mat-icon>
+      </button>
+
+      <div class="md-form" >
+        <mdb-form-field floatPlaceholder="never" color="accent">
+          <label for="search">Search</label>
+
+          <input #input type="text" class="form-control" id="search"
+                 placeholder="Search" #filter>
+        </mdb-form-field>
+      </div>
+
+      <mat-table #table [dataSource]="dataSource" matSort class="mat-cell" >
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="code">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
+          <mat-cell *matCellDef="let row" [ngStyle]="themingService.myStyle">
+            <span class="mobile-label">Code:</span>
+            {{row.code}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+          <mat-cell *matCellDef="let row" [ngStyle]="themingService.myStyle">
+            <span class="mobile-label">Name:</span>
+            {{row.name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
+          <mat-cell *matCellDef="let row" [ngStyle]="themingService.myStyle">
+            <span class="mobile-label">Category:</span>
+            {{row.category}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
+          <mat-cell *matCellDef="let row" [ngStyle]="themingService.myStyle">
+            <span class="mobile-label">Quantity:</span>
+            {{row.quantity}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="unit">
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let row" [ngStyle]="themingService.myStyle">
+            <span class="mobile-label">Unit:</span>
+            {{row.unit}}</mat-cell>
+        </ng-container>
+
+        <!-- actions -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>
+            <button mat-icon-button color="primary" (click)="addNew()">
+              <mat-icon aria-label="Add">add</mat-icon>
+            </button>
+          </mat-header-cell>
+
+          <mat-cell *matCellDef="let row; let i=index;" [ngStyle]="themingService.myStyle">
+            <button mat-icon-button color=$dot-selected-color (click)="startEdit(row._id)">
+              <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>
+
+            <button mat-icon-button color=$dot-selected-color (click)="deleteItem(i, row._id, row.code,
+                                                        row.name, row.category, row.quantity, row.unit)">
+              <mat-icon aria-label="Delete">delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns" [ngStyle]="themingService.myStyle"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+
+      <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'" [ngStyle]="themingService.myStyle">
+        No results
+      </div>
+
+      <mat-paginator #paginator
+                     [length]="dataSource.filteredData.length"
+                     [pageIndex]="0"
+                     [pageSize]="5"
+                     [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+
+      <button class="btn px-5 px-3 ml-4 mt-4 mx-auto d-block" (click)="!changeCameraState()" *ngIf="!isCameraEnabled">Search or add your products by scanning their barcodes</button>
+      <button class="btn px-5 px-3 ml-4 mt-4 mx-auto d-block" (click)="changeCameraState()" *ngIf="isCameraEnabled">Close camera</button>
+
+
+      <div id="cameraDiv">
+        <div id="interactive" class="viewport" [hidden]="!isCameraEnabled" #interactive></div>
+      </div>
+
+
+    </div>
   </div>
-
-  <div class="w3-col l3">&nbsp;</div>
-
 </div>

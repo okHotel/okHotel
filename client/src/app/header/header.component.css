@@ -4,12 +4,12 @@ Error: File to import not found or unreadable: ~@angular/material/theming.
         from line 1 of header.component.scss
 
 1: @import "../../styles.scss";
-2: div {
-3:   margin: 0 auto ;
-4:   text-align: center;
-5:   width: 100vw;
-6: }
-7: 
+2: 
+3: .lightBlue {
+4:   background-color: $blue-color;
+5: }
+6: 
+7: .navbar {
 
 Backtrace:
 ../../styles.scss:2
@@ -69,4 +69,4 @@ header.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of header.component.scss\A \A 1: @import \"../../styles.scss\";\A 2: div {\A 3:   margin: 0 auto ;\A 4:   text-align: center;\A 5:   width: 100vw;\A 6: }\A 7: "; }
+  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of header.component.scss\A \A 1: @import \"../../styles.scss\";\A 2: \A 3: .lightBlue {\A 4:   background-color: $blue-color;\A 5: }\A 6: \A 7: .navbar {"; }

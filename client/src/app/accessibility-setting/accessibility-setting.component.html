@@ -1,0 +1,103 @@
+<div class="card mat-elevation-z20 mx-auto d-block sidenav" xmlns="http://www.w3.org/1999/html">
+
+  <div class="card-body">
+
+    <div id="mySidenav">
+
+      <button type="button" class="closebtn btn btn-sm mt-3 mb-4" (click)="closeSidebar()">
+        <i class="fa fa-times fa-2x" aria-label="close sidebar"></i><p class="hidden">Close</p></button>
+
+      <div id="container">
+
+        <h4 class="accessibility-subtitle mb-3">Text and keyboard</h4>
+
+        <fieldset>
+          <legend>Select text size</legend>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn blue-radio active mr-4 mt-2">
+              <input type="radio" name="options" id="smallFont" autocomplete="off" (focus)="setSmallFont()" checked>
+              Small
+            </label>
+            <label class="btn blue-radio mr-4 mt-2">
+              <input type="radio" name="options" id="mediumFont" autocomplete="off" (focus)="setMediumFont()"> Medium
+            </label>
+            <label class="btn blue-radio mr-4 mt-2">
+              <input type="radio" name="options" id="largeFont" autocomplete="off" (focus)="setLargeFont()"> Large
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="mt-3">
+          <legend>Form input border</legend>
+          <div class="col-sm-10">
+
+            <!--INPUT WITHOUT BORDER-->
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2"
+                     (click)="changeInputBorder()" checked>
+              <label class="hidden form-check-label" for="gridRadios2">
+                Input with border
+              </label>
+
+              <div class="md-form">
+                <input #input type="text" class="form-control" id="inputWithoutBorder"
+                       placeholder="Input without border"
+                       name="inputWithoutBorder">
+                <label class="hidden" for="inputWithoutBorder">Input without border</label>
+              </div>
+            </div>
+            <!--INPUT WITH BORDER-->
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"cxf
+                     (click)="changeInputBorder()">
+              <label class="hidden form-check-label" for="gridRadios1">Input with border</label>
+
+
+              <input #input type="text" class="form-control border border-primary " id="inputWithBorder"
+                     placeholder="Input with border" name="inputWithBorder">
+              <label class="hidden" for="inputWithBorder">Input with border</label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <h4>Themes and background</h4>
+
+      <fieldset>
+        <legend>Color theme</legend>
+
+        <div class="btn-group">
+          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-black-theme" (click)="themingService.onThemeChange('dark-theme')">Aa</button>
+          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-default-theme">Aa</button>
+          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-medium-theme">Aa</button>
+          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-bright-theme">Aa</button>
+          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-light-theme">Aa</button>
+          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-white-theme">Aa</button>
+        </div>
+
+
+        <div class="mb-3 mt-5">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="colorContrast" (click)="changeTextContrast()" [checked]="themingService.isContrastChecked">
+            <label class="custom-control-label" for="colorContrast">Enable high text contrast</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend></legend>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="backgroundImages"
+                 [checked]="themingService.backgroundCheckValue"
+                 (click)="changeBackgroundImagesCheckValue()">
+          <label class="custom-control-label" for="backgroundImages">Enable background images</label>
+        </div>
+      </fieldset>
+
+    </div>
+    <button type="button" class="btn mt-5 p-3" (click)="resetSettings()" aria-label="resetSettings">RESET SETTINGS</button>
+  </div>
+
+</div>
+

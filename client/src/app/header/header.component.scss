@@ -1,16 +1,22 @@
 @import "../../styles.scss";
-div {
-  margin: 0 auto ;
-  text-align: center;
-  width: 100vw;
+
+.lightBlue {
+  background-color: $default-background-color;
 }
 
-a {
-  font-size: 200%;
+.navbar {
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
-a:hover{
-  background-color: $button-hover;
+button.navbar-toggler{
+  float: right;
+}
+
+.nav-item, .accessibility {
+  color: white;
+}
+
+span:hover {
   cursor: pointer;
 }
-

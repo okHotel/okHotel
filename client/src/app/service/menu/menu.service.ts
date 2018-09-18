@@ -30,7 +30,7 @@ export class MenuService {
   }
 
   getDateMenu(): Observable<Menu> {
-    let httpHeaders = AuthService.getHeaderWithAuthorization();
+    const httpHeaders = AuthService.getHeaderWithAuthorization();
 
     const url = `${this.menuUrl}/${this.menu.date}`;
     return this.http.get<Menu>(url, {headers: httpHeaders});
@@ -40,19 +40,19 @@ export class MenuService {
     this.menu = menu1;
   }
 
-  addLunchDish(dish: string){this.menu.lunch_dishes.push(dish);}
+  addLunchDish(dish: string) {this.menu.lunch_dishes.push(dish); }
 
-  deleteLunchDish(dish: string){this.menu.lunch_dishes = this.menu.lunch_dishes.filter(x => x != dish);}
+  deleteLunchDish(dish: string) {this.menu.lunch_dishes = this.menu.lunch_dishes.filter(x => x != dish); }
 
-  addDinnerDish(dish: string){this.menu.dinner_dishes.push(dish);}
+  addDinnerDish(dish: string) {this.menu.dinner_dishes.push(dish); }
 
-  deleteDinnerDish(dish: string){this.menu.dinner_dishes = this.menu.dinner_dishes.filter(x => x != dish);}
+  deleteDinnerDish(dish: string) {this.menu.dinner_dishes = this.menu.dinner_dishes.filter(x => x != dish); }
 
   saveMenu(): Observable<any> {
     let httpHeaders = AuthService.getHeaderWithAuthorization();
 
     console.log(this.menu);
-    let url = "";
+    let url = '';
 
     if ( this.menu._id === undefined) {
       url = `${this.menuUrl}/create`;

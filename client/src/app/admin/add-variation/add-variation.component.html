@@ -1,21 +1,45 @@
 
-<div class="w3-row" id="backgroundDiv">
-    <div class="w3-col l3 m6 s4 w3-left">&nbsp;</div>
+<div class="container">
 
-    <div class="w3-col l6 m3 s4 w3-center container mat-elevation-z8 centered">
-        <h3>Insert Variations</h3>
-            <div *ngFor="let variation of variations; let i = index" id="variationsAddedDiv">
-                <p><button mat-button #button id="delButton" (click)="deleteVariation(i)">
-                    <i class="material-icons">clear</i>
-                </button>{{variation}}</p>
-            </div>
+  <div class="card mat-elevation-z8">
+
+    <div class="card-header">
+      Insert Variations
+    </div>
+
+    <h1 class="hidden">Add variation</h1>
+
+    <div class="card-body">
+
+      <app-message></app-message>
+
+      <div *ngFor="let variation of variations; let i = index" id="variationsAddedDiv">
+        <p><button mat-button #button id="delButton" (click)="deleteVariation(variation, i)">
+          <i class="material-icons">clear</i>
+        </button>{{variation}}</p>
+      </div>
+
+      <form #addVariationForm="ngForm">
+      <div class="md-form d-flex bd-highlight">
+        <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight">
           <label for="variation" >Insert Variations</label>
 
           <input id="variation" type="text" class="form-control" placeholder="Variation"
-                   required name="variation" [(ngModel)]="variation.type" (keyup.enter)="addVariation(variation.type)" >
-            <button mat-button #button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)">
-                <i class="material-icons">add</i>
-            </button>
+               required name="variation" [(ngModel)]="variation.type" (keyup.enter)="addVariation(variation.type)" >
+        </mdb-form-field>
+        <button mat-button #button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)">
+          <i class="material-icons">add</i>
+        </button>
+      </div>
+
+      <div class="btn-group btn-group-sm d-flex flex-row-reverse">
+        <button  type="button" class="btn px-5 px-3 ml-4 mt-4" (click)="goToStatics()" aria-label="Save" [disabled]="!addVariationForm.form.valid">Save</button>
+        <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="goBack()" aria-label="Back">Back</button>
+      </div>
+      </form>
+
     </div>
-    <div class="w3-col l3 m3 s4 w3-right">&nbsp;</div>
+
+  </div>
 </div>
+

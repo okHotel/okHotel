@@ -3,7 +3,8 @@ import {CustomerService} from '../service/customer/customer.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../service/auth/auth.service';
-import {ErrorService} from '../service/error/error.service';
+import {MessageService} from '../service/message/message.service';
+import {ThemingService} from '../service/theming/theming.service';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +12,30 @@ import {ErrorService} from '../service/error/error.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  isLoginError: boolean = false;
+  isLoginError = false;
   isCustomerLoggedIn: boolean;
   username: string;
   password: string;
   destinationUrl = '';
 
   constructor(private customerService: CustomerService, private authService: AuthService,
-              private router: Router, private route: ActivatedRoute, private error: ErrorService) { }
+              private router: Router, private route: ActivatedRoute, private error: MessageService,
+              public themingService: ThemingService) {
+    if (this.themingService.isUseBackgroundOn()) {
+      document.body.style.backgroundImage = "url('../../assets/images/casa-per-ferie-san-bassiano.jpg')";
+      document.body.style.backgroundRepeat = "no-repeat";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center center";
+    }
+
+  }
 
   ngOnInit() {
     this.route.queryParams
       .subscribe(params => this.destinationUrl = params['destinationUrl'] || '/');
+
+    this.themingService.checkAndChangeInputBorders();
+    this.themingService.checkAndChangeTextContrast();
   }
 
   login() {
@@ -36,7 +49,7 @@ export class LoginComponent implements OnInit {
 
           console.log(localStorage);
 
-          this.router.navigate([this.destinationUrl]);
+          this.router.navigateByUrl("/");
         }},
       (err: HttpErrorResponse) => {
         this.isLoginError = true;
@@ -47,7 +60,8 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  navigateToRegistration() {
+  registration() {
     this.router.navigate(['/registration']);
   }
+
 }

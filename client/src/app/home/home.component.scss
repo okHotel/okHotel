@@ -1,3 +1,33 @@
+#homeHeader,
+#intro{
+  height: 100%;
+}
+
+#intro {
+  background: url("../../assets/images/casa-per-ferie-san-bassiano.jpg")no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.top-nav-collapse {
+  background-color: #24355C;
+}
+
+@media (max-width: 768px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #24355C;
+  }
+}
+@media (min-width: 800px) and (max-width: 850px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #24355C;
+  }
+}
+
+
+//-------------------home css
 @import "../../styles.scss";
 
 * {box-sizing:border-box}
@@ -6,83 +36,45 @@
   margin-top: 3%;
   padding: 5%;
   background-color: white;
-
 }
 
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  width: auto;
-  margin-top: 18%;
-  padding: 2%; //16
+.blue-button {
+  background-color: $default-background-color;
+}
+
+#titleDiv {
+  width: 50%;
+  background-color: white;
+}
+
+
+.carousel-caption {
   color: black;
-  font-weight: bold;
-  font-size: 112%;
-  transition: 0.6s ease;
-  border-radius: 0 18% 18% 0;
 }
 
-.prev {
-  left: 0%;
+.carousel-item {
+  padding-bottom: 10%;
 }
 
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 18% 0 0 18%;
+.rating li {
+  display: inline;
 }
 
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: $dot-selected-color;
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%------' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
 }
 
-
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 0.2%;
-  background-color: black;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%------' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
 }
 
-#buttonDiv{
-  padding-top: 2%;
-  padding-bottom: 4%;
+.carousel-indicators li {
+  background-color: darkslategrey;
 }
 
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: $dot-selected-color;
+.card {
+  margin: 5%;
 }
-
-.active, .dot:hover {
-  background-color: $dot-selected-color;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-
 
 #floor0, #floor1, #floor2 {
   border: 1px solid black;
@@ -93,7 +85,9 @@
   overflow: hidden;
 }
 
-
+.leftDiv, .rightDiv, #floor0 {
+  text-align: center;
+}
 
 #restaurant, #lounge, #reception, #coatroom, #entrance{
   border: 1px solid black;
@@ -117,7 +111,6 @@
 .leftDiv, .rightDiv {
   float: left;
   width: 50%;
-
 }
 
 .leftDiv{
@@ -134,7 +127,56 @@
 
 }
 
-@media (max-width: 414px) {
+.hoverable{
+  height: 100%;
+}
+
+main{
+  margin-top: 0 !important;
+}
+
+homeHeader{
+  margin-bottom: 0;
+}
+
+.home{
+  background-color: $container-color;
+}
+
+.fa{
+  color: $default-background-color;
+}
+
+@media (max-width: 375px) {
+
+  #titleDiv {
+    width: 70%;
+    margin-top: 50%;
+
+  }
+
+  h1{
+    font-size: 60% !important;
+  }
+
+  .col-md-10 {
+    padding-bottom: 20%;
+  }
+
+  li{
+    display: none;
+  }
+
+  h5{
+    margin: 0% !important;
+  }
+
+
+
+}
+
+
+/*@media (max-width: 414px) {
 
   .prev, .next{
     margin-top: 40%;
@@ -145,17 +187,11 @@
   }
 }
 
-
 @media (min-width : 375px) and (max-width : 414px){
-  .slides{
-    padding-bottom: 25%;
-  }
+
 }
 
 @media (min-width : 1112px) and (max-width : 1920px) {
-  .slides{
-    padding-bottom: 5%;
-  }
 
   #floor0{
     width: 50%;
@@ -168,10 +204,7 @@
   .leftDiv > div, .rightDiv > div {
     height: 80px;
   }
-}
-
-
-
+}*/
 
 
 
