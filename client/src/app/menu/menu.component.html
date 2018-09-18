@@ -8,7 +8,9 @@
 
     <div class="card-body">
 
-      <form class="mat-dialog-content" #addCustomerForm="ngForm">
+      <app-message *ngIf="messageService.success || messageService.error"></app-message>
+
+      <form class="mat-dialog-content" #addCustomerForm="ngForm" *ngIf="!messageService.error">
 
         <div class="btn-group btn-group-sm d-flex justify-content-center">
           <button type="button" class="btn px-5 py-3 mb-2" aria-label="Choose Dinenr" (click)="changeLunchCardState()" *ngIf="lunchCardState">
@@ -23,9 +25,18 @@
         <div *ngIf="lunchCardState">
           <div class="card my-3">
             <div class="card-body">
+              <div  class="alert alert-danger" role="alert" *ngIf="isReservationNotValid">
+                {{reservationError}}
+              </div>
+
               <table class="table" summary="The courses you can select for lunch">
 
-                <caption class="contrast">Lunch</caption>
+                <caption class="contrast">
+                  <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Choose max 2 dishes for each person">
+                    Lunch
+                    <i class="fa fa-info-circle"></i>
+                  </span>
+                </caption>
 
                 <thead>
                 <tr>
@@ -80,7 +91,6 @@
           <button type="button" class="btn px-5 py-3 mb-2 mt-2" aria-label="Choose Dinner" (click)="changeDinnerCardState()" *ngIf="dinnerCardState" onclick="changeDinnerCardState()">
             Close Dinner
           </button>
-
         </div>
 
         <div *ngIf="dinnerCardState">
@@ -88,16 +98,31 @@
           <div class="card my-3">
 
             <div class="card-body">
+              <div  class="alert alert-danger" role="alert" *ngIf="isReservationNotValid">
+                {{reservationError}}
+              </div>
+
               <table class="table" summary="The courses you can select for dinner">
-                <caption class="contrast">Dinner</caption>
+                <caption class="contrast">
+                  <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Choose max 3 dishes for each person">
+                    Dinner
+                    <i class="fa fa-info-circle"></i>
+                  </span>
+                </caption>
+
+                <!--
+
+                  <caption class="contrast">
+                    Dinner - <small>Choose max 3 dishes for each person</small>
+                  </caption>
+
+                -->
+
                 <tr>
                   <th scope="col">Dish</th>
                   <th scope="col">Whole Portion</th>
                   <th scope="col">Half Portion</th>
                 </tr>
-
-                <app-message *ngIf="checkReservation(l, hl) || checkReservation(d, hd) ||
-                          messageService.success || messageService.error"></app-message>
 
                 <tr *ngFor="let dish of menu.menu.dinner_dishes">
                   <td scope="row">{{dish}}</td>
@@ -144,7 +169,6 @@
               <p>{{getNote()}}</p>
             </div>
 
-
             <div class="md-form d-flex bd-highlight ">
               <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight">
                 <label for="notes">Other notes</label>
@@ -163,8 +187,7 @@
 
         <div class="btn-group btn-group-sm d-flex flex-row-reverse">
           <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="saveReservations()" aria-label="Save"
-                  [disabled]="!addCustomerForm.form.valid || checkReservation(l, hl)
-                  || checkReservation(d, hd) || checkSave()">Save
+                  [disabled]="!addCustomerForm.form.valid || isReservationNotValid || checkSave()">Save
           </button>
         </div>
       </form>

@@ -12,6 +12,46 @@
         <h4 class="accessibility-subtitle mb-3">Text and keyboard</h4>
 
         <fieldset>
+          <legend>Select Colors</legend>
+
+          <div class="row justify-content-md-left">
+            <label for="backgroundColor" class="col col-lg-5">Background color</label>
+
+            <div class="col col-lg-3">
+              <div class="form-group">
+                <input  id="backgroundColor" type="text" class="form-control"  [(colorPicker)]="background_color"
+                        [cpPresetColors]="['#000000', '#034768', '#046B99', '#00cfff', '#b3efff', '#ffffff']"
+                        [cpPosition]="'left'"
+                        [style.background]="background_color"
+                        [style.color]="'white'"
+                        [cpAlphaChannel]="'always'"
+                        [cpOutputFormat]="'hex'"
+                        [value]="background_color">
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-md-left">
+            <label for="fontColor" class="col col-lg-5">Font color</label>
+
+            <div class="col col-lg-3">
+              <div class="form-group">
+                <input  id="fontColor" type="text" class="form-control"  [(colorPicker)]="font_color"
+                        [cpPresetColors]="['#000000', '#ffffff', '#ffff00']"
+                        [cpPosition]="'left'"
+                        [style.background]="font_color"
+                        [style.color]="'black'"
+                        [cpAlphaChannel]="'always'"
+                        [cpOutputFormat]="'hex'"
+                        [value]="font_color">
+              </div>
+            </div>
+          </div>
+
+
+        </fieldset>
+
+        <fieldset>
           <legend>Select text size</legend>
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn blue-radio active mr-4 mt-2">
@@ -98,6 +138,8 @@
     </div>
     <button type="button" class="btn mt-5 p-3" (click)="resetSettings()" aria-label="resetSettings">RESET SETTINGS</button>
   </div>
+
+
 
 </div>
 
