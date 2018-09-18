@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {OverlayContainer} from '@angular/cdk/overlay';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,14 @@ export class ThemingService {
   medium = false;
   small = false;
 
+  isDefaultTheme: boolean = true;
+  themeClass: string = 'light-theme';
+
   backgroundCheckValue = true;
   isBorderOnChecked = false;
   isContrastChecked = false;
 
-  constructor() { }
+  constructor(public overlayContainer: OverlayContainer) { }
 
   get myStyle(): any {
 
@@ -111,5 +115,15 @@ export class ThemingService {
       }
 
     }
+  }
+
+  onThemeChange() {
+    this.isDefaultTheme = !this.isDefaultTheme;
+
+    this.themeClass = this.isDefaultTheme ? 'my-light-theme' : 'my-dark-theme';
+
+
+    console.log(this.isDefaultTheme);
+    console.log(this.themeClass);
   }
 }

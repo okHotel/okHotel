@@ -69,8 +69,6 @@ export class AccessibilitySettingComponent implements OnInit {
     }
 
     console.log(localStorage)
-
-
   }
 
   resetSettings() {

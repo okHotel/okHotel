@@ -1,6 +1,7 @@
 /*
 Error: File to import not found or unreadable: ~@angular/material/theming.
-        on line 2 of ../../styles.scss
+        on line 1 of ../../app/custom-theme/theme.scss
+        from line 5 of ../../styles.scss
         from line 1 of footer.component.scss
 
 1: @import "../../styles.scss";
@@ -9,16 +10,29 @@ Error: File to import not found or unreadable: ~@angular/material/theming.
 4:   background-color: $default-background-color;
 5: }
 6: 
-7: h2 {
 
 Backtrace:
-../../styles.scss:2
+../../app/custom-theme/theme.scss:1
+../../styles.scss:5
 footer.component.scss:1
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/import_node.rb:67:in `rescue in import'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/import_node.rb:45:in `import'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/import_node.rb:28:in `imported_file'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/import_node.rb:37:in `css_import?'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:314:in `visit_import'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:135:in `with_frame'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:162:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:329:in `block (2 levels) in visit_import'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:329:in `map'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:329:in `block in visit_import'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:88:in `block in with_import'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:135:in `with_frame'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:88:in `with_import'
+/var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:326:in `visit_import'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/base.rb:36:in `visit'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:79:in `block in with_base'
@@ -69,4 +83,4 @@ footer.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 2 of ../../styles.scss\A         from line 1 of footer.component.scss\A \A 1: @import \"../../styles.scss\";\A 2: \A 3: #footerDiv {\A 4:   background-color: $default-background-color;\A 5: }\A 6: \A 7: h2 {"; }
+  content: "Error: File to import not found or unreadable: ~@angular/material/theming.\A         on line 1 of ../../app/custom-theme/theme.scss\A         from line 5 of ../../styles.scss\A         from line 1 of footer.component.scss\A \A 1: @import \"../../styles.scss\";\A 2: \A 3: #footerDiv {\A 4:   background-color: $default-background-color;\A 5: }\A 6: "; }

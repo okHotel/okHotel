@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {ThemingService} from './service/theming/theming.service';
+import {OverlayContainer} from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,10 @@ import {ThemingService} from './service/theming/theming.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'OkHotel';
 
-  constructor(public themingService: ThemingService) {
+  constructor(
+    public themingService: ThemingService) {
 
   }
 
@@ -31,6 +33,7 @@ export class AppComponent {
       this.themingService.backgroundCheckValue = true;
     }
 
+    this.themingService.overlayContainer.getContainerElement().classList.add(this.themingService.themeClass);
   }
 
 }

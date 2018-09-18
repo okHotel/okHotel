@@ -1,5 +1,8 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import '~@angular/material/theming';
+
+// import our custom theme
+
+@import 'app/custom-theme/theme';
 
 $default-background-color: #034768;
 $container-color: #f4f4fa;
@@ -20,14 +23,6 @@ $white-font-color: white;
 .container {
   margin-top:7%;
 }
-
-.card-header {
-/*  font-size: 150%;*/
-  text-align: center;
-  background-color: $default-background-color;
-  color: white;
-}
-
 
 .clear{
   color: black;
