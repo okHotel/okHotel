@@ -22,19 +22,23 @@ $white-font-color: white;
 
 .container {
   margin-top:7%;
-  background-color: mat-color($primary);
 }
 
 .clear{
+  /*
   color: black;
   background-color: white;
+  */
   border: none;
+}
+
+.card-header {
+  text-align: center;
 }
 
 .hidden {
   display: none;
 }
-
 
 html,
 body{
@@ -86,10 +90,8 @@ button {
 }
 
 .btn-black-theme {
-
   background-color: $black-background-color;
   color: $white-font-color;
-
 }
 
 .btn-medium-theme {
@@ -139,7 +141,6 @@ mat-select {
 .mat-select-black{
   border: 1px solid black;
 }
-
 
 @media print {
   app-header, app-footer, button, .btn-group-btn-group-sm {

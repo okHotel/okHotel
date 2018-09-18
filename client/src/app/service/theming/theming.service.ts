@@ -24,7 +24,9 @@ export class ThemingService {
 
   currentTheme: Theme = Theme.DEFAULT;
 
-  constructor(public overlayContainer: OverlayContainer) { }
+  constructor(public overlayContainer: OverlayContainer) {
+
+  }
 
   get myStyle(): any {
 
@@ -38,11 +40,14 @@ export class ThemingService {
 
     return {
       'font-size': this.fontSize
-/*
+    };
+  }
+
+  get myCustomTheme(): any {
+    return {
       'background-color': this.backgroundColor,
       'color': this.fontColor
-*/
-    };
+    }
   }
 
   checkAndChangeInputBorders() {
@@ -141,10 +146,15 @@ export class ThemingService {
   }
 
   changeCustomThemeColor() {
-    const customTheme = document.querySelectorAll('.default-theme');
+    let customTheme = document.querySelectorAll('.' + this.currentTheme.valueOf());
     for (let i = 0; i < customTheme.length; i++) {
+/*
       customTheme.item(i).classList.add(this.myStyle);
+*/
+      customTheme.item(i).classList.remove(this.currentTheme.valueOf());
     }
+
+    console.log('a')
 
   }
 }
