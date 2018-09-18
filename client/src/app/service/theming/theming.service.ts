@@ -120,7 +120,7 @@ export class ThemingService {
   onThemeChange() {
     this.isDefaultTheme = !this.isDefaultTheme;
 
-    this.themeClass = this.isDefaultTheme ? 'my-light-theme' : 'my-dark-theme';
+    this.themeClass = this.isDefaultTheme ? 'light-theme' : 'dark-theme';
 
 
     console.log(this.isDefaultTheme);

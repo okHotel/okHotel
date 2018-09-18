@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
   dinnerCardState = false;
   lunchCardState = true;
   note: string;
-  isReservationNotValid: boolean = false;
+  isReservationValid: boolean = false;
   reservationError: string;
 
   @ViewChild('inputNote') inputNote: ElementRef;
@@ -53,8 +53,8 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('isReservationNotValid');
-    console.log(this.isReservationNotValid);
+    console.log('isReservationValid');
+    console.log(this.isReservationValid);
 
     this.menu.menu.otherNotes = [];
 
@@ -152,7 +152,7 @@ export class MenuComponent implements OnInit {
     let total = 0;
 
     console.log('isReservationNotValid1');
-    console.log(this.isReservationNotValid);
+    console.log(this.isReservationValid);
 
     this.menu.menu.reservations
       .filter(r => r.roomNumber === this.room)
@@ -161,25 +161,25 @@ export class MenuComponent implements OnInit {
 
     const mul_factor = type1 === Meal.LUNCH ? 2 : 3;
 
-    this.isReservationNotValid = total > (this.people.length - 1) * mul_factor;
+    this.isReservationValid = total <= (this.people.length - 1) * mul_factor;
 
-    if (this.isReservationNotValid) {
+    if (this.isReservationValid) {
       this.reservationError = this.getErrorMessage();
     } else {
       this.reservationError = '';
     }
 
     console.log('isReservationNotValid2');
-    console.log(this.isReservationNotValid);
+    console.log(this.isReservationValid);
 
-    return this.isReservationNotValid;
+    return this.isReservationValid;
   }
 
   checkSave() {
 /*
     return this.checkReservation(Meal.LUNCH, Meal.HALF_LUNCH) || this.checkReservation(Meal.DINNER, Meal.HALF_DINNER);
 */
-    return !this.isReservationNotValid;
+    return !this.isReservationValid;
   }
 
   getErrorMessage() {
