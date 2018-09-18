@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {OverlayContainer} from '@angular/cdk/overlay';
 import {Theme} from '../../custom-theme/theme';
 
@@ -20,9 +20,9 @@ export class ThemingService {
   isContrastChecked = false;
 
   backgroundColor = '#034768';
-  choosenBackgroundColor;
   fontColor = '#ffffff';
-  choosenFontColor;
+
+  currentTheme: Theme = Theme.DEFAULT;
 
   constructor(public overlayContainer: OverlayContainer) { }
 
@@ -37,9 +37,11 @@ export class ThemingService {
     }
 
     return {
-      'font-size': this.fontSize,
+      'font-size': this.fontSize
+/*
       'background-color': this.backgroundColor,
       'color': this.fontColor
+*/
     };
   }
 
@@ -126,10 +128,16 @@ export class ThemingService {
 
   onThemeChange(theme: Theme) {
 
-    this.themeClass = this.isDefaultTheme ? 'light-theme' : 'dark-theme';
+    let customTheme = document.querySelectorAll('.' + this.currentTheme.valueOf());
 
+    for (let i = 0; i < customTheme.length; i++) {
+      customTheme.item(i).classList.remove(this.currentTheme.valueOf());
+      customTheme.item(i).classList.add(theme.valueOf());
+    }
+
+    this.currentTheme = theme;
     console.log(this.isDefaultTheme);
-    console.log(this.themeClass);
+    console.log(customTheme);
   }
 
   changeCustomThemeColor() {

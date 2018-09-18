@@ -108,12 +108,14 @@
         <legend>Color theme</legend>
 
         <div class="btn-group">
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-black-theme" (click)="themingService.onThemeChange('dark-theme')">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-default-theme">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-medium-theme">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-bright-theme">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-light-theme">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-white-theme">Aa</button>
+          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-black-theme" (click)="themingService.onThemeChange(theme.BLACK)">Aa</button>
+          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-default-theme" (click)="themingService.onThemeChange(theme.DEFAULT)">Aa</button>
+<!--
+          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-medium-theme" (click)="themingService.onThemeChange(theme.BLACK)">Aa</button>
+          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-bright-theme" (click)="themingService.onThemeChange(theme.BLACK)">Aa</button>
+-->
+          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-light-theme" (click)="themingService.onThemeChange(theme.LIGHT)">Aa</button>
+          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-white-theme" (click)="themingService.onThemeChange(theme.WHITE)">Aa</button>
         </div>
 
 
