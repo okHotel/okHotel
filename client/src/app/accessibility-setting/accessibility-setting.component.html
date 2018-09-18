@@ -1,4 +1,4 @@
-<div class="card mat-elevation-z20 mx-auto d-block sidenav" xmlns="http://www.w3.org/1999/html">
+<div class="default-theme card mat-elevation-z20 mx-auto d-block sidenav" xmlns="http://www.w3.org/1999/html">
 
   <div class="card-body">
 
@@ -7,7 +7,7 @@
       <button type="button" class="closebtn btn btn-sm mt-3 mb-4 default-theme my-theme" (click)="closeSidebar()">
         <i class="fa fa-times fa-2x" aria-label="close sidebar"></i><p class="hidden">Close</p></button>
 
-      <div id="container">
+      <div id="container" class="default-theme">
 
         <h4 class="accessibility-subtitle mb-3">Text and keyboard</h4>
 
@@ -19,7 +19,7 @@
 
             <div class="col col-lg-3">
               <div class="form-group">
-                <input  id="backgroundColor" type="text" class="form-control"  [(colorPicker)]="themingService.backgroundColor"
+                <input  id="backgroundColor" type="text" class="default-theme my-theme form-control"  [(colorPicker)]="themingService.backgroundColor"
                         [cpPresetColors]="['#000000', '#034768', '#046B99', '#00cfff', '#b3efff', '#ffffff']"
                         [cpPosition]="'left'"
                         [style.background]="themingService.backgroundColor"
@@ -51,18 +51,20 @@
 
         </fieldset>
 
-        <fieldset>
+        <fieldset >
           <legend>Select text size</legend>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn blue-radio active mr-4 mt-2 ">
-              <input type="radio" name="options" id="smallFont" autocomplete="off" (focus)="setSmallFont()" checked>
-              Small
+          <div class="btn-group btn-group-toggle " data-toggle="buttons">
+            <label class="btn default-theme my-theme active mr-4 mt-2 ">
+              <input type="radio" name="options" id="smallFont" autocomplete="off" (focus)="setSmallFont()"
+                     checked> Small
             </label>
-            <label class="btn blue-radio mr-4 mt-2">
-              <input type="radio" name="options" id="mediumFont" autocomplete="off" (focus)="setMediumFont()"> Medium
+            <label class="btn default-theme my-theme mr-4 mt-2">
+              <input type="radio" name="options" id="mediumFont" autocomplete="off" (focus)="setMediumFont()"
+                      > Medium
             </label>
-            <label class="btn blue-radio mr-4 mt-2">
-              <input type="radio" name="options" id="largeFont" autocomplete="off" (focus)="setLargeFont()"> Large
+            <label class="btn default-theme my-theme blue-radio mr-4 mt-2">
+              <input type="radio" name="options" id="largeFont" autocomplete="off" (focus)="setLargeFont()"
+                      > Large
             </label>
           </div>
         </fieldset>
@@ -138,7 +140,7 @@
       </fieldset>
 
     </div>
-    <button type="button" class="btn mt-5 p-3" (click)="resetSettings()" aria-label="resetSettings">RESET SETTINGS</button>
+    <button type="button" class="btn mt-5 p-3 default-theme my-theme" (click)="resetSettings()" aria-label="resetSettings">RESET SETTINGS</button>
   </div>
 
 
