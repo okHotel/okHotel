@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HeaderComponent} from '../header/header.component';
 import {ThemingService} from '../service/theming/theming.service';
 import {el} from '../../../node_modules/@angular/platform-browser/testing/src/browser_util';
+import {Theme} from '../custom-theme/theme';
 
 @Component({
   selector: 'app-accessibility-setting',
@@ -12,6 +13,8 @@ export class AccessibilitySettingComponent implements OnInit {
 
   background_color = '#034768';
   font_color = '#ffffff';
+
+  theme = Theme;
 
   constructor(public themingService: ThemingService) { }
 
