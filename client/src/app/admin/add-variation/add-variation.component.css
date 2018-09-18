@@ -16,6 +16,9 @@ Backtrace:
 ../../../styles.scss:5
 add-variation.component.scss:1
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> develop
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.7/lib/sass/tree/import_node.rb:67:in `rescue in import'
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.7/lib/sass/tree/import_node.rb:44:in `import'
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.7/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -65,6 +68,7 @@ add-variation.component.scss:1
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.7/lib/sass/exec/base.rb:50:in `parse'
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.7/lib/sass/exec/base.rb:18:in `parse!'
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.7/bin/scss:13:in `<top (required)>'
+<<<<<<< HEAD
 =======
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/import_node.rb:67:in `rescue in import'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/import_node.rb:45:in `import'
@@ -129,6 +133,8 @@ add-variation.component.scss:1
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/exec/base.rb:19:in `parse!'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/bin/scss:13:in `<top (required)>'
 >>>>>>> ab3544772896b813e48872be8c138c8153772745
+=======
+>>>>>>> develop
 /usr/local/bin/scss:22:in `load'
 /usr/local/bin/scss:22:in `<main>'
 */
