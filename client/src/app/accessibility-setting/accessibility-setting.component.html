@@ -26,7 +26,7 @@
                         [style.color]="'white'"
                         [cpAlphaChannel]="'always'"
                         [cpOutputFormat]="'hex'"
-                        [value]="background_color">
+                        [value]="themingService.backgroundColor" (colorPickerChange)="changeCustomThemeColor()">
               </div>
             </div>
           </div>
@@ -43,7 +43,7 @@
                         [style.color]="'black'"
                         [cpAlphaChannel]="'always'"
                         [cpOutputFormat]="'hex'"
-                        [value]="font_color" >
+                        [value]="themingService.fontColor" (colorPickerChange)="changeCustomThemeColor()">
               </div>
             </div>
           </div>
