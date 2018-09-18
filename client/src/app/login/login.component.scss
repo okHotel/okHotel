@@ -1,16 +1,16 @@
 @import "../../styles.scss";
 @import "../home/home.component.scss";
 
+
+.container{
+  background-color: transparent !important;
+}
 #backLogin {
   margin-top:7%;
 }
 
 .card{
   padding: 5%;
-}
-
-button {
-  background-color: $default-background-color !important;
 }
 
 input {
