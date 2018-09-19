@@ -52,6 +52,7 @@ export class AdminStatisticsComponent implements OnInit {
 
     this.themingService.checkAndChangeInputBorders();
     this.themingService.checkAndChangeTextContrast();
+    this.themingService.setCurrentTheme();
   }
 
   goBack(){

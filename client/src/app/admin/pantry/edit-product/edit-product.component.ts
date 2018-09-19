@@ -50,6 +50,7 @@ export class EditProductComponent {
 
       this.themingService.checkAndChangeInputBorders();
       this.themingService.checkAndChangeTextContrast();
+      this.themingService.setCurrentTheme();
     }
 
     getErrorMessage() {

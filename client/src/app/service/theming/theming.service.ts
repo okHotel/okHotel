@@ -12,7 +12,6 @@ export class ThemingService {
   medium = false;
   small = false;
 
-  isDefaultTheme: boolean = true;
   themeClass: string = 'light-theme';
 
   backgroundCheckValue = true;
@@ -24,9 +23,7 @@ export class ThemingService {
 
   currentTheme: Theme = Theme.DEFAULT;
 
-  constructor(public overlayContainer: OverlayContainer) {
-
-  }
+  constructor(public overlayContainer: OverlayContainer) {}
 
   get myStyle(): any {
 
@@ -47,9 +44,7 @@ export class ThemingService {
     const defaultBackgroundColor = '#034768';
     const defaultFontColor = '#ffffff';
 
-    if (this.currentTheme != 'custom-theme') {
-      return {'':''}
-    } else {
+    if (this.currentTheme == 'custom-theme') {
       return {
         'background-color': this.backgroundColor,
         'color': this.fontColor
@@ -148,7 +143,33 @@ export class ThemingService {
     }
 
     this.currentTheme = theme;
-    console.log(this.isDefaultTheme);
-    console.log(customTheme);
+    localStorage.setItem('theme', this.currentTheme.valueOf())
+  }
+
+  setCurrentTheme() {
+    let item = localStorage.getItem('theme');
+    if (item === 'default-theme') {
+      this.currentTheme = Theme.DEFAULT;
+    } else if (item === 'black-theme') {
+      this.currentTheme = Theme.BLACK;
+    } else if (item === 'dark-theme') {
+      this.currentTheme = Theme.DARK;
+    } else if (item === 'white-theme') {
+      this.currentTheme = Theme.WHITE;
+    } else if (item === 'light-theme') {
+      this.currentTheme = Theme.LIGHT;
+    }
+
+    if (localStorage.getItem('theme')) {
+      let customTheme = document.querySelectorAll('.' + Theme.DEFAULT.valueOf());
+
+      for (let i = 0; i < customTheme.length; i++) {
+        customTheme.item(i).classList.remove(Theme.DEFAULT);
+        customTheme.item(i).classList.add(this.currentTheme);
+      }
+
+    }
+
+    console.log(localStorage.getItem('theme'))
   }
 }

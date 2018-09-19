@@ -47,6 +47,7 @@ export class CustomerComponent implements OnInit {
       this.loadData();
       this.themingService.checkAndChangeInputBorders();
       this.themingService.checkAndChangeTextContrast();
+      this.themingService.setCurrentTheme();
     }
 
     getDetails(id: string) {
