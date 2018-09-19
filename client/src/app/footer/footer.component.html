@@ -1,12 +1,15 @@
-<footer class="default-theme my-theme page-footer text-center text-md-left blue-grey lighten-5 pt-0">
+<footer class="default-theme my-theme page-footer text-center text-md-left blue-grey lighten-5 pt-0"
+        [ngStyle]="themingService.myCustomTheme">
 
-  <div id="footerDiv" class="default-theme my-theme">
-    <div class="container default-theme my-theme">
+  <div id="footerDiv" class="default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+    <div class="container default-theme my-theme"  [ngStyle]="themingService.myCustomTheme">
       <!--Grid row-->
-      <div class="default-theme my-theme row py-4 d-flex align-items-center justify-content-center">
+      <div class="default-theme my-theme row py-4 d-flex align-items-center justify-content-center"
+           [ngStyle]="themingService.myCustomTheme">
 
         <!--Grid column-->
-        <div class="default-theme my-theme col-12 col-md-5 text-left  mb-md-0">
+        <div class="default-theme my-theme col-12 col-md-5 text-left  mb-md-0"
+             [ngStyle]="themingService.myCustomTheme">
           <h2 class="mb-0 text-center text-md-left">
             <strong>Get connected with us on social networks!</strong>
           </h2>
@@ -14,7 +17,8 @@
         <!--Grid column-->
 
         <!--Grid column-->
-        <div class="default-theme my-theme col-12 col-md-7 text-center text-md-right">
+        <div class="default-theme my-theme col-12 col-md-7 text-center text-md-right"
+             [ngStyle]="themingService.myCustomTheme">
           <!--Facebook-->
           <span class="p-2 m-2 fa-lg fb-ic ml-0">
             <i class="fa fa-facebook mr-lg-4"> </i>
