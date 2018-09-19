@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../service/auth/auth.service';
+import {ThemingService} from '../service/theming/theming.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit {
 
   static isAccessibilitySidebarOpen: boolean = false;
 
-  constructor(private router: Router, public authService: AuthService) {}
+  constructor(private router: Router, public authService: AuthService,
+              public themingService: ThemingService) {}
 
   ngOnInit() {}
 
