@@ -4,4 +4,5 @@ export enum Theme {
   DEFAULT = 'default-theme',
   BLACK = 'black-theme',
   WHITE = 'white-theme',
+  CUSTOM = 'custom-theme'
 }

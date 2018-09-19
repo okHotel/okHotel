@@ -1,7 +1,9 @@
 <header class="default-theme" [ngStyle]="themingService.myCustomTheme">
 
+
   <nav class="default-theme my-theme navbar fixed-top navbar-expand-lg scrolling-navbar"
        [ngStyle]="themingService.myCustomTheme">
+
     <!--
         <strong class="navbar-brand" >OkHotel</strong>
     -->
@@ -13,12 +15,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" >
       <ul class="navbar-nav mr-auto" >
         <li class="nav-item" *ngIf="isLoggedIn()">
+
           <a class="nav-link default-theme my-theme" [ngStyle]="themingService.myCustomTheme" href="/">
+
+
             <i class="fa fa-home" aria-label="restaurantService"></i>
             Home</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn()">
+
           <a class="nav-link default-theme my-theme" [ngStyle]="themingService.myCustomTheme" href="/restaurant">
+
             <i class="fa fa-cutlery" aria-label="chooseMenu"></i>
             Choose Menu</a>
         </li>

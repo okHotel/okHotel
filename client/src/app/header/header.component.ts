@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
 
   static isAccessibilitySidebarOpen: boolean = false;
 
+
   constructor(private router: Router,
               public authService: AuthService,
               public themingService: ThemingService) {}

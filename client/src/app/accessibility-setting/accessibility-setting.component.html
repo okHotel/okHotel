@@ -29,7 +29,7 @@
                         [style.color]="'white'"
                         [cpAlphaChannel]="'always'"
                         [cpOutputFormat]="'hex'"
-                        [value]="themingService.backgroundColor" (colorPickerChange)="changeCustomThemeColor()">
+                        [value]="themingService.backgroundColor" (colorPickerChange)="themingService.onThemeChange(theme.CUSTOM)">
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
                         [style.color]="'black'"
                         [cpAlphaChannel]="'always'"
                         [cpOutputFormat]="'hex'"
-                        [value]="themingService.fontColor" (colorPickerChange)="changeCustomThemeColor()">
+                        [value]="themingService.fontColor" (colorPickerChange)="themingService.onThemeChange(theme.CUSTOM)">
               </div>
             </div>
           </div>

@@ -44,9 +44,16 @@ export class ThemingService {
   }
 
   get myCustomTheme(): any {
-    return {
-      'background-color': this.backgroundColor,
-      'color': this.fontColor
+    const defaultBackgroundColor = '#034768';
+    const defaultFontColor = '#ffffff';
+
+    if (this.currentTheme != 'custom-theme') {
+      return {'':''}
+    } else {
+      return {
+        'background-color': this.backgroundColor,
+        'color': this.fontColor
+      }
     }
   }
 
@@ -143,18 +150,5 @@ export class ThemingService {
     this.currentTheme = theme;
     console.log(this.isDefaultTheme);
     console.log(customTheme);
-  }
-
-  changeCustomThemeColor() {
-    let customTheme = document.querySelectorAll('.' + this.currentTheme.valueOf());
-    for (let i = 0; i < customTheme.length; i++) {
-/*
-      customTheme.item(i).classList.add(this.myStyle);
-*/
-      customTheme.item(i).classList.remove(this.currentTheme.valueOf());
-    }
-
-    console.log('a')
-
   }
 }
