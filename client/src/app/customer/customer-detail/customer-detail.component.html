@@ -1,7 +1,7 @@
-<div class="container" >
+<div class="container default-theme my-theme" [ngStyle]="themingService.myCustomTheme" >
 
-  <div class="card" >
-    <div class="card-header">
+  <div class="card " >
+    <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
       {{customer.bookingSurname}} {{customer.bookingName}}
     </div>
     <div class="card-body" >
@@ -82,9 +82,13 @@
           </div>
 
           <div class="btn-group btn-group-sm d-flex flex-row-reverse">
-            <button  type="button" class="btn px-5 py-3 ml-4 mt-4" aria-label="Save" (click)="updateAndGoBack()"
+            <button  type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+                     [ngStyle]="themingService.myCustomTheme"
+                     aria-label="Save" (click)="updateAndGoBack()"
                      [disabled]="!detailCustomerForm.form.valid">Save</button>
-            <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="goBack()" aria-label="Back">Back</button>
+            <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+                    [ngStyle]="themingService.myCustomTheme"
+                    (click)="goBack()" aria-label="Back">Back</button>
           </div>
 
           <!--
