@@ -45,6 +45,8 @@ export class AddVariationComponent implements OnInit {
 
       this.themingService.checkAndChangeInputBorders();
       this.themingService.checkAndChangeTextContrast();
+      this.themingService.setCurrentTheme();
+
     }
 
     public addVariation(type: string) {

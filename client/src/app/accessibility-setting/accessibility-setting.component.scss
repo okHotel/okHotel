@@ -1,6 +1,5 @@
 @import '../../styles.scss';
 
-
 label {
   display: initial;
 }
@@ -23,14 +22,6 @@ button{
   width: 90%;
 }
 
-.card, .card-header {
-  background: none;
-}
-
-.card-header {
-  color: $default-background-color;
-}
-
 .sidenav {
   height: 100%;
   width: inherit;
@@ -48,14 +39,6 @@ button{
   transition: 1s;
 }
 
-
-.blue-radio{
-  background-color: $default-background-color;
-}
-
-.active{
-  background-color: lighten($default-background-color,10%)
-}
 /*
 caption {
   caption-side: top;

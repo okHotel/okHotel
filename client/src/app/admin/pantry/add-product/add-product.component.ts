@@ -43,16 +43,16 @@ export class AddProductComponent implements OnInit {
     console.log(this.product.code);
     const code = this.route.snapshot.paramMap.get('code');
 
+    this.themingService.checkAndChangeTextContrast();
+    this.themingService.setCurrentTheme();
+
+
     if (code !== null) {
       this.product.code = code;
       this.isCodeReadOnly = true;
     } else {
       this.product.code = '';
     }
-
-    this.themingService.checkAndChangeInputBorders();
-    this.themingService.checkAndChangeTextContrast();
-
 
   }
 

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../service/auth/auth.service';
 import {MessageService} from '../service/message/message.service';
+import {ThemingService} from '../service/theming/theming.service';
+
 
 @Component({
   selector: 'app-header',
@@ -17,7 +19,9 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     public authService: AuthService,
-    public messageService: MessageService) {}
+    public messageService: MessageService,
+    public themingService: ThemingService) {}
+
 
   ngOnInit() {}
 

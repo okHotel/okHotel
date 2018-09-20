@@ -1,5 +1,8 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import '~@angular/material/theming';
+
+// import our custom theme
+
+@import 'app/custom-theme/theme';
 
 $default-background-color: #034768;
 $container-color: #f4f4fa;
@@ -21,24 +24,21 @@ $white-font-color: white;
   margin-top:7%;
 }
 
-.card-header {
-/*  font-size: 150%;*/
-  text-align: center;
-  background-color: $default-background-color;
-  color: white;
-}
-
-
 .clear{
+  /*
   color: black;
   background-color: white;
+  */
   border: none;
+}
+
+.card-header {
+  text-align: center;
 }
 
 .hidden {
   display: none;
 }
-
 
 html,
 body{
@@ -67,9 +67,6 @@ input {
   font-size: 90%;
 }
 
-button {
-  background-color: $default-background-color;
-}
 
 .customerBackground{
   background: url('/assets/images/customer.jpg') no-repeat center center ;
@@ -90,10 +87,8 @@ button {
 }
 
 .btn-black-theme {
-
   background-color: $black-background-color;
   color: $white-font-color;
-
 }
 
 .btn-medium-theme {
@@ -143,7 +138,6 @@ mat-select {
 .mat-select-black{
   border: 1px solid black;
 }
-
 
 @media print {
   app-header, app-footer, button, .btn-group-btn-group-sm {

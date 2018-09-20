@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
   dinnerCardState = false;
   lunchCardState = true;
   note: string;
-  isReservationNotValid: boolean = false;
+  isReservationValid: boolean = false;
   reservationError: string;
 
   @ViewChild('inputNote') inputNote: ElementRef;
@@ -37,9 +37,9 @@ export class MenuComponent implements OnInit {
               public themingService: ThemingService) {
     if (this.themingService.isUseBackgroundOn()) {
       document.body.style.backgroundImage = "url('../../assets/images/restaurant.jpg')";
-      document.body.style.backgroundRepeat = "repeat";
-      document.body.style.backgroundSize = "cover";
-      document.body.style.backgroundPosition = "center center";
+      document.body.style.backgroundRepeat = 'repeat';
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundPosition = 'center center';
     }
 
   }
@@ -53,8 +53,8 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('isReservationNotValid');
-    console.log(this.isReservationNotValid);
+    console.log('isReservationValid');
+    console.log(this.isReservationValid);
 
     this.menu.menu.otherNotes = [];
 
@@ -78,6 +78,8 @@ export class MenuComponent implements OnInit {
     });
 
     this.themingService.checkAndChangeInputBorders();
+    this.themingService.checkAndChangeTextContrast();
+    this.themingService.setCurrentTheme();
   }
 
   saveReservations() {
@@ -140,9 +142,9 @@ export class MenuComponent implements OnInit {
       this.menu.menu.reservations.push(reservation);
     }
 
-    if (selectedType == Meal.LUNCH || selectedType == Meal.HALF_LUNCH) {
+    if (selectedType === Meal.LUNCH || selectedType === Meal.HALF_LUNCH) {
       this.checkReservation(this.l, this.hl);
-    } else if (selectedType == Meal.DINNER || selectedType == Meal.HALF_DINNER) {
+    } else if (selectedType === Meal.DINNER || selectedType === Meal.HALF_DINNER) {
       this.checkReservation(this.d, this.hd);
     }
 
@@ -152,7 +154,7 @@ export class MenuComponent implements OnInit {
     let total = 0;
 
     console.log('isReservationNotValid1');
-    console.log(this.isReservationNotValid);
+    console.log(this.isReservationValid);
 
     this.menu.menu.reservations
       .filter(r => r.roomNumber === this.room)
@@ -161,25 +163,25 @@ export class MenuComponent implements OnInit {
 
     const mul_factor = type1 === Meal.LUNCH ? 2 : 3;
 
-    this.isReservationNotValid = total > (this.people.length - 1) * mul_factor;
+    this.isReservationValid = total <= (this.people.length - 1) * mul_factor;
 
-    if (this.isReservationNotValid) {
+    if (this.isReservationValid) {
       this.reservationError = this.getErrorMessage();
     } else {
       this.reservationError = '';
     }
 
     console.log('isReservationNotValid2');
-    console.log(this.isReservationNotValid);
+    console.log(this.isReservationValid);
 
-    return this.isReservationNotValid;
+    return this.isReservationValid;
   }
 
   checkSave() {
 /*
     return this.checkReservation(Meal.LUNCH, Meal.HALF_LUNCH) || this.checkReservation(Meal.DINNER, Meal.HALF_DINNER);
 */
-    return !this.isReservationNotValid;
+    return !this.isReservationValid;
   }
 
   getErrorMessage() {

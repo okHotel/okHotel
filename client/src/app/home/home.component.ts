@@ -40,6 +40,8 @@ export class HomeComponent implements OnInit{
         //this.showSlides(this.slideIndex);
 
       this.themingService.checkAndChangeTextContrast();
+      this.themingService.setCurrentTheme();
+
     }
 
 

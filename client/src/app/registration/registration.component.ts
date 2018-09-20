@@ -49,6 +49,7 @@ export class RegistrationComponent implements OnInit {
 
     this.themingService.checkAndChangeInputBorders();
     this.themingService.checkAndChangeTextContrast();
+    this.themingService.setCurrentTheme();
   }
 
   newCustomer(): void {

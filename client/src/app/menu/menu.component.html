@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container default-theme" [ngStyle]="themingService.myCustomTheme">
   <div class="card mat-elevation-z8 mx-auto d-block">
-    <div class="card-header ">
+    <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
       Choose Menu
     </div>
 
@@ -17,7 +17,9 @@
             Close Lunch
           </button>
 
-          <button type="button" class="btn px-5 py-3 mb-2" aria-label="Choose Dinenr" (click)="!changeLunchCardState()" *ngIf="!lunchCardState">
+          <button type="button" class="default-theme my-theme btn px-5 py-3 mb-2"
+                  [ngStyle]="themingService.myCustomTheme"
+                  aria-label="Choose Dinenr" (click)="!changeLunchCardState()" *ngIf="!lunchCardState">
             Click to choose Lunch
           </button>
         </div>
@@ -25,7 +27,7 @@
         <div *ngIf="lunchCardState">
           <div class="card my-3">
             <div class="card-body">
-              <div  class="alert alert-danger" role="alert" *ngIf="isReservationNotValid">
+              <div  class="alert alert-danger" role="alert" *ngIf="isReservationValid">
                 {{reservationError}}
               </div>
 
@@ -58,7 +60,9 @@
                       </mat-select>
                     </mdb-form-field>
 
-                    <button type="button" class="btn px-2 py-2 mb-2" aria-label="Add Variation"  (click)="addVariations(dish, l)">
+                    <button type="button" class="default-theme my-theme btn px-2 py-2 mb-2"
+                            [ngStyle]="themingService.myCustomTheme"
+                            aria-label="Add Variation"  (click)="addVariations(dish, l)">
                       <i class="fa fa-plus"></i> Add Variation
                     </button>
                   </td>
@@ -72,7 +76,9 @@
                       </mat-select>
                     </mdb-form-field>
 
-                    <button type="button" class="btn px-2 py-2 mb-2" aria-label="Add Variation"  (click)="addVariations(dish, hl)">
+                    <button type="button" class="default-theme my-theme btn px-2 py-2 mb-2"
+                            [ngStyle]="themingService.myCustomTheme"
+                            aria-label="Add Variation"  (click)="addVariations(dish, hl)">
                       <i class="fa fa-plus"></i> Add Variation
                     </button>
                   </td>
@@ -84,11 +90,17 @@
         </div>
 
         <div class="btn-group btn-group-sm d-flex justify-content-center">
-          <button type="button" class="btn px-5 py-3 mb-2 mt-2" aria-label="Choose Dinenr" (click)="!changeDinnerCardState()" *ngIf="!dinnerCardState" onclick="changeDinnerCardState()">
+          <button type="button" class="default-theme my-theme btn px-5 py-3 mb-2 mt-2"
+                  [ngStyle]="themingService.myCustomTheme" aria-label="Choose Dinenr"
+                  (click)="!changeDinnerCardState()" *ngIf="!dinnerCardState"
+                  onclick="changeDinnerCardState()">
             Click to choose Dinner
           </button>
 
-          <button type="button" class="btn px-5 py-3 mb-2 mt-2" aria-label="Choose Dinner" (click)="changeDinnerCardState()" *ngIf="dinnerCardState" onclick="changeDinnerCardState()">
+          <button type="button" class="default-theme my-theme btn px-5 py-3 mb-2 mt-2"
+                  [ngStyle]="themingService.myCustomTheme" aria-label="Choose Dinner"
+                  (click)="changeDinnerCardState()" *ngIf="dinnerCardState"
+                  onclick="changeDinnerCardState()">
             Close Dinner
           </button>
         </div>
@@ -98,7 +110,7 @@
           <div class="card my-3">
 
             <div class="card-body">
-              <div  class="alert alert-danger" role="alert" *ngIf="isReservationNotValid">
+              <div  class="alert alert-danger" role="alert" *ngIf="isReservationValid">
                 {{reservationError}}
               </div>
 
@@ -187,7 +199,8 @@
 
         <div class="btn-group btn-group-sm d-flex flex-row-reverse">
           <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="saveReservations()" aria-label="Save"
-                  [disabled]="!addCustomerForm.form.valid || isReservationNotValid">Save
+                  [disabled]="!addCustomerForm.form.valid || !isReservationValid">Save
+
           </button>
         </div>
       </form>

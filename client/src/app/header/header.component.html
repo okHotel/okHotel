@@ -1,6 +1,9 @@
-<header (click)="resetSuccess()">
+<header (click)="resetSuccess()" class="default-theme" [ngStyle]="themingService.myCustomTheme">
 
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark lightBlue scrolling-navbar">
+
+  <nav class="default-theme my-theme navbar fixed-top navbar-expand-lg scrolling-navbar"
+       [ngStyle]="themingService.myCustomTheme">
+
     <!--
         <strong class="navbar-brand" >OkHotel</strong>
     -->
@@ -12,16 +15,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" >
       <ul class="navbar-nav mr-auto" >
         <li class="nav-item" *ngIf="isLoggedIn()">
-          <a class="nav-link" href="/">
+
+          <a class="nav-link default-theme my-theme" [ngStyle]="themingService.myCustomTheme" href="/">
+
+
             <i class="fa fa-home" aria-label="restaurantService"></i>
             Home</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn()">
-          <a class="nav-link" href="/restaurant">
+
+          <a class="nav-link default-theme my-theme" [ngStyle]="themingService.myCustomTheme" href="/restaurant">
+
             <i class="fa fa-cutlery" aria-label="chooseMenu"></i>
             Choose Menu</a>
         </li>
-
 
         <li class="nav-item dropdown btn-group" dropdown *ngIf="isLoggedIn()">
           <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
@@ -49,7 +56,7 @@
         </li>
        </ul>
 
-      <a class="nav-link accessibility text-white" (click)="changeAccessibilitySidebarStatus()">
+      <a class="nav-link accessibility" (click)="changeAccessibilitySidebarStatus()">
         Accessibility <i class="fa fa-cog" aria-label="Accessibility"></i>
         </a>
 
