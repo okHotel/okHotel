@@ -37,17 +37,16 @@ export class MenuComponent implements OnInit {
               public themingService: ThemingService) {
     if (this.themingService.isUseBackgroundOn()) {
       document.body.style.backgroundImage = "url('../../assets/images/restaurant.jpg')";
-      document.body.style.backgroundRepeat = "repeat";
-      document.body.style.backgroundSize = "cover";
-      document.body.style.backgroundPosition = "center center";
+      document.body.style.backgroundRepeat = 'repeat';
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundPosition = 'center center';
     }
-    
   }
 
   get myStyle() {
     return {
       'width': (this.menu.showLunchVariations || this.menu.showDinnerVariations) ? '40%' : '0',
-      'padding': (this.menu.showLunchVariations || this.menu.showDinnerVariations) ? '5%' : '0',
+      'padding-top': (this.menu.showLunchVariations || this.menu.showDinnerVariations) ? '5%' : '0',
       'transition': '0.5s'
     };
   }
