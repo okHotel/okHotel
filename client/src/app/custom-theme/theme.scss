@@ -15,16 +15,16 @@ $theme: mat-light-theme($primary, $accent, $warn);
   $dark-accent: mat-palette($mat-amber, A400, A100, A700);
   $dark-warn: mat-palette($mat-red);
   $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
-  
+
   @include angular-material-theme($dark-theme);
 
   .my-theme {
-    background-color: mat-color($dark-primary);
-    color: black;
+    background-color: #034768; //mat-color($dark-primary);
+    color: white;
   }
 
   .active{
-    background-color: lighten(mat-color($dark-primary),10%)
+    background-color: #02afff;//lighten(mat-color($dark-primary),10%)
   }
 }
 
@@ -37,12 +37,12 @@ $theme: mat-light-theme($primary, $accent, $warn);
   @include angular-material-theme($default-theme);
 
   .my-theme {
-    background-color: mat-color($default-primary);
-    color: red;
+    background-color: #034768; //mat-color($dark-primary);
+    color: white;
   }
 
   .active{
-    background-color: lighten(mat-color($default-primary),10%)
+    background-color: #02afff;//lighten(mat-color($dark-primary),10%)
   }
 }
 
@@ -56,12 +56,12 @@ $theme: mat-light-theme($primary, $accent, $warn);
   @include angular-material-theme($light-theme);
 
   .my-theme {
-    background-color: mat-color($light-primary);
+    background-color: #b3efff; //mat-color($light-primary);
     color: black;
   }
 
   .active{
-    background-color: lighten(mat-color($light-primary),10%)
+    background-color: #7ca4ad; //lighten(mat-color($light-primary),10%)
   }
 
 }
@@ -75,12 +75,12 @@ $theme: mat-light-theme($primary, $accent, $warn);
   @include angular-material-theme($white-theme);
 
   .my-theme {
-    background-color: mat-color($white-primary);
-    color: white;
+    background-color: white; //mat-color($white-primary);
+    color: black;
   }
 
   .active {
-    background-color: lighten(mat-color($white-primary), 10%)
+    background-color: lightslategrey; //lighten(mat-color($white-primary), 10%)
   }
 }
 
@@ -93,10 +93,10 @@ $theme: mat-light-theme($primary, $accent, $warn);
   @include angular-material-theme($black-theme);
 
   .my-theme {
-    background-color: mat-color($black-primary);
+    background-color: black; //mat-color($black-primary);
     color: white;
   }
   .active{
-    background-color: lighten(mat-color($black-primary),10%)
+    background-color: lightslategrey; //lighten(mat-color($black-primary),10%)
   }
 }

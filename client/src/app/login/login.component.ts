@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
 
     this.themingService.checkAndChangeInputBorders();
     this.themingService.checkAndChangeTextContrast();
-  }
+    this.themingService.setCurrentTheme();
+    }
 
   login() {
     this.authService.login(this.username, this.password).subscribe((user : any)=>{

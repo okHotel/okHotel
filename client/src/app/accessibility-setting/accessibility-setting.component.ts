@@ -11,22 +11,12 @@ import {Theme} from '../custom-theme/theme';
 })
 export class AccessibilitySettingComponent implements OnInit {
 
-  background_color = '#034768';
-  font_color = '#ffffff';
-
   theme = Theme;
 
   constructor(public themingService: ThemingService) { }
 
   ngOnInit() {
-  }
 
-  setBackgroundColor(color) {
-    console.log(color);
-  }
-
-  setFontColor(color) {
-    console.log(color);
   }
 
   closeSidebar() {

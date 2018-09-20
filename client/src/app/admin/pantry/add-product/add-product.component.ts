@@ -50,6 +50,7 @@ export class AddProductComponent implements OnInit {
 
       this.themingService.checkAndChangeInputBorders();
       this.themingService.checkAndChangeTextContrast();
+      this.themingService.setCurrentTheme();
     }
 
     getErrorMessage() {
