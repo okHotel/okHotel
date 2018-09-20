@@ -1,13 +1,15 @@
 <div class="container" [ngStyle]="themingService.myCustomTheme">
 
   <div class="card" [hidden]="error">
-    <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
-      Pantry
+    <div class="default-theme">
+      <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+        Pantry
+      </div>
     </div>
 
     <h1 class="hidden">Restaurant Statistics</h1>
 
-    <div class="card-body text-center" >
+    <div class="card-body text-center">
 
       <app-message></app-message>
 
@@ -17,7 +19,7 @@
         <mat-icon aria-label="Add">add</mat-icon>
       </button>
 
-      <div class="md-form" >
+      <div class="md-form">
         <mdb-form-field floatPlaceholder="never" color="accent">
           <label for="search">Search</label>
 
@@ -26,7 +28,7 @@
         </mdb-form-field>
       </div>
 
-      <mat-table #table [dataSource]="dataSource" matSort class="mat-cell" >
+      <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
@@ -36,35 +38,40 @@
           <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
           <mat-cell *matCellDef="let row" [ngStyle]="themingService.myStyle">
             <span class="mobile-label">Code:</span>
-            {{row.code}}</mat-cell>
+            {{row.code}}
+          </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
           <mat-cell *matCellDef="let row" [ngStyle]="themingService.myStyle">
             <span class="mobile-label">Name:</span>
-            {{row.name}}</mat-cell>
+            {{row.name}}
+          </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="category">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
           <mat-cell *matCellDef="let row" [ngStyle]="themingService.myStyle">
             <span class="mobile-label">Category:</span>
-            {{row.category}}</mat-cell>
+            {{row.category}}
+          </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="quantity">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
           <mat-cell *matCellDef="let row" [ngStyle]="themingService.myStyle">
             <span class="mobile-label">Quantity:</span>
-            {{row.quantity}}</mat-cell>
+            {{row.quantity}}
+          </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="unit">
           <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
           <mat-cell *matCellDef="let row" [ngStyle]="themingService.myStyle">
             <span class="mobile-label">Unit:</span>
-            {{row.unit}}</mat-cell>
+            {{row.unit}}
+          </mat-cell>
         </ng-container>
 
         <!-- actions -->
@@ -92,7 +99,8 @@
       </mat-table>
 
 
-      <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'" [ngStyle]="themingService.myStyle">
+      <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'"
+           [ngStyle]="themingService.myStyle">
         No results
       </div>
 
@@ -103,13 +111,17 @@
                      [pageSizeOptions]="[5, 10, 25, 100]">
       </mat-paginator>
 
+      <div class="default-theme">
       <button class="btn px-5 px-3 ml-4 mt-4 mx-auto d-block default-theme my-theme"
               [ngStyle]="themingService.myCustomTheme"
-              (click)="!changeCameraState()" *ngIf="!isCameraEnabled">Search or add your products by scanning their barcodes</button>
+              (click)="!changeCameraState()" *ngIf="!isCameraEnabled">Search or add your products by scanning their
+        barcodes
+      </button>
       <button class="btn px-5 px-3 ml-4 mt-4 mx-auto d-block default-theme my-theme"
               [ngStyle]="themingService.myCustomTheme"
-              (click)="changeCameraState()" *ngIf="isCameraEnabled">Close camera</button>
-
+              (click)="changeCameraState()" *ngIf="isCameraEnabled">Close camera
+      </button>
+      </div>
 
       <div id="cameraDiv">
         <div id="interactive" class="viewport" [hidden]="!isCameraEnabled" #interactive></div>

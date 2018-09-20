@@ -1,10 +1,11 @@
-<div class="container default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+<div class="container">
 
   <div class="card">
-    <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
-      Customers
+    <div class="default-theme">
+      <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+        Customers
+      </div>
     </div>
-
     <h1 class="hidden">Customers</h1>
 
     <div class="card-body">
@@ -13,7 +14,7 @@
 
       <div class="md-form">
         <mdb-form-field floatPlaceholder="never" color="accent">
-          <label  for="search">Search</label>
+          <label for="search">Search</label>
           <input #input type="text" class="form-control " id="search"
                  placeholder="Search" #filter>
 
@@ -30,14 +31,16 @@
           <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
           <mat-cell *matCellDef="let row" [ngStyle]="themingService.myStyle">
             <span class="mobile-label">Name:</span>
-            {{row.bookingName}}</mat-cell>
+            {{row.bookingName}}
+          </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="bookingSurname">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Surname</mat-header-cell>
           <mat-cell *matCellDef="let row" [ngStyle]="themingService.myStyle">
             <span class="mobile-label">Surname:</span>
-            {{row.bookingSurname}}</mat-cell>
+            {{row.bookingSurname}}
+          </mat-cell>
         </ng-container>
 
         <!-- actions -->
@@ -53,7 +56,8 @@
               <mat-icon aria-label="Edit">edit</mat-icon>
             </button>
 
-            <button mat-icon-button color=$dot-selected-color (click)="delete(row._id, row.bookingName, row.bookingSurname, row.roomNumber)">
+            <button mat-icon-button color=$dot-selected-color
+                    (click)="delete(row._id, row.bookingName, row.bookingSurname, row.roomNumber)">
               <mat-icon aria-label="Delete">delete</mat-icon>
             </button>
           </mat-cell>
@@ -64,7 +68,8 @@
       </mat-table>
 
 
-      <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'" [ngStyle]="themingService.myStyle">
+      <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'"
+           [ngStyle]="themingService.myStyle">
         No results
       </div>
 
