@@ -16,8 +16,12 @@
 
 
   <div class="btn-group btn-group-sm d-flex flex-row-reverse">
-    <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="confirmDelete()" [mat-dialog-close]="1" >Delete</button>
-    <button  type="button" class="btn px-5 px-3 ml-4 mt-4" (click)="onNoClick()" aria-label="Back" tabindex="-1" >Back</button>
+    <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+            [ngStyle]="themingService.myCustomTheme"
+            (click)="confirmDelete()" [mat-dialog-close]="1" >Delete</button>
+    <button  type="button" class="btn px-5 px-3 ml-4 mt-4 default-theme my-theme"
+             [ngStyle]="themingService.myCustomTheme"
+             (click)="onNoClick()" aria-label="Back" tabindex="-1" >Back</button>
   </div>
 
 </div>

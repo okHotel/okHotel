@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
 
   <div class="card">
-    <div class="card-header">
+    <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
       Edit Product
     </div>
 
@@ -80,8 +80,13 @@
         </div>
 
         <div class="btn-group btn-group-sm d-flex flex-row-reverse">
-          <button [type]="submit" class="btn px-5 px-3 ml-4 mt-4" [disabled]="!formControl.valid || isCodeInvalid(product.code)" (click)="saveAndGoBack()">Save</button>
-          <button (click)="goBack()" class="btn px-5 py-3 ml-4 mt-4" tabindex="-1">Back</button>
+          <button [type]="submit" class="btn px-5 px-3 ml-4 mt-4 default-theme my-theme"
+                  [disabled]="!formControl.valid || isCodeInvalid(product.code)"
+                  (click)="saveAndGoBack()"
+                  [ngStyle]="themingService.myCustomTheme">Save</button>
+          <button (click)="goBack()" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+                  [ngStyle]="themingService.myCustomTheme"
+                  tabindex="-1">Back</button>
         </div>
 
       </form>
@@ -89,9 +94,3 @@
 
   </div>
 </div>
-
-<!--
-          <div class="btn-group btn-group-sm d-flex flex-row-reverse">
-            <button [type]="submit" class="btn px-5 px-3 ml-4 mt-4" [disabled]="!formControl.valid || isCodeInvalid(product.code)" (click)="saveAndGoBack()">Save</button>
-            <button (click)="goBack()" class="btn px-5 py-3 ml-4 mt-4" tabindex="-1">Back</button>
-          </div>-->
