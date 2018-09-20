@@ -1,14 +1,15 @@
-<div class="container">
+<div class="container default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
 
   <div class="card">
-    <div class="card-header">
-      Add new Product
+    <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+      Add new product
     </div>
 
     <h1 class="hidden">Add new Product</h1>
 
     <div class="card-body">
 
+      <app-message></app-message>
       <app-message></app-message>
 
       <form class="mat-dialog-content" (ngSubmit)="submit()" #formControl="ngForm">
@@ -80,8 +81,12 @@
         </div>
 
         <div class="btn-group btn-group-sm d-flex flex-row-reverse">
-          <button  type="button" class="btn px-5 px-3 ml-4 mt-4" (click)="onSave()" aria-label="Save"  [disabled]="!formControl.valid || isCodeInvalid(product.code)">Save</button>
-          <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="goBack()" aria-label="Back">Back</button>
+          <button  type="button" class="btn px-5 px-3 ml-4 mt-4 default-theme my-theme"
+                   [ngStyle]="themingService.myCustomTheme"
+                   (click)="onSave()" aria-label="Save"  [disabled]="!formControl.valid || isCodeInvalid(product.code)">Save</button>
+          <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+                  [ngStyle]="themingService.myCustomTheme"
+                  (click)="goBack()" aria-label="Back">Back</button>
         </div>
 
       </form>

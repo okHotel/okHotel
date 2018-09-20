@@ -1,10 +1,12 @@
 <div class="card mat-elevation-z20 mx-auto d-block sidenav">
 
-  <div class="card-body">
+  <div class="card-body default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
 
     <div  id="mySidenav">
 
-      <button type="button" class="closebtn btn btn-sm mb-2" (click)="goToMenu()">
+      <button type="button" class="closebtn btn btn-sm mb-2 default-theme my-theme"
+              [ngStyle]="themingService.myCustomTheme"
+              (click)="goToMenu()">
         <i class="fa fa-times fa-2x" aria-label="delete dish"></i><p class="hidden">Close</p> </button>
 
       <div id="container">
