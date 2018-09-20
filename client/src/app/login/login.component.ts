@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
               public themingService: ThemingService) {
     if (this.themingService.isUseBackgroundOn()) {
       document.body.style.backgroundImage = "url('../../assets/images/casa-per-ferie-san-bassiano.jpg')";
-      document.body.style.backgroundRepeat = "no-repeat";
+      document.body.style.backgroundRepeat = "repeat";
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center center";
     }

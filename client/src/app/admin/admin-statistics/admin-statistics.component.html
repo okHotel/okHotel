@@ -65,9 +65,9 @@
           </ng-container>
 
           <ng-container matColumnDef="wholePortion">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Whole Lunch</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Whole Portion</mat-header-cell>
             <mat-cell *matCellDef="let row">
-              <span class="mobile-label">Whole Lunch:</span>
+              <span class="mobile-label">Whole Portion:</span>
               <mat-list>
                 <mat-list-item>{{getTotalQuantitiesFor(row, meal.LUNCH)}}</mat-list-item>
                 <mat-list-item *ngFor="let intollerance of getVariations(row, meal.LUNCH, variation.INTOLLERANCE)" >
@@ -85,9 +85,9 @@
           </ng-container>
 
           <ng-container matColumnDef="halfPortion">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Half Lunch</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Half Portion</mat-header-cell>
             <mat-cell *matCellDef="let row">
-              <span class="mobile-label">Half Lunch:</span>
+              <span class="mobile-label">Half Portion:</span>
               <mat-list>
                 <mat-list-item>{{getTotalQuantitiesFor(row, meal.HALF_LUNCH)}}</mat-list-item>
                 <mat-list-item *ngFor="let intollerance of getVariations(row, meal.HALF_LUNCH, variation.INTOLLERANCE)" >
@@ -123,9 +123,9 @@
           </ng-container>
 
           <ng-container matColumnDef="wholePortion">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Whole Dinner</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Whole Portion</mat-header-cell>
             <mat-cell *matCellDef="let row">
-              <span class="mobile-label">Whole Lunch:</span>
+              <span class="mobile-label">Whole Portion:</span>
               <mat-list>
                 <mat-list-item >{{getTotalQuantitiesFor(row, meal.DINNER)}}</mat-list-item>
                 <mat-list-item *ngFor="let intollerance of getVariations(row, meal.DINNER, variation.INTOLLERANCE)">
@@ -139,9 +139,9 @@
           </ng-container>
 
           <ng-container matColumnDef="halfPortion">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Half Dinner</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Half Portion</mat-header-cell>
             <mat-cell *matCellDef="let row">
-              <span class="mobile-label contrast">Half Dinner:</span>
+              <span class="mobile-label contrast">Half Portion:</span>
               <mat-list>
                 <mat-list-item>{{getTotalQuantitiesFor(row, meal.HALF_DINNER)}}</mat-list-item>
                 <mat-list-item
