@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
 
   <div class="card mat-elevation-z8 text-center">
-    <div class="card-header">
+    <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
       New Menu
     </div>
 
@@ -29,9 +29,15 @@
       <app-add-dishes></app-add-dishes>
 
       <div id="buttonsDiv">
-        <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="goBack()" aria-label="Back">Back</button>
-        <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="deleteMenu()" aria-label="Delete">Delete</button>
-        <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="saveMenu()" aria-label="Save">Save</button>
+        <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+                (click)="goBack()" aria-label="Back"
+                [ngStyle]="themingService.myCustomTheme">Back</button>
+        <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+                (click)="deleteMenu()" aria-label="Delete"
+                [ngStyle]="themingService.myCustomTheme">Delete</button>
+        <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+                (click)="saveMenu()" aria-label="Save"
+                [ngStyle]="themingService.myCustomTheme">Save</button>
       </div>
 
       <div [hidden]="!isDateWrong"

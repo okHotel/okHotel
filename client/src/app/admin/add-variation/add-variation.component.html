@@ -1,9 +1,9 @@
 
-<div class="container">
+<div class="container default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
 
   <div class="card mat-elevation-z8">
 
-    <div class="card-header">
+    <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
       Insert Variations
     </div>
 
@@ -33,13 +33,17 @@
       </div>
 
       <div class="btn-group btn-group-sm d-flex flex-row-reverse">
-        <button  type="button" class="btn px-5 px-3 ml-4 mt-4" (click)="goToStatics()" aria-label="Save" [disabled]="!addVariationForm.form.valid">Save</button>
-        <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="goBack()" aria-label="Back">Back</button>
+        <button  type="button" class="btn px-5 px-3 ml-4 mt-4 default-theme my-theme"
+                 [ngStyle]="themingService.myCustomTheme"
+                 (click)="goToStatics()" aria-label="Save" [disabled]="!addVariationForm.form.valid">Save</button>
+        <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+                [ngStyle]="themingService.myCustomTheme"
+                (click)="goBack()" aria-label="Back">Back</button>
       </div>
       </form>
 
     </div>
-
+s
   </div>
 </div>
 
