@@ -43,6 +43,7 @@ export class AddProductComponent implements OnInit {
     console.log(this.product.code);
     const code = this.route.snapshot.paramMap.get('code');
 
+    this.themingService.checkAndChangeInputBorders();
     this.themingService.checkAndChangeTextContrast();
     this.themingService.setCurrentTheme();
 

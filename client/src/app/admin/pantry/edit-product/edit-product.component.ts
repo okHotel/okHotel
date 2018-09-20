@@ -59,7 +59,6 @@ export class EditProductComponent {
         this.messageService.success = '';
       });
 
-    this.themingService.checkAndChangeInputBorders();
       this.themingService.checkAndChangeInputBorders();
       this.themingService.checkAndChangeTextContrast();
       this.themingService.setCurrentTheme();

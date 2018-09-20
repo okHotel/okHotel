@@ -13,7 +13,9 @@
       <form class="mat-dialog-content" #addCustomerForm="ngForm" *ngIf="!messageService.error">
 
         <div class="btn-group btn-group-sm d-flex justify-content-center">
-          <button type="button" class="btn px-5 py-3 mb-2" aria-label="Choose Dinenr" (click)="changeLunchCardState()" *ngIf="lunchCardState">
+          <button type="button" class="default-theme my-theme btn px-5 py-3 mb-2"
+                  [ngStyle]="themingService.myCustomTheme"
+                  aria-label="Choose Dinenr" (click)="changeLunchCardState()" *ngIf="lunchCardState">
             Close Lunch
           </button>
 
