@@ -1,8 +1,11 @@
-<div class="container default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+<div class="container">
+
   <div class="card mat-elevation-z8 mx-auto d-block">
+ <div class="default-theme">
     <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
       Choose Menu
     </div>
+ </div>
 
     <h1 class="hidden">Choose menu</h1>
 
@@ -11,7 +14,7 @@
       <app-message *ngIf="messageService.success || messageService.error"></app-message>
 
       <form class="mat-dialog-content" #addCustomerForm="ngForm" *ngIf="!messageService.error">
-
+        <div class="default-theme">
         <div class="btn-group btn-group-sm d-flex justify-content-center">
           <button type="button" class="default-theme my-theme btn px-5 py-3 mb-2"
                   [ngStyle]="themingService.myCustomTheme"
@@ -19,11 +22,13 @@
             Close Lunch
           </button>
 
+
           <button type="button" class="default-theme my-theme btn px-5 py-3 mb-2"
                   [ngStyle]="themingService.myCustomTheme"
                   aria-label="Choose Dinenr" (click)="!changeLunchCardState()" *ngIf="!lunchCardState">
             Click to choose Lunch
           </button>
+        </div>
         </div>
 
         <div *ngIf="lunchCardState">
@@ -61,12 +66,13 @@
                         </mat-option>
                       </mat-select>
                     </mdb-form-field>
-
+                    <div class="default-theme">
                     <button type="button" class="default-theme my-theme btn px-2 py-2 mb-2"
                             [ngStyle]="themingService.myCustomTheme"
                             aria-label="Add Variation"  (click)="addVariations(dish, l)">
                       <i class="fa fa-plus"></i> Add Variation
                     </button>
+                    </div>
                   </td>
 
                   <td>
@@ -90,7 +96,7 @@
             </div>
           </div>
         </div>
-
+        <div class="default-theme">
         <div class="btn-group btn-group-sm d-flex justify-content-center">
           <button type="button" class="default-theme my-theme btn px-5 py-3 mb-2 mt-2"
                   [ngStyle]="themingService.myCustomTheme" aria-label="Choose Dinenr"
@@ -99,12 +105,14 @@
             Click to choose Dinner
           </button>
 
+
           <button type="button" class="default-theme my-theme btn px-5 py-3 mb-2 mt-2"
                   [ngStyle]="themingService.myCustomTheme" aria-label="Choose Dinner"
                   (click)="changeDinnerCardState()" *ngIf="dinnerCardState"
                   onclick="changeDinnerCardState()">
             Close Dinner
           </button>
+        </div>
         </div>
 
         <div *ngIf="dinnerCardState">
@@ -192,11 +200,13 @@
 
         </div>
 
+        <div class="default-theme">
         <div class="btn-group btn-group-sm d-flex flex-row-reverse">
           <button type="button" class=" my-theme default-theme btn px-5 py-3 ml-4 mt-4" (click)="saveReservations()" aria-label="Save"
                   [disabled]="!addCustomerForm.form.valid || !isReservationValid">Save
 
           </button>
+        </div>
         </div>
       </form>
 
