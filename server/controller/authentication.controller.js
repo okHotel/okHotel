@@ -75,7 +75,7 @@ exports.login = (req, res, next) => {
         .then(customer => {
             if(!customer) {
                 return res.status(404).json({
-                    message: "Customer not found with username" + req.body.username
+                    message: "Customer not found with username " + req.body.username
                 });
             }
             bcrypt.compare(req.body.password, customer.password, function(err, isMatch){
