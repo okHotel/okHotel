@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ThemingService} from './service/theming/theming.service';
+import {AlertsService} from './service/alerts/alerts.service';
 import {OverlayContainer} from '@angular/cdk/overlay';
 
 @Component({
@@ -7,13 +8,14 @@ import {OverlayContainer} from '@angular/cdk/overlay';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'OkHotel';
+export class AppComponent implements OnInit {
+  title = 'app';
+  @ViewChild('header') header: ElementRef;
 
   constructor(
-    public themingService: ThemingService) {
-
-  }
+    public themingService: ThemingService,
+    public alertService: AlertsService
+  ) {}
 
   ngOnInit() {
 
@@ -35,6 +37,5 @@ export class AppComponent {
 
     this.themingService.overlayContainer.getContainerElement().classList.add(this.themingService.themeClass);
   }
-
 }
 

@@ -1,4 +1,6 @@
+
 <div class="container default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+
 
   <div class="card">
     <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
@@ -7,13 +9,16 @@
 
     <h1 class="hidden">Edit product</h1>
 
+
+
     <div class="card-body">
+
 
       <app-message></app-message>
 
       <form class="mat-dialog-content" (ngSubmit)="submit()" #formControl="ngForm">
 
-        <div class="md-form">
+        <div class="md-form" #prova>
           <mdb-form-field color="accent">
             <label for="code">Code</label>
             <input id="code" #input type="text" class="form-control"

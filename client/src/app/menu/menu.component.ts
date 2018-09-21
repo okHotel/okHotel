@@ -41,6 +41,7 @@ export class MenuComponent implements OnInit {
       document.body.style.backgroundSize = 'cover';
       document.body.style.backgroundPosition = 'center center';
     }
+
   }
 
   get myStyle() {
@@ -141,9 +142,9 @@ export class MenuComponent implements OnInit {
       this.menu.menu.reservations.push(reservation);
     }
 
-    if (selectedType == Meal.LUNCH || selectedType == Meal.HALF_LUNCH) {
+    if (selectedType === Meal.LUNCH || selectedType === Meal.HALF_LUNCH) {
       this.checkReservation(this.l, this.hl);
-    } else if (selectedType == Meal.DINNER || selectedType == Meal.HALF_DINNER) {
+    } else if (selectedType === Meal.DINNER || selectedType === Meal.HALF_DINNER) {
       this.checkReservation(this.d, this.hd);
     }
 
