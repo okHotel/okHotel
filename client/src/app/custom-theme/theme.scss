@@ -9,25 +9,6 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
 
-// Our dark theme
-.dark-theme {
-  $dark-primary: mat-palette($mat-deep-purple);
-  $dark-accent: mat-palette($mat-amber, A400, A100, A700);
-  $dark-warn: mat-palette($mat-red);
-  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
-
-  @include angular-material-theme($dark-theme);
-
-  .my-theme {
-    background-color: #034768; //mat-color($dark-primary);
-    color: white;
-  }
-
-  .active{
-    background-color: #02afff;//lighten(mat-color($dark-primary),10%)
-  }
-}
-
 .default-theme {
   $default-primary: mat-palette($mat-indigo);
   $default-accent: mat-palette($mat-amber, A400, A100, A700);
@@ -43,6 +24,15 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   .active{
     background-color: #02afff;//lighten(mat-color($dark-primary),10%)
+  }
+
+  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline  {
+    color:white !important;
+  }
+
+  .mat-select-content{
+    background-color: #034768 !important;
+    color: white !important;
   }
 }
 
@@ -64,6 +54,15 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: #7ca4ad; //lighten(mat-color($light-primary),10%)
   }
 
+  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline  {
+    color:black !important;
+  }
+
+  .mat-select-content{
+    background-color: #b3efff !important;
+    color: black !important;
+  }
+
 }
 
 .white-theme {
@@ -82,6 +81,15 @@ $theme: mat-light-theme($primary, $accent, $warn);
   .active {
     background-color: lightslategrey; //lighten(mat-color($white-primary), 10%)
   }
+
+  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline  {
+    color:black !important;
+  }
+
+  .mat-select-content{
+    background-color: white !important;
+    color: black !important;
+  }
 }
 
 .black-theme {
@@ -99,4 +107,14 @@ $theme: mat-light-theme($primary, $accent, $warn);
   .active{
     background-color: lightslategrey; //lighten(mat-color($black-primary),10%)
   }
+
+  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline  {
+    color:white !important;
+  }
+
+  .mat-select-content{
+    background-color: dimgrey !important;
+    color: white !important;
+  }
+
 }
