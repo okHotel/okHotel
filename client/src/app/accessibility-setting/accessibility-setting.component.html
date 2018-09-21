@@ -13,47 +13,6 @@
       <div id="container" class="default-theme"  [ngStyle]="themingService.myCustomTheme">
         <h4 class="accessibility-subtitle mb-3">Text and keyboard</h4>
 
-        <fieldset>
-          <legend>Select Colors</legend>
-
-          <div class="row justify-content-md-left">
-            <label for="backgroundColor" class="col col-lg-5 ">Background color</label>
-
-            <div class="col col-lg-3">
-              <div class="form-group">
-                <input  id="backgroundColor" type="text" class="default-theme my-theme form-control"  [(colorPicker)]="themingService.backgroundColor"
-                        [ngStyle]="themingService.myCustomTheme"
-                        [cpPresetColors]="['#000000', '#034768', '#046B99', '#00cfff', '#b3efff', '#ffffff']"
-                        [cpPosition]="'left'"
-                        [style.background]="themingService.backgroundColor"
-                        [style.color]="'white'"
-                        [cpAlphaChannel]="'always'"
-                        [cpOutputFormat]="'hex'"
-                        [value]="themingService.backgroundColor" (colorPickerChange)="themingService.onThemeChange(theme.CUSTOM)">
-              </div>
-            </div>
-          </div>
-
-          <div class="row justify-content-md-left">
-            <label for="fontColor" class="col col-lg-5">Font color</label>
-
-            <div class="col col-lg-3">
-              <div class="form-group">
-                <input  id="fontColor" type="text" class="form-control"  [(colorPicker)]="themingService.fontColor"
-                        [cpPresetColors]="['#000000', '#ffffff', '#ffff00']"
-                        [cpPosition]="'left'"
-                        [style.background]="themingService.fontColor"
-                        [style.color]="'black'"
-                        [cpAlphaChannel]="'always'"
-                        [cpOutputFormat]="'hex'"
-                        [value]="themingService.fontColor" (colorPickerChange)="themingService.onThemeChange(theme.CUSTOM)">
-              </div>
-            </div>
-          </div>
-
-
-        </fieldset>
-
         <fieldset >
           <legend>Select text size</legend>
           <div class="btn-group btn-group-toggle " data-toggle="buttons">
@@ -113,7 +72,48 @@
       <h4>Themes and background</h4>
 
       <fieldset>
-        <legend>Color theme</legend>
+        <legend>Custom theme</legend>
+
+        <div class="row justify-content-md-left">
+          <label for="backgroundColor" class="col col-lg-5 ">Background color</label>
+
+          <div class="col col-lg-3">
+            <div class="form-group">
+              <input  id="backgroundColor" type="text" class="default-theme my-theme form-control"  [(colorPicker)]="themingService.backgroundColor"
+                      [ngStyle]="themingService.myCustomTheme"
+                      [cpPresetColors]="['#000000', '#034768', '#046B99', '#00cfff', '#b3efff', '#ffffff']"
+                      [cpPosition]="'left'"
+                      [style.background]="themingService.backgroundColor"
+                      [style.color]="'white'"
+                      [cpAlphaChannel]="'always'"
+                      [cpOutputFormat]="'hex'"
+                      [value]="themingService.backgroundColor" (colorPickerChange)="themingService.onThemeChange(theme.CUSTOM)">
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-md-left">
+          <label for="fontColor" class="col col-lg-5">Font color</label>
+
+          <div class="col col-lg-3">
+            <div class="form-group">
+              <input  id="fontColor" type="text" class="form-control"  [(colorPicker)]="themingService.fontColor"
+                      [cpPresetColors]="['#000000', '#ffffff', '#ffff00']"
+                      [cpPosition]="'left'"
+                      [style.background]="themingService.fontColor"
+                      [style.color]="'black'"
+                      [cpAlphaChannel]="'always'"
+                      [cpOutputFormat]="'hex'"
+                      [value]="themingService.fontColor" (colorPickerChange)="themingService.onThemeChange(theme.CUSTOM)">
+            </div>
+          </div>
+        </div>
+
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Default themes</legend>
 
         <div class="btn-group">
           <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-black-theme" (click)="themingService.onThemeChange(theme.BLACK)">Aa</button>

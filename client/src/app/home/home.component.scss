@@ -75,7 +75,7 @@
 #floor0, #floor1, #floor2 {
   border: 1px solid black;
   width: 50%;
-  height: 60%;
+  height: auto;
   margin: 0 auto;
   padding: 0.1%;
   overflow: hidden;
@@ -88,7 +88,7 @@
 #restaurant, #lounge, #reception, #coatroom, #entrance{
   border: 1px solid black;
   width: 40%;
-
+  padding: 7%;
   overflow: scroll;
   text-align: center;
 
@@ -120,7 +120,7 @@
 .leftDiv > div, .rightDiv > div {
   border: 1px solid black;
   width: 100%;
-
+  padding: 7%;
 }
 
 .hoverable{
@@ -164,43 +164,13 @@ homeHeader{
   }
 
   h5{
-    margin: 0% !important;
+    margin: 0 !important;
   }
-
 
 
 }
 
 
-/*@media (max-width: 414px) {
-
-  .prev, .next{
-    margin-top: 40%;
-  }
-
-  #floor0{
-    width: 70%;
-  }
-}
-
-@media (min-width : 375px) and (max-width : 414px){
-
-}
-
-@media (min-width : 1112px) and (max-width : 1920px) {
-
-  #floor0{
-    width: 50%;
-  }
-
-  #restaurant, #lounge, #reception, #coatroom, #entrance {
-    height: 80px;
-  }
-
-  .leftDiv > div, .rightDiv > div {
-    height: 80px;
-  }
-}*/
 
 
 
