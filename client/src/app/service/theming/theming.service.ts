@@ -52,13 +52,7 @@ export class ThemingService {
   }
 
   setCustomFontSize() {
-/*
-    if (localStorage.getItem('fontSize')) {
-      this.fontSize = localStorage.getItem('fontSize');
-    }
-*/
     localStorage.setItem('fontSize', '' + this.fontSize)
-
   }
 
   checkAndChangeInputBorders() {

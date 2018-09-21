@@ -26,14 +26,19 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: #02afff;//lighten(mat-color($dark-primary),10%)
   }
 
-  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow ,
-  .mat-select-underline, .mat-option,  ::placeholder {
-    color:white !important;
+  .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,
+  ::placeholder {
+    color:black !important;
   }
 
-  .mat-select-content{
-    background-color: #034768 !important;
+  .mat-select-content, .mat-option {
+    background-color: #034768;
     color: white !important;
+  }
+
+  .mat-select-value {
+    background-color: white;
+    color: black;
   }
 
 }
@@ -53,17 +58,22 @@ $theme: mat-light-theme($primary, $accent, $warn);
   }
 
   .active{
-    background-color: #7ca4ad; //lighten(mat-color($light-primary),10%)
+    background-color: #72bde5; //lighten(mat-color($light-primary),10%)
   }
 
-  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline, .mat-option,
-  ::placeholder{
+  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,
+  ::placeholder {
     color:black !important;
   }
 
-  .mat-select-content{
+  .mat-select-content, .mat-option {
     background-color: #b3efff !important;
-    color: black !important;
+    color: white !important;
+  }
+
+  .mat-select-value {
+    background-color: white;
+    color: black;
   }
 
 }
@@ -90,9 +100,9 @@ $theme: mat-light-theme($primary, $accent, $warn);
     color:black !important;
   }
 
-  .mat-select-content{
-    background-color: white !important;
-    color: black !important;
+  .mat-select-content, .mat-select-value {
+    background-color: white;
+    color: black;
   }
 }
 
@@ -117,11 +127,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
     color:white !important;
   }
 
-  .mat-select-content{
-    background-color: dimgrey !important;
-    color: white !important;
+  .mat-select-content, .mat-select-value {
+    background-color: white;
+    color: black;
   }
-
-
-
 }

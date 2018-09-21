@@ -2,6 +2,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Component, Inject} from '@angular/core';
 import {PantryService} from "../../../service/pantry/pantry.service";
 import {Product} from "../product";
+import {ThemingService} from '../../../service/theming/theming.service';
 
 @Component({
     selector: 'app-delete-product',
@@ -12,7 +13,8 @@ export class DeleteProductComponent {
     isDeleteSelected: boolean = false;
 
     constructor(public dialogRef: MatDialogRef<DeleteProductComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: Product, public pantryService: PantryService) { }
+                @Inject(MAT_DIALOG_DATA) public data: Product, public pantryService: PantryService,
+                public themingService: ThemingService) { }
 
     onNoClick(): void {
         this.dialogRef.close();

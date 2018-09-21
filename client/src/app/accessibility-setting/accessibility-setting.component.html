@@ -1,43 +1,49 @@
-<div class="default-theme card mat-elevation-z20 mx-auto d-block sidenav"
-     [ngStyle]="themingService.myCustomTheme" xmlns="http://www.w3.org/1999/html">
+<div class="card mat-elevation-z20 mx-auto d-block sidenav" xmlns="http://www.w3.org/1999/html">
 
   <div class="card-body">
 
     <div id="mySidenav">
 
-      <button type="button" class="closebtn btn btn-sm mt-3 mb-4 default-theme my-theme"
-              [ngStyle]="themingService.myCustomTheme"
-              (click)="closeSidebar()">
-        <i class="fa fa-times fa-2x" aria-label="close sidebar"></i><p class="hidden">Close</p></button>
+      <div class="default-theme">
+        <button type="button" class="closebtn btn btn-sm mt-3 mb-4 default-theme my-theme"
+                [ngStyle]="themingService.myCustomTheme"
+                (click)="closeSidebar()">
+          <i class="fa fa-times fa-2x" aria-label="close sidebar"></i>
+          <p class="hidden">Close</p></button>
+      </div>
 
-      <div id="container" class="default-theme"  [ngStyle]="themingService.myCustomTheme">
+      <div id="container">
         <h4 class="accessibility-subtitle mb-3">Text and keyboard</h4>
 
-        <fieldset >
+        <fieldset>
           <legend>Text size: {{themingService.fontSize}} %</legend>
 
           <div class="my-4">
             <span class="mr-4">0 %</span>
-              <input class="border-0" type="range" min="0" max="200" (change)="setCustomFontSize()" [(ngModel)]="themingService.fontSize"/>
+            <input class="border-0" type="range" min="0" max="200" (change)="setCustomFontSize()"
+                   [(ngModel)]="themingService.fontSize"/>
             <span class="ml-4">200 %</span>
           </div>
 
-          <div class="btn-group btn-group-toggle " data-toggle="buttons">
-            <label class="btn default-theme my-theme active mr-4 mt-2 "
-                   [ngStyle]="themingService.myCustomTheme">
-              <input type="radio" name="options" id="smallFont" autocomplete="off" (focus)="setSmallFont()"
-                     checked> Small
-            </label>
-            <label class="btn default-theme my-theme mr-4 mt-2"
-                   [ngStyle]="themingService.myCustomTheme">
-              <input type="radio" name="options" id="mediumFont" autocomplete="off" (focus)="setMediumFont()"
-                      > Medium
-            </label>
-            <label class="btn default-theme my-theme blue-radio mr-4 mt-2"
-                   [ngStyle]="themingService.myCustomTheme">
-              <input type="radio" name="options" id="largeFont" autocomplete="off" (focus)="setLargeFont()"
-                      > Large
-            </label>
+          <div class="default-theme">
+
+            <div class="btn-group btn-group-toggle " data-toggle="buttons">
+              <label class="btn default-theme my-theme active mr-4 mt-2 "
+                     [ngStyle]="themingService.myCustomTheme">
+                <input type="radio" name="options" id="smallFont" autocomplete="off" (focus)="setSmallFont()"
+                       checked> Small
+              </label>
+              <label class="btn default-theme my-theme mr-4 mt-2"
+                     [ngStyle]="themingService.myCustomTheme">
+                <input type="radio" name="options" id="mediumFont" autocomplete="off" (focus)="setMediumFont()"
+                > Medium
+              </label>
+              <label class="btn default-theme my-theme blue-radio mr-4 mt-2"
+                     [ngStyle]="themingService.myCustomTheme">
+                <input type="radio" name="options" id="largeFont" autocomplete="off" (focus)="setLargeFont()"
+                > Large
+              </label>
+            </div>
           </div>
         </fieldset>
 
@@ -62,7 +68,7 @@
             </div>
             <!--INPUT WITH BORDER-->
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"cxf
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" cxf
                      (click)="changeInputBorder()">
               <label class="hidden form-check-label" for="gridRadios1">Input with border</label>
 
@@ -86,15 +92,17 @@
 
           <div class="col col-lg-3">
             <div class="form-group">
-              <input  id="backgroundColor" type="text" class="default-theme my-theme form-control"  [(colorPicker)]="themingService.backgroundColor"
-                      [ngStyle]="themingService.myCustomTheme"
-                      [cpPresetColors]="['#000000', '#034768', '#046B99', '#00cfff', '#b3efff', '#ffffff']"
-                      [cpPosition]="'left'"
-                      [style.background]="themingService.backgroundColor"
-                      [style.color]="'white'"
-                      [cpAlphaChannel]="'always'"
-                      [cpOutputFormat]="'hex'"
-                      [value]="themingService.backgroundColor" (colorPickerChange)="themingService.onThemeChange(theme.CUSTOM)">
+              <input id="backgroundColor" type="text" class="default-theme my-theme form-control"
+                     [(colorPicker)]="themingService.backgroundColor"
+                     [ngStyle]="themingService.myCustomTheme"
+                     [cpPresetColors]="['#000000', '#034768', '#046B99', '#00cfff', '#b3efff', '#ffffff']"
+                     [cpPosition]="'left'"
+                     [style.background]="themingService.backgroundColor"
+                     [style.color]="'white'"
+                     [cpAlphaChannel]="'always'"
+                     [cpOutputFormat]="'hex'"
+                     [value]="themingService.backgroundColor"
+                     (colorPickerChange)="themingService.onThemeChange(theme.CUSTOM)">
             </div>
           </div>
         </div>
@@ -104,14 +112,15 @@
 
           <div class="col col-lg-3">
             <div class="form-group">
-              <input  id="fontColor" type="text" class="form-control"  [(colorPicker)]="themingService.fontColor"
-                      [cpPresetColors]="['#000000', '#ffffff', '#ffff00']"
-                      [cpPosition]="'left'"
-                      [style.background]="themingService.fontColor"
-                      [style.color]="'black'"
-                      [cpAlphaChannel]="'always'"
-                      [cpOutputFormat]="'hex'"
-                      [value]="themingService.fontColor" (colorPickerChange)="themingService.onThemeChange(theme.CUSTOM)">
+              <input id="fontColor" type="text" class="form-control" [(colorPicker)]="themingService.fontColor"
+                     [cpPresetColors]="['#000000', '#ffffff', '#ffff00']"
+                     [cpPosition]="'left'"
+                     [style.background]="themingService.fontColor"
+                     [style.color]="'black'"
+                     [cpAlphaChannel]="'always'"
+                     [cpOutputFormat]="'hex'"
+                     [value]="themingService.fontColor"
+                     (colorPickerChange)="themingService.onThemeChange(theme.CUSTOM)">
             </div>
           </div>
         </div>
@@ -122,23 +131,31 @@
       <fieldset>
         <legend>Default themes</legend>
 
-        <div class="btn-group">
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-black-theme" (click)="themingService.onThemeChange(theme.BLACK)">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-default-theme"
-                  [ngStyle]="themingService.myCustomTheme"
-                  (click)="themingService.onThemeChange(theme.DEFAULT)">Aa</button>
-<!--
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-medium-theme" (click)="themingService.onThemeChange(theme.BLACK)">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-bright-theme" (click)="themingService.onThemeChange(theme.BLACK)">Aa</button>
--->
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-light-theme" (click)="themingService.onThemeChange(theme.LIGHT)">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-white-theme" (click)="themingService.onThemeChange(theme.WHITE)">Aa</button>
+        <div class="default-theme">
+          <div class="btn-group">
+            <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-black-theme"
+                    (click)="themingService.onThemeChange(theme.BLACK)">Aa
+            </button>
+            <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-default-theme"
+                    (click)="themingService.onThemeChange(theme.DEFAULT)">Aa
+            </button>
+            <!--
+                      <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-medium-theme" (click)="themingService.onThemeChange(theme.BLACK)">Aa</button>
+                      <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-bright-theme" (click)="themingService.onThemeChange(theme.BLACK)">Aa</button>
+            -->
+            <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-light-theme"
+                    (click)="themingService.onThemeChange(theme.LIGHT)">Aa
+            </button>
+            <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-white-theme"
+                    (click)="themingService.onThemeChange(theme.WHITE)">Aa
+            </button>
+          </div>
         </div>
-
 
         <div class="mb-3 mt-5">
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="colorContrast" (click)="changeTextContrast()" [checked]="themingService.isContrastChecked">
+            <input type="checkbox" class="custom-control-input" id="colorContrast" (click)="changeTextContrast()"
+                   [checked]="themingService.isContrastChecked">
             <label class="custom-control-label" for="colorContrast">Enable high text contrast</label>
           </div>
         </div>
@@ -155,11 +172,13 @@
       </fieldset>
 
     </div>
-    <button type="button" class="btn mt-5 p-3 default-theme my-theme"
-            [ngStyle]="themingService.myCustomTheme"
-            (click)="resetSettings()" aria-label="resetSettings">RESET SETTINGS</button>
+    <div class="default-theme">
+      <button type="button" class="btn mt-5 p-3 default-theme my-theme"
+              [ngStyle]="themingService.myCustomTheme"
+              (click)="resetSettings()" aria-label="resetSettings">RESET SETTINGS
+      </button>
+    </div>
   </div>
-
 
 
 </div>
