@@ -21,7 +21,16 @@ caption {
   caption-side: top;
 }
 
+table{
+  width: 70%;
+}
+
+mdb-form-field{
+  border:none;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
