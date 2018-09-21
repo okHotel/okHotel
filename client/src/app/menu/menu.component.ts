@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
   dinnerCardState = false;
   lunchCardState = true;
   note: string;
-  isReservationValid: boolean = false;
+  isReservationValid: boolean = true;
   reservationError: string;
 
   @ViewChild('inputNote') inputNote: ElementRef;
@@ -153,9 +153,6 @@ export class MenuComponent implements OnInit {
   checkReservation(type1: Meal, type2: Meal) {
     let total = 0;
 
-    console.log('isReservationNotValid1');
-    console.log(this.isReservationValid);
-
     this.menu.menu.reservations
       .filter(r => r.roomNumber === this.room)
       .filter(r => r.type === type1 || r.type === type2)
@@ -165,14 +162,11 @@ export class MenuComponent implements OnInit {
 
     this.isReservationValid = total <= (this.people.length - 1) * mul_factor;
 
-    if (this.isReservationValid) {
+    if (!this.isReservationValid) {
       this.reservationError = this.getErrorMessage();
     } else {
       this.reservationError = '';
     }
-
-    console.log('isReservationNotValid2');
-    console.log(this.isReservationValid);
 
     return this.isReservationValid;
   }
