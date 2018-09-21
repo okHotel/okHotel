@@ -8,6 +8,7 @@ import {Theme} from '../../custom-theme/theme';
 export class ThemingService {
 
   fontSize;
+  size: number;
   large = false;
   medium = false;
   small = false;
@@ -28,20 +29,19 @@ export class ThemingService {
   get myStyle(): any {
 
     if (this.large) {
-      this.fontSize = '150%';
+      this.fontSize = '150';
     } else if (this.medium) {
-      this.fontSize = '125%';
+      this.fontSize = '125';
     } else if (this.small) {
-      this.fontSize = '100%';
+      this.fontSize = '100';
     }
 
     return {
-      'font-size': this.fontSize
-    };
+      'font-size': this.fontSize + "%"
+    }
   }
 
   get myCustomTheme(): any {
-
 
     if (this.currentTheme === Theme.CUSTOM) {
       return {
@@ -49,6 +49,16 @@ export class ThemingService {
         'color': this.fontColor
       };
     }
+  }
+
+  setCustomFontSize() {
+/*
+    if (localStorage.getItem('fontSize')) {
+      this.fontSize = localStorage.getItem('fontSize');
+    }
+*/
+    localStorage.setItem('fontSize', '' + this.fontSize)
+
   }
 
   checkAndChangeInputBorders() {

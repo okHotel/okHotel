@@ -47,8 +47,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
   @include angular-material-theme($light-theme);
 
   .my-theme {
-    background-color: #b3efff; //mat-color($light-primary);
-    color: black;
+    background-color: #72bde5; //mat-color($light-primary);
+    color: white;
   }
 
   .active{
