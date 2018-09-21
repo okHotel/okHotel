@@ -44,10 +44,6 @@ $theme: mat-light-theme($primary, $accent, $warn);
   .active{
     background-color: #02afff;//lighten(mat-color($dark-primary),10%)
   }
-
-  .accent {
-    background: red;
-  }
 }
 
 .light-theme {

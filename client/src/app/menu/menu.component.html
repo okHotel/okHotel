@@ -33,7 +33,7 @@
                 {{reservationError}}
               </div>
 
-              <table class="table" summary="The courses you can select for lunch">
+              <table class="table my-theme default-theme" summary="The courses you can select for lunch">
 
                 <caption class="contrast">
                   <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Choose max 2 dishes for each person">
@@ -72,7 +72,7 @@
                   <td>
                     <mdb-form-field color="accent">
                       <mat-select  placeholder={{getRes(hl,dish)}}>
-                        <mat-option  *ngFor="let n of people" value=n (click)="setReservation(hl, dish, n)">
+                        <mat-option *ngFor="let n of people" value=n (click)="setReservation(hl, dish, n)">
                           {{n}}
                         </mat-option>
                       </mat-select>
@@ -116,7 +116,7 @@
                 {{reservationError}}
               </div>
 
-              <table class="table" summary="The courses you can select for dinner">
+              <table class="table  my-theme default-theme" summary="The courses you can select for dinner">
                 <caption class="contrast">
                   <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Choose max 3 dishes for each person">
                     Dinner
@@ -169,7 +169,7 @@
         </div>
 
         <div class="card" [hidden]="messageService.error">
-          <div class="card-body">
+          <div class="card-body  my-theme default-theme">
 
             <div>
               Other notes:<br>
@@ -193,7 +193,7 @@
         </div>
 
         <div class="btn-group btn-group-sm d-flex flex-row-reverse">
-          <button type="button" class="btn px-5 py-3 ml-4 mt-4" (click)="saveReservations()" aria-label="Save"
+          <button type="button" class=" my-theme default-theme btn px-5 py-3 ml-4 mt-4" (click)="saveReservations()" aria-label="Save"
                   [disabled]="!addCustomerForm.form.valid || !isReservationValid">Save
 
           </button>
