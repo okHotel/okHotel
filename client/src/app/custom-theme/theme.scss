@@ -26,7 +26,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: #02afff;//lighten(mat-color($dark-primary),10%)
   }
 
-  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline, .mat-option {
+  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow ,
+  .mat-select-underline, .mat-option,  ::placeholder {
     color:white !important;
   }
 
@@ -34,6 +35,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: #034768 !important;
     color: white !important;
   }
+
+
 
 }
 
@@ -55,7 +58,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: #7ca4ad; //lighten(mat-color($light-primary),10%)
   }
 
-  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline, .mat-option   {
+  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline, .mat-option,
+  ::placeholder{
     color:black !important;
   }
 
@@ -83,7 +87,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: lightslategrey; //lighten(mat-color($white-primary), 10%)
   }
 
-  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,  .mat-option  {
+  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,
+  ::placeholder, .mat-option  {
     color:black !important;
   }
 
@@ -109,7 +114,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: lightslategrey; //lighten(mat-color($black-primary),10%)
   }
 
-  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline, .mat-option {
+  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,
+  ::placeholder, .mat-option {
     color:white !important;
   }
 
@@ -117,5 +123,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: dimgrey !important;
     color: white !important;
   }
+
+
 
 }

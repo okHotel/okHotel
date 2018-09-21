@@ -12,7 +12,9 @@
 
       <app-message></app-message>
 
-      <div class="default-theme my-theme" *ngFor="let variation of variations; let i = index" id="variationsAddedDiv">
+      <div class="default-theme my-theme"
+           [ngStyle]="themingService.myCustomTheme"
+           *ngFor="let variation of variations; let i = index" id="variationsAddedDiv">
         <p><button mat-button #button id="delButton" (click)="deleteVariation(variation, i)">
           <i class="material-icons">clear</i>
         </button>{{variation}}</p>
@@ -20,13 +22,17 @@
 
       <form #addVariationForm="ngForm" >
       <div class="md-form d-flex bd-highlight">
-        <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight">
+        <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight default-theme my-theme"
+                        [ngStyle]="themingService.myCustomTheme">
           <label for="variation" >Insert Variations</label>
 
-          <input id="variation" type="text" class="form-control" placeholder="Variation"
+          <input id="variation" type="text" class="form-control default-theme my-theme"
+                 [ngStyle]="themingService.myCustomTheme" placeholder="Variation"
                required name="variation" [(ngModel)]="variation.type" (keyup.enter)="addVariation(variation.type)" >
         </mdb-form-field>
-        <button mat-button #button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)">
+        <button class="default-theme my-theme"
+                [ngStyle]="themingService.myCustomTheme"
+                mat-button #button id="saveButton" (click)="addVariation(variation.type)" [disabled]="isInputInValid(variation.type)">
           <i class="material-icons">add</i>
         </button>
       </div>
