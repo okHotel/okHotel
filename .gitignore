@@ -56,3 +56,6 @@ server/config/database.js
 
 # ssl certs
 server/certs/*
+*.css
+*.css
+client/src/app/menu/menu.component.css
