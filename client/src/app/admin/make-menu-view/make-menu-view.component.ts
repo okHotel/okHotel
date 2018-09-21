@@ -104,4 +104,10 @@ export class MakeMenuViewComponent implements OnInit {
         return false;
     }*/
   }
+
+
+  resetSuccess() {
+    this.messageService.success = '';
+  }
+
 }
