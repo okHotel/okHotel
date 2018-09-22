@@ -41,6 +41,10 @@ $theme: mat-light-theme($primary, $accent, $warn);
     color: black;
   }
 
+  .icon-color {
+    color: #034768;
+  }
+
 }
 
 .light-theme {
@@ -76,6 +80,10 @@ $theme: mat-light-theme($primary, $accent, $warn);
     color: black;
   }
 
+  .icon-color {
+    color: #72bde5;
+  }
+
 }
 
 .white-theme {
@@ -104,6 +112,10 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: white;
     color: black;
   }
+
+  .icon-color {
+    color: black;
+  }
 }
 
 .black-theme {
@@ -129,6 +141,10 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   .mat-select-content, .mat-select-value {
     background-color: white;
+    color: black;
+  }
+
+  .icon-color {
     color: black;
   }
 }
