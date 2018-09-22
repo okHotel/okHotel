@@ -16,15 +16,18 @@
         <h4 class="accessibility-subtitle mb-3">Text and keyboard</h4>
 
         <fieldset>
-          <legend>Text size: {{themingService.fontSize}} %</legend>
+          <legend>Custom text size</legend>
 
           <div class="my-4">
-            <span class="mr-4">0 %</span>
-            <input class="border-0" type="range" min="0" max="200" (change)="setCustomFontSize()"
+            <span class="mr-4">70 %</span>
+            <input class="border-0" type="range" min="70" max="160" (change)="setCustomFontSize()"
                    [(ngModel)]="themingService.fontSize"/>
-            <span class="ml-4">200 %</span>
+            <span class="ml-4">160 %</span>
           </div>
+        </fieldset>
 
+        <fieldset>
+          <legend>Default text size</legend>
           <div class="default-theme">
 
             <div class="btn-group btn-group-toggle " data-toggle="buttons">
