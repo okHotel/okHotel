@@ -43,6 +43,25 @@ mat-slider {
   transition: 1s;
 }
 
+
+.md-form-custom{
+  border: 1px solid grey;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  background-color: transparent ;
+  border-radius: 0;
+
+
+}
+
+.form-control:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+
 /*
 caption {
   caption-side: top;
