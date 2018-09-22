@@ -1,6 +1,6 @@
-<div id="backLogin">
+<div id="backLogin" (click)="resetError()" >
 
-    <div class="container flex-center text-center default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+    <div  class="container flex-center text-center default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
 
       <div class="card">
 
@@ -30,6 +30,8 @@
                 <input type="checkbox" value="remember-me"> Remember me
               </div>
             </div>
+
+
 
             <div class="form-label-group">
               <button class="btn btn-lg btn-block default-theme my-theme" type="submit"

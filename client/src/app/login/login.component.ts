@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
               private router: Router, private route: ActivatedRoute, private error: MessageService,
               public themingService: ThemingService) {
     if (this.themingService.isUseBackgroundOn()) {
-      document.body.style.backgroundImage = "url('../../assets/images/casa-per-ferie-san-bassiano.jpg')";
+      document.body.style.backgroundImage = "url('..s/../assets/images/casa-per-ferie-san-bassiano.jpg')";
       document.body.style.backgroundRepeat = "repeat";
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center center";
@@ -63,6 +63,10 @@ export class LoginComponent implements OnInit {
 
   registration() {
     this.router.navigate(['/registration']);
+  }
+
+  resetError() {
+    this.error.error = '';
   }
 
 }
