@@ -44,6 +44,10 @@ export class ThemingService {
   get myCustomTheme(): any {
 
     if (this.currentTheme === Theme.CUSTOM) {
+      localStorage.setItem('theme', Theme.CUSTOM.valueOf());
+      localStorage.setItem('backgroundColor',  '' + this.backgroundColor);
+      localStorage.setItem('fontColor', '' + this.fontColor);
+
       return {
         'background-color': this.backgroundColor,
         'color': this.fontColor
@@ -159,6 +163,10 @@ export class ThemingService {
       this.currentTheme = Theme.WHITE;
     } else if (item === 'light-theme') {
       this.currentTheme = Theme.LIGHT;
+    } else if (item === 'custom-theme') {
+      this.currentTheme = Theme.CUSTOM;
+      this.backgroundColor = localStorage.getItem('backgroundColor');
+      this.fontColor = localStorage.getItem('fontColor');
     }
 
     if (localStorage.getItem('theme')) {
