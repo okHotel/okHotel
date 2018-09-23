@@ -43,6 +43,14 @@ export class ThemingService {
 
   get myCustomTheme(): any {
 
+    if (this.large) {
+      this.fontSize = '150';
+    } else if (this.medium) {
+      this.fontSize = '125';
+    } else if (this.small) {
+      this.fontSize = '100';
+    }
+
     if (this.currentTheme === Theme.CUSTOM) {
       localStorage.setItem('theme', Theme.CUSTOM.valueOf());
       localStorage.setItem('backgroundColor',  '' + this.backgroundColor);
@@ -50,13 +58,14 @@ export class ThemingService {
 
       return {
         'background-color': this.backgroundColor,
-        'color': this.fontColor
+        'color': this.fontColor,
+        'font-size': this.fontSize + "%"
       };
     }
   }
 
   setCustomFontSize() {
-    localStorage.setItem('fontSize', '' + this.fontSize)
+    localStorage.setItem('fontSize', '' + this.fontSize);
   }
 
   checkAndChangeInputBorders() {
