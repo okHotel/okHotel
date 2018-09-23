@@ -21,7 +21,7 @@
           <div class="my-4">
             <span class="mr-4">70 %</span>
             <input class="border-0" type="range" min="70" max="160" (change)="setCustomFontSize()"
-                   [(ngModel)]="themingService.fontSize"/>
+                   [(ngModel)]="themingService.fontSize" id="fontSize"/><label for="fontSize" class="hidden">Select your favourite font size</label>
             <span class="ml-4">160 %</span>
           </div>
         </fieldset>
