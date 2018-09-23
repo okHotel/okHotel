@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
 
   constructor(
     public themingService: ThemingService,
-    public alertService: AlertsService
   ) {}
 
   ngOnInit() {
@@ -22,11 +21,16 @@ export class AppComponent implements OnInit {
     console.log(localStorage);
 
     if (localStorage.getItem('fontSize') === 'large') {
-      this.themingService.large = localStorage.getItem('fontSize') === 'large';
+      this.themingService.large = localStorage.getItem('fontSize') === '150';
     } else if (localStorage.getItem('fontSize') === 'medium') {
-      this.themingService.medium = localStorage.getItem('fontSize') === 'medium';
+      this.themingService.medium = localStorage.getItem('fontSize') === '125';
     } else if (localStorage.getItem('fontSize') === 'small') {
-      this.themingService.small = localStorage.getItem('fontSize') === 'small';
+      this.themingService.small = localStorage.getItem('fontSize') === '100';
+    } else if (localStorage.getItem('fontSize')) {
+      this.themingService.large = false;
+      this.themingService.medium = false;
+      this.themingService.small = false;
+      this.themingService.fontSize = localStorage.getItem('fontSize');
     }
 
     if (localStorage.getItem('useBackground')) {

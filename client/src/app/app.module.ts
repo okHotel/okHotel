@@ -25,7 +25,6 @@ import {CustomerDetailComponent} from './customer/customer-detail/customer-detai
 import {BookingService} from './service/booking/booking.service';
 import {AuthService} from './service/auth/auth.service';
 import { DatePipe } from '@angular/common';
-import {MatSelectModule} from '@angular/material';
 import {BarcodeDecoderService} from './service/pantry/barcode-scanner/barcode-decoder.service';
 import {
   MatCardModule,
@@ -33,6 +32,7 @@ import {
   MatPaginatorModule,
   MatToolbarModule,
   MatInputModule,
+  MatSelectModule,
   MatSortModule,
   MatIconModule,
   MatButtonModule,

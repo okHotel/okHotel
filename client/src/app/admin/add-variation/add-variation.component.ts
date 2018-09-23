@@ -29,7 +29,6 @@ export class AddVariationComponent implements OnInit {
     }
 
     ngOnInit() {
-
         let i = 0;
         this.variationService.getVariations()
             .subscribe( variations => {
@@ -78,7 +77,7 @@ export class AddVariationComponent implements OnInit {
     }
 
 
-  public goToStatics() {
+  public goToStatistics() {
       this.router.navigateByUrl('admin/restaurant');
   }
     /*public getErrorMessage() {

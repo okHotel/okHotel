@@ -8,6 +8,7 @@ import {Theme} from '../../custom-theme/theme';
 export class ThemingService {
 
   fontSize;
+  size: number;
   large = false;
   medium = false;
   small = false;
@@ -28,27 +29,34 @@ export class ThemingService {
   get myStyle(): any {
 
     if (this.large) {
-      this.fontSize = '150%';
+      this.fontSize = '150';
     } else if (this.medium) {
-      this.fontSize = '125%';
+      this.fontSize = '125';
     } else if (this.small) {
-      this.fontSize = '100%';
+      this.fontSize = '100';
     }
 
     return {
-      'font-size': this.fontSize
-    };
+      'font-size': this.fontSize + "%"
+    }
   }
 
   get myCustomTheme(): any {
 
-
     if (this.currentTheme === Theme.CUSTOM) {
+      localStorage.setItem('theme', Theme.CUSTOM.valueOf());
+      localStorage.setItem('backgroundColor',  '' + this.backgroundColor);
+      localStorage.setItem('fontColor', '' + this.fontColor);
+
       return {
         'background-color': this.backgroundColor,
         'color': this.fontColor
       };
     }
+  }
+
+  setCustomFontSize() {
+    localStorage.setItem('fontSize', '' + this.fontSize)
   }
 
   checkAndChangeInputBorders() {
@@ -155,6 +163,10 @@ export class ThemingService {
       this.currentTheme = Theme.WHITE;
     } else if (item === 'light-theme') {
       this.currentTheme = Theme.LIGHT;
+    } else if (item === 'custom-theme') {
+      this.currentTheme = Theme.CUSTOM;
+      this.backgroundColor = localStorage.getItem('backgroundColor');
+      this.fontColor = localStorage.getItem('fontColor');
     }
 
     if (localStorage.getItem('theme')) {
