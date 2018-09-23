@@ -23,7 +23,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
   }
 
   .active{
-    background-color: #02afff;//lighten(mat-color($dark-primary),10%)
+    background-color: lighten(#034768, 16%) // #02afff;
   }
 
   .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,
