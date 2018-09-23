@@ -2,6 +2,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Component, Inject} from '@angular/core';
 import {CustomerService} from "../../service/customer/customer.service";
 import {Customer} from "../customer";
+import {ThemingService} from '../../service/theming/theming.service';
 
 @Component({
     selector: 'app-delete-customer',
@@ -11,7 +12,8 @@ import {Customer} from "../customer";
 export class DeleteCustomerComponent {
 
     constructor(public dialogRef: MatDialogRef<DeleteCustomerComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: Customer, public customerService: CustomerService) { }
+                @Inject(MAT_DIALOG_DATA) public data: Customer, public customerService: CustomerService,
+                public themingService: ThemingService) { }
 
     onNoClick(): void {
         this.dialogRef.close();

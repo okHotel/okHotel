@@ -9,12 +9,10 @@
   </div>
 
   <div class="btn-group btn-group-sm d-flex flex-row-reverse">
-    <button class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"[mat-dialog-close]="1"
-            [ngStyle]="themingService.myCustomTheme"
-            (click)="confirmDelete()">Delete</button>
-    <button class="btn px-5 px-3 ml-4 mt-4 default-theme my-theme" (click)="onNoClick()"
-            [ngStyle]="themingService.myCustomTheme"
-            tabindex="-1">Cancel</button>
+    <button class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+            [ngStyle]="themingService.myCustomTheme" [mat-dialog-close]="1" (click)="confirmDelete()">Delete</button>
+    <button class="btn px-5 px-3 ml-4 mt-4 default-theme my-theme"
+            [ngStyle]="themingService.myCustomTheme" (click)="onNoClick()" tabindex="-1">Cancel</button>
   </div>
 
 

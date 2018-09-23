@@ -9,49 +9,53 @@
               (click)="goToMenu()">
         <i class="fa fa-times fa-2x" aria-label="delete dish"></i><p class="hidden">Close</p> </button>
 
-      <div id="container">
+      <div class="card">
 
-        <table summary="The variations you can select for lunch"
-               class="default-theme my-theme"
-               [ngStyle]="themingService.myCustomTheme">
-          <caption class="text-center">Please choose what variations you need</caption>
-          <tr>
-            <th scope="col" class="default-theme my-theme"
-                [ngStyle]="themingService.myCustomTheme">Type</th>
-            <th scope="col" class="default-theme my-theme pl-2"
-                [ngStyle]="themingService.myCustomTheme">Intolerance</th>
-            <th scope="col" class="default-theme my-theme pl-3 pr-4"
-                [ngStyle]="themingService.myCustomTheme">Allergy</th>
-          </tr>
+        <div class="card-header">Please choose what variations you need</div>
 
-          <tr *ngFor="let v of variations">
-            <td scope="row">{{v}}</td>
-            <td>
-              <mdb-form-field class="form-control accent default-theme my-theme"
+        <div class="card-body" class="default-theme my-theme py-3 px-3"
+             [ngStyle]="themingService.myCustomTheme">
+
+          <table summary="The variations you can select for lunch">
+            <caption class="text-center hidden">Please choose what variations you need</caption>
+            <tr>
+              <th scope="col" class="default-theme my-theme"
+                  [ngStyle]="themingService.myCustomTheme">Type</th>
+              <th scope="col" class="default-theme my-theme pl-2"
+                  [ngStyle]="themingService.myCustomTheme">Intolerance</th>
+              <th scope="col" class="default-theme my-theme pl-3 pr-4"
+                  [ngStyle]="themingService.myCustomTheme">Allergy</th>
+            </tr>
+
+            <tr *ngFor="let v of variations">
+              <td scope="row">{{v}}</td>
+              <td>
+                <mdb-form-field class="form-control accent default-theme my-theme"
+                                [ngStyle]="themingService.myCustomTheme">
+                  <mat-select placeholder="{{getVariations(intollerance, v)}}">
+                    <mat-option *ngFor="let n of people" [value]=n (click)="setVariation(v, intollerance, n)">
+                      {{n}}
+                    </mat-option>
+                  </mat-select>
+                </mdb-form-field>
+              </td>
+
+              <td>
+                <mdb-form-field class="form-control accent default-theme my-theme"
+                                [ngStyle]="themingService.myCustomTheme">
+                  <mat-select placeholder="{{getVariations(allergy, v)}}" class="default-theme my-theme"
                               [ngStyle]="themingService.myCustomTheme">
-                <mat-select placeholder="{{getVariations(intollerance, v)}}">
-                  <mat-option *ngFor="let n of people" [value]=n (click)="setVariation(v, intollerance, n)">
-                    {{n}}
-                  </mat-option>
-                </mat-select>
-              </mdb-form-field>
-            </td>
+                    <mat-option *ngFor="let n of people" [value]=n (click)="setVariation(v, allergy, n)">
+                      {{n}}
+                    </mat-option>
+                  </mat-select>
+                </mdb-form-field>
+              </td>
+            </tr>
 
-            <td>
-              <mdb-form-field class="form-control accent default-theme my-theme"
-                              [ngStyle]="themingService.myCustomTheme">
-                <mat-select placeholder="{{getVariations(allergy, v)}}" class="default-theme my-theme"
-                            [ngStyle]="themingService.myCustomTheme">
-                  <mat-option *ngFor="let n of people" [value]=n (click)="setVariation(v, allergy, n)">
-                    {{n}}
-                  </mat-option>
-                </mat-select>
-              </mdb-form-field>
-            </td>
-          </tr>
+          </table>
 
-        </table>
-
+        </div>
       </div>
 
     </div>
