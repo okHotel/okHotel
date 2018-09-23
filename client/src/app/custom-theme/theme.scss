@@ -17,7 +17,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   @include angular-material-theme($default-theme);
 
-  .my-theme {
+  .my-theme, .mat-select-content, .mat-option, .mat-select-value {
     background-color: #034768; //mat-color($dark-primary);
     color: white;
   }
@@ -28,17 +28,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,
   ::placeholder {
-    color:black !important;
-  }
-
-  .mat-select-content, .mat-option {
-    background-color: #034768;
     color: white !important;
-  }
-
-  .mat-select-value {
-    background-color: white;
-    color: black;
   }
 
   .icon-color {
@@ -56,8 +46,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   @include angular-material-theme($light-theme);
 
-  .my-theme {
-    background-color: #72bde5; //mat-color($light-primary);
+  .my-theme, .mat-select-content, .mat-option, .mat-select-value  {
+    background-color:  #b3efff ; //mat-color($light-primary);
     color: black;
   }
 
@@ -65,27 +55,13 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: #72bde5; //lighten(mat-color($light-primary),10%)
   }
 
-<<<<<<< HEAD
-  .md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline, .mat-option,  mat-list-item {
-=======
-  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,
+  .md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline, .mat-option, .mat-list-item,
   ::placeholder {
->>>>>>> ae4f5b712ea96af25f663ab9a3a673d936fa6adf
     color:black !important;
   }
 
-  .mat-select-content, .mat-option {
-    background-color: #b3efff !important;
-    color: white !important;
-  }
-
-  .mat-select-value {
-    background-color: white;
-    color: black;
-  }
-
   .icon-color {
-    color: #72bde5;
+    color:  #b3efff ;
   }
 
 }
@@ -98,7 +74,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   @include angular-material-theme($white-theme);
 
-  .my-theme {
+  .my-theme,  .mat-select-content, .mat-select-value {
     background-color: white; //mat-color($white-primary);
     color: black;
   }
@@ -107,23 +83,12 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: lightslategrey; //lighten(mat-color($white-primary), 10%)
   }
 
-<<<<<<< HEAD
-  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline, .mat-option, mat-list-item {
-=======
-  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,
-  ::placeholder, .mat-option  {
->>>>>>> ae4f5b712ea96af25f663ab9a3a673d936fa6adf
+
+  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,  .mat-list-item,
+  ::placeholder, .mat-option,  .icon-color   {
     color:black !important;
   }
 
-  .mat-select-content, .mat-select-value {
-    background-color: white;
-    color: black;
-  }
-
-  .icon-color {
-    color: black;
-  }
 }
 
 .black-theme {
@@ -134,7 +99,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   @include angular-material-theme($black-theme);
 
-  .my-theme {
+  .my-theme,  .mat-select-content, .mat-select-value {
     background-color: black; //mat-color($black-primary);
     color: white;
   }
@@ -146,12 +111,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
   ::placeholder, .mat-option {
     color:white !important;
   }
-
-  .mat-select-content, .mat-select-value {
-    background-color: white;
-    color: black;
-  }
-
+  
   .icon-color {
     color: black;
   }
