@@ -13,71 +13,77 @@
 
       <app-message></app-message>
 
-      <div class="default-theme">
+      <div class="default-theme" style="margin-bottom: 5%; text-align: center">
       <button type="button" class="btn px-3 px-2 ml-4 mt-4 default-theme my-theme"
               (click)="onPrint()" aria-label="Print"
-              [ngStyle]="themingService.myCustomTheme">Print
+              [ngStyle]="themingService.myCustomTheme">
+        <i class="fa fa-print" aria-label="printMenu"></i>
+        Print
       </button>
       <button type="button" class="btn px-3 px-2 ml-4 mt-4 default-theme my-theme"
               (click)="goToMakeMenu()"
               [ngStyle]="themingService.myCustomTheme"
-              aria-label="New Menu">New Menu
+              aria-label="New Menu">
+        <i class="fa fa-plus" aria-label="newMenu"></i>
+        New Menu
       </button>
       <button type="button" class="btn px-3 px-2 ml-4 mt-4 default-theme my-theme"
               (click)="goToMakeVariation()"
               [ngStyle]="themingService.myCustomTheme"
-              aria-label="New Variation">New
-        Variation
+              aria-label="New Variation">
+        <i class="fa fa-plus" aria-label="Variation"></i>
+        New Variation
       </button>
       </div>
 
-      <div class="md-form">
-        <mdb-form-field floatPlaceholder="never" color="accent">
+      <div class="md-form default-theme my-theme">
+
+        <mdb-form-field floatPlaceholder="never" color="accent" class="default-theme my-theme">
 
           <div class="row">
+
             <div class="col">
-              <label for="date">Select menu date</label>
+              <label for="date" class="default-theme my-theme">Select menu date</label>
               <input #input type="date" id="date" placeholder="Select menu date" [(ngModel)]="date" name="date"
-                     (keyup)="setDateMenu($event)" class="form-control">
+                     (keyup)="setDateMenu($event)" class="form-control default-theme my-theme">
             </div>
 
-            <div class="col">
-
-              <mat-select class="text-dark" id="roomNumber" name="roomNumber" [(ngModel)]="roomNumber"
-                          placeholder="Room number" style="color: blue">
-                <mat-option *ngFor="let number of roomsNumber" [value]=number.roomNumber required> {{number.roomNumber}}
+            <div class="col rounded">
+              <mat-select class="text-dark default-theme my-theme rounded" id="roomNumber" name="roomNumber" [(ngModel)]="roomNumber"
+                          placeholder="Room number" style="border: none">
+                <mat-option class="default-theme my-theme" *ngFor="let number of roomsNumber" [value]=number.roomNumber required> {{number.roomNumber}}
                 </mat-option>
               </mat-select>
-
             </div>
+
           </div>
         </mdb-form-field>
 
       </div>
 
-      <div class="card my-3">
-        <mat-table #table [dataSource]="lunchDataSource">
+      <div class="card my-3 default-theme my-theme">
+        <mat-table #table [dataSource]="lunchDataSource" class="default-theme my-theme">
 
           <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
 
           <!-- ID Column -->
-          <ng-container matColumnDef="dish" class="text-dark">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Lunch
+          <ng-container matColumnDef="dish" class="default-theme my-theme">
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast default-theme my-theme">Lunch
             </mat-header-cell>
-            <mat-cell *matCellDef="let row">
+            <mat-cell class="default-theme my-theme" *matCellDef="let row">
               <span class="mobile-label">Lunch:</span>
               {{row}}
             </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="wholePortion">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Whole Portion
+          <ng-container matColumnDef="wholePortion" class="default-theme my-theme">
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast default-theme my-theme">Whole Portion
             </mat-header-cell>
-            <mat-cell *matCellDef="let row">
+            <mat-cell class="default-theme my-theme" *matCellDef="let row">
               <span class="mobile-label">Whole Portion:</span>
               <mat-list>
-                <mat-list-item>{{getTotalQuantitiesFor(row, meal.LUNCH)}}</mat-list-item>
+                <mat-list-item class="default-theme my-theme">{{getTotalQuantitiesFor(row, meal.LUNCH)}}</mat-list-item>
                 <mat-list-item *ngFor="let intollerance of getVariations(row, meal.LUNCH, variation.INTOLLERANCE)">
                   {{intollerance.name}} intollerance: {{intollerance.quantity}}
                 </mat-list-item>
@@ -92,10 +98,10 @@
             </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="halfPortion">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Half Portion
+          <ng-container matColumnDef="halfPortion" class="default-theme my-theme">
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast default-theme my-theme">Half Portion
             </mat-header-cell>
-            <mat-cell *matCellDef="let row">
+            <mat-cell class="default-theme my-theme" *matCellDef="let row">
               <span class="mobile-label">Half Portion:</span>
               <mat-list>
                 <mat-list-item>{{getTotalQuantitiesFor(row, meal.HALF_LUNCH)}}</mat-list-item>
@@ -117,25 +123,25 @@
         </mat-table>
       </div>
 
-      <div class="card my-3">
-        <mat-table #table [dataSource]="dinnerDataSource">
+      <div class="card my-3 default-theme my-theme">
+        <mat-table #table [dataSource]="dinnerDataSource" class="default-theme my-theme">
           <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
 
           <!-- ID Column -->
-          <ng-container matColumnDef="dish">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Dinner
+          <ng-container matColumnDef="dish" class="default-theme my-theme">
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast default-theme my-theme">Dinner
             </mat-header-cell>
-            <mat-cell *matCellDef="let row">
+            <mat-cell class="default-theme my-theme" *matCellDef="let row">
               <span class="mobile-label">Dinner:</span>
               {{row}}
             </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="wholePortion">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Whole Portion
+          <ng-container matColumnDef="wholePortion" class="default-theme my-theme">
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast default-theme my-theme">Whole Portion
             </mat-header-cell>
-            <mat-cell *matCellDef="let row">
+            <mat-cell class="default-theme my-theme" *matCellDef="let row">
               <span class="mobile-label">Whole Portion:</span>
               <mat-list>
                 <mat-list-item>{{getTotalQuantitiesFor(row, meal.DINNER)}}</mat-list-item>
@@ -149,10 +155,10 @@
             </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="halfPortion">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Half Portion
+          <ng-container matColumnDef="halfPortion" class="default-theme my-theme">
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast default-theme my-theme">Half Portion
             </mat-header-cell>
-            <mat-cell *matCellDef="let row">
+            <mat-cell class="default-theme my-theme" *matCellDef="let row">
               <span class="mobile-label contrast">Half Portion:</span>
               <mat-list>
                 <mat-list-item>{{getTotalQuantitiesFor(row, meal.HALF_DINNER)}}</mat-list-item>
@@ -173,21 +179,21 @@
         </mat-table>
       </div>
 
-      <div class="card my-3">
-        <mat-table [dataSource]="otherNotesDataSource">
-          <ng-container matColumnDef="roomNumber">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Room number
+      <div class="card my-3 default-theme my-theme">
+        <mat-table [dataSource]="otherNotesDataSource" class="default-theme my-theme" >
+          <ng-container matColumnDef="roomNumber" class="default-theme my-theme">
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast default-theme my-theme">Room number
             </mat-header-cell>
-            <mat-cell *matCellDef="let note" [ngStyle]="themingService.myStyle">
+            <mat-cell class="default-theme my-theme" *matCellDef="let note" [ngStyle]="themingService.myStyle">
               <span class="mobile-label" class="contrast">Room Number:</span>
               {{note.roomNumber}}
             </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="text">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast">Note
+          <ng-container matColumnDef="text" class="default-theme my-theme">
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myStyle" class="contrast default-theme my-theme">Note
             </mat-header-cell>
-            <mat-cell *matCellDef="let note">
+            <mat-cell class="default-theme my-theme" *matCellDef="let note">
               <span class="mobile-label" class="contrast">Note:</span>
               {{note.text}}
             </mat-cell>
@@ -199,7 +205,7 @@
         </mat-table>
       </div>
 
-      <div class="default-theme">
+      <div class="default-theme my-theme">
       <div class="btn-group btn-group-sm d-flex flex-row-reverse">
         <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
                 (click)="goBack()"
