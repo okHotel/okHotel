@@ -71,18 +71,18 @@
 
           <!-- ID Column -->
           <ng-container matColumnDef="dish" class="default-theme my-theme">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme">Lunch
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme" style="font-size:100%">Lunch
             </mat-header-cell>
-            <mat-cell class="default-theme my-theme" [ngStyle]="themingService.myCustomTheme" *matCellDef="let row">
+            <mat-cell class="default-theme my-theme" [ngStyle]="themingService.myCustomTheme" *matCellDef="let row" style="font-size:100%">
               <span class="mobile-label">Lunch:</span>
               {{row}}
             </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="wholePortion" class="default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme">Whole Portion
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme" style="font-size:100%">Whole Portion
             </mat-header-cell>
-            <mat-cell class="default-theme my-theme" *matCellDef="let row" [ngStyle]="themingService.myCustomTheme">
+            <mat-cell class="default-theme my-theme" *matCellDef="let row" [ngStyle]="themingService.myCustomTheme" style="font-size:100%">
               <span class="mobile-label">Whole Portion:</span>
               <mat-list>
                 <mat-list-item  class="default-theme my-theme" [ngStyle]="themingService.myCustomTheme">{{getTotalQuantitiesFor(row, meal.LUNCH)}}</mat-list-item>
@@ -103,7 +103,7 @@
           </ng-container>
 
           <ng-container matColumnDef="halfPortion" class="default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme">Half Portion
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme" style="font-size:100%">Half Portion
             </mat-header-cell>
             <mat-cell class="default-theme my-theme" *matCellDef="let row" [ngStyle]="themingService.myCustomTheme">
               <span class="mobile-label">Half Portion:</span>
@@ -137,7 +137,7 @@
 
           <!-- ID Column -->
           <ng-container matColumnDef="dish" class="default-theme my-theme">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme">Dinner
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme" style="font-size:100%">Dinner
             </mat-header-cell>
             <mat-cell class="default-theme my-theme" *matCellDef="let row" [ngStyle]="themingService.myCustomTheme">
               <span class="mobile-label">Dinner:</span>
@@ -146,7 +146,7 @@
           </ng-container>
 
           <ng-container matColumnDef="wholePortion" class="default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme">Whole Portion
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme" style="font-size:100%">Whole Portion
             </mat-header-cell>
             <mat-cell class="default-theme my-theme" *matCellDef="let row" [ngStyle]="themingService.myCustomTheme">
               <span class="mobile-label">Whole Portion:</span>
@@ -165,7 +165,7 @@
           </ng-container>
 
           <ng-container matColumnDef="halfPortion" class="default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme">Half Portion
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme" style="font-size:100%">Half Portion
             </mat-header-cell>
             <mat-cell class="default-theme my-theme" *matCellDef="let row" [ngStyle]="themingService.myCustomTheme">
               <span class="mobile-label contrast">Half Portion:</span>
@@ -194,7 +194,7 @@
       <div class="card my-3 default-theme my-theme">
         <mat-table [dataSource]="otherNotesDataSource" class="default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
           <ng-container matColumnDef="roomNumber" class="default-theme my-theme" >
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme">Room number
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme" style="font-size:100%">Room number
             </mat-header-cell>
             <mat-cell class="default-theme my-theme" *matCellDef="let note" [ngStyle]="themingService.myCustomTheme">
               <span class="mobile-label" class="contrast">Room Number:</span>
@@ -203,7 +203,7 @@
           </ng-container>
 
           <ng-container matColumnDef="text" class="default-theme my-theme" >
-            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme">Note
+            <mat-header-cell *matHeaderCellDef [ngStyle]="themingService.myCustomTheme" class="contrast default-theme my-theme" style="font-size:100%">Note
             </mat-header-cell>
             <mat-cell class="default-theme my-theme" *matCellDef="let note" [ngStyle]="themingService.myCustomTheme">
               <span class="mobile-label" class="contrast">Note:</span>

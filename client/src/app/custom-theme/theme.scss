@@ -85,7 +85,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 
   md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,  .mat-list-item,
-  ::placeholder, .mat-option,  .icon-color   {
+  ::placeholder, .mat-option, .icon-color {
     color:black !important;
   }
 
