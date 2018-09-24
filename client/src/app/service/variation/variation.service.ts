@@ -34,10 +34,10 @@ export class VariationService {
       return this.http.put<Variation[]>(this.variationsUrl, variation, {headers: httpHeaders});
     }
 
-    deleteVariation(id: String) {
+    deleteVariation(variation: Variation) {
       let httpHeaders = AuthService.getHeaderWithAuthorization();
 
-      const url = `${this.variationsUrl}/${id}`;
+      const url = `${this.variationsUrl}/${variation._id}`;
         return this.http.delete(url, {headers: httpHeaders});
     }
 

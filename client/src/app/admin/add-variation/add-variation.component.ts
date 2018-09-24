@@ -12,7 +12,7 @@ import {ThemingService} from '../../service/theming/theming.service';
 })
 export class AddVariationComponent implements OnInit {
 
-    variations: String[] = [];
+    variations: Variation[] = [];
     variation = new Variation();
     map: Map<number, String> = new Map<number, String>();
 
@@ -31,13 +31,7 @@ export class AddVariationComponent implements OnInit {
     ngOnInit() {
         let i = 0;
         this.variationService.getVariations()
-            .subscribe( variations => {
-                variations.forEach((obj) => {
-                    this.variations.push(obj.type);
-                    this.map.set(i, obj._id);
-                    i++;
-                });
-            });
+            .subscribe( variations => this.variations = variations);
 
         console.log(this.variations);
         this.variation.type = '';
@@ -49,13 +43,15 @@ export class AddVariationComponent implements OnInit {
     }
 
     public addVariation(type: string) {
-        this.variation.type = type;
-        this.variationService.addVariation(this.variation)
+        const variation: Variation = new Variation();
+        variation.type = type;
+
+        this.variationService.addVariation(variation)
             .subscribe(res => console.log(res), err => {
               console.log('errore:');
               console.log(err);
             });
-        this.variations.push(type);
+        this.variations.push(variation);
         this.variation.type = '';
     }
 
@@ -63,10 +59,8 @@ export class AddVariationComponent implements OnInit {
         return type.length === 0 || !type.match('^[a-zA-Z]+$');
     }
 
-    public deleteVariation(variation: string, i: number) {
-        const id = this.map.get(i);
-
-        this.variationService.deleteVariation(id)
+    public deleteVariation(variation: Variation) {
+        this.variationService.deleteVariation(variation)
             .subscribe();
 
       this.variations = this.variations.filter(x => x !== variation);

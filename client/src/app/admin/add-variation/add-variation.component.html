@@ -14,10 +14,10 @@
 
       <div class="default-theme my-theme"
            [ngStyle]="themingService.myCustomTheme"
-           *ngFor="let variation of variations; let i = index" id="variationsAddedDiv">
-        <p><button mat-button #button id="delButton" (click)="deleteVariation(variation, i)">
+           *ngFor="let variation of variations" id="variationsAddedDiv">
+        <p><button mat-button #button id="delButton" (click)="deleteVariation(variation)">
           <i class="material-icons">clear</i>
-        </button>{{variation}}</p>
+        </button>{{variation.type}}</p>
       </div>
 
       <form #addVariationForm="ngForm" >
@@ -28,7 +28,7 @@
 
           <input id="variation" type="text" class="form-control default-theme my-theme"
                  [ngStyle]="themingService.myCustomTheme" placeholder="Variation"
-               required name="variation" [(ngModel)]="variation.type" (keyup.enter)="addVariation(variation.type)" >
+               required name="variation" [(ngModel)]="variation.type" >
         </mdb-form-field>
         <button class="default-theme my-theme"
                 [ngStyle]="themingService.myCustomTheme"
@@ -40,7 +40,7 @@
       <div class="btn-group btn-group-sm d-flex flex-row-reverse">
         <button  type="button" class="btn px-5 px-3 ml-4 mt-4 default-theme my-theme"
                  [ngStyle]="themingService.myCustomTheme"
-                 (click)="goToStatics()" aria-label="Save" [disabled]="!addVariationForm.form.valid">Save</button>
+                 (click)="goToStatistics()" aria-label="Save" [disabled]="!addVariationForm.form.valid">Save</button>
         <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
                 [ngStyle]="themingService.myCustomTheme"
                 (click)="goBack()" aria-label="Back">Back</button>
