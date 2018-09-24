@@ -7,7 +7,8 @@ import {Booking} from "../booking/booking";
 import {BookingService} from "../service/booking/booking.service";
 import {AuthService} from "../service/auth/auth.service";
 import {ActivatedRoute, Router} from '@angular/router';
-import {ErrorService} from '../service/error/error.service';
+import {MessageService} from '../service/message/message.service';
+import {ThemingService} from '../service/theming/theming.service';
 
 @Component({
   selector: 'registration-customer',
@@ -30,12 +31,25 @@ export class RegistrationComponent implements OnInit {
     private bookingService: BookingService,
     private location: Location,
     private router: Router,
-    public error: ErrorService
-  ) { }
+    public messageService: MessageService,
+    public themingService: ThemingService
+  ) {
+
+    if (this.themingService.isUseBackgroundOn()) {
+      document.body.style.backgroundImage = "url('../../assets/images/casa-per-ferie-san-bassiano.jpg')";
+      document.body.style.backgroundRepeat = "no-repeat";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center center";
+    }
+  }
 
   ngOnInit() {
     this.getRoomsNumber();
     this.customerService.getCustomers();
+
+    this.themingService.checkAndChangeInputBorders();
+    this.themingService.checkAndChangeTextContrast();
+    this.themingService.setCurrentTheme();
   }
 
   newCustomer(): void {
@@ -55,20 +69,22 @@ export class RegistrationComponent implements OnInit {
             this.customer.role = 'customer';
             this.save();
             this.registrationSuccessed = true;
+            this.messageService.success = "Customer successfully added";
+            this.messageService.error = '';
             this.router.navigateByUrl('');
 
           } else {
             this.registrationSuccessed = false;
             this.submitted = false;
-            this.error.error = 'Input not valid';
+            this.messageService.error = 'Input not valid';
           }
-
         }, error => {
           console.log(error.error.msg);
           this.registrationSuccessed = false;
           this.submitted = false;
-          this.error.error  = error.error.msg;
+          this.messageService.error  = error.error.msg;
         });
+
   }
 
   goBack(): void {

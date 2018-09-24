@@ -1,16 +1,14 @@
 @import "../../styles.scss";
-div {
-  margin: 0 auto ;
-  text-align: center;
-  width: 100vw;
+
+.navbar {
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
-a {
-  font-size: 200%;
+button.navbar-toggler{
+  float: right;
 }
 
-a:hover{
-  background-color: $button-hover;
+span:hover {
   cursor: pointer;
 }
-

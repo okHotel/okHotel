@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {MenuService} from '../service/menu/menu.service';
-import { DatePipe } from '@angular/common';
+import {DatePipe} from '@angular/common';
 import {CustomerService} from '../service/customer/customer.service';
-import {Meal, Reservation, Variation} from './reservation';
-import {Menu} from './menu';
+import {Meal, Reservation} from './reservation';
 import {Note} from './Note';
-import {ErrorService} from '../service/error/error.service';
+import {MessageService} from '../service/message/message.service';
+import {ThemingService} from '../service/theming/theming.service';
 
 @Component({
   selector: 'app-menu',
@@ -21,15 +21,41 @@ export class MenuComponent implements OnInit {
   hd = Meal.HALF_DINNER;
   people: number[] = [];
   room: number;
+  dinnerCardState = false;
+  lunchCardState = true;
+  note: string;
+  isReservationValid: boolean = true;
+  reservationError: string;
+
+  @ViewChild('inputNote') inputNote: ElementRef;
 
   constructor(private router: Router,
               public menu: MenuService,
               private datepipe: DatePipe,
               private customerService: CustomerService,
-              public errorService: ErrorService) {
+              public messageService: MessageService,
+              public themingService: ThemingService) {
+    if (this.themingService.isUseBackgroundOn()) {
+      document.body.style.backgroundImage = "url('../../assets/images/restaurant.jpg')";
+      document.body.style.backgroundRepeat = 'repeat';
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundPosition = 'center center';
+    }
+
+  }
+
+  get myStyle() {
+    return {
+      'width': (this.menu.showLunchVariations || this.menu.showDinnerVariations) ? '40%' : '0',
+      'padding-top': (this.menu.showLunchVariations || this.menu.showDinnerVariations) ? '5%' : '0',
+      'transition': '0.5s'
+    };
   }
 
   ngOnInit() {
+    console.log('isReservationValid');
+    console.log(this.isReservationValid);
+
     this.menu.menu.otherNotes = [];
 
     const latest_date: string = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
@@ -38,12 +64,9 @@ export class MenuComponent implements OnInit {
     this.menu.getDateMenu().subscribe(
       data => {
         this.menu.setMenu(data);
-        console.log('Menu loaded');
       },
       err => {
-        console.log(err.error.message);
-        this.errorService.error = err.error.message;
-        console.log(this.errorService.error)
+        this.messageService.error = err.error.message;
       }
     );
 
@@ -53,16 +76,21 @@ export class MenuComponent implements OnInit {
       }
       this.room = data.roomNumber;
     });
+
+    this.themingService.checkAndChangeInputBorders();
+    this.themingService.checkAndChangeTextContrast();
+    this.themingService.setCurrentTheme();
   }
 
   saveReservations() {
     this.menu.saveMenu().subscribe();
+    this.messageService.success = "Menu successfully saved";
     this.router.navigateByUrl('');
   }
 
   addVariations(dish: string, type: Meal) {
 
-    if ( this.menu.menu.reservations.filter(r => r.dish === dish && r.type === type).length === 0 ) {
+    if (this.menu.menu.reservations.filter(r => r.dish === dish && r.type === type).length === 0) {
       this.setReservation(type, dish, 0);
     }
 
@@ -90,7 +118,6 @@ export class MenuComponent implements OnInit {
         break;
       }
     }
-
   }
 
   setReservation(selectedType: Meal, selectedDish: string, selectedQuantity: number) {
@@ -111,28 +138,51 @@ export class MenuComponent implements OnInit {
         dish: selectedDish,
         variations: []
       };
+
       this.menu.menu.reservations.push(reservation);
     }
+
+    if (selectedType === Meal.LUNCH || selectedType === Meal.HALF_LUNCH) {
+      this.checkReservation(this.l, this.hl);
+    } else if (selectedType === Meal.DINNER || selectedType === Meal.HALF_DINNER) {
+      this.checkReservation(this.d, this.hd);
+    }
+
   }
 
   checkReservation(type1: Meal, type2: Meal) {
     let total = 0;
 
     this.menu.menu.reservations
-      .filter(r => r.roomNumber === this.room )
+      .filter(r => r.roomNumber === this.room)
       .filter(r => r.type === type1 || r.type === type2)
       .forEach(e => total += e.quantity);
 
     const mul_factor = type1 === Meal.LUNCH ? 2 : 3;
-    return total > (this.people.length - 1) * mul_factor;
+
+    this.isReservationValid = total <= (this.people.length - 1) * mul_factor;
+
+    if (!this.isReservationValid) {
+      this.reservationError = this.getErrorMessage();
+    } else {
+      this.reservationError = '';
+    }
+
+    return this.isReservationValid;
   }
 
   checkSave() {
+/*
     return this.checkReservation(Meal.LUNCH, Meal.HALF_LUNCH) || this.checkReservation(Meal.DINNER, Meal.HALF_DINNER);
+*/
+    return !this.isReservationValid;
   }
 
   getErrorMessage() {
+/*
     return 'Number of dishes booked too high';
+*/
+    return 'Choose max 2 dishes for each person for lunch and 3 for dinner';
   }
 
   getRes(type: Meal, dish: string) {
@@ -145,32 +195,42 @@ export class MenuComponent implements OnInit {
     return res;
   }
 
-  setNotes(event: any) {
+  addNote() {
     let newNote = true;
 
     this.menu.menu.otherNotes.forEach(n => {
       if (n.roomNumber === this.room) {
         newNote = false;
-        n.text = event.target.value;
+        n.text = this.note;
       }
     });
 
     if (newNote) {
       const note: Note = {
         roomNumber: this.room,
-        text: event.target.value
+        text: this.note
       };
       this.menu.menu.otherNotes.push(note);
     }
+    this.inputNote.nativeElement.value = '';
   }
 
   getNote() {
-    let res = 'soup, salt-free, ...';
-    this.menu.menu.otherNotes.forEach( n => {
+    let res = '';
+    this.menu.menu.otherNotes.forEach(n => {
       if (n.roomNumber === this.room) {
         res = n.text;
       }
     });
     return res;
   }
+
+  changeDinnerCardState() {
+    this.dinnerCardState = !this.dinnerCardState;
+  }
+
+  changeLunchCardState() {
+    this.lunchCardState = !this.lunchCardState;
+  }
+
 }

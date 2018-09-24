@@ -1,8 +1,4 @@
 /* Structure */
-.container {
-  display: flex;
-  flex-direction: column;
-}
 
 /* Toolbar */
 .spacer {
@@ -15,8 +11,8 @@
   max-height: 56px;
   display: flex;
   align-items: center;
+  margin-top: 2%;
   padding: 8px 24px 0;
-  font-size: 20px;
   justify-content: space-between;
   border-bottom: 1px solid transparent;
 }
@@ -32,8 +28,9 @@
   display: flex;
   justify-content: center;
   padding: 14px;
-  font-size: 14px;
+  /*
   font-style: italic;
+  */
 }
 
 .mat-cell:nth-child(1),
@@ -45,6 +42,11 @@
 .mat-header-cell:nth-child(2){
   flex: 0 0 25%;
 }
+
+/*::ng-deep .mat-list .mat-list-item .mat-line{
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}*/
 
 .right.mat-cell {
   display: flex;

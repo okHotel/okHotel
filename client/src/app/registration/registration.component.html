@@ -1,145 +1,157 @@
-<div class="w3-row" id="backgroundDiv">
+<div class="container">
 
-  <div class="w3-col l2 m1 s0">&nbsp;</div>
 
-  <div class="w3-col l8 m10 s12 centered">
-    <div [hidden]="submitted" class="container mat-elevation-z8" id="FormDiv">
-      <h3>Add Customer</h3>
+  <div class="card mat-elevation-z8" [hidden]="submitted">
 
-      <app-error></app-error>
+    <div class="default-theme">
+      <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+        Registration
+      </div>
+    </div>
+
+    <div class="card-body">
+
+      <app-message></app-message>
 
       <form class="mat-dialog-content" #addCustomerForm="ngForm">
-        <div class="form">
-          <mat-form-field color="accent">
-            <mat-select id="roomNumber" [(ngModel)]="customer.roomNumber" name="roomNumber" #roomNumber="ngModel" placeholder="Room number" required>
-              <mat-option *ngFor="let number of roomsNumber" [value]=number required> {{number}} </mat-option>
+
+        <div class="md-form">
+          <mdb-form-field color="accent">
+            <mat-select id="roomNumber" [(ngModel)]="customer.roomNumber" name="roomNumber" #roomNumber="ngModel"
+                        placeholder="Room number" required>
+              <mat-option *ngFor="let number of roomsNumber" [value]=number required> {{number}}</mat-option>
             </mat-select>
             <div [hidden]="roomNumber.valid || roomNumber.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               Room number is required
             </div>
-          </mat-form-field>
+          </mdb-form-field>
         </div>
 
-        <div class="form">
-          <mat-form-field color="accent">
+        <div class="md-form">
+          <mdb-form-field color="accent">
             <label for="bookingName">Customer's booking name</label>
-            <input matInput #input type="text" class="form-control" id="bookingName" placeholder="Customer's booking name"
+            <input #input type="text" class="form-control" id="bookingName" placeholder="Customer's booking name"
                    required
                    [(ngModel)]="customer.bookingName" name="bookingName" #bookingName="ngModel">
             <div [hidden]="bookingName.valid || bookingName.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               Booking Name is required
             </div>
-          </mat-form-field>
+          </mdb-form-field>
         </div>
 
-        <div class="form">
-          <mat-form-field color="accent">
+        <div class="md-form">
+          <mdb-form-field color="accent">
             <label for="bookingSurname">Customer's booking surname</label>
-            <input matInput #input type="text" class="form-control" id="bookingSurname" placeholder="Customer's booking surname"
+            <input #input type="text" class="form-control" id="bookingSurname" placeholder="Customer's booking surname"
                    required
                    [(ngModel)]="customer.bookingSurname" name="bookingSurname" #bookingSurname="ngModel">
             <div [hidden]="bookingSurname.valid || bookingSurname.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               Booking Surname is required
             </div>
-          </mat-form-field>
+          </mdb-form-field>
         </div>
 
-        <div class="form">
-          <mat-form-field color="accent">
+        <div class="md-form">
+          <mdb-form-field color="accent">
             <label for="username">Customer's username</label>
 
-            <input matInput #input type="text" class="form-control" id="username" placeholder="Customer's username"
+            <input #input type="text" class="form-control" id="username" placeholder="Customer's username"
                    required [(ngModel)]="customer.username" name="username" #username="ngModel">
             <div [hidden]="username.valid || username.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               The customer username is required
             </div>
-          </mat-form-field>
+          </mdb-form-field>
         </div>
 
-        <div class="form">
-          <mat-form-field color="accent">
+        <div class="md-form">
+          <mdb-form-field color="accent">
             <label for="password">Customer's password</label>
 
-            <input matInput #input type="password" class="form-control" id="password" placeholder="Password"
+            <input #input type="password" class="form-control" id="password" placeholder="Password"
                    required
                    [(ngModel)]="customer.password" name="password" #password="ngModel">
             <div [hidden]="password.valid || password.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               The password is required
             </div>
-          </mat-form-field>
+          </mdb-form-field>
         </div>
 
-        <div class="form">
-          <mat-form-field color="accent">
+        <div class="md-form">
+          <mdb-form-field color="accent">
             <label for="confirmPassword">Confirm password</label>
 
-            <input matInput #input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password"
+            <input #input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password"
                    required
                    [(ngModel)]="confirmPassword" name="checkPassword" #checkPassword="ngModel">
             <div [hidden]="checkPassword.valid || checkPassword.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               The confirmation password is required
             </div>
-          </mat-form-field>
+          </mdb-form-field>
         </div>
 
-        <div class="form">
-          <mat-form-field color="accent">
+        <div class="md-form">
+          <mdb-form-field color="accent">
             <label for="numberOfPeople">Number of people in the room</label>
 
-            <input matInput #input type="number" class="form-control" id="numberOfPeople"
+            <input #input type="number" class="form-control" id="numberOfPeople"
                    placeholder="Number of people in the room"
                    min="1"
                    required
                    [(ngModel)]="customer.numberOfPeople" name="numberOfPeople" #numberOfPeople="ngModel">
             <div [hidden]="numberOfPeople.valid || numberOfPeople.pristine"
-                 class="w3-panel danger w3-round-large">
+                 class="alert alert-danger">
               The number of people in the room is required
             </div>
-          </mat-form-field>
+          </mdb-form-field>
         </div>
 
-        <div class="form">
-          Other needs:
-          <mat-list>
-            <mat-list-item *ngFor="let need of customerNeeds">
-              <button mat-button type="button" (click)="removeNeed(need)" aria-label="remove need"><span class="material-icons">clear</span></button>
-              {{need}}
-            </mat-list-item>
-          </mat-list>
+        Other needs:
+        <mat-list>
+          <mat-list-item *ngFor="let need of customerNeeds">
+            <button class="clear" type="button" (click)="removeNeed(need)" aria-label="remove need"><span
+              class="material-icons">clear</span></button>
+            {{need}}
+          </mat-list-item>
+        </mat-list>
+
+        <div class="md-form d-flex bd-highlight">
+          <mdb-form-field color="accent" class="p-2 flex-grow-1 bd-highlight">
+            <label for="otherNeeds">Other needs</label>
+            <input #input type="text" id='otherNeeds' name="need" [(ngModel)]="need" (keyup.enter)="addNeed()"
+                   placeholder="Other needs (p.e. disability types, number of children and/or pets, if present)"
+                   class="form-control"
+            />
+          </mdb-form-field>
+
+          <button mat-button type="button" (click)="addNeed()" aria-label="Add"><span
+            class="material-icons p-2 bd-highlight">add</span></button>
         </div>
 
-        <div class="w3-row">
-          <div class="w3-col l10 m10 s10 w3-center">
-            <div class="form">
-              <mat-form-field color="accent">
-                <label for="otherNeeds">Other needs</label>
 
-                <input matInput #input id='otherNeeds' name="need" [(ngModel)]="need"
-                       placeholder="Other needs (p.e. disability types, number of children and/or pets, if present)"/>
-              </mat-form-field>
+        <div class="default-theme">
 
-            </div>
+          <div class="btn-group btn-group-sm d-flex flex-row-reverse">
+            <button type="button" class="btn px-5 px-3 ml-4 mt-4 default-theme my-theme"
+                    [ngStyle]="themingService.myCustomTheme"
+                    (click)="addCustomer()" aria-label="Save" [disabled]="!addCustomerForm.form.valid">Save
+            </button>
+            <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+                    [ngStyle]="themingService.myCustomTheme"
+                    (click)="goBack()" aria-label="Back">Back
+            </button>
           </div>
-          <div class="w3-col l2 m2 s2 w3-center">
-            <button mat-button type="button" (click)="addNeed(need)" aria-label="Add"><span class="material-icons">add</span></button>
-          </div>
         </div>
 
-
-        <div class="btn-group btn-group-sm">
-          <button mat-button type="button" class="btn btn-dark" (click)="goBack()" aria-label="Back">Back</button>
-          <button mat-button type="button" class="btn btn-dark" (click)="addCustomer()" aria-label="Save" [disabled]="!addCustomerForm.form.valid">Save</button>
-        </div>
       </form>
     </div>
 
-  </div>
 
-  <div class="w3-col l2  m1 s0">&nbsp;</div>
+  </div>
 </div>
+

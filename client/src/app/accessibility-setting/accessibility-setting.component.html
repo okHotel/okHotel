@@ -4,26 +4,49 @@
 
     <div id="mySidenav">
 
-      <button type="button" class="closebtn btn btn-sm mt-3 mb-4" (click)="closeSidebar()">
-        <i class="fa fa-times fa-2x" aria-label="close sidebar"></i><p class="hidden">Close</p></button>
+      <div class="default-theme">
+        <button type="button" class="closebtn btn btn-sm mt-3 mb-4 default-theme my-theme"
+                [ngStyle]="themingService.myCustomTheme"
+                (click)="closeSidebar()">
+          <i class="fa fa-times fa-2x" aria-label="close sidebar"></i>
+          <p class="hidden">Close</p></button>
+      </div>
 
       <div id="container">
-
         <h4 class="accessibility-subtitle mb-3">Text and keyboard</h4>
 
         <fieldset>
-          <legend>Select text size</legend>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn blue-radio active mr-4 mt-2">
-              <input type="radio" name="options" id="smallFont" autocomplete="off" (focus)="setSmallFont()" checked>
-              Small
-            </label>
-            <label class="btn blue-radio mr-4 mt-2">
-              <input type="radio" name="options" id="mediumFont" autocomplete="off" (focus)="setMediumFont()"> Medium
-            </label>
-            <label class="btn blue-radio mr-4 mt-2">
-              <input type="radio" name="options" id="largeFont" autocomplete="off" (focus)="setLargeFont()"> Large
-            </label>
+          <legend>Custom text size</legend>
+
+          <div class="my-4">
+            <span class="mr-4">70 %</span>
+            <input class="border-0" type="range" min="70" max="160" (change)="setCustomFontSize()"
+                   [(ngModel)]="themingService.fontSize" id="fontSize"/><label for="fontSize" class="hidden">Select your favourite font size</label>
+            <span class="ml-4">160 %</span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Default text size</legend>
+          <div class="default-theme">
+
+            <div class="btn-group btn-group-toggle " data-toggle="buttons">
+              <label class="btn default-theme my-theme active mr-4 mt-2 "
+                     [ngStyle]="themingService.myCustomTheme">
+                <input type="radio" name="options" id="smallFont" autocomplete="off" (focus)="setSmallFont()"
+                       checked> Small
+              </label>
+              <label class="btn default-theme my-theme mr-4 mt-2"
+                     [ngStyle]="themingService.myCustomTheme">
+                <input type="radio" name="options" id="mediumFont" autocomplete="off" (focus)="setMediumFont()"
+                > Medium
+              </label>
+              <label class="btn default-theme my-theme blue-radio mr-4 mt-2"
+                     [ngStyle]="themingService.myCustomTheme">
+                <input type="radio" name="options" id="largeFont" autocomplete="off" (focus)="setLargeFont()"
+                > Large
+              </label>
+            </div>
           </div>
         </fieldset>
 
@@ -34,13 +57,13 @@
             <!--INPUT WITHOUT BORDER-->
             <div class="form-check">
               <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2"
-                     (click)="changeInputBorder()" checked>
+                     (click)="changeInputBorder(false)" checked>
               <label class="hidden form-check-label" for="gridRadios2">
-                Input with border
+                Input without border
               </label>
 
-              <div class="md-form">
-                <input #input type="text" class="form-control" id="inputWithoutBorder"
+              <div>
+                <input #input type="text" class="form-control md-form-custom" id="inputWithoutBorder"
                        placeholder="Input without border"
                        name="inputWithoutBorder">
                 <label class="hidden" for="inputWithoutBorder">Input without border</label>
@@ -48,10 +71,9 @@
             </div>
             <!--INPUT WITH BORDER-->
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"cxf
-                     (click)="changeInputBorder()">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
+                     (click)="changeInputBorder(true)">
               <label class="hidden form-check-label" for="gridRadios1">Input with border</label>
-
 
               <input #input type="text" class="form-control border border-primary " id="inputWithBorder"
                      placeholder="Input with border" name="inputWithBorder">
@@ -65,21 +87,77 @@
       <h4>Themes and background</h4>
 
       <fieldset>
-        <legend>Color theme</legend>
+        <legend>Custom theme</legend>
 
-        <div class="btn-group">
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-black-theme" (click)="themingService.onThemeChange('dark-theme')">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-default-theme">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-medium-theme">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-bright-theme">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-light-theme">Aa</button>
-          <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-white-theme">Aa</button>
+        <div class="row justify-content-md-left">
+          <label for="backgroundColor" class="col col-lg-5 ">Background color</label>
+
+          <div class="col col-lg-3">
+            <div class="form-group">
+              <input id="backgroundColor" type="text" class="default-theme my-theme form-control"
+                     [(colorPicker)]="themingService.backgroundColor"
+                     [ngStyle]="themingService.myCustomTheme"
+                     [cpPresetColors]="['#000000', '#034768', '#046B99', '#00cfff', '#b3efff', '#ffffff']"
+                     [cpPosition]="'left'"
+                     [style.background]="themingService.backgroundColor"
+                     [style.color]="'white'"
+                     [cpAlphaChannel]="'always'"
+                     [cpOutputFormat]="'hex'"
+                     [value]="themingService.backgroundColor"
+                     (colorPickerChange)="themingService.onThemeChange(theme.CUSTOM)">
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-md-left">
+          <label for="fontColor" class="col col-lg-5">Font color</label>
+
+          <div class="col col-lg-3">
+            <div class="form-group">
+              <input id="fontColor" type="text" class="form-control" [(colorPicker)]="themingService.fontColor"
+                     [cpPresetColors]="['#000000', '#ffffff', '#ffff00']"
+                     [cpPosition]="'left'"
+                     [style.background]="themingService.fontColor"
+                     [style.color]="'black'"
+                     [cpAlphaChannel]="'always'"
+                     [cpOutputFormat]="'hex'"
+                     [value]="themingService.fontColor"
+                     (colorPickerChange)="themingService.onThemeChange(theme.CUSTOM)">
+            </div>
+          </div>
         </div>
 
 
+      </fieldset>
+
+      <fieldset>
+        <legend>Default themes</legend>
+
+        <div class="default-theme">
+          <div class="btn-group">
+            <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-black-theme"
+                    (click)="themingService.onThemeChange(theme.BLACK)">Aa
+            </button>
+            <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-default-theme"
+                    (click)="themingService.onThemeChange(theme.DEFAULT)">Aa
+            </button>
+            <!--
+                      <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-medium-theme" (click)="themingService.onThemeChange(theme.BLACK)">Aa</button>
+                      <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-bright-theme" (click)="themingService.onThemeChange(theme.BLACK)">Aa</button>
+            -->
+            <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-light-theme"
+                    (click)="themingService.onThemeChange(theme.LIGHT)">Aa
+            </button>
+            <button type="button" class="btn rounded-circle px-3 py-3  mr-4 mt-2 btn-white-theme"
+                    (click)="themingService.onThemeChange(theme.WHITE)">Aa
+            </button>
+          </div>
+        </div>
+
         <div class="mb-3 mt-5">
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="colorContrast" (click)="changeTextContrast()" [checked]="themingService.isContrastChecked">
+            <input type="checkbox" class="custom-control-input" id="colorContrast" (click)="changeTextContrast()"
+                   [checked]="themingService.isContrastChecked">
             <label class="custom-control-label" for="colorContrast">Enable high text contrast</label>
           </div>
         </div>
@@ -96,8 +174,14 @@
       </fieldset>
 
     </div>
-    <button type="button" class="btn mt-5 p-3" (click)="resetSettings()" aria-label="resetSettings">RESET SETTINGS</button>
+    <div class="default-theme">
+      <button type="button" class="btn mt-5 p-3 default-theme my-theme"
+              [ngStyle]="themingService.myCustomTheme"
+              (click)="resetSettings()" aria-label="resetSettings">RESET SETTINGS
+      </button>
+    </div>
   </div>
+
 
 </div>
 

@@ -1,7 +1,17 @@
 @import "../../styles.scss";
 
-p {
-  text-align: center;
+
+
+h2 {
   font-size: 90%;
 }
 
+
+@media (max-width: 375px) {
+  
+
+  h6{
+    margin-bottom: 5% !important ;
+  }
+
+}

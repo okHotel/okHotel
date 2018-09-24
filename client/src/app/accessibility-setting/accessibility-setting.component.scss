@@ -22,12 +22,8 @@ button{
   width: 90%;
 }
 
-.card, .card-header {
-  background: none;
-}
-
-.card-header {
-  color: $default-background-color;
+mat-slider {
+  width: 300px;
 }
 
 .sidenav {
@@ -48,13 +44,24 @@ button{
 }
 
 
-.blue-radio{
-  background-color: $default-background-color;
+.md-form-custom{
+  border: 1px solid grey;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  background-color: transparent ;
+  border-radius: 0;
+
+
 }
 
-.active{
-  background-color: lighten($default-background-color,10%)
+.form-control:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
+
+
 /*
 caption {
   caption-side: top;

@@ -9,18 +9,29 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
 
-// Our dark theme
-.dark-theme {
-  color: $light-primary-text;
-  $dark-primary: mat-palette($mat-yellow);
-  $dark-accent: mat-palette($mat-amber, A400, A100, A700);
-  $dark-warn: mat-palette($mat-red);
-  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
-  
-  @include angular-material-theme($dark-theme);
+.default-theme {
+  $default-primary: mat-palette($mat-indigo);
+  $default-accent: mat-palette($mat-amber, A400, A100, A700);
+  $default-warn: mat-palette($mat-red);
+  $default-theme: mat-dark-theme($default-primary, $default-accent, $default-warn);
 
-  .card-header {
-    background-color: mat-color($dark-primary);
+  @include angular-material-theme($default-theme);
+
+  .my-theme, mat-option {
+    background-color: #034768; //mat-color($dark-primary);
+    color: white !important;
+  }
+
+  .active, .mat-option:hover, .mat-active {
+    background-color: lighten(#034768, 16%) !important;// #02afff;
+  }
+
+  .mat-select-trigger, .mat-select-arrow, .mat-select-underline, .mat-select-placeholder, .mat-select-value {
+    color: darkslategrey !important;
+  }
+
+  .icon-color {
+    color: #034768;
   }
 
 }
@@ -34,8 +45,72 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   @include angular-material-theme($light-theme);
 
-  .card-header {
-    background-color: mat-color($light-primary);
+  .my-theme, .mat-select-content, mat-option  {
+    background-color:  #b3efff ; //mat-color($light-primary);
+    color: black;
   }
 
+  .active{
+    background-color: #72bde5; //lighten(mat-color($light-primary),10%)
+  }
+
+  .md-select, .mat-select-trigger, .mat-select-arrow , .mat-select-underline, .mat-option, .mat-list-item {
+    color:black !important;
+  }
+
+  .icon-color {
+    color:  #b3efff ;
+  }
+
+}
+
+.white-theme {
+  $white-primary: mat-palette($mat-deep-orange);
+  $white-accent: mat-palette($mat-amber, A400, A100, A700);
+  $white-warn: mat-palette($mat-red);
+  $white-theme: mat-dark-theme($white-primary, $white-accent, $white-warn);
+
+  @include angular-material-theme($white-theme);
+
+  .my-theme,  .mat-select-content, mat-option {
+    background-color: white; //mat-color($white-primary);
+    color: black;
+  }
+
+  .active {
+    background-color: lightslategrey; //lighten(mat-color($white-primary), 10%)
+  }
+
+
+  md-select, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,  .mat-list-item,
+  .mat-option, .icon-color {
+    color:black !important;
+  }
+
+}
+
+.black-theme {
+  $black-primary: mat-palette($mat-yellow);
+  $black-accent: mat-palette($mat-amber, A400, A100, A700);
+  $black-warn: mat-palette($mat-red);
+  $black-theme: mat-dark-theme($black-primary, $black-accent, $black-warn);
+
+  @include angular-material-theme($black-theme);
+
+  .my-theme,  .mat-select-content, mat-option {
+    background-color: black; //mat-color($black-primary);
+    color: white;
+  }
+  .active{
+    background-color: lightslategrey; //lighten(mat-color($black-primary),10%)
+  }
+
+  md-select, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,
+  .mat-option {
+    color:white !important;
+  }
+
+  .icon-color {
+    color: black;
+  }
 }

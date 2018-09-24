@@ -1,76 +1,103 @@
-<div class="w3-row" [hidden]="!errorService.error">
-  <div class="w3-col s0 m1 l2">&nbsp;</div>
+<div class="container">
 
-  <div class="w3-col s12 m10 l8" >
-    <app-error></app-error>
+
+  <div class="card">
+    <div class="default-theme">
+      <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+        Edit Product
+      </div>
+    </div>
+    <h1 class="hidden">Edit product</h1>
+
+    <div class="card-body">
+
+      <app-message></app-message>
+
+      <form class="mat-dialog-content" (ngSubmit)="submit()" #formControl="ngForm">
+
+        <div class="md-form" #prova>
+          <mdb-form-field color="accent">
+            <label for="code">Code</label>
+            <input id="code" #input type="text" class="form-control"
+                   placeholder="Code" [(ngModel)]="product.code"
+                   name="code" pattern="[0-9]*" #code="ngModel">
+            <div [hidden]="code.valid || code.pristine"
+                 class="alert alert-danger" role="alert">
+              Code is required
+            </div>
+          </mdb-form-field>
+        </div>
+
+        <!--Textarea for demo purposes-->
+        <div class="md-form">
+          <mdb-form-field color="accent">
+            <label for="name">Product name</label>
+            <input id="name" type="text" #input class="form-control" placeholder="Name" [(ngModel)]="product.name"
+                   name="name" #productName="ngModel" required>
+
+            <div [hidden]="productName.valid || productName.pristine"
+                 class="alert alert-danger" role="alert">
+              Product name is required
+            </div>
+
+          </mdb-form-field>
+        </div>
+
+        <!--Contains mat-hint for characters count and has maxLengt set-->
+        <div class="md-form">
+          <mdb-form-field color="accent">
+            <label for="category">Category</label>
+
+            <input type="text" id="category" #input class="form-control" placeholder="Category"
+                   [(ngModel)]="product.category" name="category" #category="ngModel" required>
+            <div [hidden]="category.valid || category.pristine"
+                 class="alert alert-danger" role="alert">
+              Category is required
+            </div>
+          </mdb-form-field>
+        </div>
+
+        <div class="md-form">
+          <mdb-form-field color="accent">
+            <label for="quantity">Quantity</label>
+
+            <input id="quantity" #input type="text" placeholder="Quantity" [(ngModel)]="product.quantity"
+                   name="quantity" pattern="[0-9]*" class="form-control" #quantity="ngModel" required>
+            <div [hidden]="quantity.valid || quantity.pristine"
+                 class="alert alert-danger" role="alert">
+              Quantity is required
+            </div>
+          </mdb-form-field>
+        </div>
+
+        <div class="md-form">
+          <mdb-form-field color="accent">
+            <mat-select [(ngModel)]="product.unit" name="unit" placeholder="Unit" required>
+              <mat-option *ngFor="let unit of units" [value]=unit>
+                {{unit}}
+              </mat-option>
+              <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-select>
+          </mdb-form-field>
+        </div>
+
+        <div class="default-theme">
+
+          <div class="btn-group btn-group-sm d-flex flex-row-reverse">
+            <button [type]="submit" class="btn px-5 px-3 ml-4 mt-4 default-theme my-theme"
+                    [disabled]="!formControl.valid || isCodeInvalid(product.code)"
+                    (click)="saveAndGoBack()"
+                    [ngStyle]="themingService.myCustomTheme">Save
+            </button>
+            <button (click)="goBack()" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+                    [ngStyle]="themingService.myCustomTheme"
+                    tabindex="-1">Back
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
   </div>
-
-  <div class="w3-col s0 m1 l2">&nbsp;</div>
-</div>
-
-<div class="w3-row" id="backgroundDiv" [hidden]="errorService.error">
-
-  <div class="w3-col l2">&nbsp;</div>
-
-  <div class="w3-col s12 m12 l8 mat-elevation-z8 container centered">
-    <h3 mat-dialog-title>Product code: {{product.code}}</h3>
-
-    <form class="mat-dialog-content" (ngSubmit)="submit()" #formControl="ngForm">
-
-      <div class="form">
-        <mat-form-field color="accent">
-          <label for="code">Code</label>
-
-          <input type="text" id="code" matInput #input pattern="[0-9]*" class="form-control" placeholder="Code" [(ngModel)]="product.code" name="code" required >
-          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-      </div>
-
-      <!--Textarea for demo purposes-->
-      <div class="form">
-        <mat-form-field color="accent">
-          <label for="name">Name</label>
-
-          <input matInput id="name" #input class="form-control" placeholder="Name" [(ngModel)]="product.name" name="name" required>
-          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-      </div>
-
-      <!--Contains mat-hint for characters count and has maxLengt set-->
-      <div class="form">
-        <mat-form-field color="accent">
-          <label for="category">Category</label>
-
-          <input matInput id="category" #inputstate class="form-control" placeholder="Category" [(ngModel)]="product.category" name="category" required >
-          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-          <!--
-                  <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
-          -->
-        </mat-form-field>
-      </div>
-
-      <div class="form">
-        <mat-form-field color="accent">
-          <label for="quantity">Quantity</label>
-
-          <input matInput id="quantity" min="0" placeholder="Quantity" [(ngModel)]="product.quantity" name="quantity">
-        </mat-form-field>
-      </div>
-
-      <div class="form">
-        <mat-form-field color="accent">
-          <mat-select [(ngModel)]="product.unit" name="unit" placeholder="Unit">
-            <mat-option *ngFor="let unit of units" [value]=unit>
-              {{unit}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <button mat-button [type]="submit" [disabled]="!formControl.valid || isCodeInvalid(product.code)" (click)="saveAndGoBack()">Save</button>
-      <button mat-button (click)="goBack()" tabindex="-1">Cancel</button>
-    </form>
-  </div>
-
-  <div class="w3-col l2">&nbsp;</div>
 </div>

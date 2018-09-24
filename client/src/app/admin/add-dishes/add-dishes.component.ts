@@ -1,6 +1,8 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {MenuService} from '../../service/menu/menu.service';
 import {connectableObservableDescriptor} from 'rxjs/internal/observable/ConnectableObservable';
+import {ThemingService} from '../../service/theming/theming.service';
+import {HeaderComponent} from '../../header/header.component';
 
 
 @Component({
@@ -15,17 +17,28 @@ export class AddDishesComponent implements OnInit {
     @ViewChild('inputDinner') elDinner: ElementRef;
 
     dish = '';
-  commonDishes: Array<string> = ['Pasta in bianco', 'Pasta al pomodoro', 'Affettati misti', 'Formaggi misti' ];
-    constructor(public menu: MenuService) {}
+    commonDishes: Array<string> = ['Pasta in bianco', 'Pasta al pomodoro', 'Affettati misti', 'Formaggi misti' ];
+
+    constructor(public menu: MenuService, public themingService: ThemingService) {
+    }
 
     ngOnInit() {
+
+      this.themingService.checkAndChangeInputBorders();
+      this.themingService.checkAndChangeTextContrast();
+      this.themingService.setCurrentTheme();
     }
+
+  isButtonOn() {
+    return !HeaderComponent.isAccessibilitySidebarOpen;
+  }
 
     composeDish(event: any) {
       this.dish = event.target.value;
     }
 
     addLunchDish() {
+      console.log("a");
       this.menu.addLunchDish(this.dish);
       this.elLunch.nativeElement.value = '';
     }

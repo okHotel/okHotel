@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,MAAM;EACJ,OAAO,EAAE,GAAG;;AAId,IAAI;EACF,cAAc,EAAE,MAAM;;AAGxB,eAAe;EACb,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI",
-"sources": ["admin-profile.component.scss"],
-"names": [],
-"file": "admin-profile.component.css"
-}

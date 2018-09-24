@@ -1,166 +1,224 @@
-<div class="w3-row" id="backgroundDiv">
+<div class="container">
 
-  <div class="w3-col s0 m1 l2">&nbsp;</div>
+  <div class="card">
+    <div class="default-theme">
+      <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+        Restaurant Statistics
+      </div>
+    </div>
 
-  <div class="container mat-elevation-z8 w3-col s12 m10 l8 centered">
+    <h1 class="hidden">Restaurant Statistics</h1>
 
-      <button class="btn-group-btn-group-sm" mat-button (click)="onPrint()">
-        Print <i class='material-icons'>print</i>
+    <div class="card-body">
+
+      <app-message></app-message>
+
+      <div class="default-theme"  style="margin-bottom: 5%; text-align: center" >
+      <button type="button" class="btn px-3 px-2 ml-4 mt-4 default-theme my-theme"
+              (click)="onPrint()" aria-label="Print"
+              [ngStyle]="themingService.myCustomTheme">
+        <i class="fa fa-print" aria-label="printMenu"></i>
+        Print
       </button>
-
-      <button class="btn-group-btn-group-sm" mat-button (click)="goToMakeMenu()">
-        New Menu <i class='material-icons'>add_circle</i>
+      <button type="button" class="btn px-3 px-2 ml-4 mt-4 default-theme my-theme"
+              (click)="goToMakeMenu()"
+              [ngStyle]="themingService.myCustomTheme"
+              aria-label="New Menu">
+        <i class="fa fa-plus" aria-label="newMenu"></i>
+        New Menu
       </button>
-
-      <button class="btn-group-btn-group-sm" mat-button (click)="goToMakeVariation()">
-        New Variation <i class='material-icons'>autorenew</i>
+      <button type="button" class="btn px-3 px-2 ml-4 mt-4 default-theme my-theme"
+              (click)="goToMakeVariation()"
+              [ngStyle]="themingService.myCustomTheme"
+              aria-label="New Variation">
+        <i class="fa fa-plus" aria-label="Variation"></i>
+        New Variation
       </button>
+      </div>
 
-      <div class="form">
-        <mat-form-field color="accent">
-          <input type="date" matInput placeholder="Select menu date" [(ngModel)]="date" name="date"
-                 (keyup)="setDateMenu($event)">
-        </mat-form-field>
+      <div class="md-form">
 
-        <mat-form-field color="accent">
-          <mat-select id="roomNumber" name="roomNumber" [(ngModel)]="roomNumber" placeholder="Room number" >
-            <mat-option *ngFor="let number of roomsNumber" [value]=number.roomNumber required> {{number.roomNumber}} </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <mdb-form-field floatPlaceholder="never" color="accent">
+
+          <div class="row">
+
+            <div class="col">
+              <label for="date" >Select menu date</label>
+              <input #input type="date" id="date" placeholder="Select menu date" [(ngModel)]="date" name="date"
+                     (keyup)="setDateMenu($event)" class="form-control">
+            </div>
+
+            <div class="col rounded">
+              <mat-select class="text-dark rounded" id="roomNumber" name="roomNumber" [(ngModel)]="roomNumber"
+                          placeholder="Room number" [ngStyle]="themingService.myCustomTheme">
+                <mat-option *ngFor="let number of roomsNumber" [value]=number.roomNumber required
+                            [ngStyle]="themingService.myCustomTheme"> {{number.roomNumber}}
+                </mat-option>
+              </mat-select>
+            </div>
+
+          </div>
+        </mdb-form-field>
 
       </div>
 
-      <mat-table #table [dataSource]="lunchDataSource">
+      <!-------Lunch table------>
+      <div class="card my-3">
+        <mat-table #table [dataSource]="lunchDataSource">
 
-        <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
 
-        <!-- ID Column -->
-        <ng-container matColumnDef="dish">
-          <mat-header-cell *matHeaderCellDef>Lunch</mat-header-cell>
-          <mat-cell *matCellDef="let row" >
-            <span class="mobile-label">Lunch:</span>
-            {{row}}</mat-cell>
-        </ng-container>
+          <!-- ID Column -->
+          <ng-container matColumnDef="dish">
+            <mat-header-cell *matHeaderCellDef class="contrast" style="font-size:100%">Lunch
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" style="font-size:100%">
+              <span class="mobile-label">Lunch:</span>
+              {{row}}
+            </mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="wholePortion">
-          <mat-header-cell *matHeaderCellDef >Whole Lunch</mat-header-cell>
-          <mat-cell *matCellDef="let row">
-            <span class="mobile-label">Whole Lunch:</span>
-            <mat-list>
-              <mat-list-item>{{getTotalQuantitiesFor(row, meal.LUNCH)}}</mat-list-item>
-              <mat-list-item *ngFor="let intollerance of getVariations(row, meal.LUNCH, variation.INTOLLERANCE)">
-                {{intollerance.name}} intollerance: {{intollerance.quantity}}<br>
-              </mat-list-item>
-              <mat-list-item *ngFor="let intollerance of getVariations(row, meal.LUNCH, variation.ALLERGY)">
-                {{intollerance.name}} allergy: {{intollerance.quantity}}<br>
-              </mat-list-item>
+          <ng-container matColumnDef="wholePortion">
+            <mat-header-cell *matHeaderCellDef class="contrast" style="font-size:100%">Whole Portion
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" style="font-size:100%">
+              <span class="mobile-label">Whole Portion:</span>
+              <mat-list>
+                <mat-list-item>{{getTotalQuantitiesFor(row, meal.LUNCH)}}</mat-list-item>
+                <mat-list-item *ngFor="let intollerance of getVariations(row, meal.LUNCH, variation.INTOLLERANCE)">
+                  {{intollerance.name}} intollerance: {{intollerance.quantity}}
+                </mat-list-item>
+                <mat-list-item *ngFor="let intollerance of getVariations(row, meal.LUNCH, variation.ALLERGY)">
+                  {{intollerance.name}} allergy: {{intollerance.quantity}}
+                </mat-list-item>
 
-            </mat-list>
-<!--
-            <br>Allergy: {{getTotalVariations()}}</mat-cell>
--->
-          </mat-cell>
-        </ng-container>
+              </mat-list>
+              <!--
+                          <br>Allergy: {{getTotalVariations()}}</mat-cell>
+              -->
+            </mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="halfPortion">
-          <mat-header-cell *matHeaderCellDef>Half Lunch</mat-header-cell>
-          <mat-cell *matCellDef="let row">
-            <span class="mobile-label">Half Lunch:</span>
-            <mat-list>
-              <mat-list-item>{{getTotalQuantitiesFor(row, meal.HALF_LUNCH)}}</mat-list-item>
-              <mat-list-item *ngFor="let intollerance of getVariations(row, meal.HALF_LUNCH, variation.INTOLLERANCE)">
-                {{intollerance.name}} intollerance: {{intollerance.quantity}}<br>
-              </mat-list-item>
-              <mat-list-item *ngFor="let intollerance of getVariations(row, meal.HALF_LUNCH, variation.ALLERGY)">
-                {{intollerance.name}} allergy: {{intollerance.quantity}}<br>
-              </mat-list-item>
+          <ng-container matColumnDef="halfPortion" >
+            <mat-header-cell *matHeaderCellDef class="contrast" style="font-size:100%">Half Portion
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <span class="mobile-label">Half Portion:</span>
+              <mat-list>
+                <mat-list-item>{{getTotalQuantitiesFor(row, meal.HALF_LUNCH)}}</mat-list-item>
+                <mat-list-item *ngFor="let intollerance of getVariations(row, meal.HALF_LUNCH, variation.INTOLLERANCE)">
+                  {{intollerance.name}} intollerance: {{intollerance.quantity}}<br>
+                </mat-list-item>
+                <mat-list-item *ngFor="let intollerance of getVariations(row, meal.HALF_LUNCH, variation.ALLERGY)">
+                  {{intollerance.name}} allergy: {{intollerance.quantity}}<br>
+                </mat-list-item>
 
-            </mat-list>
-          </mat-cell>
-        </ng-container>
+              </mat-list>
+            </mat-cell>
+          </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-      </mat-table>
+        </mat-table>
+      </div>
 
-      <mat-table #table [dataSource]="dinnerDataSource">
-        <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
+      <!-------Dinner table------>
+      <div class="card my-3" >
+        <mat-table #table [dataSource]="dinnerDataSource">
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
 
-        <!-- ID Column -->
-        <ng-container matColumnDef="dish">
-          <mat-header-cell *matHeaderCellDef>Dinner</mat-header-cell>
-          <mat-cell *matCellDef="let row" >
-            <span class="mobile-label">Dinner:</span>
-            {{row}}</mat-cell>
-        </ng-container>
+          <!-- ID Column -->
+          <ng-container matColumnDef="dish">
+            <mat-header-cell *matHeaderCellDef class="contrast" style="font-size:100%">Dinner
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <span class="mobile-label">Dinner:</span>
+              {{row}}
+            </mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="wholePortion">
-          <mat-header-cell *matHeaderCellDef >Whole Dinner</mat-header-cell>
-          <mat-cell *matCellDef="let row">
-            <span class="mobile-label">Whole Lunch:</span>
-            <mat-list>
-              <mat-list-item>{{getTotalQuantitiesFor(row, meal.DINNER)}}</mat-list-item>
-              <mat-list-item *ngFor="let intollerance of getVariations(row, meal.DINNER, variation.INTOLLERANCE)">
-                {{intollerance.name}} intollerance: {{intollerance.quantity}}<br>
-              </mat-list-item>
-              <mat-list-item *ngFor="let intollerance of getVariations(row, meal.DINNER, variation.ALLERGY)">
-                {{intollerance.name}} allergy: {{intollerance.quantity}}<br>
-              </mat-list-item>
-            </mat-list>
-          </mat-cell>
-        </ng-container>
+          <ng-container matColumnDef="wholePortion">
+            <mat-header-cell *matHeaderCellDef class="contrast" style="font-size:100%">Whole Portion
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" >
+              <span class="mobile-label">Whole Portion:</span>
+              <mat-list>
+                <mat-list-item >{{getTotalQuantitiesFor(row, meal.DINNER)}}</mat-list-item>
+                <mat-list-item *ngFor="let intollerance of getVariations(row, meal.DINNER, variation.INTOLLERANCE)">
+                  {{intollerance.name}} intollerance: {{intollerance.quantity}}<br>
+                </mat-list-item>
+                <mat-list-item *ngFor="let intollerance of getVariations(row, meal.DINNER, variation.ALLERGY)">
+                  {{intollerance.name}} allergy: {{intollerance.quantity}}<br>
+                </mat-list-item>
+              </mat-list>
+            </mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="halfPortion">
-          <mat-header-cell *matHeaderCellDef>Half Dinner</mat-header-cell>
-          <mat-cell *matCellDef="let row">
-            <span class="mobile-label">Half Dinner:</span>
-            <mat-list>
-              <mat-list-item>{{getTotalQuantitiesFor(row, meal.HALF_DINNER)}}</mat-list-item>
-              <mat-list-item *ngFor="let intollerance of getVariations(row, meal.HALF_DINNER, variation.INTOLLERANCE)">
-                {{intollerance.name}} intollerance: {{intollerance.quantity}}<br>
-              </mat-list-item>
-              <mat-list-item *ngFor="let intollerance of getVariations(row, meal.HALF_DINNER, variation.ALLERGY)">
-                {{intollerance.name}} allergy: {{intollerance.quantity}}<br>
-              </mat-list-item>
-            </mat-list>
-          </mat-cell>
-        </ng-container>
+          <ng-container matColumnDef="halfPortion">
+            <mat-header-cell *matHeaderCellDef class="contrast" style="font-size:100%">Half Portion
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <span class="mobile-label contrast">Half Portion:</span>
+              <mat-list>
+                <mat-list-item>{{getTotalQuantitiesFor(row, meal.HALF_DINNER)}}</mat-list-item>
+                <mat-list-item
+                  *ngFor="let intollerance of getVariations(row, meal.HALF_DINNER, variation.INTOLLERANCE)">
+                  {{intollerance.name}} intollerance: {{intollerance.quantity}}<br>
+                </mat-list-item>
+                <mat-list-item *ngFor="let intollerance of getVariations(row, meal.HALF_DINNER, variation.ALLERGY)">
+                  {{intollerance.name}} allergy: {{intollerance.quantity}}<br>
+                </mat-list-item>
+              </mat-list>
+            </mat-cell>
+          </ng-container>
 
-        <mat-header-row *matHeaderRowDef="dis
-        playedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-      </mat-table>
+        </mat-table>
+      </div>
 
+      <!-------Notes------>
+      <div class="card my-3">
+        <mat-table [dataSource]="otherNotesDataSource">
+          <ng-container matColumnDef="roomNumber" >
+            <mat-header-cell *matHeaderCellDef class="contrast" style="font-size:100%">Room number
+            </mat-header-cell>
+            <mat-cell *matCellDef="let note">
+              <span class="mobile-label" class="contrast">Room Number:</span>
+              {{note.roomNumber}}
+            </mat-cell>
+          </ng-container>
 
-    <mat-table [dataSource]="otherNotesDataSource">
-      <ng-container matColumnDef="roomNumber">
-        <mat-header-cell *matHeaderCellDef>Room number</mat-header-cell>
-        <mat-cell *matCellDef="let note" >
-          <span class="mobile-label">Room Number:</span>
-          {{note.roomNumber}}</mat-cell>
-      </ng-container>
+          <ng-container matColumnDef="text">
+            <mat-header-cell *matHeaderCellDef class="contrast" style="font-size:100%">Note
+            </mat-header-cell>
+            <mat-cell *matCellDef="let note">
+              <span class="mobile-label contrast" >Note:</span>
+              {{note.text}}
+            </mat-cell>
+          </ng-container>
 
-      <ng-container matColumnDef="text">
-        <mat-header-cell *matHeaderCellDef>Note</mat-header-cell>
-        <mat-cell *matCellDef="let note" >
-          <span class="mobile-label">Note:</span>
-          {{note.text}}</mat-cell>
-      </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedNotesColumns"></mat-header-row>
+          <mat-row *matRowDef="let note; columns: displayedNotesColumns;"></mat-row>
 
-      <mat-header-row *matHeaderRowDef="displayedNotesColumns"></mat-header-row>
-      <mat-row *matRowDef="let note; columns: displayedNotesColumns;"></mat-row>
+        </mat-table>
+      </div>
 
-    </mat-table>
+      <div class="default-theme">
+      <div class="btn-group btn-group-sm d-flex flex-row-reverse">
+        <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+                (click)="goBack()"
+                [ngStyle]="themingService.myCustomTheme"
+                f aria-label="Back">Back
+        </button>
+      </div>
+      </div>
 
-    <button class="btn-group-btn-group-sm" mat-button (click)="goBack()">Back</button>
+    </div>
   </div>
-
-  <div class="w3-col s0 m1 l2">&nbsp;</div>
-
 </div>
-

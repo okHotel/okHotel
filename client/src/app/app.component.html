@@ -1,14 +1,12 @@
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!--
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
--->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<div class="container-fluid">
+<div class="container-fluid" [ngStyle]="themingService.myStyle" >
 
   <app-header></app-header>
-
   <router-outlet></router-outlet>
+  <app-footer class="default-theme my-theme"></app-footer>
 
-  <app-footer></app-footer>
 </div>
+
+
+

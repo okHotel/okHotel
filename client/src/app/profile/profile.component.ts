@@ -15,17 +15,18 @@ export class ProfileComponent implements OnInit {
   isCustomerLoggedIn: boolean;
   isAdmin: boolean;
 
-  constructor(private router: Router, private customerService: CustomerService) { }
+  constructor(private router: Router, private customerService: CustomerService) {
+  }
 
   ngOnInit() {
     this.checkLogin();
   }
 
   goToProfile() {
-    this.router.navigateByUrl('/customers/' + this.customer._id );
+    this.router.navigateByUrl('/customers/' + this.customer._id);
   }
 
-  goToLogin() {
+  login() {
     this.router.navigateByUrl('/login');
   }
 
@@ -48,11 +49,8 @@ export class ProfileComponent implements OnInit {
         this.isCustomerLoggedIn = true;
       });
     } else {
-      this.goToLogin();
+      this.login();
     }
   }
 
-  goToServices() {
-    this.router.navigateByUrl('/admin-profile');
-  }
 }

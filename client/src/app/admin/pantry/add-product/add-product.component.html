@@ -1,66 +1,95 @@
-<div class="w3-row" id="backgroundDiv">
+<div class="container default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
 
-  <div class="w3-col l2">&nbsp;</div>
+  <div class="card">
+    <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+      Add new product
+    </div>
 
-  <div class="w3-col s12 m12 l8 mat-elevation-z8 container centered">
+    <h1 class="hidden">Add new Product</h1>
 
-    <app-error></app-error>
+    <div class="card-body">
 
-    <h3>Add new Product</h3>
+      <app-message></app-message>
 
-    <form (ngSubmit)="submit()" #formControl="ngForm">
+      <form class="mat-dialog-content" (ngSubmit)="submit()" #formControl="ngForm">
 
-      <div class="form">
-        <mat-form-field color="accent">
-          <label for="code">Code</label>
-          <input id="code" [disabled]="isCodeReadOnly" matInput #input type="text" class="form-control" placeholder="Code" [(ngModel)]="product.code"
-                 name="code" pattern="[0-9]*">
-          <mat-error >{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-      </div>
+        <div class="md-form">
+          <mdb-form-field color="accent">
+            <label for="code">Code</label>
+            <input id="code" [disabled]="isCodeReadOnly" #input type="text" class="form-control"
+                   placeholder="Code" [(ngModel)]="product.code"
+                   name="code" pattern="[0-9]*" #code="ngModel">
+            <div [hidden]="code.valid || code.pristine"
+                 class="alert alert-danger" role="alert">
+              Code is required
+            </div>
+          </mdb-form-field>
+        </div>
 
-      <!--Textarea for demo purposes-->
-      <div class="form">
-        <mat-form-field color="accent">
-          <label for="name">Product name</label>
-          <input matInput id="name" #input class="form-control" placeholder="Name" [(ngModel)]="product.name" name="name" required >
-          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-      </div>
+        <!--Textarea for demo purposes-->
+        <div class="md-form">
+          <mdb-form-field color="accent">
+            <label for="name">Product name</label>
+            <input id="name" type="text" #input class="form-control" placeholder="Name" [(ngModel)]="product.name"
+                   name="name" #productName="ngModel" required>
 
-      <!--Contains mat-hint for characters count and has maxLengt set-->
-      <div class="form">
-        <mat-form-field color="accent">
-          <label for="category">Category</label>
+            <div [hidden]="productName.valid || productName.pristine"
+                 class="alert alert-danger" role="alert">
+              Product name is required
+            </div>
 
-          <input matInput id="category" #inputstate class="form-control" placeholder="Category" [(ngModel)]="product.category" name="category" required >
-          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-      </div>
+          </mdb-form-field>
+        </div>
 
-      <div class="form">
-        <mat-form-field color="accent">
-          <label for="quantity">Quantity</label>
+        <!--Contains mat-hint for characters count and has maxLengt set-->
+        <div class="md-form">
+          <mdb-form-field color="accent">
+            <label for="category">Category</label>
 
-          <input matInput id="quantity" type="text" placeholder="Quantity" [(ngModel)]="product.quantity" name="quantity" pattern="[0-9]*" required>
-          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-      </div>
+            <input type="text" id="category" #input class="form-control" placeholder="Category"
+                   [(ngModel)]="product.category" name="category" #category="ngModel"required>
+            <div [hidden]="category.valid || category.pristine"
+                 class="alert alert-danger" role="alert">
+              Category is required
+            </div>
+          </mdb-form-field>
+        </div>
 
-      <div class="form">
-        <mat-form-field color="accent">
-          <mat-select [(ngModel)]="product.unit" name="unit" placeholder="Unit" required>
-            <mat-option *ngFor="let unit of units"  [value]=unit>
-              {{unit}}
-            </mat-option>
-            <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-          </mat-select>
-        </mat-form-field>
-      </div>
+        <div class="md-form">
+          <mdb-form-field color="accent">
+            <label for="quantity">Quantity</label>
 
-        <button mat-button [type]="submit" [disabled]="!formControl.valid || isCodeInvalid(product.code)" (click)="onSave()">Save</button>
-        <button mat-button (click)="goBack()" tabindex="-1">Cancel</button>
-    </form>
+            <input id="quantity" #input type="text" placeholder="Quantity" [(ngModel)]="product.quantity"
+                   name="quantity" pattern="[0-9]*" class="form-control" #quantity="ngModel" required>
+            <div [hidden]="quantity.valid || quantity.pristine"
+                 class="alert alert-danger" role="alert">
+              Quantity is required
+            </div>
+          </mdb-form-field>
+        </div>
+
+        <div class="md-form">
+          <mdb-form-field color="accent">
+            <mat-select [(ngModel)]="product.unit" name="unit" placeholder="Unit" required>
+              <mat-option *ngFor="let unit of units" [value]=unit>
+                {{unit}}
+              </mat-option>
+              <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-select>
+          </mdb-form-field>
+        </div>
+
+        <div class="btn-group btn-group-sm d-flex flex-row-reverse">
+          <button  type="button" class="btn px-5 px-3 ml-4 mt-4 default-theme my-theme"
+                   [ngStyle]="themingService.myCustomTheme"
+                   (click)="onSave()" aria-label="Save"  [disabled]="!formControl.valid || isCodeInvalid(product.code)">Save</button>
+          <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+                  [ngStyle]="themingService.myCustomTheme"
+                  (click)="goBack()" aria-label="Back">Back</button>
+        </div>
+
+      </form>
+    </div>
+
   </div>
-  <div class="w3-col l2">&nbsp;</div>
 </div>

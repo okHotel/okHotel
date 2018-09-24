@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HeaderComponent} from '../header/header.component';
 import {ThemingService} from '../service/theming/theming.service';
 import {el} from '../../../node_modules/@angular/platform-browser/testing/src/browser_util';
+import {Theme} from '../custom-theme/theme';
 
 @Component({
   selector: 'app-accessibility-setting',
@@ -10,9 +11,12 @@ import {el} from '../../../node_modules/@angular/platform-browser/testing/src/br
 })
 export class AccessibilitySettingComponent implements OnInit {
 
+  theme = Theme;
+
   constructor(public themingService: ThemingService) { }
 
   ngOnInit() {
+
   }
 
   closeSidebar() {
@@ -21,11 +25,20 @@ export class AccessibilitySettingComponent implements OnInit {
     console.log(HeaderComponent.isAccessibilitySidebarOpen);
   }
 
+  setCustomFontSize() {
+    this.themingService.small = false;
+    this.themingService.medium = false;
+    this.themingService.large = false;
+
+    localStorage.setItem('fontSize', '' + this.themingService.fontSize);
+    console.log(localStorage.getItem('fontSize'))
+  }
+
   setLargeFont() {
     this.themingService.small = false;
     this.themingService.medium = false;
     this.themingService.large = true;
-    localStorage.setItem('fontSize', 'large');
+    localStorage.setItem('fontSize', '150');
     console.log(localStorage);
   }
 
@@ -33,18 +46,18 @@ export class AccessibilitySettingComponent implements OnInit {
     this.themingService.small = false;
     this.themingService.medium = true;
     this.themingService.large = false;
-    localStorage.setItem('fontSize', 'medium');
+    localStorage.setItem('fontSize', '125');
   }
 
   setSmallFont() {
     this.themingService.small = true;
     this.themingService.medium = false;
     this.themingService.large = false;
-    localStorage.setItem('fontSize', 'small');
+    localStorage.setItem('fontSize', '100');
   }
 
-  changeInputBorder() {
-    this.themingService.isBorderOnChecked = !this.themingService.isBorderOnChecked;
+  changeInputBorder(state: boolean) {
+    this.themingService.isBorderOnChecked = state;
     localStorage.setItem('isBorderOnChecked', '' + this.themingService.isBorderOnChecked);
     this.themingService.checkAndChangeInputBorders();
 
@@ -76,7 +89,7 @@ export class AccessibilitySettingComponent implements OnInit {
     if (localStorage.getItem('token')) {
       token = localStorage.getItem('token');
     }
-    localStorage.clear()
+    localStorage.clear();
 
     if (token) {
       localStorage.setItem('token', token);

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../service/auth/auth.service';
+import {MessageService} from '../service/message/message.service';
+import {ThemingService} from '../service/theming/theming.service';
+
 
 @Component({
   selector: 'app-header',
@@ -11,10 +14,24 @@ import {AuthService} from '../service/auth/auth.service';
 
 export class HeaderComponent implements OnInit {
 
+  static isAccessibilitySidebarOpen: boolean = false;
 
-  constructor(private router: Router, public authService: AuthService) {}
+  constructor(
+    private router: Router,
+    public authService: AuthService,
+    public messageService: MessageService,
+    public themingService: ThemingService) {}
+
 
   ngOnInit() {}
+
+  get myStyle() {
+    return {
+      'width': HeaderComponent.isAccessibilitySidebarOpen ? '40%' : '0',
+      'padding-top': HeaderComponent.isAccessibilitySidebarOpen ? '5%' : '0',
+      'transition': '0.5s'
+    };
+  }
 
   home() {
       this.router.navigateByUrl('');
@@ -24,4 +41,24 @@ export class HeaderComponent implements OnInit {
    return AuthService.isLoggedIn();
   }
 
+  isAdimn() {
+    return  AuthService.isUserAdmin();
+  }
+
+  login() {
+    this.router.navigateByUrl('/login');
+  }
+
+  logout() {
+    AuthService.logout();
+    this.router.navigateByUrl('/login');
+  }
+
+  changeAccessibilitySidebarStatus() {
+    HeaderComponent.isAccessibilitySidebarOpen = !HeaderComponent.isAccessibilitySidebarOpen;
+  }
+
+  resetSuccess() {
+    this.messageService.success = '';
+  }
 }

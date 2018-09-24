@@ -4,7 +4,8 @@ import { CustomerService } from '../../service/customer/customer.service';
 import { ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common';
 import {AuthService} from '../../service/auth/auth.service';
-import {ErrorService} from '../../service/error/error.service';
+import {MessageService} from '../../service/message/message.service';
+import {ThemingService} from '../../service/theming/theming.service';
 
 @Component({
     selector: 'app-customer-details',
@@ -26,8 +27,18 @@ export class CustomerDetailComponent implements OnInit {
         private customerService: CustomerService,
         private route: ActivatedRoute,
         private location: Location,
-        private errorService: ErrorService
-    ) {}
+        private messageService: MessageService,
+        public themingService: ThemingService
+    ) {
+
+      if (this.themingService.isUseBackgroundOn()) {
+        document.body.style.backgroundImage = "url('../../assets/images/customer.jpg')";
+        document.body.style.backgroundRepeat = "repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+      }
+
+    }
 
     ngOnInit(): void {
         const id = this.route.snapshot.paramMap.get('id');
@@ -37,14 +48,19 @@ export class CustomerDetailComponent implements OnInit {
                     this.customerNeeds = customer.otherNeeds;
                 }, err => {
                     console.log(err)
-                    this.errorService.error = err.error.message;
+                    this.messageService.error = err.error.message;
                 });
         this.canUserEdit = AuthService.isUserAdmin();
+
+        this.themingService.checkAndChangeInputBorders();
+        this.themingService.checkAndChangeTextContrast();
+        this.themingService.setCurrentTheme();
     }
 
     update(): void {
 //        this.submitted = true;
         this.customer.otherNeeds = this.customerNeeds;
+        this.messageService.success = this.customer.bookingName + " " + this.customer.bookingSurname + " successfully updated";
         this.customerService.updateCustomer(this.customer)
             .subscribe();
     }

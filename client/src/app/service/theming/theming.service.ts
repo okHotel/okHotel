@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {OverlayContainer} from '@angular/cdk/overlay';
+import {Theme} from '../../custom-theme/theme';
 
 @Injectable({
   providedIn: 'root'
@@ -7,32 +8,64 @@ import {OverlayContainer} from '@angular/cdk/overlay';
 export class ThemingService {
 
   fontSize;
+  size: number;
   large = false;
   medium = false;
   small = false;
 
-  isDefaultTheme: boolean = true;
-  themeClass: string = 'light-theme';
+  themeClass = 'default-theme';
 
   backgroundCheckValue = true;
   isBorderOnChecked = false;
   isContrastChecked = false;
 
-  constructor(public overlayContainer: OverlayContainer) { }
+  backgroundColor = '#034768';
+  fontColor = '#ffffff';
+
+  currentTheme: Theme = Theme.DEFAULT;
+
+  constructor(public overlayContainer: OverlayContainer) {}
 
   get myStyle(): any {
 
     if (this.large) {
-      this.fontSize = '150%';
+      this.fontSize = '150';
     } else if (this.medium) {
-      this.fontSize = '125%';
+      this.fontSize = '125';
     } else if (this.small) {
-      this.fontSize = '100%';
+      this.fontSize = '100';
     }
 
     return {
-      'font-size': this.fontSize
-    };
+      'font-size': this.fontSize + "%"
+    }
+  }
+
+  get myCustomTheme(): any {
+
+    if (this.large) {
+      this.fontSize = '150';
+    } else if (this.medium) {
+      this.fontSize = '125';
+    } else if (this.small) {
+      this.fontSize = '100';
+    }
+
+    if (this.currentTheme === Theme.CUSTOM) {
+      localStorage.setItem('theme', Theme.CUSTOM.valueOf());
+      localStorage.setItem('backgroundColor',  '' + this.backgroundColor);
+      localStorage.setItem('fontColor', '' + this.fontColor);
+
+      return {
+        'background-color': this.backgroundColor,
+        'color': this.fontColor,
+        'font-size': this.fontSize + "%"
+      };
+    }
+  }
+
+  setCustomFontSize() {
+    localStorage.setItem('fontSize', '' + this.fontSize);
   }
 
   checkAndChangeInputBorders() {
@@ -113,17 +146,48 @@ export class ThemingService {
       for (let i = 0; i < selectBorder.length; i++) {
         selectBorder.item(i).classList.add('mat-select-black');
       }
-
     }
   }
 
-  onThemeChange() {
-    this.isDefaultTheme = !this.isDefaultTheme;
+  onThemeChange(theme: Theme) {
 
-    this.themeClass = this.isDefaultTheme ? 'my-light-theme' : 'my-dark-theme';
+    const customTheme = document.querySelectorAll('.' + this.currentTheme.valueOf());
 
+    for (let i = 0; i < customTheme.length; i++) {
+      customTheme.item(i).classList.remove(this.currentTheme.valueOf());
+      customTheme.item(i).classList.add(theme.valueOf());
+    }
 
-    console.log(this.isDefaultTheme);
-    console.log(this.themeClass);
+    this.currentTheme = theme;
+    localStorage.setItem('theme', this.currentTheme.valueOf())
+  }
+
+  setCurrentTheme() {
+    const item = localStorage.getItem('theme');
+    if (item === 'default-theme') {
+      this.currentTheme = Theme.DEFAULT;
+    } else if (item === 'black-theme') {
+      this.currentTheme = Theme.BLACK;
+      } else if (item === 'white-theme') {
+      this.currentTheme = Theme.WHITE;
+    } else if (item === 'light-theme') {
+      this.currentTheme = Theme.LIGHT;
+    } else if (item === 'custom-theme') {
+      this.currentTheme = Theme.CUSTOM;
+      this.backgroundColor = localStorage.getItem('backgroundColor');
+      this.fontColor = localStorage.getItem('fontColor');
+    }
+
+    if (localStorage.getItem('theme')) {
+      const customTheme = document.querySelectorAll('.' + Theme.DEFAULT.valueOf());
+
+      for (let i = 0; i < customTheme.length; i++) {
+        customTheme.item(i).classList.remove(Theme.DEFAULT);
+        customTheme.item(i).classList.add(this.currentTheme);
+      }
+
+    }
+
+    console.log(localStorage.getItem('theme'));
   }
 }
