@@ -26,16 +26,12 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: lighten(#034768, 16%) !important;// #02afff;
   }
 
-  .mat-select-trigger, .mat-select-arrow, .mat-select-underline {
-    color: white !important;
+  .mat-select-trigger, .mat-select-arrow, .mat-select-underline, .mat-select-placeholder, .mat-select-value {
+    color: darkslategrey !important;
   }
 
   .icon-color {
     color: #034768;
-  }
-
-  .mat-select-value {
-    color: darkslategrey !important;
   }
 
 }
