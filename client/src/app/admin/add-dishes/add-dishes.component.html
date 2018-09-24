@@ -24,7 +24,7 @@
       <label for="LunchDish">Dish</label>
       <input class="form-control" id="LunchDish" #inputLunch type="text" name="dish" (keyup)="composeDish($event)"
              placeholder="Dish" (keyup.enter)="addLunchDish()">
-      <div class="input-group-append default-theme">
+      <div class="input-group-append default-theme" *ngIf="isButtonOn()">
         <button type="button" class="btn btn-flat btn-lg my-theme"  [ngStyle]="themingService.myCustomTheme" (click)="addLunchDish()"><i class="fa fa-plus" aria-hidden="true"></i></button>
       </div>
     </div>
@@ -57,7 +57,7 @@
       <label for="DinnerDish">Dish</label>
       <input class="form-control" id="DinnerDish" #inputLunch type="text" name="dish" (keyup)="composeDish($event)"
              placeholder="Dish" (keyup.enter)="addDinnerDish()">
-      <div class="input-group-append default-theme">
+      <div class="input-group-append default-theme" *ngIf="isButtonOn()">
         <button type="button" class="my-theme btn btn-flat btn-lg"  [ngStyle]="themingService.myCustomTheme" (click)="addDinnerDish()"><i class="fa fa-plus" aria-hidden="true"></i></button>
       </div>
     </div>

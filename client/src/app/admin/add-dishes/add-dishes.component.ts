@@ -2,6 +2,7 @@ import {Component, ElementRef, Input, OnChanges, OnInit, ViewChild} from '@angul
 import {MenuService} from '../../service/menu/menu.service';
 import {connectableObservableDescriptor} from 'rxjs/internal/observable/ConnectableObservable';
 import {ThemingService} from '../../service/theming/theming.service';
+import {HeaderComponent} from '../../header/header.component';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class AddDishesComponent implements OnInit {
     dish = '';
     commonDishes: Array<string> = ['Pasta in bianco', 'Pasta al pomodoro', 'Affettati misti', 'Formaggi misti' ];
 
-    constructor(public menu: MenuService, public themingService: ThemingService) {}
+    constructor(public menu: MenuService, public themingService: ThemingService) {
+    }
 
     ngOnInit() {
 
@@ -26,6 +28,10 @@ export class AddDishesComponent implements OnInit {
       this.themingService.checkAndChangeTextContrast();
       this.themingService.setCurrentTheme();
     }
+
+  isButtonOn() {
+    return !HeaderComponent.isAccessibilitySidebarOpen;
+  }
 
     composeDish(event: any) {
       this.dish = event.target.value;

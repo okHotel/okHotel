@@ -80,10 +80,14 @@
                      placeholder="Other needs (p.e. disability types, number of children and/or pets, if present)"/>
             </mdb-form-field>
 
-              <button mat-button type="button" class="p-2 bd-highlight" (click)="addNeedAndUpdate()"
+
+            <div class="default-theme">
+              <button mat-button type="button" class="my-theme p-2 bd-highlight" [ngStyle]="themingService.myCustomTheme"
+                      (click)="addNeedAndUpdate()"
                       [disabled]="isInputInvalid(need)">
                 <span class="material-icons">add</span>
               </button>
+            </div>
 
           </div>
 
