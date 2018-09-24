@@ -56,8 +56,8 @@ export class AccessibilitySettingComponent implements OnInit {
     localStorage.setItem('fontSize', '100');
   }
 
-  changeInputBorder() {
-    this.themingService.isBorderOnChecked = !this.themingService.isBorderOnChecked;
+  changeInputBorder(state: boolean) {
+    this.themingService.isBorderOnChecked = state;
     localStorage.setItem('isBorderOnChecked', '' + this.themingService.isBorderOnChecked);
     this.themingService.checkAndChangeInputBorders();
 

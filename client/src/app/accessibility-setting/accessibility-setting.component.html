@@ -57,9 +57,9 @@
             <!--INPUT WITHOUT BORDER-->
             <div class="form-check">
               <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2"
-                     (click)="changeInputBorder()" checked>
+                     (click)="changeInputBorder(false)" checked>
               <label class="hidden form-check-label" for="gridRadios2">
-                Input with border
+                Input without border
               </label>
 
               <div>
@@ -71,10 +71,10 @@
             </div>
             <!--INPUT WITH BORDER-->
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" cxf
-                     (click)="changeInputBorder()">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
+                     (click)="changeInputBorder(true)">
               <label class="hidden form-check-label" for="gridRadios1">Input with border</label>
-              
+
               <input #input type="text" class="form-control border border-primary " id="inputWithBorder"
                      placeholder="Input with border" name="inputWithBorder">
               <label class="hidden" for="inputWithBorder">Input with border</label>

@@ -17,22 +17,25 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   @include angular-material-theme($default-theme);
 
-  .my-theme, .mat-select-content, .mat-option, .mat-select-value {
+  .my-theme, mat-option {
     background-color: #034768; //mat-color($dark-primary);
-    color: white;
+    color: white !important;
   }
 
   .active{
     background-color: lighten(#034768, 16%) // #02afff;
   }
 
-  .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,
-  ::placeholder {
+  .mat-select-trigger, .mat-select-arrow , .mat-select-underline {
     color: white !important;
   }
 
   .icon-color {
     color: #034768;
+  }
+
+  .mat-select-value {
+    color: darkslategrey !important;
   }
 
 }
@@ -46,7 +49,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   @include angular-material-theme($light-theme);
 
-  .my-theme, .mat-select-content, .mat-option, .mat-select-value  {
+  .my-theme, .mat-select-content, mat-option  {
     background-color:  #b3efff ; //mat-color($light-primary);
     color: black;
   }
@@ -55,8 +58,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: #72bde5; //lighten(mat-color($light-primary),10%)
   }
 
-  .md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline, .mat-option, .mat-list-item,
-  ::placeholder {
+  .md-select, .mat-select-trigger, .mat-select-arrow , .mat-select-underline, .mat-option, .mat-list-item {
     color:black !important;
   }
 
@@ -74,7 +76,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   @include angular-material-theme($white-theme);
 
-  .my-theme,  .mat-select-content, .mat-select-value {
+  .my-theme,  .mat-select-content, mat-option {
     background-color: white; //mat-color($white-primary);
     color: black;
   }
@@ -84,8 +86,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
   }
 
 
-  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,  .mat-list-item,
-  ::placeholder, .mat-option, .icon-color {
+  md-select, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,  .mat-list-item,
+  .mat-option, .icon-color {
     color:black !important;
   }
 
@@ -99,7 +101,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
   @include angular-material-theme($black-theme);
 
-  .my-theme,  .mat-select-content, .mat-select-value {
+  .my-theme,  .mat-select-content, mat-option {
     background-color: black; //mat-color($black-primary);
     color: white;
   }
@@ -107,8 +109,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
     background-color: lightslategrey; //lighten(mat-color($black-primary),10%)
   }
 
-  md-select, .mat-select-placeholder, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,
-  ::placeholder, .mat-option {
+  md-select, .mat-select-trigger, .mat-select-arrow , .mat-select-underline,
+  .mat-option {
     color:white !important;
   }
 
