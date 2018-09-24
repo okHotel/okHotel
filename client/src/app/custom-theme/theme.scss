@@ -22,11 +22,11 @@ $theme: mat-light-theme($primary, $accent, $warn);
     color: white !important;
   }
 
-  .active{
-    background-color: lighten(#034768, 16%) // #02afff;
+  .active, .mat-option:hover, .mat-active {
+    background-color: lighten(#034768, 16%) !important;// #02afff;
   }
 
-  .mat-select-trigger, .mat-select-arrow , .mat-select-underline {
+  .mat-select-trigger, .mat-select-arrow, .mat-select-underline {
     color: white !important;
   }
 

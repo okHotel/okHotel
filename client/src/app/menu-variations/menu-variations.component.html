@@ -1,61 +1,51 @@
 <div class="card mat-elevation-z20 mx-auto d-block sidenav">
 
-  <div class="card-body default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+  <div class="card-body">
 
     <div  id="mySidenav">
 
+      <div class="default-theme">
       <button type="button" class="closebtn btn btn-sm mb-2 default-theme my-theme"
               [ngStyle]="themingService.myCustomTheme"
               (click)="goToMenu()">
         <i class="fa fa-times fa-2x" aria-label="delete dish"></i><p class="hidden">Close</p> </button>
+      </div>
 
-      <div class="card">
+      <div id="container">
 
-        <div class="card-header">Please choose what variations you need</div>
+        <table summary="The variations you can select for lunch">
+          <caption class="text-center">Please choose what variations you need</caption>
+          <tr>
+            <th scope="col">Type</th>
+            <th scope="col" class="pl-2">Intolerance</th>
+            <th scope="col" class="pl-3 pr-4">Allergy</th>
+          </tr>
 
-        <div class="card-body" class="default-theme my-theme py-3 px-3"
-             [ngStyle]="themingService.myCustomTheme">
+          <tr *ngFor="let v of variations">
+            <td scope="row">{{v}}</td>
+            <td>
+              <mdb-form-field class="form-control accent">
+                <mat-select placeholder="{{getVariations(intollerance, v)}}">
+                  <mat-option *ngFor="let n of people" [value]=n (click)="setVariation(v, intollerance, n)">
+                    {{n}}
+                  </mat-option>
+                </mat-select>
+              </mdb-form-field>
+            </td>
 
-          <table summary="The variations you can select for lunch">
-            <caption class="text-center hidden">Please choose what variations you need</caption>
-            <tr>
-              <th scope="col" class="default-theme my-theme"
-                  [ngStyle]="themingService.myCustomTheme">Type</th>
-              <th scope="col" class="default-theme my-theme pl-2"
-                  [ngStyle]="themingService.myCustomTheme">Intolerance</th>
-              <th scope="col" class="default-theme my-theme pl-3 pr-4"
-                  [ngStyle]="themingService.myCustomTheme">Allergy</th>
-            </tr>
+            <td>
+              <mdb-form-field class="form-control accent">
+                <mat-select placeholder="{{getVariations(allergy, v)}}" >
+                  <mat-option *ngFor="let n of people" [value]=n (click)="setVariation(v, allergy, n)">
+                    {{n}}
+                  </mat-option>
+                </mat-select>
+              </mdb-form-field>
+            </td>
+          </tr>
 
-            <tr *ngFor="let v of variations">
-              <td scope="row">{{v}}</td>
-              <td>
-                <mdb-form-field class="form-control accent default-theme my-theme"
-                                [ngStyle]="themingService.myCustomTheme">
-                  <mat-select placeholder="{{getVariations(intollerance, v)}}">
-                    <mat-option *ngFor="let n of people" [value]=n (click)="setVariation(v, intollerance, n)">
-                      {{n}}
-                    </mat-option>
-                  </mat-select>
-                </mdb-form-field>
-              </td>
+        </table>
 
-              <td>
-                <mdb-form-field class="form-control accent default-theme my-theme"
-                                [ngStyle]="themingService.myCustomTheme">
-                  <mat-select placeholder="{{getVariations(allergy, v)}}" class="default-theme my-theme"
-                              [ngStyle]="themingService.myCustomTheme">
-                    <mat-option *ngFor="let n of people" [value]=n (click)="setVariation(v, allergy, n)">
-                      {{n}}
-                    </mat-option>
-                  </mat-select>
-                </mdb-form-field>
-              </td>
-            </tr>
-
-          </table>
-
-        </div>
       </div>
 
     </div>

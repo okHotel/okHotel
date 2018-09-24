@@ -1,9 +1,12 @@
+<div class="container">
 
-<div class="container default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
 
   <div class="card mat-elevation-z8" [hidden]="submitted">
-    <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
-      Registration
+
+    <div class="default-theme">
+      <div class="card-header default-theme my-theme" [ngStyle]="themingService.myCustomTheme">
+        Registration
+      </div>
     </div>
 
     <div class="card-body">
@@ -14,8 +17,9 @@
 
         <div class="md-form">
           <mdb-form-field color="accent">
-            <mat-select id="roomNumber" [(ngModel)]="customer.roomNumber" name="roomNumber" #roomNumber="ngModel" placeholder="Room number" required>
-              <mat-option *ngFor="let number of roomsNumber" [value]=number required> {{number}} </mat-option>
+            <mat-select id="roomNumber" [(ngModel)]="customer.roomNumber" name="roomNumber" #roomNumber="ngModel"
+                        placeholder="Room number" required>
+              <mat-option *ngFor="let number of roomsNumber" [value]=number required> {{number}}</mat-option>
             </mat-select>
             <div [hidden]="roomNumber.valid || roomNumber.pristine"
                  class="alert alert-danger">
@@ -110,7 +114,8 @@
         Other needs:
         <mat-list>
           <mat-list-item *ngFor="let need of customerNeeds">
-            <button class="clear" type="button" (click)="removeNeed(need)" aria-label="remove need"><span class="material-icons">clear</span></button>
+            <button class="clear" type="button" (click)="removeNeed(need)" aria-label="remove need"><span
+              class="material-icons">clear</span></button>
             {{need}}
           </mat-list-item>
         </mat-list>
@@ -121,7 +126,7 @@
             <input #input type="text" id='otherNeeds' name="need" [(ngModel)]="need" (keyup.enter)="addNeed()"
                    placeholder="Other needs (p.e. disability types, number of children and/or pets, if present)"
                    class="form-control"
-                 />
+            />
           </mdb-form-field>
 
           <button mat-button type="button" (click)="addNeed()" aria-label="Add"><span
@@ -129,18 +134,19 @@
         </div>
 
 
+        <div class="default-theme">
 
-        <div class="btn-group btn-group-sm d-flex flex-row-reverse">
-          <button type="button" class="btn px-5 px-3 ml-4 mt-4 default-theme my-theme"
-                  [ngStyle]="themingService.myCustomTheme"
-                  (click)="addCustomer()" aria-label="Save" [disabled]="!addCustomerForm.form.valid">Save</button>
-          <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
-                  [ngStyle]="themingService.myCustomTheme"
-                  (click)="goBack()" aria-label="Back">Back</button>
+          <div class="btn-group btn-group-sm d-flex flex-row-reverse">
+            <button type="button" class="btn px-5 px-3 ml-4 mt-4 default-theme my-theme"
+                    [ngStyle]="themingService.myCustomTheme"
+                    (click)="addCustomer()" aria-label="Save" [disabled]="!addCustomerForm.form.valid">Save
+            </button>
+            <button type="button" class="btn px-5 py-3 ml-4 mt-4 default-theme my-theme"
+                    [ngStyle]="themingService.myCustomTheme"
+                    (click)="goBack()" aria-label="Back">Back
+            </button>
+          </div>
         </div>
-
-
-
 
       </form>
     </div>
